@@ -1,5 +1,19 @@
 # Photos réelles
 
+## ✅ Déjà installées
+
+| Fichier | Intervention illustrée | Où elle apparaît |
+|---|---|---|
+| `degorgement.jpg` | Camion de pompage, tuyau dans un regard | Grand visuel d'introduction des landings 29 et 56 |
+| `debouchage-wc.jpg` | Débouchage de WC à la ventouse | Carte « WC bouché » |
+| `debouchage-douche.jpg` | Furet électrique dans un siphon de douche | Carte « Douche bouchée » |
+| `debouchage-evier.jpg` | Démontage du siphon sous l'évier | Carte « Évier bouché » |
+| `depannage-plomberie.jpg` | Raccordement d'un broyeur sanitaire | Carte « Dépannage plomberie » |
+
+Toutes en 1100 × 733 (3:2), le format des cadres du site : aucun rognage.
+
+## Photos restant à fournir
+
 Déposez ici vos photos d'intervention. Chaque vignette du site tente d'abord de
 charger `assets/photos/<nom>.jpg`, puis retombe automatiquement sur le visuel de
 substitution `assets/img/<nom>.svg` si le fichier est absent — aucune image

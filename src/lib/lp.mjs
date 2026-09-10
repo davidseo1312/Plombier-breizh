@@ -10,10 +10,21 @@ import {
 } from './layout.mjs';
 import { servicesGrid, servicePhoto, pick } from './services.mjs';
 
-const LP_SERVICES = (dept) => pick(
-  'Débouchage', 'Dégorgement', 'WC bouché', 'Évier bouché', 'Douche bouchée',
-  'Canalisation obstruée', 'Fuite d’eau', 'Dépannage plomberie', 'Urgence plomberie'
-);
+/* Les quatre interventions illustrées par une photo réelle. Le dégorgement est
+   présenté plus haut, en grand, avec la photo du camion de pompage. */
+const LP_SERVICES = pick('WC bouché', 'Évier bouché', 'Douche bouchée', 'Dépannage plomberie');
+
+/* Les autres interventions de la page, listées sans visuel : aucune photo
+   d'illustration disponible, et une landing page n'a rien à gagner à afficher
+   des images de substitution à côté de vraies photos de chantier. */
+const LP_AUTRES = [
+  ['Dégorgement de réseau', 'Plusieurs évacuations bloquées en même temps.'],
+  ['Débouchage de canalisation', 'Conduite intérieure ou enterrée obstruée.'],
+  ['Canalisation obstruée', 'Bouchon profond, dépôts ou racines.'],
+  ['Fuite d’eau', 'Raccord, joint ou évacuation percée.'],
+  ['Recherche de fuite', 'Fuite non visible, humidité, surconsommation.'],
+  ['Urgence plomberie', 'Débordement, refoulement, fuite qui ne s’arrête pas.']
+];
 
 export const landingPage = ({
   slug, dept, article, num, cities,
@@ -64,7 +75,7 @@ ${urgencyBand(`bandeau-lp-${num}`)}
         </div>
       </div>
       <div class="split__media">
-        ${servicePhoto('technicien-camion', `Technicien Plombier Breizh dans ${article} ${dept}`)}
+        ${servicePhoto('degorgement', `Camion de pompage Plombier Breizh en intervention de dégorgement dans ${article} ${dept}`)}
       </div>
     </div>
 
@@ -98,7 +109,15 @@ ${urgencyBand(`bandeau-lp-${num}`)}
       <h2>Nos interventions dans ${article} ${dept}</h2>
       <p class="lead">${servicesIntro}</p>
     </div>
-    ${servicesGrid(LP_SERVICES(dept), `services-lp-${num}`)}
+    ${servicesGrid(LP_SERVICES, `services-lp-${num}`).replace('grid grid--3', 'grid grid--2')}
+
+    <div class="tile mt-32">
+      <h3>Également pris en charge dans ${article} ${dept}</h3>
+      <div class="grid grid--3" style="gap:14px 26px;margin-top:16px">
+        ${LP_AUTRES.map(([t, d]) => `<div><strong>${t}</strong><br><span style="color:var(--ink-soft);font-size:15.5px">${d}</span></div>`).join('\n        ')}
+      </div>
+    </div>
+
     <div class="btn-row mt-32">
       ${callBtn(`services-lp-${num}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
       ${formBtn(`services-lp-${num}`, { variant: 'primary' })}
@@ -119,10 +138,13 @@ ${phoneBlock({
       <h2>Des équipements professionnels</h2>
       <p class="lead">${equipIntro}</p>
     </div>
-    <div class="equip">
-      <figure class="equip__item">${servicePhoto('equip-furet-electrique', 'Furet électrique professionnel')}<figcaption><h3>Furet électrique</h3><p>Pour percer les bouchons compacts installés en profondeur.</p></figcaption></figure>
-      <figure class="equip__item">${servicePhoto('equip-haute-pression', 'Déboucheur haute pression')}<figcaption><h3>Haute pression</h3><p>Pour décoller les dépôts accumulés sur les parois de la canalisation.</p></figcaption></figure>
-      <figure class="equip__item">${servicePhoto('equip-camera-inspection', 'Caméra d’inspection de canalisation')}<figcaption><h3>Caméra d’inspection</h3><p>Pour voir l’intérieur de la conduite et localiser précisément l’obstruction.</p></figcaption></figure>
+    <div class="grid grid--3">
+      <div class="tile tile--dark"><h3>Camion de pompage</h3><p>Pour vider un regard ou une fosse et évacuer ce qui bloque le réseau.</p></div>
+      <div class="tile tile--dark"><h3>Furet électrique</h3><p>Pour percer les bouchons compacts installés en profondeur dans la conduite.</p></div>
+      <div class="tile tile--dark"><h3>Déboucheur haute pression</h3><p>Pour décoller les dépôts accumulés sur les parois du réseau d’évacuation.</p></div>
+      <div class="tile tile--dark"><h3>Caméra d’inspection</h3><p>Pour voir l’intérieur de la canalisation et localiser l’obstruction sans casser.</p></div>
+      <div class="tile tile--dark"><h3>Outillage de plomberie</h3><p>Pour réparer sur place : siphon, raccord, robinetterie, évacuation.</p></div>
+      <div class="tile tile--dark"><h3>Un camion équipé</h3><p>Le matériel adapté part avec le technicien, choisi d’après votre appel.</p></div>
     </div>
     <div class="btn-row mt-32">
       ${callBtn(`equip-lp-${num}`, { text: 'Parler à un plombier' })}

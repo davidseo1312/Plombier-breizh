@@ -27,7 +27,7 @@ export const SERVICES = [
 /* Photo de service : `assets/photos/<nom>.jpg` s'il existe, sinon le visuel
    de substitution `assets/img/<nom>.svg`. Déposer la photo suffit à l'activer. */
 export const servicePhoto = (img, alt) =>
-  `<img src="assets/photos/${img}.jpg" alt="${alt}" width="960" height="720" loading="lazy" decoding="async"
+  `<img src="assets/photos/${img}.jpg" alt="${alt}" width="1100" height="733" loading="lazy" decoding="async"
                onerror="this.onerror=null;this.src='assets/img/${img}.svg';">`;
 
 export const serviceCard = (s, location) => `
