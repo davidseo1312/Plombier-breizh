@@ -42,7 +42,7 @@ assets/
   img/*.svg                       ← emplacements photo (à remplacer, voir §6)
   logo-plombier-breizh.svg        ← logo (voir §4)
 tools/generate-placeholders.mjs   ← génération des visuels de substitution
-tools/generate-logo.mjs           ← génération des deux déclinaisons du logo
+tools/installer-logo.mjs          ← installe VOTRE logo (fichier, URL ou base64)
 netlify.toml / vercel.json        ← URLs propres + cache + en-têtes
 robots.txt / sitemap.xml
 ```
@@ -124,35 +124,36 @@ Les titres et les boutons sont en **casse normale** (pas de capitales forcées) 
 seuls les petits sur-titres de section gardent des majuscules. C'est ce qui
 distingue le plus nettement le rendu d'un gabarit générique.
 
-## 5. Logo
+## 5. Logo — à déposer
 
-Le logo officiel est décliné en deux formats, utilisés à des endroits différents :
+**Aucun logo n'est dessiné ni reconstitué dans ce projet.** Le site affiche
+uniquement le fichier officiel que vous déposez. Tant qu'il est absent, le
+header et le pied de page affichent le nom « Plombier Breizh » écrit en toutes
+lettres — un texte, pas un symbole inventé.
 
-| Fichier chargé en priorité | Repli automatique | Emplacement |
-|---|---|---|
-| `assets/logo-plombier-breizh.png` | `…-breizh.svg` | **Header** (verrouillage horizontal, compact) |
-| `assets/logo-plombier-breizh-vertical.png` | `…-vertical.svg` | **Footer** (version complète avec la baseline) |
+Le site essaie automatiquement une dizaine de noms et de formats, dans l'ordre :
 
-➡ **Pour installer les fichiers officiels : déposez simplement les deux `.png`
-aux noms ci-dessus.** Aucune modification de code n'est nécessaire — le site les
-charge en priorité et ne bascule sur le SVG que s'ils sont absents.
-
-```bash
-# depuis la racine du projet
-cp /chemin/vers/logo-horizontal.png  assets/logo-plombier-breizh.png
-cp /chemin/vers/logo-complet.png     assets/logo-plombier-breizh-vertical.png
-git add assets && git commit -m "Ajout des fichiers logo officiels" && git push
+```
+assets/logo-plombier-breizh.png    ← recommandé
+assets/logo-plombier-breizh.webp / .jpg / .jpeg / .svg
+assets/logo.png / .webp / .jpg / .jpeg / .svg
 ```
 
-Format conseillé : PNG à fond transparent, hauteur ≥ 200 px (header) et ≥ 400 px
-(footer). Si vous ne disposez que de la version verticale complète, copiez-la
-sous les deux noms : le header restera lisible mais plus haut.
+**Un seul fichier suffit** : le pied de page reprend le logo principal si aucune
+variante verticale (`assets/logo-plombier-breizh-vertical.*`) n'est fournie.
+`assets/favicon.png` est pris en compte pour l'icône d'onglet.
 
-Les fichiers SVG présents sont une **reconstitution vectorielle de travail** du
-logo (goutte d'eau, carte de Bretagne au gwenn-ha-du, « Plombier Breizh »
-bicolore, baseline « Dépannage • Installation • Rénovation »), régénérable par
-`node tools/generate-logo.mjs`. Le lettrage « Breizh » y est approché par un
-italique gras : la version PNG officielle reste la référence.
+### Quatre façons de le déposer
+
+| Méthode | Comment |
+|---|---|
+| **Glisser-déposer sur GitHub** | Ouvrir la [page d'envoi du dossier `assets/`](https://github.com/davidseo1312/Plombier-breizh/upload/claude/plombier-breizh-landing-m2zfjk/assets), déposer le fichier, le nommer `logo-plombier-breizh.png`, valider. Aucun outil à installer. |
+| **Ligne de commande** | `cp votre-logo.png assets/logo-plombier-breizh.png` puis `git add assets && git commit -m "Logo" && git push` |
+| **Installateur fourni** | `node tools/installer-logo.mjs <fichier \| URL \| base64 \| ->` — détecte le format (PNG/JPG/WebP/SVG) et range le fichier. Options `--vertical` et `--favicon`. |
+| **Copier-coller en base64** | `base64 -w0 logo.png` puis coller le résultat en demandant l'installation. |
+
+Le détail complet est repris dans `assets/DEPOSER-LE-LOGO-ICI.md`, à côté de
+l'emplacement de dépôt.
 
 ## 6. Images
 

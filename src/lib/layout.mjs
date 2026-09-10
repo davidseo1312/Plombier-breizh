@@ -54,6 +54,40 @@ export const checklist = (items = REASSURANCE, inline = false) =>
       </ul>`;
 
 /* -------------------------------------------------------------------------
+   LOGO OFFICIEL — dépôt libre
+   Le site essaie successivement TOUS les noms et formats ci-dessous, puis
+   se rabat sur le nom de l'entreprise écrit en toutes lettres.
+   Aucun logo n'est dessiné ni reconstitué : seul VOTRE fichier s'affiche.
+   Déposez-le dans assets/ sous n'importe lequel de ces noms.
+   ------------------------------------------------------------------------- */
+export const LOGO_FILES = [
+  'assets/logo-plombier-breizh.png',
+  'assets/logo-plombier-breizh.webp',
+  'assets/logo-plombier-breizh.jpg',
+  'assets/logo-plombier-breizh.jpeg',
+  'assets/logo-plombier-breizh.svg',
+  'assets/logo.png', 'assets/logo.webp', 'assets/logo.jpg', 'assets/logo.jpeg', 'assets/logo.svg'
+];
+
+/* Variante verticale (footer). Si elle n'existe pas, le logo principal prend
+   le relais : un seul fichier déposé suffit à équiper tout le site. */
+export const LOGO_FILES_VERTICAL = [
+  'assets/logo-plombier-breizh-vertical.png',
+  'assets/logo-plombier-breizh-vertical.webp',
+  'assets/logo-plombier-breizh-vertical.jpg',
+  'assets/logo-plombier-breizh-vertical.svg',
+  ...LOGO_FILES
+];
+
+/** <img> qui parcourt la liste de repli, puis laisse place au nom écrit. */
+const logoImg = ({ files, cls, alt, width, height, lazy = false }) => {
+  const [first, ...rest] = files;
+  return `<img class="${cls}" src="${first}" alt="${alt}" width="${width}" height="${height}"${lazy ? ' loading="lazy"' : ''}
+           data-logo-fallbacks="${rest.join(',')}" onerror="PBLogo(this)">`;
+};
+
+
+/* -------------------------------------------------------------------------
    PHOTO PRINCIPALE — technicien + camion Plombier Breizh
    Déposez `assets/img/hero-plombier-breizh-camion.jpg` pour l'activer.
    Tant que le fichier est absent, le visuel de substitution s'affiche.
@@ -100,7 +134,7 @@ export const head = ({ title, description, slug }) => `<!doctype html>
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${description}">
 <meta property="og:locale" content="fr_FR">
-<link rel="icon" href="assets/logo-plombier-breizh.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.png">
 <link rel="preload" href="assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/lato-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/site.css">
@@ -122,6 +156,18 @@ export const head = ({ title, description, slug }) => `<!doctype html>
      <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
      gtag('js',new Date());gtag('config','G-XXXXXXXXXX');gtag('config','AW-XXXXXXXXX');</script>
      =================================================================== -->
+<script>
+/* Repli du logo : parcourt les noms/formats possibles, puis affiche le nom
+   de l'entreprise en toutes lettres. Aucun logo n'est reconstitué. */
+function PBLogo(img){
+  var list=(img.getAttribute('data-logo-fallbacks')||'').split(',').filter(Boolean);
+  var i=parseInt(img.getAttribute('data-logo-step')||'0',10);
+  if(i<list.length){img.setAttribute('data-logo-step',i+1);img.src=list[i].trim();return;}
+  img.onerror=null;img.style.display='none';
+  var t=img.parentNode&&img.parentNode.querySelector('.brand-fallback');
+  if(t){t.hidden=false;}
+}
+</script>
 <script>window.PB_CONFIG={formEndpoint:'',contactEmail:'${SITE.email}',phoneDisplay:'${SITE.phoneDisplay}'};</script>
 </head>`;
 
@@ -143,8 +189,8 @@ export const header = (current, minimal = false) => `
 <header class="site-header">
   <div class="container">
     <a class="brand" href="index.html" aria-label="${SITE.name} — accueil">
-      <img class="brand__logo" src="assets/logo-plombier-breizh.png" alt="${SITE.name}" width="192" height="58"
-           onerror="this.onerror=null;this.src='assets/logo-plombier-breizh.svg';">
+      ${logoImg({ files: LOGO_FILES, cls: 'brand__logo', alt: SITE.name, width: 192, height: 58 })}
+      <span class="brand-fallback brand-fallback--header" hidden>Plombier<span>Breizh</span></span>
     </a>
 
     <a class="header-call" href="${SITE.phoneHref}" data-location="header-mobile" data-cta="appel-mobile">
@@ -457,9 +503,8 @@ export const footer = () => `
   <div class="container">
     <div class="footer__grid">
       <div>
-        <img class="footer__logo" src="assets/logo-plombier-breizh-vertical.png" alt="${SITE.name} — Dépannage, Installation, Rénovation"
-             width="139" height="112" loading="lazy"
-             onerror="this.onerror=null;this.src='assets/logo-plombier-breizh-vertical.svg';">
+        ${logoImg({ files: LOGO_FILES_VERTICAL, cls: 'footer__logo', alt: SITE.name, width: 139, height: 112, lazy: true })}
+        <span class="brand-fallback brand-fallback--footer" hidden>Plombier<span>Breizh</span></span>
         <p class="footer__tagline">Plomberie • Débouchage • Dégorgement • Urgence</p>
         <p>Intervention en Bretagne — Finistère 29 &amp; Morbihan 56</p>
       </div>

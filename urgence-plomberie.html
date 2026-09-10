@@ -12,7 +12,7 @@
 <meta property="og:title" content="Urgence plomberie en Bretagne — plombier en urgence | Plombier Breizh">
 <meta property="og:description" content="Fuite active, refoulement, WC bouché, canalisation obstruée en Bretagne ? Appelez Plombier Breizh au 02 20 06 01 96 pour une intervention en urgence.">
 <meta property="og:locale" content="fr_FR">
-<link rel="icon" href="assets/logo-plombier-breizh.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.png">
 <link rel="preload" href="assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/lato-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/site.css">
@@ -34,6 +34,18 @@
      <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
      gtag('js',new Date());gtag('config','G-XXXXXXXXXX');gtag('config','AW-XXXXXXXXX');</script>
      =================================================================== -->
+<script>
+/* Repli du logo : parcourt les noms/formats possibles, puis affiche le nom
+   de l'entreprise en toutes lettres. Aucun logo n'est reconstitué. */
+function PBLogo(img){
+  var list=(img.getAttribute('data-logo-fallbacks')||'').split(',').filter(Boolean);
+  var i=parseInt(img.getAttribute('data-logo-step')||'0',10);
+  if(i<list.length){img.setAttribute('data-logo-step',i+1);img.src=list[i].trim();return;}
+  img.onerror=null;img.style.display='none';
+  var t=img.parentNode&&img.parentNode.querySelector('.brand-fallback');
+  if(t){t.hidden=false;}
+}
+</script>
 <script>window.PB_CONFIG={formEndpoint:'',contactEmail:'contact@plombier-breizh.fr',phoneDisplay:'02 20 06 01 96'};</script>
 </head>
 <body data-page="urgence-plomberie">
@@ -55,7 +67,8 @@
   <div class="container">
     <a class="brand" href="index.html" aria-label="Plombier Breizh — accueil">
       <img class="brand__logo" src="assets/logo-plombier-breizh.png" alt="Plombier Breizh" width="192" height="58"
-           onerror="this.onerror=null;this.src='assets/logo-plombier-breizh.svg';">
+           data-logo-fallbacks="assets/logo-plombier-breizh.webp,assets/logo-plombier-breizh.jpg,assets/logo-plombier-breizh.jpeg,assets/logo-plombier-breizh.svg,assets/logo.png,assets/logo.webp,assets/logo.jpg,assets/logo.jpeg,assets/logo.svg" onerror="PBLogo(this)">
+      <span class="brand-fallback brand-fallback--header" hidden>Plombier<span>Breizh</span></span>
     </a>
 
     <a class="header-call" href="tel:0220060196" data-location="header-mobile" data-cta="appel-mobile">
@@ -450,9 +463,9 @@
   <div class="container">
     <div class="footer__grid">
       <div>
-        <img class="footer__logo" src="assets/logo-plombier-breizh-vertical.png" alt="Plombier Breizh — Dépannage, Installation, Rénovation"
-             width="139" height="112" loading="lazy"
-             onerror="this.onerror=null;this.src='assets/logo-plombier-breizh-vertical.svg';">
+        <img class="footer__logo" src="assets/logo-plombier-breizh-vertical.png" alt="Plombier Breizh" width="139" height="112" loading="lazy"
+           data-logo-fallbacks="assets/logo-plombier-breizh-vertical.webp,assets/logo-plombier-breizh-vertical.jpg,assets/logo-plombier-breizh-vertical.svg,assets/logo-plombier-breizh.png,assets/logo-plombier-breizh.webp,assets/logo-plombier-breizh.jpg,assets/logo-plombier-breizh.jpeg,assets/logo-plombier-breizh.svg,assets/logo.png,assets/logo.webp,assets/logo.jpg,assets/logo.jpeg,assets/logo.svg" onerror="PBLogo(this)">
+        <span class="brand-fallback brand-fallback--footer" hidden>Plombier<span>Breizh</span></span>
         <p class="footer__tagline">Plomberie • Débouchage • Dégorgement • Urgence</p>
         <p>Intervention en Bretagne — Finistère 29 &amp; Morbihan 56</p>
       </div>
