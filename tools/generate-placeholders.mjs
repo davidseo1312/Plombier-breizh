@@ -40,6 +40,8 @@ export const IMAGES = [
   ['intervention-salle-de-bain', 'Intervention en salle de bain', 'shower', 3 / 2],
   ['reseau-evacuation', 'Réseau d’évacuation / canalisation', 'pipe', 3 / 2],
   ['chauffe-eau', 'Intervention sur un chauffe-eau', 'gear', 3 / 2],
+  ['cliente-attente', 'Cliente attendant l’intervention', 'drop', 3 / 2],
+  ['siphon-encrasse', 'Siphon encrassé', 'pipe', 3 / 2],
   ['equip-pompe', 'Pompe professionnelle', 'gear', 1],
   ['equip-furet-electrique', 'Furet électrique', 'coil', 1],
   ['equip-haute-pression', 'Déboucheur haute pression', 'drop', 1],

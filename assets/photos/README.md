@@ -15,6 +15,8 @@
 | `fuite-eau.jpg` | Siphon de lavabo qui goutte, réparation à la pince | Carte « Fuite d'eau » |
 | `chauffe-eau.jpg` | Intervention sur un chauffe-eau | Visuel principal de la page Plomberie |
 | `urgence-plomberie.jpg` | Même intervention, cadrage resserré sur le ballon et les vannes | Carte « Urgence plomberie » |
+| `cliente-attente.jpg` | Cliente devant son évier, seau sous le siphon | Page Urgence — « Les bons réflexes avant notre arrivée » |
+| `siphon-encrasse.jpg` | Siphon ouvert, entièrement encrassé | Page Dégorgement — « Déboucher ou dégorger » |
 
 ### Visuels de matériel (carrés 700 × 700)
 
@@ -45,9 +47,13 @@ Toutes en 1100 × 733 (3:2), le format des cadres du site : aucun rognage.
 
 Les deux landing pages n'affichent plus que des photos réelles.
 
-## Photos restant à fournir
+## Toutes les vignettes du site sont couvertes
 
-Déposez ici vos photos d'intervention. Chaque vignette du site tente d'abord de
+Plus aucun visuel de substitution n'est affiché : les quatorze photos ci-dessus
+et les six visuels de matériel couvrent l'intégralité du site.
+
+Le mécanisme reste en place si vous souhaitez remplacer une photo ou en ajouter
+une nouvelle. Chaque vignette du site tente d'abord de
 charger `assets/photos/<nom>.jpg`, puis retombe automatiquement sur le visuel de
 substitution `assets/img/<nom>.svg` si le fichier est absent — aucune image
 cassée, aucune modification de code.

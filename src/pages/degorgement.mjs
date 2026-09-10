@@ -35,7 +35,7 @@ ${urgencyBand('bandeau-degorgement')}
         </div>
       </div>
       <div class="split__media">
-        ${servicePhoto('reseau-evacuation', 'Réseau d’évacuation à dégorger')}
+        ${servicePhoto('siphon-encrasse', 'Siphon d’évacuation entièrement encrassé par les graisses et les résidus')}
       </div>
     </div>
 

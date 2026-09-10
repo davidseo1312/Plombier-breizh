@@ -49,7 +49,7 @@ ${phoneBlock({ title: 'Une urgence en cours ?', text: 'N’attendez pas que la s
   <div class="container">
     <div class="split split--media-first">
       <div class="split__media">
-        ${servicePhoto('technicien-camion', 'Technicien Plombier Breizh en déplacement')}
+        ${servicePhoto('cliente-attente', 'Cliente attendant l’intervention, un seau placé sous le siphon de son évier')}
       </div>
       <div>
         <span class="eyebrow">En attendant</span>
