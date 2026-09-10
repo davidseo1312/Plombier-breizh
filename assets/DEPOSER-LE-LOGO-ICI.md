@@ -1,8 +1,27 @@
-# Déposer le logo officiel Plombier Breizh
+# Logo officiel Plombier Breizh
+
+## ✅ Le logo officiel est installé
+
+| Fichier | Rôle |
+|---|---|
+| `logo-plombier-breizh.png` | Logo affiché dans le header et le pied de page (316 × 240) |
+| `logo-plombier-breizh-original.webp` | **Fichier d'origine intact**, tel que fourni (1464 × 1074) |
+| `favicon.png` | Icône d'onglet du navigateur (180 × 180) |
+
+Le fichier affiché est le logo d'origine, uniquement **détouré de ses marges
+blanches et redimensionné** pour le web : la composition, les couleurs et le
+lettrage sont ceux du fichier fourni. Aucun élément n'a été redessiné.
+
+Pour revenir au fichier d'origine sans détourage :
+`node tools/installer-logo.mjs assets/logo-plombier-breizh-original.webp`
+
+---
+
+## Remplacer le logo plus tard
 
 **Aucun logo n'est dessiné ni reconstitué dans ce projet.** Le site affiche
-uniquement VOTRE fichier. Tant qu'il n'est pas déposé, le header et le pied de
-page affichent simplement le nom « Plombier Breizh » écrit en toutes lettres.
+uniquement VOTRE fichier. S'il venait à être retiré, le header et le pied de
+page afficheraient simplement le nom « Plombier Breizh » écrit en toutes lettres.
 
 Un seul fichier suffit pour équiper tout le site.
 

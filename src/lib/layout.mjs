@@ -95,7 +95,7 @@ const logoImg = ({ files, cls, alt, width, height, lazy = false }) => {
 export const heroPhoto = (fallback = 'hero-plombier-intervention',
   alt = 'Technicien Plombier Breizh devant son camion d’intervention') =>
   `<img src="assets/img/hero-plombier-breizh-camion.jpg" alt="${alt}"
-             width="960" height="720" fetchpriority="high" decoding="async"
+             width="1536" height="1024" fetchpriority="high" decoding="async"
              onerror="this.onerror=null;this.src='assets/img/${fallback}.svg';">`;
 
 /* -------------------------------------------------------------------------
@@ -189,7 +189,7 @@ export const header = (current, minimal = false) => `
 <header class="site-header">
   <div class="container">
     <a class="brand" href="index.html" aria-label="${SITE.name} — accueil">
-      ${logoImg({ files: LOGO_FILES, cls: 'brand__logo', alt: SITE.name, width: 192, height: 58 })}
+      ${logoImg({ files: LOGO_FILES, cls: 'brand__logo', alt: SITE.name, width: 100, height: 76 })}
       <span class="brand-fallback brand-fallback--header" hidden>Plombier<span>Breizh</span></span>
     </a>
 
@@ -503,7 +503,7 @@ export const footer = () => `
   <div class="container">
     <div class="footer__grid">
       <div>
-        ${logoImg({ files: LOGO_FILES_VERTICAL, cls: 'footer__logo', alt: SITE.name, width: 139, height: 112, lazy: true })}
+        ${logoImg({ files: LOGO_FILES_VERTICAL, cls: 'footer__logo', alt: SITE.name, width: 148, height: 112, lazy: true })}
         <span class="brand-fallback brand-fallback--footer" hidden>Plombier<span>Breizh</span></span>
         <p class="footer__tagline">Plomberie • Débouchage • Dégorgement • Urgence</p>
         <p>Intervention en Bretagne — Finistère 29 &amp; Morbihan 56</p>

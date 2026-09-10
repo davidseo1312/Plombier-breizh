@@ -124,12 +124,20 @@ Les titres et les boutons sont en **casse normale** (pas de capitales forcées) 
 seuls les petits sur-titres de section gardent des majuscules. C'est ce qui
 distingue le plus nettement le rendu d'un gabarit générique.
 
-## 5. Logo — à déposer
+## 5. Logo
 
-**Aucun logo n'est dessiné ni reconstitué dans ce projet.** Le site affiche
-uniquement le fichier officiel que vous déposez. Tant qu'il est absent, le
-header et le pied de page affichent le nom « Plombier Breizh » écrit en toutes
-lettres — un texte, pas un symbole inventé.
+**Le logo officiel est installé** (`assets/logo-plombier-breizh.png`), ainsi que
+le favicon et la photo du technicien devant le camion
+(`assets/img/hero-plombier-breizh-camion.jpg`). Le fichier d'origine intact est
+conservé dans `assets/logo-plombier-breizh-original.webp`.
+
+Le logo affiché est le fichier fourni, uniquement détouré de ses marges blanches
+et redimensionné pour le web. **Aucun logo n'est dessiné ni reconstitué dans ce
+projet** : si le fichier venait à être retiré, le header et le pied de page
+afficheraient le nom « Plombier Breizh » écrit en toutes lettres — un texte,
+pas un symbole inventé.
+
+### Le remplacer plus tard
 
 Le site essaie automatiquement une dizaine de noms et de formats, dans l'ordre :
 
