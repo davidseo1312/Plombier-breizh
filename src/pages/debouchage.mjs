@@ -12,8 +12,9 @@ ${pageHero({
     h1: 'Débouchage de canalisation en Bretagne',
     sub: 'WC, évier, douche ou canalisation principale : on trouve où ça bloque et on rétablit l’évacuation.',
     img: 'debouchage-canalisation',
-    alt: 'Débouchage de canalisation par Plombier Breizh',
-    location: 'hero-debouchage'
+    alt: 'Plombier Breizh en intervention de débouchage',
+    location: 'hero-debouchage',
+    photo: true
   })}
 
 ${urgencyBand('bandeau-debouchage')}

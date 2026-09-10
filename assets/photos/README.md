@@ -11,6 +11,9 @@
 | `depannage-plomberie.jpg` | Raccordement d'un broyeur sanitaire | Carte « Dépannage plomberie » |
 | `debouchage-canalisation.jpg` | Furet électrique sur l'évacuation d'un lavabo | Carte « Débouchage » |
 | `recherche-fuite.jpg` | Détection acoustique sur une canalisation enterrée | Carte « Recherche de fuite » + page Plomberie |
+| `canalisation-bouchee.jpg` | Furet électrique dans l'évacuation d'un lavabo encrassé | Carte « Canalisation obstruée » |
+| `fuite-eau.jpg` | Siphon de lavabo qui goutte, réparation à la pince | Carte « Fuite d'eau » |
+| `chauffe-eau.jpg` | Intervention sur un chauffe-eau | Visuel principal de la page Plomberie |
 
 Toutes en 1100 × 733 (3:2), le format des cadres du site : aucun rognage.
 

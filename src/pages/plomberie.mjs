@@ -11,8 +11,8 @@ ${pageHero({
     tag: 'Plomberie &amp; dépannage',
     h1: 'Votre plombier en Bretagne',
     sub: 'Une fuite, un robinet qui lâche, plus d’eau chaude ou une évacuation bloquée : on répare ce qui pose problème au quotidien.',
-    img: 'depannage-plomberie',
-    alt: 'Dépannage de plomberie par Plombier Breizh',
+    img: 'chauffe-eau',
+    alt: 'Technicien Plombier Breizh intervenant sur un chauffe-eau',
     location: 'hero-plomberie'
   })}
 

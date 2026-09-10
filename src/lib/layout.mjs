@@ -574,7 +574,8 @@ export const pageHero = ({ tag, h1, sub, img, alt, location, photo = false, item
         ${checklist(items, true)}
       </div>
       <div class="hero__media">
-        ${photo ? heroPhoto(img, alt) : `<img src="assets/img/${img}.svg" alt="${alt}" width="960" height="720" fetchpriority="high" decoding="async">`}
+        ${photo ? heroPhoto(img, alt) : `<img src="assets/photos/${img}.jpg" alt="${alt}" width="1100" height="733" fetchpriority="high" decoding="async"
+             onerror="this.onerror=null;this.src='assets/img/${img}.svg';">`}
         <span class="hero__badge">${badge}</span>
       </div>
     </div>
