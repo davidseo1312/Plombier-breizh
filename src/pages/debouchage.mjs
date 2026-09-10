@@ -1,18 +1,16 @@
-import { SITE, callBtn, formBtn, pageHero, urgencyBand, ctaBand, processSection, zonesSection, formSection, reviewsSection } from '../lib/layout.mjs';
-import { SERVICES, servicesGrid } from '../lib/services.mjs';
-
-const list = SERVICES.filter(s => ['Débouchage canalisation', 'Débouchage WC', 'Débouchage évier', 'Débouchage lavabo', 'Débouchage douche', 'Canalisation bouchée'].includes(s.title));
+import { SITE, callBtn, formBtn, pageHero, urgencyBand, ctaBand, phoneBlock, processSection, whySection, reviewsSection, bretagneSection, formSection, tel } from '../lib/layout.mjs';
+import { servicesGrid, servicePhoto, pick } from '../lib/services.mjs';
 
 export default {
   slug: 'debouchage',
   nav: 'debouchage',
-  title: 'Débouchage canalisation Finistère 29 & Morbihan 56 | Plombier Breizh',
-  description: 'WC, évier, lavabo, douche ou canalisation bouchée dans le 29 et le 56 ? Débouchage professionnel par Plombier Breizh. Appelez le 02 20 06 01 96.',
+  title: 'Débouchage de canalisation en Bretagne | Plombier Breizh',
+  description: 'WC, évier, douche ou canalisation bouchée en Bretagne ? Débouchage professionnel par Plombier Breizh. Appelez le 02 20 06 01 96.',
   body: `
 ${pageHero({
-    tag: '🚿 Débouchage · 29 & 56',
-    h1: 'Débouchage de canalisation dans le 29 et le 56',
-    sub: 'WC, évier, lavabo, douche ou canalisation principale : nous localisons le bouchon et rétablissons l’évacuation.',
+    tag: 'Débouchage',
+    h1: 'Débouchage de canalisation en Bretagne',
+    sub: 'WC, évier, douche ou canalisation principale : on trouve où ça bloque et on rétablit l’évacuation.',
     img: 'debouchage-canalisation',
     alt: 'Débouchage de canalisation par Plombier Breizh',
     location: 'hero-debouchage'
@@ -24,31 +22,30 @@ ${urgencyBand('bandeau-debouchage')}
   <div class="container">
     <div class="section__head">
       <span class="eyebrow">Symptômes</span>
-      <h2>Canalisation bouchée ? Nous intervenons rapidement.</h2>
-      <p class="lead">Une évacuation qui ralentit annonce presque toujours un bouchon en formation.
-      Traité tôt, il se retire simplement ; ignoré, il finit par bloquer complètement le réseau et provoquer un refoulement.</p>
+      <h2>Une évacuation qui ralentit annonce toujours un bouchon</h2>
+      <p class="lead">Au début, l’eau met simplement du temps à partir. Puis elle stagne. Puis elle remonte.
+      Entre les deux, l’intervention est bien plus simple.</p>
     </div>
     <div class="grid grid--2">
       <div>
         <h3>Ce que vous constatez</h3>
         <ul class="symptom-list">
-          <li>Eau qui ne s’écoule plus</li>
-          <li>Évier bouché</li>
-          <li>WC bouché</li>
-          <li>Douche qui refoule</li>
-          <li>Mauvaises odeurs</li>
-          <li>Canalisation complètement obstruée</li>
-          <li>Évacuation très lente</li>
+          <li>L’eau ne s’écoule plus</li>
+          <li>L’évier se vide au ralenti</li>
+          <li>Les WC ne s’évacuent plus</li>
+          <li>La douche garde l’eau</li>
+          <li>Des odeurs remontent</li>
+          <li>Un gargouillis dans les canalisations</li>
         </ul>
       </div>
       <div>
         <h3>Ce que nous mettons en œuvre</h3>
         <ul class="symptom-list solution-list">
           <li>Débouchage mécanique</li>
-          <li>Furet professionnel</li>
+          <li>Furet électrique professionnel</li>
           <li>Débouchage haute pression</li>
           <li>Inspection de canalisation</li>
-          <li>Équipements professionnels adaptés</li>
+          <li>Dégorgement si le bouchon est en aval</li>
         </ul>
         <div class="btn-row mt-24">
           ${callBtn('symptomes-debouchage', { text: 'Appeler maintenant' })}
@@ -59,31 +56,32 @@ ${urgencyBand('bandeau-debouchage')}
   </div>
 </section>
 
-${ctaBand({ title: 'Une évacuation bloquée ne peut pas attendre', text: 'Appelez Plombier Breizh : nous évaluons la situation et organisons le débouchage.', location: 'cta-debouchage' })}
-
-<section class="section">
-  <div class="container">
-    <div class="section__head section__head--center">
-      <span class="eyebrow">Nos débouchages</span>
-      <h2>Chaque point d’eau, une méthode adaptée</h2>
-    </div>
-    ${servicesGrid(list, 'services-debouchage')}
-  </div>
-</section>
+${ctaBand({ title: 'Une évacuation bloquée n’attend pas', text: 'Un appel, et nous évaluons ce qu’il faut prévoir.', location: 'cta-debouchage' })}
 
 <section class="section section--tint">
   <div class="container">
+    <div class="section__head section__head--center">
+      <span class="eyebrow">Selon le point d’eau</span>
+      <h2>Chaque évacuation a sa méthode</h2>
+      <p class="lead">Un siphon d’évier et une chute d’immeuble ne se traitent pas de la même façon.</p>
+    </div>
+    ${servicesGrid(pick('WC bouché', 'Évier bouché', 'Douche bouchée', 'Canalisation obstruée', 'Débouchage', 'Dégorgement'), 'services-debouchage')}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
     <div class="split split--media-first">
       <div class="split__media">
-        <img src="assets/img/inspection-canalisation.svg" alt="Inspection de canalisation par caméra" width="960" height="720" loading="lazy" decoding="async">
+        ${servicePhoto('inspection-canalisation', 'Inspection de canalisation à la caméra')}
       </div>
       <div>
         <span class="eyebrow">Diagnostic</span>
-        <h2>Identifier l’origine du bouchon avant d’intervenir</h2>
+        <h2>On regarde avant de forcer</h2>
         <p>Graisses en cuisine, cheveux et savon en salle de bain, lingettes dans les WC, dépôts ou racines
-        sur les réseaux enterrés : l’origine du bouchon détermine la méthode.</p>
-        <p>Selon la situation, nous utilisons un furet électrique, un déboucheur haute pression, ou nous
-        inspectons la canalisation à la caméra pour visualiser l’obstruction.</p>
+        sur les réseaux enterrés : l’origine du bouchon détermine l’outil à utiliser.</p>
+        <p>Forcer avec le mauvais matériel, c’est risquer d’abîmer la conduite sans rien débloquer.
+        Quand l’accès est difficile, la caméra tranche la question en quelques minutes.</p>
         <div class="btn-row mt-24">
           ${callBtn('diagnostic-debouchage', { text: `Appeler le ${SITE.phoneDisplay}` })}
         </div>
@@ -93,8 +91,10 @@ ${ctaBand({ title: 'Une évacuation bloquée ne peut pas attendre', text: 'Appel
 </section>
 
 ${processSection('process-debouchage')}
+${whySection('pourquoi-debouchage')}
 ${reviewsSection()}
-${zonesSection('zones-debouchage')}
-${formSection('Indiquez le point d’eau concerné : nous vous rappelons pour organiser le débouchage.')}
+${bretagneSection('bretagne-debouchage')}
+${phoneBlock({ location: 'bloc-telephone-debouchage' })}
+${formSection({ intro: 'Indiquez le point d’eau concerné : nous vous rappelons pour organiser le débouchage.', location: 'formulaire-debouchage' })}
 `
 };

@@ -4,7 +4,7 @@
   publish = "."
   command = "node build.mjs"
 
-# URLs propres : /plomberie → plomberie.html
+# URLs propres : /debouchage → debouchage.html
 [[redirects]]
   from = "/plomberie"
   to = "/plomberie.html"
@@ -22,21 +22,53 @@
   to = "/urgence-plomberie.html"
   status = 200
 [[redirects]]
-  from = "/zones-intervention"
-  to = "/zones-intervention.html"
+  from = "/bretagne"
+  to = "/bretagne.html"
   status = 200
 [[redirects]]
-  from = "/plombier-finistere"
-  to = "/plombier-finistere.html"
+  from = "/finistere-29"
+  to = "/finistere-29.html"
   status = 200
 [[redirects]]
-  from = "/plombier-morbihan"
-  to = "/plombier-morbihan.html"
+  from = "/morbihan-56"
+  to = "/morbihan-56.html"
   status = 200
 [[redirects]]
   from = "/contact"
   to = "/contact.html"
   status = 200
+[[redirects]]
+  from = "/mentions-legales"
+  to = "/mentions-legales.html"
+  status = 200
+[[redirects]]
+  from = "/politique-confidentialite"
+  to = "/politique-confidentialite.html"
+  status = 200
+[[redirects]]
+  from = "/plombier-finistere"
+  to = "/finistere-29"
+  status = 301
+[[redirects]]
+  from = "/plombier-finistere.html"
+  to = "/finistere-29"
+  status = 301
+[[redirects]]
+  from = "/plombier-morbihan"
+  to = "/morbihan-56"
+  status = 301
+[[redirects]]
+  from = "/plombier-morbihan.html"
+  to = "/morbihan-56"
+  status = 301
+[[redirects]]
+  from = "/zones-intervention"
+  to = "/bretagne"
+  status = 301
+[[redirects]]
+  from = "/zones-intervention.html"
+  to = "/bretagne"
+  status = 301
 
 [[headers]]
   for = "/assets/*"

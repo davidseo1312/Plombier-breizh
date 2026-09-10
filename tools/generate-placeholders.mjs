@@ -70,7 +70,7 @@ function svg(slug, glyph, ratio, i) {
 <g transform="translate(${(W - size) / 2} ${(H - size) / 2 - H * 0.04}) scale(${scale.toFixed(3)})">
 <path d="${GLYPHS[glyph]}" fill="#FFFFFF" fill-opacity="0.22"/>
 </g>
-<g transform="translate(44 ${H - 44})">
+<g transform="translate(44 78)">
 <rect x="0" y="-26" width="34" height="5" fill="${accent}"/>
 <text x="46" y="-20" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif" font-size="19" font-weight="700" letter-spacing="3.5" fill="#FFFFFF" fill-opacity="0.82">PLOMBIER BREIZH</text>
 </g>

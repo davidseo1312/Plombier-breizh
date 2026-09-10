@@ -30,7 +30,9 @@ const excluded = new Set(['404']);
 const today = new Date().toISOString().slice(0, 10);
 const urls = built.filter(s => !excluded.has(s)).map(s => {
   const loc = s === 'index' ? `${SITE.baseUrl}/` : `${SITE.baseUrl}/${s}`;
-  const priority = s === 'index' ? '1.0' : ['plomberie', 'debouchage', 'degorgement', 'urgence-plomberie'].includes(s) ? '0.9' : '0.7';
+  const priority = s === 'index' ? '1.0'
+    : ['finistere-29', 'morbihan-56'].includes(s) ? '0.9'
+    : ['plomberie', 'debouchage', 'degorgement', 'urgence-plomberie', 'bretagne'].includes(s) ? '0.8' : '0.6';
   return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>${priority}</priority>\n  </url>`;
 }).join('\n');
 

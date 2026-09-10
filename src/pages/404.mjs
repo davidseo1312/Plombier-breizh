@@ -4,7 +4,7 @@ export default {
   slug: '404',
   nav: '',
   title: 'Page introuvable | Plombier Breizh',
-  description: 'La page demandée est introuvable. Contactez Plombier Breizh au 02 20 06 01 96 pour une intervention dans le Finistère (29) ou le Morbihan (56).',
+  description: 'La page demandée est introuvable. Contactez Plombier Breizh au 02 20 06 01 96 pour une intervention en Bretagne.',
   body: `
 <section class="section section--dark">
   <div class="container">

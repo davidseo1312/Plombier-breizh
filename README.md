@@ -1,11 +1,13 @@
 # Plombier Breizh — site de conversion Google Ads (SEA)
 
-Site statique orienté **conversion téléphonique** pour Plombier Breizh
-(plomberie, débouchage, dégorgement, urgence) — **Finistère 29** et **Morbihan 56**.
+Site statique orienté **conversion téléphonique** pour Plombier Breizh —
+plomberie, débouchage, dégorgement et urgence **en Bretagne**, avec deux
+landing pages Google Ads dédiées : **Finistère 29** et **Morbihan 56**.
 
 - Téléphone affiché partout : **02 20 06 01 96** (`tel:0220060196`)
 - Email : **contact@plombier-breizh.fr**
 - Aucune dépendance, aucun framework, aucun build tiers : HTML/CSS/JS natifs.
+- Typographie **Lato auto-hébergée** (aucune requête vers un service tiers).
 
 ---
 
@@ -28,14 +30,16 @@ node tools/generate-placeholders.mjs
 index.html, plomberie.html, …     ← pages GÉNÉRÉES (ne pas éditer à la main)
 build.mjs                         ← générateur (node build.mjs)
 src/
-  lib/layout.mjs                  ← constantes du site + header, footer, CTA, formulaire…
+  lib/layout.mjs                  ← constantes + header, footer, CTA, bandeaux, formulaire…
   lib/services.mjs                ← catalogue des interventions (source unique)
-  lib/geo.mjs                     ← fabrique des landing pages SEA départementales
+  lib/lp.mjs                      ← fabrique des landing pages Google Ads (29 / 56)
   pages/*.mjs                     ← contenu de chaque page
 assets/
-  css/site.css                    ← design system complet
+  css/site.css                    ← design system complet (palette + typo Lato)
   js/site.js                      ← navigation, tracking, formulaire
-  img/*.svg                       ← emplacements photo (à remplacer, voir §5)
+  fonts/lato-*.woff2              ← police auto-hébergée (400 / 700 / 900)
+  photos/                         ← vos photos réelles (voir §6)
+  img/*.svg                       ← emplacements photo (à remplacer, voir §6)
   logo-plombier-breizh.svg        ← logo (voir §4)
 tools/generate-placeholders.mjs   ← génération des visuels de substitution
 tools/generate-logo.mjs           ← génération des deux déclinaisons du logo
@@ -50,34 +54,77 @@ robots.txt / sitemap.xml
 
 | Fichier | URL cible | Rôle |
 |---|---|---|
-| `index.html` | `/` | Landing principale (tous services) |
+| `index.html` | `/` | Site principal — Plombier Breizh en Bretagne |
 | `plomberie.html` | `/plomberie` | Dépannage, fuite, recherche de fuite |
-| `debouchage.html` | `/debouchage` | Débouchage WC / évier / lavabo / douche |
+| `debouchage.html` | `/debouchage` | WC, évier, douche, canalisation |
 | `degorgement.html` | `/degorgement` | Dégorgement de réseau |
 | `urgence-plomberie.html` | `/urgence-plomberie` | Intention « urgence » |
-| `zones-intervention.html` | `/zones-intervention` | Finistère 29 + Morbihan 56 |
-| `plombier-finistere.html` | `/plombier-finistere` | **Landing SEA** ciblage 29 |
-| `plombier-morbihan.html` | `/plombier-morbihan` | **Landing SEA** ciblage 56 |
+| `bretagne.html` | `/bretagne` | Zone d'intervention — Bretagne, 29 & 56 |
+| **`finistere-29.html`** | **`/finistere-29`** | **Landing page Google Ads — Finistère** |
+| **`morbihan-56.html`** | **`/morbihan-56`** | **Landing page Google Ads — Morbihan** |
 | `contact.html` | `/contact` | Contact + formulaire |
 | `mentions-legales.html` · `politique-confidentialite.html` | | Obligations légales |
 | `404.html` | | Page d'erreur orientée appel |
+
+### Les deux landing pages SEA
+
+`/finistere-29` et `/morbihan-56` ne sont **pas** des pages SEO : ce sont des
+landing pages commerciales pensées pour recevoir directement un clic d'annonce.
+Elles se distinguent du reste du site sur trois points :
+
+1. **Header allégé** — pas de menu de navigation, uniquement le logo, le numéro
+   et le bouton d'appel : moins de sorties possibles.
+2. **Parcours resserré** — arriver → reconnaître son problème → voir la solution
+   → être rassuré → appeler ou remplir le formulaire, avec un CTA à chaque palier
+   et deux blocs où le numéro occupe toute la largeur de l'écran.
+3. **Contenu réellement propre au département** — le texte d'introduction, les
+   situations concrètes listées et les communes diffèrent entre le 29 et le 56.
+   Ce ne sont pas deux copies avec un nom échangé (voir `src/pages/finistere-29.mjs`
+   et `src/pages/morbihan-56.mjs`).
 
 Les liens internes utilisent l'extension `.html` : ils fonctionnent partout
 (ouverture locale incluse). `netlify.toml` et `vercel.json` exposent en plus les
 URLs propres (`/debouchage`).
 
-**Suggestion de correspondance groupes d'annonces → pages :**
+**Correspondance groupes d'annonces → pages de destination :**
 
 | Groupe d'annonces | Page de destination |
 |---|---|
-| plombier urgence / plombier 24h | `/urgence-plomberie` |
-| débouchage canalisation, WC bouché, évier bouché | `/debouchage` |
-| dégorgement, canalisation obstruée | `/degorgement` |
-| fuite d'eau, recherche de fuite, dépannage | `/plomberie` |
-| plombier Brest / Quimper / Finistère | `/plombier-finistere` |
-| plombier Vannes / Lorient / Morbihan | `/plombier-morbihan` |
+| Plombier Finistère · Débouchage Finistère · Dégorgement Finistère · Urgence plomberie Finistère | `/finistere-29` |
+| Plombier Morbihan · Débouchage Morbihan · Dégorgement Morbihan · Urgence plomberie Morbihan | `/morbihan-56` |
+| Plombier Bretagne (générique) | `/` |
+| Débouchage · WC bouché · évier bouché (sans ville) | `/debouchage` |
+| Dégorgement · canalisation obstruée | `/degorgement` |
+| Urgence plombier · fuite d'eau | `/urgence-plomberie` |
 
-## 4. Logo
+Les anciennes URLs (`/plombier-finistere`, `/plombier-morbihan`,
+`/zones-intervention`) sont redirigées en 301 vers les nouvelles dans
+`netlify.toml`.
+
+## 4. Identité visuelle et typographie
+
+**Palette** (variables CSS, en tête de `assets/css/site.css`) :
+
+| Variable | Valeur | Rôle |
+|---|---|---|
+| `--cyan` | `#00AEEF` | **Couleur d'accent principale** : bandeau urgence, blocs téléphone, badges, coches, filets, survols, bordures de cartes, fonds de section teintés |
+| `--blue` | `#007BCB` | CTA d'appel principaux, liens |
+| `--black` | `#111111` | Texte et sections sombres |
+| `--white` | `#FFFFFF` | Fonds et respiration |
+
+Le bleu clair passe de 2 à 44 usages dans la feuille de style : il structure le
+site sans le saturer, les grandes surfaces restant blanches ou noires.
+
+**Typographie** : Lato (400 / 700 / 900), auto-hébergée dans `assets/fonts/`
+et préchargée. Aucune requête vers Google Fonts — un aller-retour réseau en
+moins, et aucune donnée visiteur envoyée à un tiers. Pour régénérer les fichiers,
+voir `tools/` et la section Performance.
+
+Les titres et les boutons sont en **casse normale** (pas de capitales forcées) :
+seuls les petits sur-titres de section gardent des majuscules. C'est ce qui
+distingue le plus nettement le rendu d'un gabarit générique.
+
+## 5. Logo
 
 Le logo officiel est décliné en deux formats, utilisés à des endroits différents :
 
@@ -107,7 +154,7 @@ bicolore, baseline « Dépannage • Installation • Rénovation »), régéné
 `node tools/generate-logo.mjs`. Le lettrage « Breizh » y est approché par un
 italique gras : la version PNG officielle reste la référence.
 
-## 5. Images
+## 6. Images
 
 ### Photo principale (technicien + camion)
 
@@ -121,6 +168,14 @@ assets/img/hero-plombier-breizh-camion.jpg
 page Urgence et les deux landing pages SEA. Tant qu'il est absent, le visuel de
 substitution s'affiche à la place (jamais d'image cassée). Format conseillé :
 JPG/WebP, largeur ≥ 1600 px, ratio paysage (le cadrage est géré en CSS).
+
+### Photos des services
+
+Chaque vignette de service tente d'abord de charger
+`assets/photos/<nom>.jpg`, puis retombe sur le visuel de substitution
+`assets/img/<nom>.svg`. Déposez vos photos dans `assets/photos/` en reprenant
+exactement les noms de fichiers de la liste ci-dessous : elles s'affichent sans
+aucune modification de code.
 
 ### Autres visuels
 
@@ -143,7 +198,7 @@ vraies photos d'intervention en gardant **le même nom de base et le même ratio
 
 Aucune image n'est circulaire : `border-radius: 0` est appliqué globalement.
 
-## 6. Formulaire « Demander une intervention »
+## 7. Formulaire « Demander une intervention »
 
 Deux modes, pilotés par `PB_CONFIG.formEndpoint` (injecté dans le `<head>` par
 `src/lib/layout.mjs`) :
@@ -168,7 +223,7 @@ puis relancez `node build.mjs`.
 Champs envoyés : `nom`, `telephone`, `ville`, `probleme`, `message`.
 Un champ piège (honeypot) bloque les robots et n'est pas transmis.
 
-## 7. Tracking des conversions (GA4 / Google Ads / GTM)
+## 8. Tracking des conversions (GA4 / Google Ads / GTM)
 
 Aucun identifiant fictif n'est présent. Les scripts sont **commentés** dans le
 `<head>` (voir `src/lib/layout.mjs`) : décommentez le bloc GTM **ou** le bloc
@@ -190,14 +245,14 @@ Dans Google Ads : créez une action de conversion **« Appels depuis le site web
 à partir de l'événement `phone_click`, et une action **« Prospect »** à partir de
 `intervention_request`.
 
-## 8. Avis clients
+## 9. Avis clients
 
 **Aucun faux avis n'est publié.** La section « Nos clients témoignent » contient
 un modèle HTML commenté (`src/lib/layout.mjs`, fonction `reviewsSection`) prêt à
 recevoir de vrais témoignages. Dupliquez le bloc `<article class="review">` pour
 chaque avis authentique, puis supprimez le bloc `.notice`.
 
-## 9. Informations à compléter avant mise en ligne
+## 10. Informations à compléter avant mise en ligne
 
 Ces éléments n'ont pas été inventés et doivent être renseignés :
 
@@ -208,15 +263,16 @@ Ces éléments n'ont pas été inventés et doivent être renseignés :
   traitement.
 - `SITE.baseUrl` dans `src/lib/layout.mjs` (utilisé par les balises canoniques,
   Open Graph et le sitemap) : remplacer par le domaine réel si différent.
-- Les deux fichiers logo officiels en PNG (§4).
+- Les deux fichiers logo officiels en PNG (§6).
 - La photo du technicien + camion `assets/img/hero-plombier-breizh-camion.jpg` (§5)
   et les photos d'intervention.
 - Le cas échéant, un bandeau de consentement cookies si des outils de mesure
   sont activés.
 
-## 10. Performance
+## 11. Performance
 
-- Aucune police web, aucune librairie JS, aucun appel réseau externe.
+- Aucune librairie JS, **aucun appel réseau externe** (police comprise).
+- Lato auto-hébergée : 3 fichiers woff2 de ~23 Ko, sous-ensemble latin, `font-display:swap`, les deux graisses principales préchargées.
 - CSS ~19 Ko, JS ~7 Ko, visuels SVG ~4 Ko chacun.
 - `loading="lazy"` + `decoding="async"` sur toutes les images hors hero,
   `fetchpriority="high"` sur le visuel du hero.

@@ -3,33 +3,37 @@ import { formBtn } from './layout.mjs';
 
 export const SERVICES = [
   { img: 'depannage-plomberie', title: 'Dépannage plomberie',
-    text: 'Robinetterie, chasse d’eau, évacuation, alimentation : nous intervenons sur les pannes courantes de plomberie du logement.' },
-  { img: 'debouchage-canalisation', title: 'Débouchage canalisation',
-    text: 'Canalisation obstruée ou évacuation ralentie : nous déterminons le point de bouchon et appliquons la méthode adaptée.' },
+    text: 'Robinet qui goutte, chasse d’eau bloquée, évacuation qui ne suit plus : on répare ce qui lâche au quotidien.' },
+  { img: 'debouchage-canalisation', title: 'Débouchage',
+    text: 'Une évacuation qui ralentit finit toujours par se boucher. On retire le bouchon avant le refoulement.' },
   { img: 'degorgement', title: 'Dégorgement',
-    text: 'Dégorgement des réseaux d’évacuation encombrés, avec le matériel professionnel adapté au type de canalisation.' },
-  { img: 'debouchage-wc', title: 'Débouchage WC',
-    text: 'WC bouché ou qui refoule : intervention pour rétablir l’évacuation sans dégrader votre installation.' },
-  { img: 'debouchage-evier', title: 'Débouchage évier',
-    text: 'Évier de cuisine bouché par les graisses et les résidus : débouchage mécanique et nettoyage du siphon.' },
-  { img: 'debouchage-lavabo', title: 'Débouchage lavabo',
-    text: 'Lavabo qui se vide lentement ou plus du tout : nous dégageons le bouchon et vérifions l’évacuation.' },
-  { img: 'debouchage-douche', title: 'Débouchage douche',
-    text: 'Douche ou baignoire qui stagne : cheveux, savon et calcaire obstruent l’écoulement, nous le rétablissons.' },
+    text: 'Quand plusieurs évacuations lâchent en même temps, le bouchon se situe plus loin. On dégorge le réseau.' },
+  { img: 'debouchage-wc', title: 'WC bouché',
+    text: 'Les WC ne s’évacuent plus et vous n’osez plus tirer la chasse. On rétablit l’écoulement sans rien casser.' },
+  { img: 'debouchage-evier', title: 'Évier bouché',
+    text: 'Les graisses et les résidus finissent par tout obstruer. On démonte, on nettoie le siphon, on contrôle l’évacuation.' },
+  { img: 'debouchage-douche', title: 'Douche bouchée',
+    text: 'Cheveux, savon, calcaire : l’eau stagne dans le bac. On dégage la bonde et la conduite.' },
+  { img: 'canalisation-bouchee', title: 'Canalisation obstruée',
+    text: 'Bouchon profond, dépôts, racines : on cherche d’abord où ça bloque, puis on adapte la méthode.' },
   { img: 'fuite-eau', title: 'Fuite d’eau',
-    text: 'Fuite visible sur une arrivée, un raccord ou une évacuation : intervention pour stopper la fuite et réparer.' },
-  { img: 'canalisation-bouchee', title: 'Canalisation bouchée',
-    text: 'Bouchon profond, racines, dépôts : diagnostic puis débouchage mécanique ou haute pression selon la situation.' },
+    text: 'Un raccord, un joint, une évacuation percée. On stoppe la fuite, puis on répare.' },
   { img: 'recherche-fuite', title: 'Recherche de fuite',
-    text: 'Fuite non visible, humidité, surconsommation : localisation à l’aide de matériel de recherche professionnel.' },
-  { img: 'urgence-plomberie', title: 'Intervention plomberie urgente',
-    text: 'Débordement, refoulement, fuite active : appelez-nous, nous organisons une intervention au plus vite.' }
+    text: 'Une tache d’humidité, une facture qui grimpe sans raison : on localise la fuite avant d’ouvrir quoi que ce soit.' },
+  { img: 'urgence-plomberie', title: 'Urgence plomberie',
+    text: 'Débordement, refoulement, fuite qui ne s’arrête pas : appelez-nous, on organise le passage au plus vite.' }
 ];
+
+/* Photo de service : `assets/photos/<nom>.jpg` s'il existe, sinon le visuel
+   de substitution `assets/img/<nom>.svg`. Déposer la photo suffit à l'activer. */
+export const servicePhoto = (img, alt) =>
+  `<img src="assets/photos/${img}.jpg" alt="${alt}" width="960" height="720" loading="lazy" decoding="async"
+               onerror="this.onerror=null;this.src='assets/img/${img}.svg';">`;
 
 export const serviceCard = (s, location) => `
       <article class="card">
         <div class="card__media">
-          <img src="assets/img/${s.img}.svg" alt="${s.title} — Plombier Breizh" width="960" height="720" loading="lazy" decoding="async">
+          ${servicePhoto(s.img, `${s.title} — Plombier Breizh`)}
         </div>
         <div class="card__body">
           <h3 class="card__title">${s.title}</h3>
@@ -41,3 +45,6 @@ export const serviceCard = (s, location) => `
 export const servicesGrid = (items = SERVICES, location = 'services') => `
     <div class="grid grid--3">${items.map(s => serviceCard(s, location)).join('')}
     </div>`;
+
+/** Sélection par titre, dans l'ordre donné. */
+export const pick = (...titles) => titles.map(t => SERVICES.find(s => s.title === t)).filter(Boolean);

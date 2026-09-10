@@ -1,30 +1,33 @@
-import { SITE, callBtn, formBtn, checklist, heroPhoto, urgencyBand, ctaBand, processSection, reviewsSection, zonesSection, formSection, tel } from '../lib/layout.mjs';
-import { servicesGrid } from '../lib/services.mjs';
+import {
+  SITE, callBtn, formBtn, checklist, heroPhoto, urgencyBand, ctaBand,
+  phoneBlock, processSection, whySection, reviewsSection, bretagneSection, formSection
+} from '../lib/layout.mjs';
+import { servicesGrid, servicePhoto } from '../lib/services.mjs';
 
 export default {
   slug: 'index',
   nav: 'accueil',
-  title: 'Plombier & dégorgement d’urgence Finistère 29 et Morbihan 56 | Plombier Breizh',
-  description: 'Canalisation bouchée, fuite ou panne de plomberie ? Plombier Breizh intervient rapidement dans le Finistère (29) et le Morbihan (56). Appelez le 02 20 06 01 96.',
+  title: 'Plombier Breizh — plomberie, débouchage et dépannage en Bretagne',
+  description: 'Une fuite, une canalisation bouchée ou un problème de plomberie en Bretagne ? Plombier Breizh assure dépannage, débouchage et dégorgement. Appelez le 02 20 06 01 96.',
   body: `
 <section class="hero">
   <div class="container">
     <div class="hero__grid">
       <div>
-        <span class="hero__tag">🚨 Urgence plomberie · 29 &amp; 56</span>
-        <h1>Plombier &amp; <em>dégorgement d’urgence</em> dans le 29 et le 56</h1>
-        <p class="hero__sub">Une canalisation bouchée, une fuite ou un problème de plomberie ?
-        Contactez Plombier Breizh pour une intervention rapide.</p>
+        <span class="hero__tag">Plomberie • Débouchage • Dégorgement • Urgence</span>
+        <h1>Plombier &amp; <em>dégorgement d’urgence</em> en Bretagne</h1>
+        <p class="hero__sub">Une fuite, une canalisation bouchée ou un problème de plomberie ?
+        Plombier Breizh vous accompagne pour vos besoins de dépannage, débouchage et dégorgement.</p>
         <div class="hero__cta">
           ${callBtn('hero', { text: `Appeler le ${SITE.phoneDisplay}` })}
           ${formBtn('hero')}
         </div>
-        <p class="hero__phone-note">Appel direct — un interlocuteur évalue votre besoin immédiatement.</p>
+        <p class="hero__note">Vous parlez directement à quelqu’un qui connaît le métier.</p>
         ${checklist(undefined, true)}
       </div>
       <div class="hero__media">
         ${heroPhoto()}
-        <span class="hero__badge">Finistère 29 · Morbihan 56</span>
+        <span class="hero__badge">Bretagne — Finistère 29 &amp; Morbihan 56</span>
       </div>
     </div>
   </div>
@@ -35,10 +38,10 @@ ${urgencyBand('bandeau-urgence-accueil')}
 <section class="section" id="services">
   <div class="container">
     <div class="section__head section__head--center">
-      <span class="eyebrow">Nos prestations</span>
-      <h2>Nos interventions de plomberie</h2>
-      <p class="lead" style="margin-inline:auto">Débouchage, dégorgement, fuite, dépannage : nous traitons les problèmes
-      de plomberie du quotidien comme les situations urgentes, dans le Finistère et le Morbihan.</p>
+      <span class="eyebrow">Nos interventions</span>
+      <h2>Ce que nous faisons</h2>
+      <p class="lead">Du robinet qui goutte à la canalisation complètement bouchée, nous traitons les problèmes
+      de plomberie du quotidien comme les situations qui ne peuvent pas attendre.</p>
     </div>
     ${servicesGrid(undefined, 'services-accueil')}
     <div class="btn-row mt-32">
@@ -48,52 +51,51 @@ ${urgencyBand('bandeau-urgence-accueil')}
   </div>
 </section>
 
-${ctaBand({ title: 'Un problème de plomberie maintenant ?', location: 'cta-apres-services' })}
+${ctaBand({ title: 'Un problème de plomberie en ce moment ?', location: 'cta-apres-services' })}
 
 <section class="section" id="debouchage">
   <div class="container">
     <div class="split">
       <div>
         <span class="eyebrow">Débouchage &amp; dégorgement</span>
-        <h2>Canalisation bouchée ? Nous intervenons rapidement.</h2>
-        <p class="lead">Une évacuation qui ne fonctionne plus ne s’arrange pas seule : le bouchon se compacte,
-        l’eau refoule et les odeurs remontent. Plus l’intervention est rapide, plus la remise en service est simple.</p>
-        <p>Nos techniciens identifient l’origine de l’obstruction avant d’agir, puis choisissent la méthode
-        adaptée à votre installation.</p>
+        <h2>Une canalisation bouchée ne s’arrange jamais toute seule</h2>
+        <p>Le bouchon se compacte, l’eau finit par refouler et les odeurs remontent. Plus on intervient tôt,
+        plus la remise en service est simple — et moins il y a de dégâts à réparer derrière.</p>
+        <p>Nous cherchons d’abord d’où vient l’obstruction, puis nous choisissons la méthode : furet,
+        haute pression, ou inspection caméra quand la conduite n’est pas accessible.</p>
         <div class="btn-row mt-24">
-          ${callBtn('section-debouchage', { text: 'Appeler un plombier' })}
+          ${callBtn('section-debouchage', { text: 'Parler à un plombier' })}
           ${formBtn('section-debouchage', { variant: 'outline' })}
         </div>
       </div>
       <div class="split__media">
-        <img src="assets/img/debouchage-canalisation.svg" alt="Débouchage de canalisation par Plombier Breizh"
-             width="960" height="720" loading="lazy" decoding="async">
+        ${servicePhoto('debouchage-canalisation', 'Débouchage de canalisation par Plombier Breizh')}
       </div>
     </div>
 
     <div class="grid grid--2 mt-32">
       <div>
-        <h3>Les signes d’une canalisation obstruée</h3>
+        <h3>Ce que vous constatez</h3>
         <ul class="symptom-list">
-          <li>Eau qui ne s’écoule plus</li>
-          <li>Évier bouché</li>
-          <li>WC bouché</li>
-          <li>Douche qui refoule</li>
-          <li>Mauvaises odeurs</li>
-          <li>Canalisation complètement obstruée</li>
-          <li>Évacuation très lente</li>
+          <li>L’eau ne s’écoule plus</li>
+          <li>L’évier ou le lavabo met du temps à se vider</li>
+          <li>Les WC remontent au lieu de s’évacuer</li>
+          <li>La douche garde l’eau dans le bac</li>
+          <li>Des odeurs reviennent régulièrement</li>
+          <li>Plusieurs évacuations lâchent en même temps</li>
         </ul>
       </div>
       <div>
-        <h3>Nos méthodes d’intervention</h3>
+        <h3>Ce que nous faisons</h3>
         <ul class="symptom-list solution-list">
           <li>Débouchage mécanique</li>
-          <li>Furet professionnel</li>
+          <li>Furet électrique professionnel</li>
           <li>Débouchage haute pression</li>
-          <li>Inspection de canalisation</li>
-          <li>Équipements professionnels adaptés</li>
+          <li>Inspection de canalisation à la caméra</li>
+          <li>Dégorgement du réseau quand le bouchon est en aval</li>
         </ul>
-        <p class="mt-24"><a href="debouchage.html">Tout savoir sur le débouchage</a> · <a href="degorgement.html">Le dégorgement</a></p>
+        <p class="mt-24"><a href="debouchage.html">En savoir plus sur le débouchage</a> ·
+        <a href="degorgement.html">Le dégorgement</a></p>
       </div>
     </div>
   </div>
@@ -104,16 +106,16 @@ ${ctaBand({ title: 'Un problème de plomberie maintenant ?', location: 'cta-apre
     <div class="section__head">
       <span class="eyebrow">Matériel</span>
       <h2>Des équipements professionnels pour intervenir efficacement</h2>
-      <p class="lead">Nous utilisons des équipements professionnels permettant de diagnostiquer rapidement la situation
-      et d’adapter la méthode d’intervention.</p>
+      <p class="lead">On ne force pas au hasard : le bon outil dépend de ce qui bloque et de l’endroit
+      où ça bloque. C’est pour cela que le camion part équipé.</p>
     </div>
     <div class="equip">
-      <figure class="equip__item"><img src="assets/img/equip-pompe.svg" alt="Pompe professionnelle" width="960" height="960" loading="lazy" decoding="async"><figcaption><h3>Pompe professionnelle</h3><p>Évacuation des eaux lors des refoulements et débordements.</p></figcaption></figure>
-      <figure class="equip__item"><img src="assets/img/equip-furet-electrique.svg" alt="Furet électrique" width="960" height="960" loading="lazy" decoding="async"><figcaption><h3>Furet électrique</h3><p>Destruction des bouchons compacts dans les canalisations.</p></figcaption></figure>
-      <figure class="equip__item"><img src="assets/img/equip-haute-pression.svg" alt="Déboucheur haute pression" width="960" height="960" loading="lazy" decoding="async"><figcaption><h3>Déboucheur haute pression</h3><p>Nettoyage des parois et des dépôts sur les réseaux d’évacuation.</p></figcaption></figure>
-      <figure class="equip__item"><img src="assets/img/equip-camera-inspection.svg" alt="Caméra d’inspection de canalisation" width="960" height="960" loading="lazy" decoding="async"><figcaption><h3>Caméra d’inspection</h3><p>Visualisation de l’intérieur de la canalisation pour localiser l’obstruction.</p></figcaption></figure>
-      <figure class="equip__item"><img src="assets/img/equip-recherche-fuite.svg" alt="Matériel de recherche de fuite" width="960" height="960" loading="lazy" decoding="async"><figcaption><h3>Recherche de fuite</h3><p>Matériel dédié à la localisation des fuites non visibles.</p></figcaption></figure>
-      <figure class="equip__item"><img src="assets/img/equip-outillage.svg" alt="Outillage professionnel de plomberie" width="960" height="960" loading="lazy" decoding="async"><figcaption><h3>Outillage de plomberie</h3><p>Matériel complet pour le dépannage et la réparation sur place.</p></figcaption></figure>
+      <figure class="equip__item">${servicePhoto('equip-furet-electrique', 'Furet électrique professionnel')}<figcaption><h3>Furet électrique</h3><p>Pour percer les bouchons compacts installés en profondeur dans la conduite.</p></figcaption></figure>
+      <figure class="equip__item">${servicePhoto('equip-haute-pression', 'Déboucheur haute pression')}<figcaption><h3>Déboucheur haute pression</h3><p>Pour décoller les dépôts accumulés sur les parois du réseau d’évacuation.</p></figcaption></figure>
+      <figure class="equip__item">${servicePhoto('equip-camera-inspection', 'Caméra d’inspection de canalisation')}<figcaption><h3>Caméra d’inspection</h3><p>Pour voir l’intérieur de la canalisation et localiser l’obstruction sans casser.</p></figcaption></figure>
+      <figure class="equip__item">${servicePhoto('equip-pompe', 'Pompe professionnelle')}<figcaption><h3>Pompe professionnelle</h3><p>Pour évacuer l’eau quand ça déborde ou que ça refoule.</p></figcaption></figure>
+      <figure class="equip__item">${servicePhoto('equip-recherche-fuite', 'Matériel de recherche de fuite')}<figcaption><h3>Recherche de fuite</h3><p>Pour localiser une fuite non visible avant d’ouvrir un mur ou une dalle.</p></figcaption></figure>
+      <figure class="equip__item">${servicePhoto('equip-outillage', 'Outillage professionnel de plomberie')}<figcaption><h3>Outillage de plomberie</h3><p>Pour réparer sur place, sans repasser le lendemain.</p></figcaption></figure>
     </div>
     <div class="btn-row mt-32">
       ${callBtn('equipements', { text: `Appeler le ${SITE.phoneDisplay}` })}
@@ -123,9 +125,10 @@ ${ctaBand({ title: 'Un problème de plomberie maintenant ?', location: 'cta-apre
 </section>
 
 ${processSection('process-accueil')}
-${ctaBand({ title: 'Parler à un plombier', text: 'Décrivez votre situation, nous vous indiquons l’intervention adaptée.', location: 'cta-apres-process' })}
+${whySection('pourquoi-accueil')}
 ${reviewsSection()}
-${zonesSection('zones-accueil')}
-${formSection()}
+${bretagneSection('bretagne-accueil')}
+${phoneBlock({ location: 'bloc-telephone-accueil' })}
+${formSection({ location: 'formulaire-accueil' })}
 `
 };

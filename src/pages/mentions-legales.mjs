@@ -4,7 +4,7 @@ export default {
   slug: 'mentions-legales',
   nav: '',
   title: 'Mentions légales | Plombier Breizh',
-  description: 'Mentions légales du site Plombier Breizh — plomberie, débouchage et dégorgement dans le Finistère (29) et le Morbihan (56).',
+  description: 'Mentions légales du site Plombier Breizh — plomberie, débouchage et dégorgement en Bretagne.',
   body: `
 <section class="section">
   <div class="container prose">
@@ -23,7 +23,7 @@ export default {
       Dénomination : <strong>Plombier Breizh</strong><br>
       Forme juridique : [À COMPLÉTER]<br>
       Adresse du siège social : [À COMPLÉTER]<br>
-      Téléphone : ${tel('mentions-legales', '', SITE.phoneDisplay)}<br>
+      Téléphone : ${tel('mentions-legales', SITE.phoneDisplay)}<br>
       Email : <a href="mailto:${SITE.email}">${SITE.email}</a><br>
       SIRET : [À COMPLÉTER]<br>
       Numéro de TVA intracommunautaire : [À COMPLÉTER]<br>
@@ -56,7 +56,7 @@ export default {
 
     <h2>Contact</h2>
     <p>Pour toute question relative au site : <a href="mailto:${SITE.email}">${SITE.email}</a>
-    ou ${tel('mentions-legales-bas', '', SITE.phoneDisplay)}.</p>
+    ou ${tel('mentions-legales-bas', SITE.phoneDisplay)}.</p>
   </div>
 </section>
 `

@@ -18,7 +18,7 @@ export default {
 
     <h2>Responsable du traitement</h2>
     <p>Plombier Breizh — [À COMPLÉTER : raison sociale et adresse].
-    Contact : <a href="mailto:${SITE.email}">${SITE.email}</a> — ${tel('confidentialite', '', SITE.phoneDisplay)}.</p>
+    Contact : <a href="mailto:${SITE.email}">${SITE.email}</a> — ${tel('confidentialite', SITE.phoneDisplay)}.</p>
 
     <h2>Données collectées</h2>
     <p>Via le formulaire « Demander une intervention » : nom, numéro de téléphone, ville, type de problème
