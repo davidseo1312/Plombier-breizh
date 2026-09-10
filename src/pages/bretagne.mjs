@@ -47,13 +47,13 @@ ${bretagneSection('bretagne-page')}
         <h3>Vous êtes dans le Finistère ?</h3>
         <p>Brest, Quimper, Morlaix, Concarneau, Landerneau et les communes alentour : dites-nous où vous
         êtes, nous vous confirmons la prise en charge dès l’appel.</p>
-        <div class="btn-row mt-24"><a class="btn btn--accent btn--sm" href="finistere-29.html" data-cta="lp-29" data-location="bretagne-bas">Voir la page Finistère (29)</a></div>
+        <div class="btn-row mt-24"><a class="btn btn--accent btn--sm" href="/finistere-29" data-cta="lp-29" data-location="bretagne-bas">Voir la page Finistère (29)</a></div>
       </div>
       <div class="tile">
         <h3>Vous êtes dans le Morbihan ?</h3>
         <p>Vannes, Lorient, Lanester, Auray, Pontivy et les communes alentour : un appel suffit pour savoir
         si nous pouvons intervenir chez vous.</p>
-        <div class="btn-row mt-24"><a class="btn btn--accent btn--sm" href="morbihan-56.html" data-cta="lp-56" data-location="bretagne-bas">Voir la page Morbihan (56)</a></div>
+        <div class="btn-row mt-24"><a class="btn btn--accent btn--sm" href="/morbihan-56" data-cta="lp-56" data-location="bretagne-bas">Voir la page Morbihan (56)</a></div>
       </div>
     </div>
     <div class="notice mt-32">

@@ -14,8 +14,8 @@ landing pages Google Ads dédiées : **Finistère 29** et **Morbihan 56**.
 ## 1. Démarrage
 
 ```bash
-# Prévisualiser (n'importe quel serveur statique)
-python3 -m http.server 8000     # puis http://localhost:8000
+# Prévisualiser — reproduit les URLs sans extension de l'hébergement
+node tools/serveur-local.mjs    # puis http://localhost:8000
 
 # Régénérer les pages HTML après modification de src/
 node build.mjs
@@ -43,6 +43,7 @@ assets/
   logo-plombier-breizh.svg        ← logo (voir §4)
 tools/generate-placeholders.mjs   ← génération des visuels de substitution
 tools/installer-logo.mjs          ← installe VOTRE logo (fichier, URL ou base64)
+tools/serveur-local.mjs           ← prévisualisation avec les URLs sans extension
 netlify.toml / vercel.json        ← URLs propres + cache + en-têtes
 robots.txt / sitemap.xml
 ```
@@ -52,7 +53,7 @@ robots.txt / sitemap.xml
 
 ## 3. Pages
 
-| Fichier | URL cible | Rôle |
+| Fichier généré | URL publique | Rôle |
 |---|---|---|
 | `index.html` | `/` | Site principal — Plombier Breizh en Bretagne |
 | `plomberie.html` | `/plomberie` | Dépannage, fuite, recherche de fuite |
@@ -82,9 +83,30 @@ Elles se distinguent du reste du site sur trois points :
    Ce ne sont pas deux copies avec un nom échangé (voir `src/pages/finistere-29.mjs`
    et `src/pages/morbihan-56.mjs`).
 
-Les liens internes utilisent l'extension `.html` : ils fonctionnent partout
-(ouverture locale incluse). `netlify.toml` et `vercel.json` exposent en plus les
-URLs propres (`/debouchage`).
+### URLs sans extension
+
+Les pages sont servies **sans `.html`** : `/debouchage`, jamais
+`/debouchage.html`. Les liens internes, les balises canoniques et le sitemap
+utilisent tous cette forme, et `/debouchage.html` redirige en 301 vers
+`/debouchage` pour qu'une seule URL fasse foi.
+
+Les fichiers restent plats à la racine (`debouchage.html`) ; c'est
+l'hébergement qui fait la correspondance. Trois configurations sont fournies :
+
+| Hébergement | Fichier | Mécanisme |
+|---|---|---|
+| Netlify | `netlify.toml` | réécritures 200 + redirections 301 |
+| Vercel | `vercel.json` | `cleanUrls: true` |
+| Apache (OVH, Ionos, o2switch…) | `.htaccess` | `mod_rewrite` |
+
+Sur nginx, l'équivalent tient en une ligne :
+`try_files $uri $uri.html $uri/index.html =404;`
+
+Les chemins d'assets sont absolus (`/assets/…`) : ils restent valides quelle
+que soit la forme de l'URL visitée. En contrepartie, ouvrir un fichier HTML
+directement depuis le disque (`file://`) n'affiche plus les styles — utilisez
+`node tools/serveur-local.mjs`, qui reproduit exactement le comportement de
+l'hébergement.
 
 **Correspondance groupes d'annonces → pages de destination :**
 

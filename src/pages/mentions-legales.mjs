@@ -52,7 +52,7 @@ export default {
 
     <h2>Données personnelles</h2>
     <p>Le traitement des données transmises via le formulaire de contact est décrit dans la
-    <a href="politique-confidentialite.html">politique de confidentialité</a>.</p>
+    <a href="/politique-confidentialite">politique de confidentialité</a>.</p>
 
     <h2>Contact</h2>
     <p>Pour toute question relative au site : <a href="mailto:${SITE.email}">${SITE.email}</a>

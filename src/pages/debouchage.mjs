@@ -82,11 +82,11 @@ ${ctaBand({ title: 'Une évacuation bloquée n’attend pas', text: 'Un appel, e
     </div>
 
     <figure class="figure-wide">
-      <img src="assets/img/infographie-origine-bouchon.jpg"
+      <img src="/assets/img/infographie-origine-bouchon.jpg"
            alt="L’origine du bouchon détermine l’outil à utiliser. Graisses en cuisine : les graisses et les résidus alimentaires se solidifient dans les canalisations et forment des bouchons. Cheveux et savon en salle de bain : les cheveux s’accumulent avec le savon et les résidus de produits d’hygiène, ce qui obstrue les tuyaux. Lingettes dans les WC : même dites biodégradables, elles ne se décomposent pas assez vite et peuvent créer des bouchons importants. Dépôts ou racines sur les réseaux enterrés : avec le temps, des dépôts, du tartre ou des racines d’arbres peuvent s’infiltrer dans les canalisations et provoquer des bouchons durables. Un bon diagnostic égale le bon outil, égale une intervention efficace."
            width="1536" height="1024" loading="lazy" decoding="async">
       <figcaption>Les quatre origines les plus fréquentes d’un bouchon — et pourquoi le diagnostic conditionne
-      la méthode. <a href="assets/img/infographie-origine-bouchon.jpg" target="_blank" rel="noopener">Voir en grand</a></figcaption>
+      la méthode. <a href="/assets/img/infographie-origine-bouchon.jpg" target="_blank" rel="noopener">Voir en grand</a></figcaption>
     </figure>
 
     <p class="mt-32" style="max-width:74ch">Quand l’accès est difficile, la caméra d’inspection tranche la

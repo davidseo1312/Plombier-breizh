@@ -31,8 +31,8 @@ export const servicePhoto = (img, alt) => {
      annoncées correspondent au fichier pour éviter tout décalage d'affichage. */
   const carre = img.startsWith('equip-');
   const [w, h] = carre ? [700, 700] : [1100, 733];
-  return `<img src="assets/photos/${img}.jpg" alt="${alt}" width="${w}" height="${h}" loading="lazy" decoding="async"
-               onerror="this.onerror=null;this.src='assets/img/${img}.svg';">`;
+  return `<img src="/assets/photos/${img}.jpg" alt="${alt}" width="${w}" height="${h}" loading="lazy" decoding="async"
+               onerror="this.onerror=null;this.src='/assets/img/${img}.svg';">`;
 };
 
 export const serviceCard = (s, location) => `

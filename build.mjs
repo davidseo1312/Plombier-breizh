@@ -31,8 +31,29 @@ const empreinte = (chemin) => {
   return empreintes.get(chemin);
 };
 const versionner = (html) => html.replace(
-  /assets\/[A-Za-z0-9_.\/-]+\.(?:css|js|png|jpe?g|webp|svg)(?![?\w])/g,
-  (chemin) => (existsSync(chemin) ? `${chemin}?v=${empreinte(chemin)}` : chemin)
+  /\/assets\/[A-Za-z0-9_.\/-]+\.(?:css|js|png|jpe?g|webp|svg)(?![?\w])/g,
+  (url) => {
+    const chemin = url.slice(1);            // '/assets/…' → 'assets/…' sur le disque
+    return existsSync(chemin) ? `${url}?v=${empreinte(chemin)}` : url;
+  }
+);
+
+
+/* ---- Chaîne de repli du logo : ne garder que les fichiers présents ---------
+   Le header et le pied de page essaient plusieurs noms de fichier pour laisser
+   le logo officiel être déposé librement. Les candidats absents provoqueraient
+   une requête 404 à chaque chargement de page ; on les retire au build, tout
+   en gardant la chaîne complète si aucun n'existe (le nom écrit en toutes
+   lettres prend alors le relais). */
+const nettoyerRepliLogo = (html) => html.replace(
+  /src="(\/assets\/[^"]+)"([^>]*?)data-logo-fallbacks="([^"]*)"/g,
+  (tout, src, milieu, replis) => {
+    const candidats = [src, ...replis.split(',').filter(Boolean)];
+    const presents = candidats.filter((u) => existsSync(u.trim().slice(1)));
+    if (!presents.length) return tout;
+    const [premier, ...reste] = presents;
+    return `src="${premier}"${milieu}data-logo-fallbacks="${reste.join(',')}"`;
+  }
 );
 
 const files = (await readdir(pagesDir)).filter(f => f.endsWith('.mjs')).sort();
@@ -41,7 +62,7 @@ const built = [];
 for (const file of files) {
   const mod = (await import(path.join(pagesDir, file))).default;
   if (!mod || !mod.slug) throw new Error(`Page invalide : ${file}`);
-  const html = versionner(page(mod));
+  const html = versionner(nettoyerRepliLogo(page(mod)));
   await writeFile(path.join(root, `${mod.slug}.html`), html, 'utf8');
   built.push(mod.slug);
   console.log(`✓ ${mod.slug}.html  (${(html.length / 1024).toFixed(1)} Ko)`);

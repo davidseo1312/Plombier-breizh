@@ -14,12 +14,12 @@ export const SITE = {
 };
 
 export const NAV = [
-  { href: 'index.html', label: 'Accueil', key: 'accueil' },
-  { href: 'plomberie.html', label: 'Plomberie', key: 'plomberie' },
-  { href: 'debouchage.html', label: 'Débouchage', key: 'debouchage' },
-  { href: 'degorgement.html', label: 'Dégorgement', key: 'degorgement' },
-  { href: 'urgence-plomberie.html', label: 'Urgence', key: 'urgence' },
-  { href: 'bretagne.html', label: 'Bretagne', key: 'bretagne' }
+  { href: '/', label: 'Accueil', key: 'accueil' },
+  { href: '/plomberie', label: 'Plomberie', key: 'plomberie' },
+  { href: '/debouchage', label: 'Débouchage', key: 'debouchage' },
+  { href: '/degorgement', label: 'Dégorgement', key: 'degorgement' },
+  { href: '/urgence-plomberie', label: 'Urgence', key: 'urgence' },
+  { href: '/bretagne', label: 'Bretagne', key: 'bretagne' }
 ];
 
 /* -------------------------------------------------------------------------
@@ -61,21 +61,21 @@ export const checklist = (items = REASSURANCE, inline = false) =>
    Déposez-le dans assets/ sous n'importe lequel de ces noms.
    ------------------------------------------------------------------------- */
 export const LOGO_FILES = [
-  'assets/logo-plombier-breizh.png',
-  'assets/logo-plombier-breizh.webp',
-  'assets/logo-plombier-breizh.jpg',
-  'assets/logo-plombier-breizh.jpeg',
-  'assets/logo-plombier-breizh.svg',
-  'assets/logo.png', 'assets/logo.webp', 'assets/logo.jpg', 'assets/logo.jpeg', 'assets/logo.svg'
+  '/assets/logo-plombier-breizh.png',
+  '/assets/logo-plombier-breizh.webp',
+  '/assets/logo-plombier-breizh.jpg',
+  '/assets/logo-plombier-breizh.jpeg',
+  '/assets/logo-plombier-breizh.svg',
+  '/assets/logo.png', '/assets/logo.webp', '/assets/logo.jpg', '/assets/logo.jpeg', '/assets/logo.svg'
 ];
 
 /* Variante verticale (footer). Si elle n'existe pas, le logo principal prend
    le relais : un seul fichier déposé suffit à équiper tout le site. */
 export const LOGO_FILES_VERTICAL = [
-  'assets/logo-plombier-breizh-vertical.png',
-  'assets/logo-plombier-breizh-vertical.webp',
-  'assets/logo-plombier-breizh-vertical.jpg',
-  'assets/logo-plombier-breizh-vertical.svg',
+  '/assets/logo-plombier-breizh-vertical.png',
+  '/assets/logo-plombier-breizh-vertical.webp',
+  '/assets/logo-plombier-breizh-vertical.jpg',
+  '/assets/logo-plombier-breizh-vertical.svg',
   ...LOGO_FILES
 ];
 
@@ -94,9 +94,9 @@ const logoImg = ({ files, cls, alt, width, height, lazy = false }) => {
    ------------------------------------------------------------------------- */
 export const heroPhoto = (fallback = 'hero-plombier-intervention',
   alt = 'Technicien Plombier Breizh devant son camion d’intervention') =>
-  `<img src="assets/img/hero-plombier-breizh-camion.jpg" alt="${alt}"
+  `<img src="/assets/img/hero-plombier-breizh-camion.jpg" alt="${alt}"
              width="1536" height="1024" fetchpriority="high" decoding="async"
-             onerror="this.onerror=null;this.src='assets/img/${fallback}.svg';">`;
+             onerror="this.onerror=null;this.src='/assets/img/${fallback}.svg';">`;
 
 /* -------------------------------------------------------------------------
    HEAD / HEADER / FOOTER
@@ -134,10 +134,10 @@ export const head = ({ title, description, slug }) => `<!doctype html>
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${description}">
 <meta property="og:locale" content="fr_FR">
-<link rel="icon" href="assets/favicon.png">
-<link rel="preload" href="assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/lato-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="/assets/favicon.png">
+<link rel="preload" href="/assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/lato-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
 <script type="application/ld+json">${jsonLd()}</script>
 <!-- ===================================================================
      TRACKING — à activer lors de la mise en ligne (voir README.md).
@@ -188,7 +188,7 @@ export const header = (current, minimal = false) => `
 
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="index.html" aria-label="${SITE.name} — accueil">
+    <a class="brand" href="/" aria-label="${SITE.name} — accueil">
       ${logoImg({ files: LOGO_FILES, cls: 'brand__logo', alt: SITE.name, width: 100, height: 76 })}
       <span class="brand-fallback brand-fallback--header" hidden>Plombier<span>Breizh</span></span>
     </a>
@@ -364,7 +364,7 @@ const carteAvis = (a) => `
 export const reviewsSection = (avis = [], dark = false) => `
 <section class="section${dark ? ' section--dark' : ' section--paper'}" id="avis">
   <div class="container reviews">
-    <img class="reviews__google" src="assets/img/google-reviews.png" alt="Avis Google"
+    <img class="reviews__google" src="/assets/img/google-reviews.png" alt="Avis Google"
          width="297" height="120" loading="lazy" decoding="async">
     <div class="section__head section__head--center">
       <span class="eyebrow">Avis</span>
@@ -409,7 +409,7 @@ export const bretagneSection = (location = 'bretagne') => `
           <ul class="zone__cities">
             <li>Brest</li><li>Quimper</li><li>Morlaix</li><li>Concarneau</li><li>Landerneau</li><li>Quimperlé</li>
           </ul>
-          <div class="mt-24"><a class="btn btn--accent btn--block" href="finistere-29.html" data-cta="lp-29" data-location="${location}">Plombier dans le Finistère</a></div>
+          <div class="mt-24"><a class="btn btn--accent btn--block" href="/finistere-29" data-cta="lp-29" data-location="${location}">Plombier dans le Finistère</a></div>
         </div>
       </div>
       <div class="zone">
@@ -420,7 +420,7 @@ export const bretagneSection = (location = 'bretagne') => `
           <ul class="zone__cities">
             <li>Vannes</li><li>Lorient</li><li>Lanester</li><li>Auray</li><li>Pontivy</li><li>Hennebont</li>
           </ul>
-          <div class="mt-24"><a class="btn btn--accent btn--block" href="morbihan-56.html" data-cta="lp-56" data-location="${location}">Plombier dans le Morbihan</a></div>
+          <div class="mt-24"><a class="btn btn--accent btn--block" href="/morbihan-56" data-cta="lp-56" data-location="${location}">Plombier dans le Morbihan</a></div>
         </div>
       </div>
     </div>
@@ -502,7 +502,7 @@ export const formSection = ({
           Demander une intervention
         </button>
         <p class="form__note">Vos informations servent uniquement à traiter votre demande.
-        Voir la <a href="politique-confidentialite.html">politique de confidentialité</a>.</p>
+        Voir la <a href="/politique-confidentialite">politique de confidentialité</a>.</p>
       </form>
     </div>
   </div>
@@ -521,19 +521,19 @@ export const footer = () => `
       <div>
         <h3>Nos interventions</h3>
         <ul class="footer__list">
-          <li><a href="plomberie.html">Plomberie &amp; dépannage</a></li>
-          <li><a href="debouchage.html">Débouchage de canalisation</a></li>
-          <li><a href="degorgement.html">Dégorgement</a></li>
-          <li><a href="urgence-plomberie.html">Urgence plomberie</a></li>
+          <li><a href="/plomberie">Plomberie &amp; dépannage</a></li>
+          <li><a href="/debouchage">Débouchage de canalisation</a></li>
+          <li><a href="/degorgement">Dégorgement</a></li>
+          <li><a href="/urgence-plomberie">Urgence plomberie</a></li>
         </ul>
       </div>
       <div>
         <h3>Bretagne</h3>
         <ul class="footer__list">
-          <li><a href="bretagne.html">Toute la Bretagne</a></li>
-          <li><a href="finistere-29.html">Finistère (29)</a></li>
-          <li><a href="morbihan-56.html">Morbihan (56)</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/bretagne">Toute la Bretagne</a></li>
+          <li><a href="/finistere-29">Finistère (29)</a></li>
+          <li><a href="/morbihan-56">Morbihan (56)</a></li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
       <div>
@@ -548,9 +548,9 @@ export const footer = () => `
     <div class="footer__bottom">
       <p class="mb-0">© <span id="year">2026</span> ${SITE.name}. Tous droits réservés.</p>
       <ul>
-        <li><a href="mentions-legales.html">Mentions légales</a></li>
-        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="/mentions-legales">Mentions légales</a></li>
+        <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
     </div>
   </div>
@@ -563,7 +563,7 @@ export const footer = () => `
   <a class="sticky-cta__form" href="#demande-intervention" data-location="sticky-mobile" data-cta="demande-sticky">Intervention</a>
 </div>
 
-<script src="assets/js/site.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>`;
@@ -584,8 +584,8 @@ export const pageHero = ({ tag, h1, sub, img, alt, location, photo = false, item
         ${checklist(items, true)}
       </div>
       <div class="hero__media">
-        ${photo ? heroPhoto(img, alt) : `<img src="assets/photos/${img}.jpg" alt="${alt}" width="1100" height="733" fetchpriority="high" decoding="async"
-             onerror="this.onerror=null;this.src='assets/img/${img}.svg';">`}
+        ${photo ? heroPhoto(img, alt) : `<img src="/assets/photos/${img}.jpg" alt="${alt}" width="1100" height="733" fetchpriority="high" decoding="async"
+             onerror="this.onerror=null;this.src='/assets/img/${img}.svg';">`}
         <span class="hero__badge">${badge}</span>
       </div>
     </div>

@@ -95,8 +95,8 @@ ${ctaBand({ title: 'Un problème de plomberie en ce moment ?', location: 'cta-ap
           <li>Inspection de canalisation à la caméra</li>
           <li>Dégorgement du réseau quand le bouchon est en aval</li>
         </ul>
-        <p class="mt-24"><a href="debouchage.html">En savoir plus sur le débouchage</a> ·
-        <a href="degorgement.html">Le dégorgement</a></p>
+        <p class="mt-24"><a href="/debouchage">En savoir plus sur le débouchage</a> ·
+        <a href="/degorgement">Le dégorgement</a></p>
       </div>
     </div>
   </div>

@@ -16,7 +16,7 @@ export default {
       ${callBtn('page-404', { text: `Appeler le ${SITE.phoneDisplay}` })}
       ${formBtn('page-404', { variant: 'outline-light', href: 'index.html#demande-intervention' })}
     </div>
-    <p class="mt-32"><a href="index.html" style="color:#00AEEF">← Retour à l’accueil</a></p>
+    <p class="mt-32"><a href="/" style="color:#00AEEF">← Retour à l’accueil</a></p>
   </div>
 </section>
 `

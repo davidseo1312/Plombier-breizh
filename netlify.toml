@@ -4,67 +4,143 @@
   publish = "."
   command = "node build.mjs"
 
-# URLs propres : /debouchage → debouchage.html
+# ---------------------------------------------------------------------------
+# URLs sans extension
+# `/plomberie` sert plomberie.html sans redirection (status 200), et
+# `/plomberie.html` redirige en 301 vers `/plomberie` pour qu'une seule URL
+# fasse foi — évite le contenu dupliqué et consolide les liens entrants.
+# ---------------------------------------------------------------------------
 [[redirects]]
   from = "/plomberie"
   to = "/plomberie.html"
   status = 200
+
 [[redirects]]
   from = "/debouchage"
   to = "/debouchage.html"
   status = 200
+
 [[redirects]]
   from = "/degorgement"
   to = "/degorgement.html"
   status = 200
+
 [[redirects]]
   from = "/urgence-plomberie"
   to = "/urgence-plomberie.html"
   status = 200
+
 [[redirects]]
   from = "/bretagne"
   to = "/bretagne.html"
   status = 200
+
 [[redirects]]
   from = "/finistere-29"
   to = "/finistere-29.html"
   status = 200
+
 [[redirects]]
   from = "/morbihan-56"
   to = "/morbihan-56.html"
   status = 200
+
 [[redirects]]
   from = "/contact"
   to = "/contact.html"
   status = 200
+
 [[redirects]]
   from = "/mentions-legales"
   to = "/mentions-legales.html"
   status = 200
+
 [[redirects]]
   from = "/politique-confidentialite"
   to = "/politique-confidentialite.html"
   status = 200
+
+[[redirects]]
+  from = "/plomberie.html"
+  to = "/plomberie"
+  status = 301
+
+[[redirects]]
+  from = "/debouchage.html"
+  to = "/debouchage"
+  status = 301
+
+[[redirects]]
+  from = "/degorgement.html"
+  to = "/degorgement"
+  status = 301
+
+[[redirects]]
+  from = "/urgence-plomberie.html"
+  to = "/urgence-plomberie"
+  status = 301
+
+[[redirects]]
+  from = "/bretagne.html"
+  to = "/bretagne"
+  status = 301
+
+[[redirects]]
+  from = "/finistere-29.html"
+  to = "/finistere-29"
+  status = 301
+
+[[redirects]]
+  from = "/morbihan-56.html"
+  to = "/morbihan-56"
+  status = 301
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact"
+  status = 301
+
+[[redirects]]
+  from = "/mentions-legales.html"
+  to = "/mentions-legales"
+  status = 301
+
+[[redirects]]
+  from = "/politique-confidentialite.html"
+  to = "/politique-confidentialite"
+  status = 301
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+# Anciennes URLs
 [[redirects]]
   from = "/plombier-finistere"
   to = "/finistere-29"
   status = 301
+
 [[redirects]]
   from = "/plombier-finistere.html"
   to = "/finistere-29"
   status = 301
+
 [[redirects]]
   from = "/plombier-morbihan"
   to = "/morbihan-56"
   status = 301
+
 [[redirects]]
   from = "/plombier-morbihan.html"
   to = "/morbihan-56"
   status = 301
+
 [[redirects]]
   from = "/zones-intervention"
   to = "/bretagne"
   status = 301
+
 [[redirects]]
   from = "/zones-intervention.html"
   to = "/bretagne"
