@@ -70,23 +70,29 @@ ${ctaBand({ title: 'Une évacuation bloquée n’attend pas', text: 'Un appel, e
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="diagnostic">
   <div class="container">
-    <div class="split split--media-first">
-      <div class="split__media">
-        ${servicePhoto('inspection-canalisation', 'Inspection de canalisation à la caméra')}
-      </div>
-      <div>
-        <span class="eyebrow">Diagnostic</span>
-        <h2>On regarde avant de forcer</h2>
-        <p>Graisses en cuisine, cheveux et savon en salle de bain, lingettes dans les WC, dépôts ou racines
-        sur les réseaux enterrés : l’origine du bouchon détermine l’outil à utiliser.</p>
-        <p>Forcer avec le mauvais matériel, c’est risquer d’abîmer la conduite sans rien débloquer.
-        Quand l’accès est difficile, la caméra tranche la question en quelques minutes.</p>
-        <div class="btn-row mt-24">
-          ${callBtn('diagnostic-debouchage', { text: `Appeler le ${SITE.phoneDisplay}` })}
-        </div>
-      </div>
+    <div class="section__head">
+      <span class="eyebrow">Diagnostic</span>
+      <h2>On regarde avant de forcer</h2>
+      <p class="lead">Graisses en cuisine, cheveux et savon en salle de bain, lingettes dans les WC, dépôts ou
+      racines sur les réseaux enterrés : l’origine du bouchon détermine l’outil à utiliser. Forcer avec le
+      mauvais matériel, c’est risquer d’abîmer la conduite sans rien débloquer.</p>
+    </div>
+
+    <figure class="figure-wide">
+      <img src="assets/img/infographie-origine-bouchon.jpg"
+           alt="L’origine du bouchon détermine l’outil à utiliser. Graisses en cuisine : les graisses et les résidus alimentaires se solidifient dans les canalisations et forment des bouchons. Cheveux et savon en salle de bain : les cheveux s’accumulent avec le savon et les résidus de produits d’hygiène, ce qui obstrue les tuyaux. Lingettes dans les WC : même dites biodégradables, elles ne se décomposent pas assez vite et peuvent créer des bouchons importants. Dépôts ou racines sur les réseaux enterrés : avec le temps, des dépôts, du tartre ou des racines d’arbres peuvent s’infiltrer dans les canalisations et provoquer des bouchons durables. Un bon diagnostic égale le bon outil, égale une intervention efficace."
+           width="1536" height="1024" loading="lazy" decoding="async">
+      <figcaption>Les quatre origines les plus fréquentes d’un bouchon — et pourquoi le diagnostic conditionne
+      la méthode. <a href="assets/img/infographie-origine-bouchon.jpg" target="_blank" rel="noopener">Voir en grand</a></figcaption>
+    </figure>
+
+    <p class="mt-32" style="max-width:74ch">Quand l’accès est difficile, la caméra d’inspection tranche la
+    question en quelques minutes : on voit ce qui bloque, et on part avec le bon matériel.</p>
+    <div class="btn-row mt-24">
+      ${callBtn('diagnostic-debouchage', { text: `Appeler le ${SITE.phoneDisplay}` })}
+      ${formBtn('diagnostic-debouchage', { variant: 'outline' })}
     </div>
   </div>
 </section>

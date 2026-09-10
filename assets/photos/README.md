@@ -29,6 +29,15 @@ Recadrés depuis les photos ci-dessus : ce sont vos propres équipements, en gro
 | `equip-outillage.jpg` | Sacoche à outils ouverte | photo « dépannage plomberie » |
 | `equip-camion.jpg` | Flanc du camion marqué Plombier Breizh | photo du hero |
 
+### Infographie
+
+`assets/img/infographie-origine-bouchon.jpg` — « L'origine du bouchon détermine
+l'outil à utiliser », affichée en pleine largeur dans la section **Diagnostic**
+de la page Débouchage. Conservée en 1536 px pour que son texte reste net sur
+grand écran ; un lien « Voir en grand » permet de l'ouvrir seule sur mobile, où
+son texte interne devient trop petit. Le paragraphe qui la précède reprend la
+même information en texte lisible.
+
 Il n'existe pas de photo de caméra d'inspection : cette vignette a été remplacée
 par « Un camion équipé ». Envoyez une photo de la caméra pour la rétablir.
 

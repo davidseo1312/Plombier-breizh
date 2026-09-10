@@ -311,6 +311,15 @@ strong{font-weight:700}
 .split__media::before{content:"";position:absolute;left:0;top:0;width:6px;height:64px;background:var(--cyan);z-index:1}
 @media (max-width:860px){.split{grid-template-columns:1fr}.split--media-first .split__media{order:0}}
 
+/* ---------- Infographie pleine largeur ---------- */
+.figure-wide{margin:0;border:1px solid var(--line);background:var(--white)}
+.figure-wide img{width:100%;height:auto;display:block}
+.figure-wide figcaption{
+  padding:14px 18px;font-size:15px;color:var(--ink-soft);
+  background:var(--tint);border-top:3px solid var(--cyan);
+}
+.figure-wide figcaption a{font-weight:700}
+
 /* ---------- Listes symptômes / solutions ---------- */
 .symptom-list{list-style:none;margin:0;padding:0;border:1px solid var(--line);background:var(--white)}
 .symptom-list li{display:flex;gap:13px;align-items:flex-start;margin:0;padding:14px 18px;border-bottom:1px solid var(--line);font-size:16px}
