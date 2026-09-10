@@ -77,7 +77,7 @@ ${ctaBand({ title: 'Un dégorgement à organiser ?', text: 'Décrivez ce qui se 
     <div class="equip">
       <figure class="equip__item">${servicePhoto('equip-haute-pression', 'Déboucheur haute pression')}<figcaption><h3>Haute pression</h3><p>Décolle les dépôts sur toute la paroi, pas seulement au centre.</p></figcaption></figure>
       <figure class="equip__item">${servicePhoto('equip-furet-electrique', 'Furet électrique professionnel')}<figcaption><h3>Furet électrique</h3><p>Perce les bouchons compacts installés en profondeur.</p></figcaption></figure>
-      <figure class="equip__item">${servicePhoto('equip-camera-inspection', 'Caméra d’inspection')}<figcaption><h3>Caméra d’inspection</h3><p>Contrôle l’intérieur du réseau avant et après l’intervention.</p></figcaption></figure>
+      <figure class="equip__item">${servicePhoto('equip-pompe', 'Camion de pompage Plombier Breizh')}<figcaption><h3>Camion de pompage</h3><p>Vide le regard ou la fosse et évacue ce qui bloque le réseau.</p></figcaption></figure>
     </div>
     <div class="btn-row mt-32">
       ${callBtn('equip-degorgement', { text: `Appeler le ${SITE.phoneDisplay}` })}

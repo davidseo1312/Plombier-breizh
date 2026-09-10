@@ -15,6 +15,22 @@
 | `fuite-eau.jpg` | Siphon de lavabo qui goutte, réparation à la pince | Carte « Fuite d'eau » |
 | `chauffe-eau.jpg` | Intervention sur un chauffe-eau | Visuel principal de la page Plomberie |
 
+### Visuels de matériel (carrés 700 × 700)
+
+Recadrés depuis les photos ci-dessus : ce sont vos propres équipements, en gros plan.
+
+| Fichier | Matériel montré | Recadré depuis |
+|---|---|---|
+| `equip-pompe.jpg` | Citerne du camion de pompage | photo du camion de pompage |
+| `equip-furet-electrique.jpg` | Furet électrique rouge Plombier Breizh | photo « canalisation obstruée » |
+| `equip-haute-pression.jpg` | Groupe hydrocureur et son enrouleur | photo du hero (technicien + camion) |
+| `equip-recherche-fuite.jpg` | Détecteur acoustique et sa sonde | photo « recherche de fuite » |
+| `equip-outillage.jpg` | Sacoche à outils ouverte | photo « dépannage plomberie » |
+| `equip-camion.jpg` | Flanc du camion marqué Plombier Breizh | photo du hero |
+
+Il n'existe pas de photo de caméra d'inspection : cette vignette a été remplacée
+par « Un camion équipé ». Envoyez une photo de la caméra pour la rétablir.
+
 Toutes en 1100 × 733 (3:2), le format des cadres du site : aucun rognage.
 
 Les deux landing pages n'affichent plus que des photos réelles.

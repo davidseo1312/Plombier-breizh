@@ -110,12 +110,12 @@ ${ctaBand({ title: 'Un problème de plomberie en ce moment ?', location: 'cta-ap
       où ça bloque. C’est pour cela que le camion part équipé.</p>
     </div>
     <div class="equip">
+      <figure class="equip__item">${servicePhoto('equip-pompe', 'Camion de pompage Plombier Breizh')}<figcaption><h3>Camion de pompage</h3><p>Pour vider un regard ou une fosse et évacuer ce qui bloque le réseau.</p></figcaption></figure>
       <figure class="equip__item">${servicePhoto('equip-furet-electrique', 'Furet électrique professionnel')}<figcaption><h3>Furet électrique</h3><p>Pour percer les bouchons compacts installés en profondeur dans la conduite.</p></figcaption></figure>
       <figure class="equip__item">${servicePhoto('equip-haute-pression', 'Déboucheur haute pression')}<figcaption><h3>Déboucheur haute pression</h3><p>Pour décoller les dépôts accumulés sur les parois du réseau d’évacuation.</p></figcaption></figure>
-      <figure class="equip__item">${servicePhoto('equip-camera-inspection', 'Caméra d’inspection de canalisation')}<figcaption><h3>Caméra d’inspection</h3><p>Pour voir l’intérieur de la canalisation et localiser l’obstruction sans casser.</p></figcaption></figure>
-      <figure class="equip__item">${servicePhoto('equip-pompe', 'Pompe professionnelle')}<figcaption><h3>Pompe professionnelle</h3><p>Pour évacuer l’eau quand ça déborde ou que ça refoule.</p></figcaption></figure>
       <figure class="equip__item">${servicePhoto('equip-recherche-fuite', 'Matériel de recherche de fuite')}<figcaption><h3>Recherche de fuite</h3><p>Pour localiser une fuite non visible avant d’ouvrir un mur ou une dalle.</p></figcaption></figure>
       <figure class="equip__item">${servicePhoto('equip-outillage', 'Outillage professionnel de plomberie')}<figcaption><h3>Outillage de plomberie</h3><p>Pour réparer sur place, sans repasser le lendemain.</p></figcaption></figure>
+      <figure class="equip__item">${servicePhoto('equip-camion', 'Camion Plombier Breizh équipé pour l’intervention')}<figcaption><h3>Un camion équipé</h3><p>Le matériel adapté part avec le technicien, choisi d’après ce que vous décrivez au téléphone.</p></figcaption></figure>
     </div>
     <div class="btn-row mt-32">
       ${callBtn('equipements', { text: `Appeler le ${SITE.phoneDisplay}` })}

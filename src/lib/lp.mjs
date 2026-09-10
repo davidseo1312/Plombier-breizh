@@ -137,13 +137,10 @@ ${phoneBlock({
       <h2>Des équipements professionnels</h2>
       <p class="lead">${equipIntro}</p>
     </div>
-    <div class="grid grid--3">
-      <div class="tile tile--dark"><h3>Camion de pompage</h3><p>Pour vider un regard ou une fosse et évacuer ce qui bloque le réseau.</p></div>
-      <div class="tile tile--dark"><h3>Furet électrique</h3><p>Pour percer les bouchons compacts installés en profondeur dans la conduite.</p></div>
-      <div class="tile tile--dark"><h3>Déboucheur haute pression</h3><p>Pour décoller les dépôts accumulés sur les parois du réseau d’évacuation.</p></div>
-      <div class="tile tile--dark"><h3>Caméra d’inspection</h3><p>Pour voir l’intérieur de la canalisation et localiser l’obstruction sans casser.</p></div>
-      <div class="tile tile--dark"><h3>Outillage de plomberie</h3><p>Pour réparer sur place : siphon, raccord, robinetterie, évacuation.</p></div>
-      <div class="tile tile--dark"><h3>Un camion équipé</h3><p>Le matériel adapté part avec le technicien, choisi d’après votre appel.</p></div>
+    <div class="equip">
+      <figure class="equip__item">${servicePhoto('equip-furet-electrique', 'Furet électrique professionnel Plombier Breizh')}<figcaption><h3>Furet électrique</h3><p>Pour percer les bouchons compacts installés en profondeur dans la conduite.</p></figcaption></figure>
+      <figure class="equip__item">${servicePhoto('equip-haute-pression', 'Déboucheur haute pression Plombier Breizh')}<figcaption><h3>Déboucheur haute pression</h3><p>Pour décoller les dépôts accumulés sur les parois du réseau d’évacuation.</p></figcaption></figure>
+      <figure class="equip__item">${servicePhoto('equip-outillage', 'Outillage de plomberie Plombier Breizh')}<figcaption><h3>Outillage de plomberie</h3><p>Pour réparer sur place : siphon, raccord, robinetterie, évacuation.</p></figcaption></figure>
     </div>
     <div class="btn-row mt-32">
       ${callBtn(`equip-lp-${num}`, { text: 'Parler à un plombier' })}
