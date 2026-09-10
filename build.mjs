@@ -6,6 +6,8 @@
    directement, modifiez src/.
    ========================================================================== */
 import { readdir, readFile, writeFile } from 'node:fs/promises';
+import { existsSync, readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { page, SITE } from './src/lib/layout.mjs';
@@ -13,13 +15,33 @@ import { page, SITE } from './src/lib/layout.mjs';
 const root = path.dirname(fileURLToPath(import.meta.url));
 const pagesDir = path.join(root, 'src', 'pages');
 
+/* ---- Empreinte de contenu sur les URLs d'assets ----------------------------
+   Les en-têtes d'hébergement mettent /assets/* en cache un an (immutable).
+   Sans empreinte, un visiteur déjà venu garderait l'ancienne feuille de style
+   ou l'ancien logo. Chaque fichier réellement présent reçoit donc `?v=<hash>` :
+   seuls les fichiers modifiés changent d'URL, les autres restent en cache.
+   Les .woff2 sont exclus : ils sont aussi référencés depuis le CSS, où l'URL
+   ne serait pas réécrite — deux URLs pour une même police feraient deux
+   téléchargements. */
+const empreintes = new Map();
+const empreinte = (chemin) => {
+  if (!empreintes.has(chemin)) {
+    empreintes.set(chemin, createHash('sha1').update(readFileSync(chemin)).digest('hex').slice(0, 8));
+  }
+  return empreintes.get(chemin);
+};
+const versionner = (html) => html.replace(
+  /assets\/[A-Za-z0-9_.\/-]+\.(?:css|js|png|jpe?g|webp|svg)(?![?\w])/g,
+  (chemin) => (existsSync(chemin) ? `${chemin}?v=${empreinte(chemin)}` : chemin)
+);
+
 const files = (await readdir(pagesDir)).filter(f => f.endsWith('.mjs')).sort();
 const built = [];
 
 for (const file of files) {
   const mod = (await import(path.join(pagesDir, file))).default;
   if (!mod || !mod.slug) throw new Error(`Page invalide : ${file}`);
-  const html = page(mod);
+  const html = versionner(page(mod));
   await writeFile(path.join(root, `${mod.slug}.html`), html, 'utf8');
   built.push(mod.slug);
   console.log(`✓ ${mod.slug}.html  (${(html.length / 1024).toFixed(1)} Ko)`);

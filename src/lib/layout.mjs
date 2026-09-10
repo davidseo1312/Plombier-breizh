@@ -363,15 +363,13 @@ const carteAvis = (a) => `
 
 export const reviewsSection = (avis = [], dark = false) => `
 <section class="section${dark ? ' section--dark' : ' section--paper'}" id="avis">
-  <div class="container">
+  <div class="container reviews">
+    <img class="reviews__google" src="assets/img/google-reviews.png" alt="Avis Google"
+         width="297" height="120" loading="lazy" decoding="async">
     <div class="section__head section__head--center">
       <span class="eyebrow">Avis</span>
       <h2>Les avis de nos clients</h2>
       <p class="lead">Votre satisfaction est au cœur de nos interventions.</p>
-      <p class="google-badge">
-        <img src="assets/img/google-reviews.png" alt="Avis Google" width="309" height="130" loading="lazy" decoding="async">
-        <span class="google-badge__text">Avis clients<br><strong>Plombier Breizh</strong></span>
-      </p>
     </div>
 
     <div class="carousel" data-carousel>

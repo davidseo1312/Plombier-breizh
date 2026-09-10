@@ -283,10 +283,11 @@ grand écran, où les trois avis s'affichent côte à côte.
 Trois avis par vue au-delà de 1100 px, deux entre 700 et 1099 px, un seul
 en dessous.
 
-**Badge Google** : `assets/img/google-reviews.png`. `LIEN_GOOGLE` dans
-`src/lib/reviews.mjs` permet d'y associer l'URL de la fiche établissement
-Google si vous souhaitez rendre le badge cliquable ; laissé vide, aucun lien
-n'est posé.
+**Logo Google** : `assets/img/google-reviews.png`, PNG à fond transparent, calé
+dans le coin haut droit de la section au-delà de 860 px, centré au-dessus du
+titre en dessous. `LIEN_GOOGLE` dans `src/lib/reviews.mjs` permet d'y associer
+l'URL de la fiche établissement Google si vous souhaitez le rendre cliquable ;
+laissé vide, aucun lien n'est posé.
 
 ## 10. Informations à compléter avant mise en ligne
 
@@ -305,7 +306,24 @@ Ces éléments n'ont pas été inventés et doivent être renseignés :
 - Le cas échéant, un bandeau de consentement cookies si des outils de mesure
   sont activés.
 
-## 11. Performance
+## 11. Mise en cache des assets
+
+Les en-têtes d'hébergement (`netlify.toml`, `vercel.json`) mettent `/assets/*`
+en cache **un an, en `immutable`** : c'est ce qu'il faut pour la vitesse, mais
+sans précaution un visiteur déjà venu garderait indéfiniment l'ancienne feuille
+de style ou l'ancien logo après une mise à jour.
+
+`build.mjs` ajoute donc à chaque URL d'asset une **empreinte de son contenu**
+(`assets/css/site.css?v=1b8fe6cc`). Seuls les fichiers réellement modifiés
+changent d'URL et sont retéléchargés ; les autres restent en cache. Aucune
+action manuelle n'est nécessaire, l'empreinte est recalculée à chaque
+`node build.mjs`.
+
+Les `.woff2` en sont volontairement exclus : ils sont aussi référencés depuis
+le CSS, où l'URL n'est pas réécrite — deux URLs pour une même police
+provoqueraient deux téléchargements.
+
+## 12. Performance
 
 - Aucune librairie JS, **aucun appel réseau externe** (police comprise).
 - Lato auto-hébergée : 3 fichiers woff2 de ~23 Ko, sous-ensemble latin, `font-display:swap`, les deux graisses principales préchargées.
