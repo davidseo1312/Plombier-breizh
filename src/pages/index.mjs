@@ -3,6 +3,7 @@ import {
   phoneBlock, processSection, whySection, reviewsSection, bretagneSection, formSection
 } from '../lib/layout.mjs';
 import { servicesGrid, servicePhoto } from '../lib/services.mjs';
+import { avisDe } from '../lib/reviews.mjs';
 
 export default {
   slug: 'index',
@@ -126,7 +127,7 @@ ${ctaBand({ title: 'Un problème de plomberie en ce moment ?', location: 'cta-ap
 
 ${processSection('process-accueil')}
 ${whySection('pourquoi-accueil')}
-${reviewsSection()}
+${reviewsSection(avisDe('accueil'))}
 ${bretagneSection('bretagne-accueil')}
 ${phoneBlock({ location: 'bloc-telephone-accueil' })}
 ${formSection({ location: 'formulaire-accueil' })}

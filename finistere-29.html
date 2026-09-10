@@ -367,31 +367,50 @@ function PBLogo(img){
       <span class="eyebrow">Avis</span>
       <h2>Les avis de nos clients</h2>
       <p class="lead">Votre satisfaction est au cœur de nos interventions.</p>
+      <p class="google-badge">
+        <img src="assets/img/google-reviews.png" alt="Avis Google" width="309" height="130" loading="lazy" decoding="async">
+        <span class="google-badge__text">Avis clients<br><strong>Plombier Breizh</strong></span>
+      </p>
     </div>
 
-    <!-- =====================================================================
-         EMPLACEMENT DES AVIS CLIENTS RÉELS
-         Aucun avis n'est inventé. Dupliquez le modèle ci-dessous pour chaque
-         avis authentique (Google, fiche établissement, retour client écrit) :
-
-         <article class="review">
-           <div class="review__stars" aria-label="Note : 5 sur 5">★★★★★</div>
-           <p class="review__text">« Texte exact de l'avis client. »</p>
-           <p class="review__author">
-             <span class="review__name">Prénom N.</span>
-             <span class="review__city">Ville (29)</span>
-           </p>
-         </article>
-
-         Placez ces articles dans <div class="grid grid--3"> … </div>
-         puis supprimez le bloc .notice ci-dessous.
-         ===================================================================== -->
-
-    <div class="notice">
-      <p><strong>Nous n’affichons que de vrais avis.</strong> Cette section accueillera les témoignages
-      vérifiés de nos clients au fur et à mesure des interventions — aucun avis n’est inventé.</p>
-      <p class="mb-0">Vous avez fait appel à nous ? Écrivez-nous à
-      <a href="mailto:contact@plombier-breizh.fr">contact@plombier-breizh.fr</a>, votre retour sera publié ici.</p>
+    <div class="carousel" data-carousel>
+      <div class="carousel__track" data-carousel-track tabindex="0" role="region"
+           aria-label="Avis clients, faites défiler horizontalement">
+        
+          <article class="review carousel__slide">
+            <p class="review__stars" aria-label="Note : 5 sur 5">★★★★★<span class="review__stars-off"></span></p>
+            <p class="review__text">« Gros bouchon dans les WC un dimanche matin… J’ai appelé et le technicien a pu intervenir assez rapidement. Travail efficace et surtout il a pris le temps de m’expliquer ce qui avait provoqué le problème. »</p>
+            <p class="review__author">
+              <span class="review__name">Thomas Le Goff</span>
+              <span class="review__city">Quimper (29)</span>
+            </p>
+          </article>
+          <article class="review carousel__slide">
+            <p class="review__stars" aria-label="Note : 5 sur 5">★★★★★<span class="review__stars-off"></span></p>
+            <p class="review__text">« Mon évier était complètement bouché et l’eau ne s’écoulait quasiment plus. Intervention rapide, technicien sympa et travail propre. Le problème a été réglé sans perdre de temps. »</p>
+            <p class="review__author">
+              <span class="review__name">Élodie Martin</span>
+              <span class="review__city">Brest (29)</span>
+            </p>
+          </article>
+          <article class="review carousel__slide">
+            <p class="review__stars" aria-label="Note : 5 sur 5">★★★★★<span class="review__stars-off"></span></p>
+            <p class="review__text">« Canalisation complètement engorgée avec de l’eau qui remontait dans la douche. Le technicien a rapidement trouvé l’origine du bouchon et a effectué le dégorgement. Depuis, plus aucun problème. »</p>
+            <p class="review__author">
+              <span class="review__name">Julien Le Roux</span>
+              <span class="review__city">Concarneau (29)</span>
+            </p>
+          </article>
+      </div>
+      <div class="carousel__controls" data-carousel-controls hidden>
+        <button class="carousel__btn" type="button" data-carousel-prev aria-label="Avis précédents">
+          <span aria-hidden="true">‹</span>
+        </button>
+        <span class="carousel__count"><span data-carousel-current>1</span> / 3</span>
+        <button class="carousel__btn" type="button" data-carousel-next aria-label="Avis suivants">
+          <span aria-hidden="true">›</span>
+        </button>
+      </div>
     </div>
   </div>
 </section>

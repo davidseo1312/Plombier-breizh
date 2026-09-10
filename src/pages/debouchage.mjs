@@ -1,5 +1,6 @@
 import { SITE, callBtn, formBtn, pageHero, urgencyBand, ctaBand, phoneBlock, processSection, whySection, reviewsSection, bretagneSection, formSection, tel } from '../lib/layout.mjs';
 import { servicesGrid, servicePhoto, pick } from '../lib/services.mjs';
+import { avisDe } from '../lib/reviews.mjs';
 
 export default {
   slug: 'debouchage',
@@ -99,7 +100,7 @@ ${ctaBand({ title: 'Une évacuation bloquée n’attend pas', text: 'Un appel, e
 
 ${processSection('process-debouchage')}
 ${whySection('pourquoi-debouchage')}
-${reviewsSection()}
+${reviewsSection(avisDe('accueil'))}
 ${bretagneSection('bretagne-debouchage')}
 ${phoneBlock({ location: 'bloc-telephone-debouchage' })}
 ${formSection({ intro: 'Indiquez le point d’eau concerné : nous vous rappelons pour organiser le débouchage.', location: 'formulaire-debouchage' })}

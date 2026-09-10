@@ -1,5 +1,6 @@
 import { SITE, callBtn, formBtn, pageHero, urgencyBand, ctaBand, phoneBlock, processSection, whySection, reviewsSection, bretagneSection, formSection } from '../lib/layout.mjs';
 import { servicesGrid, servicePhoto, pick } from '../lib/services.mjs';
+import { avisDe } from '../lib/reviews.mjs';
 
 export default {
   slug: 'plomberie',
@@ -83,7 +84,7 @@ ${ctaBand({ title: 'Décrivez votre panne à un plombier', location: 'cta-plombe
 
 ${processSection('process-plomberie')}
 ${whySection('pourquoi-plomberie')}
-${reviewsSection()}
+${reviewsSection(avisDe('accueil'))}
 ${bretagneSection('bretagne-plomberie')}
 ${phoneBlock({ location: 'bloc-telephone-plomberie' })}
 ${formSection({ intro: 'Décrivez votre panne de plomberie : nous vous rappelons pour organiser l’intervention.', location: 'formulaire-plomberie' })}

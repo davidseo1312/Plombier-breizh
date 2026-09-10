@@ -1,5 +1,6 @@
 import { SITE, callBtn, formBtn, pageHero, urgencyBand, ctaBand, phoneBlock, processSection, whySection, reviewsSection, bretagneSection, formSection, tel } from '../lib/layout.mjs';
 import { servicePhoto } from '../lib/services.mjs';
+import { avisDe } from '../lib/reviews.mjs';
 
 export default {
   slug: 'urgence-plomberie',
@@ -73,7 +74,7 @@ ${phoneBlock({ title: 'Une urgence en cours ?', text: 'N’attendez pas que la s
 ${ctaBand({ title: 'Parler à un plombier maintenant', location: 'cta-urgence' })}
 ${processSection('process-urgence')}
 ${whySection('pourquoi-urgence')}
-${reviewsSection()}
+${reviewsSection(avisDe('accueil'))}
 ${bretagneSection('bretagne-urgence')}
 ${formSection({ intro: 'Urgence en cours ? L’appel est plus rapide. Sinon, laissez vos coordonnées, nous vous rappelons.', location: 'formulaire-urgence' })}
 `

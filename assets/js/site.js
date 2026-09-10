@@ -86,7 +86,93 @@
   }
 
   /* --------------------------------------------------------------------
-     3. FORMULAIRE « Demander une intervention »
+     3. CARROUSEL D'AVIS — défilement de droite à gauche
+     Défilement natif (donc glissement tactile et clavier gratuits) piloté
+     par les flèches et une avance automatique. L'avance se met en pause au
+     survol et au focus, et ne démarre pas si le visiteur a demandé à
+     réduire les animations.
+     -------------------------------------------------------------------- */
+  var reduitLesAnimations = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-carousel]'), function (carousel) {
+    var track = carousel.querySelector('[data-carousel-track]');
+    var controls = carousel.querySelector('[data-carousel-controls]');
+    if (!track || !controls) return;
+
+    var prev = controls.querySelector('[data-carousel-prev]');
+    var next = controls.querySelector('[data-carousel-next]');
+    var compteur = controls.querySelector('[data-carousel-current]');
+    var slides = track.querySelectorAll('.carousel__slide');
+    var timer = null;
+
+    function pas() {
+      if (slides.length < 2) return track.clientWidth;
+      return slides[1].offsetLeft - slides[0].offsetLeft;
+    }
+    /* Tolérance : quelques pixels d'arrondi ne sont pas un débordement. */
+    function debordement() { return track.scrollWidth - track.clientWidth > 16; }
+
+    function majEtat() {
+      if (!debordement()) { controls.hidden = true; return; }
+      controls.hidden = false;
+      var index = Math.round(track.scrollLeft / pas());
+      if (compteur) compteur.textContent = Math.min(index + 1, slides.length);
+      var fin = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      if (prev) prev.disabled = track.scrollLeft <= 2;
+      if (next) next.disabled = fin;
+    }
+
+    function avancer(sens) {
+      var fin = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      if (sens > 0 && fin) { track.scrollTo({ left: 0, behavior: 'smooth' }); return; }
+      track.scrollBy({ left: sens * pas(), behavior: 'smooth' });
+    }
+
+    if (prev) prev.addEventListener('click', function () { arreter(); avancer(-1); });
+    if (next) next.addEventListener('click', function () { arreter(); avancer(1); });
+
+    function demarrer() {
+      if (reduitLesAnimations || timer || !debordement()) return;
+      timer = window.setInterval(function () { avancer(1); }, 6000);
+    }
+    function arreter() { if (timer) { window.clearInterval(timer); timer = null; } }
+
+    carousel.addEventListener('mouseenter', arreter);
+    carousel.addEventListener('mouseleave', demarrer);
+    carousel.addEventListener('focusin', arreter);
+    carousel.addEventListener('focusout', demarrer);
+
+    /* Dès que le visiteur prend la main (doigt, souris, clavier), l'avance
+       automatique s'arrête définitivement : il n'y a pas de survol sur mobile,
+       et rien n'est plus agaçant qu'un avis qui défile pendant qu'on le lit. */
+    function rendreLaMain() {
+      arreter();
+      carousel.removeEventListener('mouseleave', demarrer);
+      carousel.removeEventListener('focusout', demarrer);
+    }
+    track.addEventListener('pointerdown', rendreLaMain, { passive: true });
+    track.addEventListener('touchstart', rendreLaMain, { passive: true });
+    track.addEventListener('keydown', rendreLaMain);
+    if (prev) prev.addEventListener('click', rendreLaMain);
+    if (next) next.addEventListener('click', rendreLaMain);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { arreter(); } else { demarrer(); }
+    });
+
+    var attente = null;
+    track.addEventListener('scroll', function () {
+      window.clearTimeout(attente);
+      attente = window.setTimeout(majEtat, 90);
+    }, { passive: true });
+    window.addEventListener('resize', majEtat);
+
+    majEtat();
+    demarrer();
+  });
+
+  /* --------------------------------------------------------------------
+     4. FORMULAIRE « Demander une intervention »
      -------------------------------------------------------------------- */
   var form = document.getElementById('intervention-form');
   if (!form) return;

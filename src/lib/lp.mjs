@@ -9,6 +9,7 @@ import {
   whySection, reviewsSection, formSection, tel
 } from './layout.mjs';
 import { servicesGrid, servicePhoto, pick } from './services.mjs';
+import { avisDe } from './reviews.mjs';
 
 /* Les six interventions illustrées par une photo réelle. Le dégorgement est
    présenté plus haut, en grand, avec la photo du camion de pompage. */
@@ -151,7 +152,7 @@ ${phoneBlock({
 
 ${whySection(`pourquoi-lp-${num}`, whyIntro)}
 
-${reviewsSection()}
+${reviewsSection(avisDe(`lp${num}`))}
 
 ${formSection({
     title: `Demander une intervention dans ${article} ${dept}`,

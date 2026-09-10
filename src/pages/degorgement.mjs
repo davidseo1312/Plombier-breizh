@@ -1,5 +1,6 @@
 import { SITE, callBtn, formBtn, pageHero, urgencyBand, ctaBand, phoneBlock, processSection, whySection, reviewsSection, bretagneSection, formSection } from '../lib/layout.mjs';
 import { servicePhoto } from '../lib/services.mjs';
+import { avisDe } from '../lib/reviews.mjs';
 
 export default {
   slug: 'degorgement',
@@ -88,7 +89,7 @@ ${ctaBand({ title: 'Un dégorgement à organiser ?', text: 'Décrivez ce qui se 
 
 ${processSection('process-degorgement')}
 ${whySection('pourquoi-degorgement')}
-${reviewsSection()}
+${reviewsSection(avisDe('accueil'))}
 ${bretagneSection('bretagne-degorgement')}
 ${phoneBlock({ location: 'bloc-telephone-degorgement' })}
 ${formSection({ intro: 'Précisez les évacuations concernées : nous vous rappelons pour organiser le dégorgement.', location: 'formulaire-degorgement' })}

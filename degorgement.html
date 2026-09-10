@@ -315,31 +315,58 @@ function PBLogo(img){
       <span class="eyebrow">Avis</span>
       <h2>Les avis de nos clients</h2>
       <p class="lead">Votre satisfaction est au cœur de nos interventions.</p>
+      <p class="google-badge">
+        <img src="assets/img/google-reviews.png" alt="Avis Google" width="309" height="130" loading="lazy" decoding="async">
+        <span class="google-badge__text">Avis clients<br><strong>Plombier Breizh</strong></span>
+      </p>
     </div>
 
-    <!-- =====================================================================
-         EMPLACEMENT DES AVIS CLIENTS RÉELS
-         Aucun avis n'est inventé. Dupliquez le modèle ci-dessous pour chaque
-         avis authentique (Google, fiche établissement, retour client écrit) :
-
-         <article class="review">
-           <div class="review__stars" aria-label="Note : 5 sur 5">★★★★★</div>
-           <p class="review__text">« Texte exact de l'avis client. »</p>
-           <p class="review__author">
-             <span class="review__name">Prénom N.</span>
-             <span class="review__city">Ville (29)</span>
-           </p>
-         </article>
-
-         Placez ces articles dans <div class="grid grid--3"> … </div>
-         puis supprimez le bloc .notice ci-dessous.
-         ===================================================================== -->
-
-    <div class="notice">
-      <p><strong>Nous n’affichons que de vrais avis.</strong> Cette section accueillera les témoignages
-      vérifiés de nos clients au fur et à mesure des interventions — aucun avis n’est inventé.</p>
-      <p class="mb-0">Vous avez fait appel à nous ? Écrivez-nous à
-      <a href="mailto:contact@plombier-breizh.fr">contact@plombier-breizh.fr</a>, votre retour sera publié ici.</p>
+    <div class="carousel" data-carousel>
+      <div class="carousel__track" data-carousel-track tabindex="0" role="region"
+           aria-label="Avis clients, faites défiler horizontalement">
+        
+          <article class="review carousel__slide">
+            <p class="review__stars" aria-label="Note : 4 sur 5">★★★★<span class="review__stars-off">☆</span></p>
+            <p class="review__text">« Petite fuite sous l’évier qui devenait de plus en plus importante. Intervention dans la journée et réparation directement sur place. Bon contact et travail sérieux. »</p>
+            <p class="review__author">
+              <span class="review__name">Nicolas Le Gall</span>
+              <span class="review__city">Morlaix (29)</span>
+            </p>
+          </article>
+          <article class="review carousel__slide">
+            <p class="review__stars" aria-label="Note : 5 sur 5">★★★★★<span class="review__stars-off"></span></p>
+            <p class="review__text">« Nous avions régulièrement des problèmes d’évacuation dans la cuisine. Cette fois-ci, le technicien a vraiment cherché d’où venait le problème au lieu de simplement déboucher. Très professionnel. »</p>
+            <p class="review__author">
+              <span class="review__name">Camille Kerbrat</span>
+              <span class="review__city">Douarnenez (29)</span>
+            </p>
+          </article>
+          <article class="review carousel__slide">
+            <p class="review__stars" aria-label="Note : 4 sur 5">★★★★<span class="review__stars-off">☆</span></p>
+            <p class="review__text">« Canalisation complètement bloquée avec de l’eau qui remontait. Prise en charge assez rapide malgré l’urgence. Le technicien était sérieux et nous a expliqué les différentes étapes du dégorgement. »</p>
+            <p class="review__author">
+              <span class="review__name">Pierre Le Guen</span>
+              <span class="review__city">Pontivy (56)</span>
+            </p>
+          </article>
+          <article class="review carousel__slide">
+            <p class="review__stars" aria-label="Note : 5 sur 5">★★★★★<span class="review__stars-off"></span></p>
+            <p class="review__text">« Fuite d’eau assez urgente à la maison. Très bon échange au téléphone et intervention rapide. Le problème a été identifié et réparé proprement. Service sérieux. »</p>
+            <p class="review__author">
+              <span class="review__name">Sophie Le Gall</span>
+              <span class="review__city">Hennebont (56)</span>
+            </p>
+          </article>
+      </div>
+      <div class="carousel__controls" data-carousel-controls hidden>
+        <button class="carousel__btn" type="button" data-carousel-prev aria-label="Avis précédents">
+          <span aria-hidden="true">‹</span>
+        </button>
+        <span class="carousel__count"><span data-carousel-current>1</span> / 4</span>
+        <button class="carousel__btn" type="button" data-carousel-next aria-label="Avis suivants">
+          <span aria-hidden="true">›</span>
+        </button>
+      </div>
     </div>
   </div>
 </section>

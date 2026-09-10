@@ -342,40 +342,52 @@ export const whySection = (location = 'pourquoi', intro = 'Ce sur quoi vous pouv
   </div>
 </section>`;
 
-/* Avis clients — structure prête à recevoir de VRAIS avis.
-   Aucun faux témoignage n'est publié : voir README.md. */
-export const reviewsSection = (dark = false) => `
+/* Avis clients — carrousel coulissant de droite à gauche.
+   Les avis proviennent de src/lib/reviews.mjs : ce sont de vrais avis fournis
+   par l'entreprise, aucun n'est inventé. */
+const etoiles = (note) => {
+  const pleines = '★'.repeat(note);
+  const vides = '☆'.repeat(5 - note);
+  return `<p class="review__stars" aria-label="Note : ${note} sur 5">${pleines}<span class="review__stars-off">${vides}</span></p>`;
+};
+
+const carteAvis = (a) => `
+          <article class="review carousel__slide">
+            ${etoiles(a.note)}
+            <p class="review__text">« ${a.texte} »</p>
+            <p class="review__author">
+              <span class="review__name">${a.nom}</span>
+              <span class="review__city">${a.ville} (${a.dept})</span>
+            </p>
+          </article>`;
+
+export const reviewsSection = (avis = [], dark = false) => `
 <section class="section${dark ? ' section--dark' : ' section--paper'}" id="avis">
   <div class="container">
     <div class="section__head section__head--center">
       <span class="eyebrow">Avis</span>
       <h2>Les avis de nos clients</h2>
       <p class="lead">Votre satisfaction est au cœur de nos interventions.</p>
+      <p class="google-badge">
+        <img src="assets/img/google-reviews.png" alt="Avis Google" width="309" height="130" loading="lazy" decoding="async">
+        <span class="google-badge__text">Avis clients<br><strong>Plombier Breizh</strong></span>
+      </p>
     </div>
 
-    <!-- =====================================================================
-         EMPLACEMENT DES AVIS CLIENTS RÉELS
-         Aucun avis n'est inventé. Dupliquez le modèle ci-dessous pour chaque
-         avis authentique (Google, fiche établissement, retour client écrit) :
-
-         <article class="review">
-           <div class="review__stars" aria-label="Note : 5 sur 5">★★★★★</div>
-           <p class="review__text">« Texte exact de l'avis client. »</p>
-           <p class="review__author">
-             <span class="review__name">Prénom N.</span>
-             <span class="review__city">Ville (29)</span>
-           </p>
-         </article>
-
-         Placez ces articles dans <div class="grid grid--3"> … </div>
-         puis supprimez le bloc .notice ci-dessous.
-         ===================================================================== -->
-
-    <div class="notice">
-      <p><strong>Nous n’affichons que de vrais avis.</strong> Cette section accueillera les témoignages
-      vérifiés de nos clients au fur et à mesure des interventions — aucun avis n’est inventé.</p>
-      <p class="mb-0">Vous avez fait appel à nous ? Écrivez-nous à
-      <a href="mailto:${SITE.email}">${SITE.email}</a>, votre retour sera publié ici.</p>
+    <div class="carousel" data-carousel>
+      <div class="carousel__track" data-carousel-track tabindex="0" role="region"
+           aria-label="Avis clients, faites défiler horizontalement">
+        ${avis.map(carteAvis).join('')}
+      </div>
+      <div class="carousel__controls" data-carousel-controls hidden>
+        <button class="carousel__btn" type="button" data-carousel-prev aria-label="Avis précédents">
+          <span aria-hidden="true">‹</span>
+        </button>
+        <span class="carousel__count"><span data-carousel-current>1</span> / ${avis.length}</span>
+        <button class="carousel__btn" type="button" data-carousel-next aria-label="Avis suivants">
+          <span aria-hidden="true">›</span>
+        </button>
+      </div>
     </div>
   </div>
 </section>`;

@@ -256,10 +256,37 @@ Dans Google Ads : créez une action de conversion **« Appels depuis le site web
 
 ## 9. Avis clients
 
-**Aucun faux avis n'est publié.** La section « Nos clients témoignent » contient
-un modèle HTML commenté (`src/lib/layout.mjs`, fonction `reviewsSection`) prêt à
-recevoir de vrais témoignages. Dupliquez le bloc `<article class="review">` pour
-chaque avis authentique, puis supprimez le bloc `.notice`.
+Les avis publiés sont **réels**, fournis par l'entreprise. Ils sont centralisés
+dans `src/lib/reviews.mjs` : un tableau d'objets `{ note, nom, ville, dept,
+page, texte }`. Pour en ajouter un, complétez la liste et relancez
+`node build.mjs` — il apparaît automatiquement dans le carrousel de la page
+indiquée par son champ `page`.
+
+**Répartition** (champ `page`) :
+
+| Valeur | Pages concernées | Avis |
+|---|---|---|
+| `lp29` | `/finistere-29` | 3 avis du Finistère |
+| `lp56` | `/morbihan-56` | 3 avis du Morbihan |
+| `accueil` | `/`, plus Plomberie, Débouchage, Dégorgement et Urgence | les 4 restants (29 et 56 mêlés) |
+
+**Carrousel** : défilement horizontal natif (glissement tactile et navigation
+clavier gratuits) piloté par deux flèches rectangulaires et une avance
+automatique toutes les 6 secondes, de droite à gauche, qui reboucle au début.
+Elle se met en pause au survol et au focus, et **s'arrête définitivement dès que
+le visiteur prend la main** — il n'y a pas de survol sur mobile, et un avis qui
+défile pendant la lecture est vite agaçant. Rien ne bouge si le système demande
+de réduire les animations (`prefers-reduced-motion`). Les flèches disparaissent
+quand tous les avis tiennent à l'écran : c'est le cas des landing pages sur
+grand écran, où les trois avis s'affichent côte à côte.
+
+Trois avis par vue au-delà de 1100 px, deux entre 700 et 1099 px, un seul
+en dessous.
+
+**Badge Google** : `assets/img/google-reviews.png`. `LIEN_GOOGLE` dans
+`src/lib/reviews.mjs` permet d'y associer l'URL de la fiche établissement
+Google si vous souhaitez rendre le badge cliquable ; laissé vide, aucun lien
+n'est posé.
 
 ## 10. Informations à compléter avant mise en ligne
 
