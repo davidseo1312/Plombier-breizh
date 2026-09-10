@@ -75,7 +75,7 @@ ${ctaBand({ title: 'Décrivez votre panne à un plombier', location: 'cta-plombe
         </ul>
       </div>
       <div class="split__media">
-        ${servicePhoto('recherche-fuite', 'Recherche de fuite avec caméra d’inspection')}
+        ${servicePhoto('recherche-fuite', 'Recherche de fuite sur une canalisation enterrée à l’aide d’un détecteur acoustique')}
       </div>
     </div>
   </div>

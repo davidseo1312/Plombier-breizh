@@ -10,19 +10,18 @@ import {
 } from './layout.mjs';
 import { servicesGrid, servicePhoto, pick } from './services.mjs';
 
-/* Les quatre interventions illustrées par une photo réelle. Le dégorgement est
+/* Les six interventions illustrées par une photo réelle. Le dégorgement est
    présenté plus haut, en grand, avec la photo du camion de pompage. */
-const LP_SERVICES = pick('WC bouché', 'Évier bouché', 'Douche bouchée', 'Dépannage plomberie');
+const LP_SERVICES = pick('Débouchage', 'WC bouché', 'Évier bouché',
+  'Douche bouchée', 'Recherche de fuite', 'Dépannage plomberie');
 
 /* Les autres interventions de la page, listées sans visuel : aucune photo
    d'illustration disponible, et une landing page n'a rien à gagner à afficher
    des images de substitution à côté de vraies photos de chantier. */
 const LP_AUTRES = [
   ['Dégorgement de réseau', 'Plusieurs évacuations bloquées en même temps.'],
-  ['Débouchage de canalisation', 'Conduite intérieure ou enterrée obstruée.'],
-  ['Canalisation obstruée', 'Bouchon profond, dépôts ou racines.'],
+  ['Canalisation obstruée', 'Bouchon profond, dépôts ou racines sur une conduite enterrée.'],
   ['Fuite d’eau', 'Raccord, joint ou évacuation percée.'],
-  ['Recherche de fuite', 'Fuite non visible, humidité, surconsommation.'],
   ['Urgence plomberie', 'Débordement, refoulement, fuite qui ne s’arrête pas.']
 ];
 
@@ -109,11 +108,11 @@ ${urgencyBand(`bandeau-lp-${num}`)}
       <h2>Nos interventions dans ${article} ${dept}</h2>
       <p class="lead">${servicesIntro}</p>
     </div>
-    ${servicesGrid(LP_SERVICES, `services-lp-${num}`).replace('grid grid--3', 'grid grid--2')}
+    ${servicesGrid(LP_SERVICES, `services-lp-${num}`)}
 
     <div class="tile mt-32">
       <h3>Également pris en charge dans ${article} ${dept}</h3>
-      <div class="grid grid--3" style="gap:14px 26px;margin-top:16px">
+      <div class="grid grid--2" style="gap:14px 26px;margin-top:16px">
         ${LP_AUTRES.map(([t, d]) => `<div><strong>${t}</strong><br><span style="color:var(--ink-soft);font-size:15.5px">${d}</span></div>`).join('\n        ')}
       </div>
     </div>

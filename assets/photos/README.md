@@ -9,8 +9,12 @@
 | `debouchage-douche.jpg` | Furet électrique dans un siphon de douche | Carte « Douche bouchée » |
 | `debouchage-evier.jpg` | Démontage du siphon sous l'évier | Carte « Évier bouché » |
 | `depannage-plomberie.jpg` | Raccordement d'un broyeur sanitaire | Carte « Dépannage plomberie » |
+| `debouchage-canalisation.jpg` | Furet électrique sur l'évacuation d'un lavabo | Carte « Débouchage » |
+| `recherche-fuite.jpg` | Détection acoustique sur une canalisation enterrée | Carte « Recherche de fuite » + page Plomberie |
 
 Toutes en 1100 × 733 (3:2), le format des cadres du site : aucun rognage.
+
+Les deux landing pages n'affichent plus que des photos réelles.
 
 ## Photos restant à fournir
 
