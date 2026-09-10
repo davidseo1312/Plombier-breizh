@@ -12,7 +12,8 @@ ${pageHero({
     sub: 'Fuite active, refoulement, canalisation totalement bouchée : appelez Plombier Breizh, nous organisons une intervention au plus vite.',
     img: 'urgence-plomberie',
     alt: 'Intervention de plomberie en urgence',
-    location: 'hero-urgence'
+    location: 'hero-urgence',
+    photo: true
   })}
 
 ${urgencyBand('bandeau-urgence-page')}

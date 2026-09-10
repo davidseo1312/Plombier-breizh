@@ -37,7 +37,8 @@ assets/
   js/site.js                      ← navigation, tracking, formulaire
   img/*.svg                       ← emplacements photo (à remplacer, voir §5)
   logo-plombier-breizh.svg        ← logo (voir §4)
-tools/generate-placeholders.mjs   ← génération des visuels
+tools/generate-placeholders.mjs   ← génération des visuels de substitution
+tools/generate-logo.mjs           ← génération des deux déclinaisons du logo
 netlify.toml / vercel.json        ← URLs propres + cache + en-têtes
 robots.txt / sitemap.xml
 ```
@@ -78,15 +79,50 @@ URLs propres (`/debouchage`).
 
 ## 4. Logo
 
-Le header et le footer chargent **`assets/logo-plombier-breizh.png`** en priorité.
-Tant que ce fichier n'existe pas, un repli automatique affiche
-`assets/logo-plombier-breizh.svg`.
+Le logo officiel est décliné en deux formats, utilisés à des endroits différents :
 
-➡ **Pour installer le logo officiel : déposez simplement le fichier
-`assets/logo-plombier-breizh.png`.** Aucune modification de code n'est nécessaire.
-Format conseillé : PNG à fond transparent, hauteur ≥ 120 px.
+| Fichier chargé en priorité | Repli automatique | Emplacement |
+|---|---|---|
+| `assets/logo-plombier-breizh.png` | `…-breizh.svg` | **Header** (verrouillage horizontal, compact) |
+| `assets/logo-plombier-breizh-vertical.png` | `…-vertical.svg` | **Footer** (version complète avec la baseline) |
+
+➡ **Pour installer les fichiers officiels : déposez simplement les deux `.png`
+aux noms ci-dessus.** Aucune modification de code n'est nécessaire — le site les
+charge en priorité et ne bascule sur le SVG que s'ils sont absents.
+
+```bash
+# depuis la racine du projet
+cp /chemin/vers/logo-horizontal.png  assets/logo-plombier-breizh.png
+cp /chemin/vers/logo-complet.png     assets/logo-plombier-breizh-vertical.png
+git add assets && git commit -m "Ajout des fichiers logo officiels" && git push
+```
+
+Format conseillé : PNG à fond transparent, hauteur ≥ 200 px (header) et ≥ 400 px
+(footer). Si vous ne disposez que de la version verticale complète, copiez-la
+sous les deux noms : le header restera lisible mais plus haut.
+
+Les fichiers SVG présents sont une **reconstitution vectorielle de travail** du
+logo (goutte d'eau, carte de Bretagne au gwenn-ha-du, « Plombier Breizh »
+bicolore, baseline « Dépannage • Installation • Rénovation »), régénérable par
+`node tools/generate-logo.mjs`. Le lettrage « Breizh » y est approché par un
+italique gras : la version PNG officielle reste la référence.
 
 ## 5. Images
+
+### Photo principale (technicien + camion)
+
+Le visuel du hero est câblé sur un chemin fixe, avec repli automatique :
+
+```
+assets/img/hero-plombier-breizh-camion.jpg
+```
+
+➡ **Déposez ce fichier et la photo s'affiche immédiatement** sur l'accueil, la
+page Urgence et les deux landing pages SEA. Tant qu'il est absent, le visuel de
+substitution s'affiche à la place (jamais d'image cassée). Format conseillé :
+JPG/WebP, largeur ≥ 1600 px, ratio paysage (le cadrage est géré en CSS).
+
+### Autres visuels
 
 Les fichiers de `assets/img/` sont des **emplacements photo** aux bons ratios
 (4:3 pour les visuels de section, 1:1 pour les équipements). Remplacez-les par de
@@ -95,7 +131,7 @@ vraies photos d'intervention en gardant **le même nom de base et le même ratio
 
 | Fichier | Photo attendue |
 |---|---|
-| `hero-plombier-intervention` | Plombier professionnel en intervention |
+| `hero-plombier-intervention` | Repli du hero si la photo du camion est absente |
 | `depannage-plomberie` | Dépannage (robinetterie, alimentation) |
 | `debouchage-canalisation` | Débouchage de canalisation |
 | `degorgement` | Dégorgement de réseau d'évacuation |
@@ -172,7 +208,9 @@ Ces éléments n'ont pas été inventés et doivent être renseignés :
   traitement.
 - `SITE.baseUrl` dans `src/lib/layout.mjs` (utilisé par les balises canoniques,
   Open Graph et le sitemap) : remplacer par le domaine réel si différent.
-- Le logo officiel (§4) et les photos d'intervention (§5).
+- Les deux fichiers logo officiels en PNG (§4).
+- La photo du technicien + camion `assets/img/hero-plombier-breizh-camion.jpg` (§5)
+  et les photos d'intervention.
 - Le cas échéant, un bandeau de consentement cookies si des outils de mesure
   sont activés.
 

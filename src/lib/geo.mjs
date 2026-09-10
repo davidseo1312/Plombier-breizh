@@ -18,7 +18,8 @@ ${pageHero({
     sub: `Canalisation bouchée, dégorgement, fuite ou panne de plomberie dans le ${dept} ? Contactez Plombier Breizh pour une intervention rapide.`,
     img,
     alt: `Plombier Breizh en intervention dans le ${dept}`,
-    location: `hero-lp-${num}`
+    location: `hero-lp-${num}`,
+    photo: true
   })}
 
 ${urgencyBand(`bandeau-lp-${num}`)}

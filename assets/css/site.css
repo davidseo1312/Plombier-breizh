@@ -23,7 +23,7 @@
   --surface-2:#EBF1F5;
 
   /* Structure */
-  --maxw:1220px;
+  --maxw:1280px;
   --gutter:20px;
   --radius:0px;        /* angles droits partout */
   --radius-soft:2px;   /* champs de formulaire uniquement */
@@ -132,7 +132,7 @@ strong{font-weight:700}
 .site-header .container{display:flex;align-items:center;gap:14px;min-height:var(--header-h);flex-wrap:nowrap}
 .brand{display:flex;align-items:center;gap:12px;flex:0 0 auto;text-decoration:none}
 .brand:hover{text-decoration:none}
-.brand__logo{height:42px;width:auto;display:block}
+.brand__logo{height:56px;width:auto;display:block}
 .brand__text{display:none}
 
 .main-nav{margin-left:auto;min-width:0}
@@ -164,9 +164,9 @@ strong{font-weight:700}
 
 .header-call{display:none}
 
-@media (max-width:1240px){
+@media (max-width:1320px){
   :root{--header-h:66px}
-  .brand__logo{height:42px}
+  .brand__logo{height:44px}
   .main-nav{
     position:absolute;left:0;right:0;top:100%;background:var(--white);
     border-bottom:1px solid var(--line);box-shadow:0 12px 24px rgba(17,17,17,.08);
@@ -362,7 +362,7 @@ strong{font-weight:700}
 .footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:32px}
 @media (max-width:960px){.footer__grid{grid-template-columns:1fr 1fr}}
 @media (max-width:620px){.footer__grid{grid-template-columns:1fr;gap:26px}}
-.footer__logo{height:54px;width:auto;margin-bottom:16px;background:var(--white);padding:8px 12px}
+.footer__logo{height:112px;width:auto;margin-bottom:16px;background:var(--white);padding:10px 14px}
 .footer__tagline{color:var(--blue-light);font-weight:700;margin:0 0 6px}
 .footer__list{list-style:none;margin:0;padding:0}
 .footer__list li{margin:0 0 9px}

@@ -1,4 +1,4 @@
-import { SITE, callBtn, formBtn, checklist, urgencyBand, ctaBand, processSection, reviewsSection, zonesSection, formSection, tel } from '../lib/layout.mjs';
+import { SITE, callBtn, formBtn, checklist, heroPhoto, urgencyBand, ctaBand, processSection, reviewsSection, zonesSection, formSection, tel } from '../lib/layout.mjs';
 import { servicesGrid } from '../lib/services.mjs';
 
 export default {
@@ -23,8 +23,7 @@ export default {
         ${checklist(undefined, true)}
       </div>
       <div class="hero__media">
-        <img src="assets/img/hero-plombier-intervention.svg" alt="Plombier Breizh en intervention de plomberie"
-             width="960" height="720" fetchpriority="high" decoding="async">
+        ${heroPhoto()}
         <span class="hero__badge">Finistère 29 · Morbihan 56</span>
       </div>
     </div>

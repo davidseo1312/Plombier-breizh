@@ -41,6 +41,19 @@ export const callBtn = (location, { variant = 'primary', size = 'lg', text = `Ap
 export const formBtn = (location, { variant = 'accent', size = 'lg', text = 'Demander une intervention', block = false, href = '#demande-intervention' } = {}) =>
   `<a class="btn btn--${variant}${size ? ` btn--${size}` : ''}${block ? ' btn--block' : ''}" href="${href}" data-location="${location}" data-cta="demande-intervention">${text}</a>`;
 
+
+/* -------------------------------------------------------------------------
+   PHOTO PRINCIPALE — technicien + camion Plombier Breizh
+   Déposez le fichier `assets/img/hero-plombier-breizh-camion.jpg` pour
+   l'activer. Tant qu'il n'existe pas, le visuel de substitution indiqué en
+   second paramètre s'affiche automatiquement (aucune image cassée).
+   ------------------------------------------------------------------------- */
+export const heroPhoto = (fallback = 'hero-plombier-intervention',
+  alt = 'Technicien Plombier Breizh devant son camion d’intervention équipé') =>
+  `<img src="assets/img/hero-plombier-breizh-camion.jpg" alt="${alt}"
+             width="960" height="720" fetchpriority="high" decoding="async"
+             onerror="this.onerror=null;this.src='assets/img/${fallback}.svg';">`;
+
 export const REASSURANCE = [
   'Intervention rapide',
   'Techniciens expérimentés',
@@ -131,7 +144,7 @@ export const header = (current) => `
 <header class="site-header">
   <div class="container">
     <a class="brand" href="index.html" aria-label="${SITE.name} — accueil">
-      <img class="brand__logo" src="assets/logo-plombier-breizh.png" alt="${SITE.name}" width="200" height="52"
+      <img class="brand__logo" src="assets/logo-plombier-breizh.png" alt="${SITE.name}" width="152" height="46"
            onerror="this.onerror=null;this.src='assets/logo-plombier-breizh.svg';">
     </a>
 
@@ -387,8 +400,9 @@ export const footer = () => `
   <div class="container">
     <div class="footer__grid">
       <div>
-        <img class="footer__logo" src="assets/logo-plombier-breizh.png" alt="${SITE.name}" width="200" height="54" loading="lazy"
-             onerror="this.onerror=null;this.src='assets/logo-plombier-breizh.svg';">
+        <img class="footer__logo" src="assets/logo-plombier-breizh-vertical.png" alt="${SITE.name} — Dépannage, Installation, Rénovation"
+             width="114" height="92" loading="lazy"
+             onerror="this.onerror=null;this.src='assets/logo-plombier-breizh-vertical.svg';">
         <p class="footer__tagline">Plomberie • Débouchage • Dégorgement • Urgence</p>
         <p>Finistère 29 • Morbihan 56</p>
       </div>
@@ -453,7 +467,7 @@ ${body}
 ${footer()}`;
 
 /* Hero compact pour les pages internes / landing pages SEA. */
-export const pageHero = ({ tag, h1, sub, img, alt, location }) => `
+export const pageHero = ({ tag, h1, sub, img, alt, location, photo = false }) => `
 <section class="hero">
   <div class="container">
     <div class="hero__grid">
@@ -468,7 +482,7 @@ export const pageHero = ({ tag, h1, sub, img, alt, location }) => `
         ${checklist(undefined, true)}
       </div>
       <div class="hero__media">
-        <img src="assets/img/${img}.svg" alt="${alt}" width="960" height="720" fetchpriority="high" decoding="async">
+        ${photo ? heroPhoto(img, alt) : `<img src="assets/img/${img}.svg" alt="${alt}" width="960" height="720" fetchpriority="high" decoding="async">`}
         <span class="hero__badge">Finistère 29 · Morbihan 56</span>
       </div>
     </div>

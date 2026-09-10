@@ -1,19 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 530 160" role="img" aria-label="Plombier Breizh">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 380" role="img" aria-label="Plombier Breizh — Dépannage, Installation, Rénovation">
   <title>Plombier Breizh</title>
 
-    <g transform="translate(6 16) scale(1.02)">
-      <clipPath id="dropClipH"><path d="M50 4C50 4 6 58 6 90a44 44 0 0 0 88 0C94 58 50 4 50 4Z"/></clipPath>
+    <g transform="translate(82 8) scale(1.05)">
+      <clipPath id="dropClipV"><path d="M50 4C50 4 6 58 6 90a44 44 0 0 0 88 0C94 58 50 4 50 4Z"/></clipPath>
       <path d="M50 4C50 4 6 58 6 90a44 44 0 0 0 88 0C94 58 50 4 50 4Z" fill="#007BCB"/>
-      <g clip-path="url(#dropClipH)">
+      <g clip-path="url(#dropClipV)">
         <circle cx="18" cy="98" r="34" fill="#14224B" opacity="0.18"/>
       </g>
       <path d="M74 66a30 30 0 0 1-16 46" fill="none" stroke="#FFFFFF" stroke-width="7"
             stroke-linecap="round" opacity="0.92"/>
     </g>
 
-    <g transform="translate(118 22) scale(0.92)">
-      <clipPath id="bzhClipH"><path d="M158 20 L140 15 L128 23 L112 14 L96 22 L80 13 L66 23 L52 17 L38 27 L26 21 L14 31 L2 34 L18 39 L6 46 L21 51 L4 57 L21 62 L12 71 L32 75 L44 70 L56 79 L70 73 L84 82 L98 75 L114 85 L130 77 L146 86 L159 79 L161 46 Z"/></clipPath>
-      <g clip-path="url(#bzhClipH)">
+    <g transform="translate(200 20) scale(1.02)">
+      <clipPath id="bzhClipV"><path d="M158 20 L140 15 L128 23 L112 14 L96 22 L80 13 L66 23 L52 17 L38 27 L26 21 L14 31 L2 34 L18 39 L6 46 L21 51 L4 57 L21 62 L12 71 L32 75 L44 70 L56 79 L70 73 L84 82 L98 75 L114 85 L130 77 L146 86 L159 79 L161 46 Z"/></clipPath>
+      <g clip-path="url(#bzhClipV)">
         <rect x="0" y="0" width="165" height="100" fill="#FFFFFF"/>
         <rect x="0" y="13.0" width="165" height="8" fill="#14224B"/><rect x="0" y="29.0" width="165" height="8" fill="#14224B"/><rect x="0" y="45.0" width="165" height="8" fill="#14224B"/><rect x="0" y="61.0" width="165" height="8" fill="#14224B"/><rect x="0" y="77.0" width="165" height="8" fill="#14224B"/>
         <rect x="0" y="10" width="74" height="45" fill="#FFFFFF"/>
@@ -54,6 +54,7 @@
       </g>
       <path d="M158 20 L140 15 L128 23 L112 14 L96 22 L80 13 L66 23 L52 17 L38 27 L26 21 L14 31 L2 34 L18 39 L6 46 L21 51 L4 57 L21 62 L12 71 L32 75 L44 70 L56 79 L70 73 L84 82 L98 75 L114 85 L130 77 L146 86 L159 79 L161 46 Z" fill="none" stroke="#14224B" stroke-width="5" stroke-linejoin="round"/>
     </g>
-  <text x="272" y="80" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif" font-size="58" font-weight="800" letter-spacing="-1" fill="#14224B">Plombier</text>
-  <text x="276" y="142" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif" font-size="58" font-weight="800" font-style="italic" letter-spacing="-1" fill="#007BCB">Breizh</text>
+  <text x="235" y="230" text-anchor="middle" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif" font-size="78" font-weight="800" letter-spacing="-2" fill="#14224B">Plombier</text>
+  <text x="235" y="308" text-anchor="middle" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif" font-size="78" font-weight="800" font-style="italic" letter-spacing="-2" fill="#007BCB">Breizh</text>
+  <text x="235" y="356" text-anchor="middle" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif" font-size="23" font-weight="700" fill="#14224B">Dépannage <tspan fill="#00AEEF">•</tspan> Installation <tspan fill="#00AEEF">•</tspan> Rénovation</text>
 </svg>
