@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720" role="presentation">
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A2233"/><stop offset="1" stop-color="#123B57"/></linearGradient>
+<pattern id="p" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0v40" fill="none" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="1"/></pattern>
+</defs>
+<rect width="960" height="720" fill="url(#g)"/>
+<rect width="960" height="720" fill="url(#p)"/>
+<path d="M960 0 L960 720 L528 720 Z" fill="#FFFFFF" fill-opacity="0.03"/>
+<rect x="0" y="0" width="960" height="8" fill="#007BCB"/>
+<g transform="translate(328.8 180) scale(4.725)">
+<path d="M8 20h20v10H18v14H8V20Zm28 0h20v24H46V30H36V20Z" fill="#FFFFFF" fill-opacity="0.22"/>
+</g>
+<g transform="translate(44 676)">
+<rect x="0" y="-26" width="34" height="5" fill="#007BCB"/>
+<text x="46" y="-20" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif" font-size="19" font-weight="700" letter-spacing="3.5" fill="#FFFFFF" fill-opacity="0.82">PLOMBIER BREIZH</text>
+</g>
+</svg>

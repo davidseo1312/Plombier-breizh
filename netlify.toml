@@ -1,0 +1,51 @@
+# Déploiement Netlify — site statique, aucune étape de build requise.
+# (Le HTML est généré en local par `node build.mjs` et versionné.)
+[build]
+  publish = "."
+  command = "node build.mjs"
+
+# URLs propres : /plomberie → plomberie.html
+[[redirects]]
+  from = "/plomberie"
+  to = "/plomberie.html"
+  status = 200
+[[redirects]]
+  from = "/debouchage"
+  to = "/debouchage.html"
+  status = 200
+[[redirects]]
+  from = "/degorgement"
+  to = "/degorgement.html"
+  status = 200
+[[redirects]]
+  from = "/urgence-plomberie"
+  to = "/urgence-plomberie.html"
+  status = 200
+[[redirects]]
+  from = "/zones-intervention"
+  to = "/zones-intervention.html"
+  status = 200
+[[redirects]]
+  from = "/plombier-finistere"
+  to = "/plombier-finistere.html"
+  status = 200
+[[redirects]]
+  from = "/plombier-morbihan"
+  to = "/plombier-morbihan.html"
+  status = 200
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
