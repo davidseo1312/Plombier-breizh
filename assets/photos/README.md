@@ -14,6 +14,7 @@
 | `canalisation-bouchee.jpg` | Furet électrique dans l'évacuation d'un lavabo encrassé | Carte « Canalisation obstruée » |
 | `fuite-eau.jpg` | Siphon de lavabo qui goutte, réparation à la pince | Carte « Fuite d'eau » |
 | `chauffe-eau.jpg` | Intervention sur un chauffe-eau | Visuel principal de la page Plomberie |
+| `urgence-plomberie.jpg` | Même intervention, cadrage resserré sur le ballon et les vannes | Carte « Urgence plomberie » |
 
 ### Visuels de matériel (carrés 700 × 700)
 
