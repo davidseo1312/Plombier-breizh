@@ -14,14 +14,18 @@ export const SERVICES = [
     text: 'Les graisses et les résidus finissent par tout obstruer. On démonte, on nettoie le siphon, on contrôle l’évacuation.' },
   { img: 'debouchage-douche', title: 'Douche bouchée',
     text: 'Cheveux, savon, calcaire : l’eau stagne dans le bac. On dégage la bonde et la conduite.' },
+  { img: 'urgence-plomberie', title: 'Urgence plomberie',
+    text: 'Débordement, refoulement, fuite qui ne s’arrête pas : appelez-nous, on organise le passage au plus vite.' },
   { img: 'canalisation-bouchee', title: 'Canalisation obstruée',
     text: 'Bouchon profond, dépôts, racines : on cherche d’abord où ça bloque, puis on adapte la méthode.' },
   { img: 'fuite-eau', title: 'Fuite d’eau',
     text: 'Un raccord, un joint, une évacuation percée. On stoppe la fuite, puis on répare.' },
   { img: 'recherche-fuite', title: 'Recherche de fuite',
     text: 'Une tache d’humidité, une facture qui grimpe sans raison : on localise la fuite avant d’ouvrir quoi que ce soit.' },
-  { img: 'urgence-plomberie', title: 'Urgence plomberie',
-    text: 'Débordement, refoulement, fuite qui ne s’arrête pas : appelez-nous, on organise le passage au plus vite.' }
+  { img: 'chauffe-eau', title: 'Chauffe-eau',
+    text: 'Plus d’eau chaude, groupe de sécurité qui goutte, ballon qui fuit : on intervient sur l’installation.' },
+  { img: 'wc-sanitaires', title: 'Chasse d’eau et sanitaires',
+    text: 'Chasse d’eau qui fuit, mécanisme bloqué, raccordement de broyeur : on reprend ce qui ne tient plus.' }
 ];
 
 /* Photo de service : `assets/photos/<nom>.jpg` s'il existe, sinon le visuel

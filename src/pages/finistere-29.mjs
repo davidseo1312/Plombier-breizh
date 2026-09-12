@@ -24,6 +24,21 @@ export default landingPage({
     'Évacuation devenue très lente dans une maison ancienne'
   ],
   servicesIntro: 'Du simple évier bouché au dégorgement complet du réseau, voici ce que nous prenons en charge dans le Finistère.',
+  recherchesTitre: 'Les recherches qui mènent le plus souvent à nous dans le Finistère',
+  recherches: [
+    'plombier Finistère',
+    'débouchage canalisation Brest',
+    'dégorgement Quimper',
+    'plombier urgence 29',
+    'WC bouché que faire',
+    'fuite d’eau Brest',
+    'recherche de fuite Quimper',
+    'évier bouché Morlaix',
+    'plombier Concarneau',
+    'canalisation bouchée Finistère',
+    'dépannage plomberie Landerneau',
+    'déboucher une canalisation extérieure'
+  ],
   equipIntro: 'Le matériel adapté fait toute la différence sur un bouchon. Avant de forcer, on cherche d’abord à comprendre où et pourquoi ça bloque.',
   whyIntro: 'Ce sur quoi vous pouvez compter en appelant Plombier Breizh pour une intervention dans le Finistère.',
   formIntro: 'Indiquez votre commune et le problème rencontré : nous vous rappelons pour organiser l’intervention dans le Finistère.'

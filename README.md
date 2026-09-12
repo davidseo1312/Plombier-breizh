@@ -242,6 +242,8 @@ vraies photos d'intervention en gardant **le même nom de base et le même ratio
 | `fuite-eau` / `recherche-fuite` | Fuite, recherche de fuite |
 | `canalisation-bouchee` / `reseau-evacuation` / `inspection-canalisation` | Canalisation, inspection caméra |
 | `urgence-plomberie` / `technicien-camion` / `intervention-salle-de-bain` | Intervention urgente, technicien |
+| `chauffe-eau` / `wc-sanitaires` | Chauffe-eau, chasse d'eau et sanitaires |
+| `cliente-attente` / `siphon-encrasse` | Cliente en attente, siphon encrassé |
 | `equip-pompe` / `equip-furet-electrique` / `equip-haute-pression` / `equip-camera-inspection` / `equip-recherche-fuite` / `equip-outillage` | Matériel professionnel (carré) |
 
 Aucune image n'est circulaire : `border-radius: 0` est appliqué globalement.

@@ -24,6 +24,21 @@ export default landingPage({
     'Fuite sur un raccord d’alimentation ou sous un lavabo'
   ],
   servicesIntro: 'Débouchage ponctuel ou dégorgement du réseau complet : voici les interventions que nous assurons dans le Morbihan.',
+  recherchesTitre: 'Les recherches qui mènent le plus souvent à nous dans le Morbihan',
+  recherches: [
+    'plombier Morbihan',
+    'débouchage canalisation Vannes',
+    'dégorgement Lorient',
+    'plombier urgence 56',
+    'WC bouché que faire',
+    'fuite d’eau Vannes',
+    'recherche de fuite Lorient',
+    'évier bouché Auray',
+    'plombier Pontivy',
+    'canalisation bouchée Morbihan',
+    'dépannage plomberie Hennebont',
+    'regard qui déborde maison'
+  ],
   equipIntro: 'Furet électrique, haute pression, caméra d’inspection : on emporte ce que la situation demande plutôt que d’insister avec le mauvais outil.',
   whyIntro: 'Ce sur quoi vous pouvez compter en appelant Plombier Breizh pour une intervention dans le Morbihan.',
   formIntro: 'Indiquez votre commune et le problème rencontré : nous vous rappelons pour organiser l’intervention dans le Morbihan.'

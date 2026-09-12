@@ -48,13 +48,16 @@ export const landingPage = ({
   tag, h1, sub, heroImg = 'hero-plombier-intervention', heroPhotoCamion = true, heroAlt, atouts,
   /* -- corps -- */
   introTitle, introText, introImg = 'degorgement', introAlt,
-  situations,
-  moyens = MOYENS_DEFAUT,
-  servicesTitre, servicesIntro, services = SERVICES_DEFAUT, autres = AUTRES_DEFAUT,
+  situations, situationsTitre = 'Ce qui nous est demandé le plus souvent',
+  moyens = MOYENS_DEFAUT, moyensTitre = 'Ce que nous mettons en œuvre',
+  infographie = false,
+  servicesTitre, servicesIntro, services = SERVICES_DEFAUT,
+  autres = AUTRES_DEFAUT, autresTitre,
+  recherches = [], recherchesTitre, recherchesIntro,
   telephoneTitre = 'Besoin d’une intervention rapidement ?',
   telephoneTexte,
   equipTitre = 'Des équipements professionnels', equipIntro, equipements = EQUIPEMENTS_DEFAUT,
-  whyIntro,
+  whyIntro, whyTuiles = {},
   avis,
   formTitre, formIntro,
   ctaFinalTitre, ctaFinalTexte
@@ -104,13 +107,13 @@ ${urgencyBand(`bandeau-lp-${slug}`)}
 
     <div class="grid grid--2 mt-32">
       <div>
-        <h3>Ce qui nous est demandé le plus souvent</h3>
+        <h3>${situationsTitre}</h3>
         <ul class="symptom-list">
           ${situations.map(x => `<li>${x}</li>`).join('\n          ')}
         </ul>
       </div>
       <div>
-        <h3>Ce que nous mettons en œuvre</h3>
+        <h3>${moyensTitre}</h3>
         <ul class="symptom-list solution-list">
           ${moyens.map(x => `<li>${x}</li>`).join('\n          ')}
         </ul>
@@ -118,6 +121,14 @@ ${urgencyBand(`bandeau-lp-${slug}`)}
         ${tel(`lp-${slug}-texte`, `<strong>${SITE.phoneDisplay}</strong>`)}, nous vous répondons directement.</p>
       </div>
     </div>
+${infographie ? `
+    <figure class="figure-wide mt-32">
+      <img src="/assets/img/infographie-origine-bouchon.jpg"
+           alt="Origine du bouchon et outil adapté : graisses, cheveux et savon, lingettes, racines"
+           width="1020" height="776" loading="lazy" decoding="async">
+      <figcaption>Graisses de cuisine, cheveux et savon, lingettes, racines : l’origine du bouchon
+      détermine l’outil à utiliser. C’est ce que nous cherchons à établir dès votre appel.</figcaption>
+    </figure>` : ''}
   </div>
 </section>
 
@@ -131,7 +142,7 @@ ${urgencyBand(`bandeau-lp-${slug}`)}
     ${servicesGrid(services, `services-lp-${slug}`)}
 ${autres.length ? `
     <div class="tile mt-32">
-      <h3>Également pris en charge dans ${article} ${dept}</h3>
+      <h3>${autresTitre || `Également pris en charge dans ${article} ${dept}`}</h3>
       <div class="grid grid--2" style="gap:14px 26px;margin-top:16px">
         ${autres.map(([t, d]) => `<div><strong>${t}</strong><br><span style="color:var(--ink-soft);font-size:15.5px">${d}</span></div>`).join('\n        ')}
       </div>
@@ -143,6 +154,24 @@ ${autres.length ? `
     </div>
   </div>
 </section>
+
+${recherches.length ? `
+<section class="section" aria-labelledby="recherches-${slug}">
+  <div class="container">
+    <div class="section__head">
+      <span class="eyebrow">Recherches fréquentes</span>
+      <h2 id="recherches-${slug}">${recherchesTitre || `Ce que l’on cherche avant de nous appeler dans ${article} ${dept}`}</h2>
+      <p class="lead">${recherchesIntro || `Si vous êtes arrivé ici après l’une de ces recherches, vous êtes au bon endroit : appelez le ${SITE.phoneDisplay}, nous vous répondons directement.`}</p>
+    </div>
+    <ul class="kw">
+      ${recherches.map(m => `<li class="kw__item">${m}</li>`).join('\n      ')}
+    </ul>
+    <div class="btn-row mt-32">
+      ${callBtn(`recherches-lp-${slug}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
+      ${formBtn(`recherches-lp-${slug}`, { variant: 'outline' })}
+    </div>
+  </div>
+</section>` : ''}
 
 ${phoneBlock({
     title: telephoneTitre,
@@ -169,7 +198,7 @@ ${phoneBlock({
   </div>
 </section>
 
-${whySection(`pourquoi-lp-${slug}`, whyIntro)}
+${whySection(`pourquoi-lp-${slug}`, whyIntro, whyTuiles)}
 
 ${reviewsSection(avis || avisDe(`lp${num}`))}
 

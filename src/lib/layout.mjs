@@ -305,7 +305,16 @@ export const processSection = (location = 'process') => `
 </section>`;
 
 /* Pourquoi choisir Plombier Breizh — réassurance sans rien inventer. */
-export const whySection = (location = 'pourquoi', intro = 'Ce sur quoi vous pouvez compter en nous appelant.') => `
+export const whySection = (
+  location = 'pourquoi',
+  intro = 'Ce sur quoi vous pouvez compter en nous appelant.',
+  {
+    materielTitre = 'Le bon matériel au bon moment',
+    materielTexte = 'Furet électrique, haute pression, caméra d’inspection : le camion part avec ce que la situation demande.',
+    metierTitre = 'Des techniciens expérimentés',
+    metierTexte = 'Débouchage, dégorgement, fuite, dépannage : des interventions faites tous les jours, sans improvisation.'
+  } = {}
+) => `
 <section class="section" id="pourquoi">
   <div class="container">
     <div class="section__head">
@@ -319,12 +328,12 @@ export const whySection = (location = 'pourquoi', intro = 'Ce sur quoi vous pouv
         <p>Vous parlez à quelqu’un qui connaît le métier, pas à un standard. Le problème est cerné dès l’appel.</p>
       </div>
       <div class="tile">
-        <h3>Le bon matériel au bon moment</h3>
-        <p>Furet électrique, haute pression, caméra d’inspection : le camion part avec ce que la situation demande.</p>
+        <h3>${materielTitre}</h3>
+        <p>${materielTexte}</p>
       </div>
       <div class="tile">
-        <h3>Des techniciens expérimentés</h3>
-        <p>Débouchage, dégorgement, fuite, dépannage : des interventions faites tous les jours, sans improvisation.</p>
+        <h3>${metierTitre}</h3>
+        <p>${metierTexte}</p>
       </div>
       <div class="tile">
         <h3>On explique ce qu’on fait</h3>
