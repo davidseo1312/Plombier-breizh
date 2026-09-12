@@ -32,7 +32,7 @@ build.mjs                         ← générateur (node build.mjs)
 src/
   lib/layout.mjs                  ← constantes + header, footer, CTA, bandeaux, formulaire…
   lib/services.mjs                ← catalogue des interventions (source unique)
-  lib/lp.mjs                      ← fabrique des landing pages Google Ads (29 / 56)
+  lib/lp.mjs                      ← fabrique des landing pages Google Ads (6 pages)
   pages/*.mjs                     ← contenu de chaque page
 assets/
   css/site.css                    ← design system complet (palette + typo Lato)
@@ -61,8 +61,12 @@ robots.txt / sitemap.xml
 | `degorgement.html` | `/degorgement` | Dégorgement de réseau |
 | `urgence-plomberie.html` | `/urgence-plomberie` | Intention « urgence » |
 | `bretagne.html` | `/bretagne` | Zone d'intervention — Bretagne, 29 & 56 |
-| **`finistere-29.html`** | **`/finistere-29`** | **Landing page Google Ads — Finistère** |
-| **`morbihan-56.html`** | **`/morbihan-56`** | **Landing page Google Ads — Morbihan** |
+| **`finistere-29.html`** | **`/finistere-29`** | **Landing Ads — Finistère, tous services** |
+| **`morbihan-56.html`** | **`/morbihan-56`** | **Landing Ads — Morbihan, tous services** |
+| **`plomberie-finistere-29.html`** | **`/plomberie-finistere-29`** | **Landing Ads — plomberie seule, Finistère** |
+| **`plomberie-morbihan-56.html`** | **`/plomberie-morbihan-56`** | **Landing Ads — plomberie seule, Morbihan** |
+| **`degorgement-finistere-29.html`** | **`/degorgement-finistere-29`** | **Landing Ads — dégorgement seul, Finistère** |
+| **`degorgement-morbihan-56.html`** | **`/degorgement-morbihan-56`** | **Landing Ads — dégorgement seul, Morbihan** |
 | `contact.html` | `/contact` | Contact + formulaire |
 | `mentions-legales.html` · `politique-confidentialite.html` | | Obligations légales |
 | `404.html` | | Page d'erreur orientée appel |
@@ -110,14 +114,27 @@ l'hébergement.
 
 **Correspondance groupes d'annonces → pages de destination :**
 
-| Groupe d'annonces | Page de destination |
+Les six landing pages se croisent sur deux axes : le département et le service.
+Plus l'annonce est précise, plus la page l'est aussi — c'est ce qui fait le
+score de qualité et le taux de conversion.
+
+| Intention de l'annonce | Page de destination |
 |---|---|
-| Plombier Finistère · Débouchage Finistère · Dégorgement Finistère · Urgence plomberie Finistère | `/finistere-29` |
-| Plombier Morbihan · Débouchage Morbihan · Dégorgement Morbihan · Urgence plomberie Morbihan | `/morbihan-56` |
-| Plombier Bretagne (générique) | `/` |
-| Débouchage · WC bouché · évier bouché (sans ville) | `/debouchage` |
-| Dégorgement · canalisation obstruée | `/degorgement` |
-| Urgence plombier · fuite d'eau | `/urgence-plomberie` |
+| Plombier Finistère · fuite d'eau 29 · recherche de fuite Quimper · chauffe-eau Brest | `/plomberie-finistere-29` |
+| Plombier Morbihan · fuite d'eau 56 · recherche de fuite Vannes · chauffe-eau Lorient | `/plomberie-morbihan-56` |
+| Dégorgement Finistère · canalisation bouchée 29 · débouchage Brest · pompage regard | `/degorgement-finistere-29` |
+| Dégorgement Morbihan · canalisation bouchée 56 · débouchage Vannes · pompage regard | `/degorgement-morbihan-56` |
+| Plombier 29 (générique, tous services confondus) | `/finistere-29` |
+| Plombier 56 (générique, tous services confondus) | `/morbihan-56` |
+| Plombier Bretagne (générique, sans département) | `/` |
+| Urgence plombier · fuite qui ne s'arrête pas (sans département) | `/urgence-plomberie` |
+
+Les quatre pages mono-service partagent la structure des deux pages
+généralistes, mais **aucun texte éditorial n'est repris** : titre, sous-titre,
+introduction, situations listées, moyens mis en œuvre, matériel présenté et
+avis clients sélectionnés diffèrent à chaque fois. Seuls les éléments
+fonctionnels (formulaire, libellés de boutons, « Pourquoi nous », pied de page)
+sont communs — c'est voulu.
 
 Les anciennes URLs (`/plombier-finistere`, `/plombier-morbihan`,
 `/zones-intervention`) sont redirigées en 301 vers les nouvelles dans

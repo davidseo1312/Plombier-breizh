@@ -83,6 +83,52 @@ await writeFile(path.join(root, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`, 'utf8');
 console.log(`✓ sitemap.xml (${built.length - excluded.size} URL)`);
 
+
+/* ---- netlify.toml -----------------------------------------------------------
+   Généré à partir des pages réellement construites : ajouter une page suffit
+   à lui créer sa règle d'URL sans extension, il n'y a rien à tenir à jour. */
+const ANCIENNES_URLS = [
+  ['plombier-finistere', 'finistere-29'],
+  ['plombier-morbihan', 'morbihan-56'],
+  ['zones-intervention', 'bretagne']
+];
+
+const netlify = () => {
+  const pages = built.filter((s) => s !== 'index' && s !== '404');
+  let t = `# Déploiement Netlify — FICHIER GÉNÉRÉ par \`node build.mjs\`.
+# Ne pas éditer à la main : les redirections sont déduites des pages présentes.
+[build]
+  publish = "."
+  command = "node build.mjs"
+
+# URLs sans extension : /plomberie sert plomberie.html sans redirection (200),
+# et /plomberie.html redirige en 301 vers /plomberie pour qu'une seule URL
+# fasse foi — évite le contenu dupliqué et consolide les liens entrants.
+`;
+  for (const p of pages) t += `[[redirects]]\n  from = "/${p}"\n  to = "/${p}.html"\n  status = 200\n\n`;
+  for (const p of pages) t += `[[redirects]]\n  from = "/${p}.html"\n  to = "/${p}"\n  status = 301\n\n`;
+  t += `[[redirects]]\n  from = "/index.html"\n  to = "/"\n  status = 301\n\n# Anciennes URLs\n`;
+  for (const [a, n] of ANCIENNES_URLS) {
+    t += `[[redirects]]\n  from = "/${a}"\n  to = "/${n}"\n  status = 301\n\n`;
+    t += `[[redirects]]\n  from = "/${a}.html"\n  to = "/${n}"\n  status = 301\n\n`;
+  }
+  t += `[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+`;
+  return t;
+};
+await writeFile(path.join(root, 'netlify.toml'), netlify(), 'utf8');
+console.log(`✓ netlify.toml (${built.length - 2} pages routées)`);
+
 /* ---- contrôles de cohérence ---- */
 let warnings = 0;
 for (const slug of built) {

@@ -1,8 +1,12 @@
 /* ==========================================================================
-   Fabrique des LANDING PAGES GOOGLE ADS (/finistere-29 et /morbihan-56)
-   Structure fixe et orientée conversion ; TOUS les textes propres au
-   département sont fournis par la page appelante (aucun copier-coller).
-   Header allégé : moins de distractions que sur le site principal.
+   Fabrique des LANDING PAGES GOOGLE ADS
+   --------------------------------------------------------------------------
+   Deux dimensions : le département (29 / 56) et, éventuellement, un service
+   unique (plomberie ou dégorgement). Chaque page fournit ses propres textes :
+   la structure est partagée, jamais le contenu.
+
+   Header allégé, aucun menu : sur une page d'annonce, chaque lien sortant est
+   une occasion de perdre l'appel.
    ========================================================================== */
 import {
   SITE, callBtn, formBtn, pageHero, urgencyBand, phoneBlock,
@@ -11,30 +15,49 @@ import {
 import { servicesGrid, servicePhoto, pick } from './services.mjs';
 import { avisDe } from './reviews.mjs';
 
-/* Les six interventions illustrées par une photo réelle. Le dégorgement est
-   présenté plus haut, en grand, avec la photo du camion de pompage. */
-const LP_SERVICES = pick('Débouchage', 'WC bouché', 'Évier bouché',
+/* Valeurs par défaut : celles des landing pages « tous services » 29 et 56. */
+const SERVICES_DEFAUT = pick('Débouchage', 'WC bouché', 'Évier bouché',
   'Douche bouchée', 'Recherche de fuite', 'Dépannage plomberie');
 
-/* Les autres interventions de la page, listées sans visuel : aucune photo
-   d'illustration disponible, et une landing page n'a rien à gagner à afficher
-   des images de substitution à côté de vraies photos de chantier. */
-const LP_AUTRES = [
+const AUTRES_DEFAUT = [
   ['Dégorgement de réseau', 'Plusieurs évacuations bloquées en même temps.'],
   ['Canalisation obstruée', 'Bouchon profond, dépôts ou racines sur une conduite enterrée.'],
   ['Fuite d’eau', 'Raccord, joint ou évacuation percée.'],
   ['Urgence plomberie', 'Débordement, refoulement, fuite qui ne s’arrête pas.']
 ];
 
+const MOYENS_DEFAUT = [
+  'Débouchage mécanique',
+  'Furet électrique professionnel',
+  'Débouchage haute pression',
+  'Caméra d’inspection de canalisation',
+  'Matériel de recherche de fuite'
+];
+
+const EQUIPEMENTS_DEFAUT = [
+  ['equip-furet-electrique', 'Furet électrique', 'Pour percer les bouchons compacts installés en profondeur dans la conduite.'],
+  ['equip-haute-pression', 'Déboucheur haute pression', 'Pour décoller les dépôts accumulés sur les parois du réseau d’évacuation.'],
+  ['equip-outillage', 'Outillage de plomberie', 'Pour réparer sur place : siphon, raccord, robinetterie, évacuation.']
+];
+
 export const landingPage = ({
+  /* -- département -- */
   slug, dept, article, num, cities,
   title, description,
-  introTitle, introText,          // « Votre plombier dans le … »
-  situations,                     // 5-6 situations concrètes, propres au département
-  servicesIntro,
-  equipIntro,
+  /* -- hero -- */
+  tag, h1, sub, heroImg = 'hero-plombier-intervention', heroPhotoCamion = true, heroAlt, atouts,
+  /* -- corps -- */
+  introTitle, introText, introImg = 'degorgement', introAlt,
+  situations,
+  moyens = MOYENS_DEFAUT,
+  servicesTitre, servicesIntro, services = SERVICES_DEFAUT, autres = AUTRES_DEFAUT,
+  telephoneTitre = 'Besoin d’une intervention rapidement ?',
+  telephoneTexte,
+  equipTitre = 'Des équipements professionnels', equipIntro, equipements = EQUIPEMENTS_DEFAUT,
   whyIntro,
-  formIntro
+  avis,
+  formTitre, formIntro,
+  ctaFinalTitre, ctaFinalTexte
 }) => ({
   slug,
   nav: '',
@@ -43,15 +66,15 @@ export const landingPage = ({
   description,
   body: `
 ${pageHero({
-    tag: `Plomberie &amp; urgence — ${dept} ${num}`,
-    h1: `Plombier &amp; <em>dégorgement d’urgence</em> dans ${article} ${dept} (${num})`,
-    sub: `Une fuite, une canalisation bouchée ou un problème de plomberie ? Contactez Plombier Breizh pour votre intervention dans ${article} ${dept}.`,
-    img: 'hero-plombier-intervention',
-    alt: `Plombier Breizh en intervention dans ${article} ${dept}`,
-    location: `hero-lp-${num}`,
-    photo: true,
+    tag: tag || `Plomberie &amp; urgence — ${dept} ${num}`,
+    h1: h1 || `Plombier &amp; <em>dégorgement d’urgence</em> dans ${article} ${dept} (${num})`,
+    sub: sub || `Une fuite, une canalisation bouchée ou un problème de plomberie ? Contactez Plombier Breizh pour votre intervention dans ${article} ${dept}.`,
+    img: heroImg,
+    alt: heroAlt || `Plombier Breizh en intervention dans ${article} ${dept}`,
+    location: `hero-lp-${slug}`,
+    photo: heroPhotoCamion,
     badge: `${dept} — ${num}`,
-    items: [
+    items: atouts || [
       'Intervention rapide',
       'Débouchage &amp; dégorgement',
       'Dépannage plomberie',
@@ -60,7 +83,7 @@ ${pageHero({
     ]
   })}
 
-${urgencyBand(`bandeau-lp-${num}`)}
+${urgencyBand(`bandeau-lp-${slug}`)}
 
 <section class="section">
   <div class="container">
@@ -70,12 +93,12 @@ ${urgencyBand(`bandeau-lp-${num}`)}
         <h2>${introTitle}</h2>
         ${introText.map(p => `<p>${p}</p>`).join('\n        ')}
         <div class="btn-row mt-24">
-          ${callBtn(`intro-lp-${num}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
-          ${formBtn(`intro-lp-${num}`, { variant: 'outline' })}
+          ${callBtn(`intro-lp-${slug}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
+          ${formBtn(`intro-lp-${slug}`, { variant: 'outline' })}
         </div>
       </div>
       <div class="split__media">
-        ${servicePhoto('degorgement', `Camion de pompage Plombier Breizh en intervention de dégorgement dans ${article} ${dept}`)}
+        ${servicePhoto(introImg, introAlt || `Plombier Breizh en intervention dans ${article} ${dept}`)}
       </div>
     </div>
 
@@ -89,14 +112,10 @@ ${urgencyBand(`bandeau-lp-${num}`)}
       <div>
         <h3>Ce que nous mettons en œuvre</h3>
         <ul class="symptom-list solution-list">
-          <li>Débouchage mécanique</li>
-          <li>Furet électrique professionnel</li>
-          <li>Débouchage haute pression</li>
-          <li>Caméra d’inspection de canalisation</li>
-          <li>Matériel de recherche de fuite</li>
+          ${moyens.map(x => `<li>${x}</li>`).join('\n          ')}
         </ul>
         <p class="mt-24">Un doute sur votre situation ? Appelez le
-        ${tel(`lp-${num}-texte`, `<strong>${SITE.phoneDisplay}</strong>`)}, nous vous répondons directement.</p>
+        ${tel(`lp-${slug}-texte`, `<strong>${SITE.phoneDisplay}</strong>`)}, nous vous répondons directement.</p>
       </div>
     </div>
   </div>
@@ -106,70 +125,70 @@ ${urgencyBand(`bandeau-lp-${num}`)}
   <div class="container">
     <div class="section__head section__head--center">
       <span class="eyebrow">Nos interventions</span>
-      <h2>Nos interventions dans ${article} ${dept}</h2>
+      <h2>${servicesTitre || `Nos interventions dans ${article} ${dept}`}</h2>
       <p class="lead">${servicesIntro}</p>
     </div>
-    ${servicesGrid(LP_SERVICES, `services-lp-${num}`)}
-
+    ${servicesGrid(services, `services-lp-${slug}`)}
+${autres.length ? `
     <div class="tile mt-32">
       <h3>Également pris en charge dans ${article} ${dept}</h3>
       <div class="grid grid--2" style="gap:14px 26px;margin-top:16px">
-        ${LP_AUTRES.map(([t, d]) => `<div><strong>${t}</strong><br><span style="color:var(--ink-soft);font-size:15.5px">${d}</span></div>`).join('\n        ')}
+        ${autres.map(([t, d]) => `<div><strong>${t}</strong><br><span style="color:var(--ink-soft);font-size:15.5px">${d}</span></div>`).join('\n        ')}
       </div>
-    </div>
+    </div>` : ''}
 
     <div class="btn-row mt-32">
-      ${callBtn(`services-lp-${num}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
-      ${formBtn(`services-lp-${num}`, { variant: 'primary' })}
+      ${callBtn(`services-lp-${slug}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
+      ${formBtn(`services-lp-${slug}`, { variant: 'primary' })}
     </div>
   </div>
 </section>
 
 ${phoneBlock({
-    title: 'Besoin d’une intervention rapidement ?',
-    text: `Un appel suffit pour lancer la prise en charge de votre intervention dans ${article} ${dept}.`,
-    location: `bloc-telephone-lp-${num}`
+    title: telephoneTitre,
+    text: telephoneTexte || `Un appel suffit pour lancer la prise en charge de votre intervention dans ${article} ${dept}.`,
+    location: `bloc-telephone-lp-${slug}`
   })}
 
 <section class="section section--dark">
   <div class="container">
     <div class="section__head">
       <span class="eyebrow">Matériel</span>
-      <h2>Des équipements professionnels</h2>
+      <h2>${equipTitre}</h2>
       <p class="lead">${equipIntro}</p>
     </div>
     <div class="equip">
-      <figure class="equip__item">${servicePhoto('equip-furet-electrique', 'Furet électrique professionnel Plombier Breizh')}<figcaption><h3>Furet électrique</h3><p>Pour percer les bouchons compacts installés en profondeur dans la conduite.</p></figcaption></figure>
-      <figure class="equip__item">${servicePhoto('equip-haute-pression', 'Déboucheur haute pression Plombier Breizh')}<figcaption><h3>Déboucheur haute pression</h3><p>Pour décoller les dépôts accumulés sur les parois du réseau d’évacuation.</p></figcaption></figure>
-      <figure class="equip__item">${servicePhoto('equip-outillage', 'Outillage de plomberie Plombier Breizh')}<figcaption><h3>Outillage de plomberie</h3><p>Pour réparer sur place : siphon, raccord, robinetterie, évacuation.</p></figcaption></figure>
+      ${equipements.map(([img, titre, texte]) =>
+        `<figure class="equip__item">${servicePhoto(img, titre)}<figcaption><h3>${titre}</h3><p>${texte}</p></figcaption></figure>`
+      ).join('\n      ')}
     </div>
     <div class="btn-row mt-32">
-      ${callBtn(`equip-lp-${num}`, { text: 'Parler à un plombier' })}
-      ${formBtn(`equip-lp-${num}`, { variant: 'outline-light' })}
+      ${callBtn(`equip-lp-${slug}`, { text: 'Parler à un plombier' })}
+      ${formBtn(`equip-lp-${slug}`, { variant: 'outline-light' })}
     </div>
   </div>
 </section>
 
-${whySection(`pourquoi-lp-${num}`, whyIntro)}
+${whySection(`pourquoi-lp-${slug}`, whyIntro)}
 
-${reviewsSection(avisDe(`lp${num}`))}
+${reviewsSection(avis || avisDe(`lp${num}`))}
 
 ${formSection({
-    title: `Demander une intervention dans ${article} ${dept}`,
+    title: formTitre || `Demander une intervention dans ${article} ${dept}`,
     intro: formIntro,
-    location: `formulaire-lp-${num}`,
+    location: `formulaire-lp-${slug}`,
     tint: true
   })}
 
 <section class="phone-block">
   <div class="container">
-    <h2>Besoin d’un plombier dans ${article} ${dept} ?</h2>
-    <p>Débouchage, dégorgement, fuite ou dépannage : appelez-nous, nous prenons le relais.</p>
+    <h2>${ctaFinalTitre || `Besoin d’un plombier dans ${article} ${dept} ?`}</h2>
+    <p>${ctaFinalTexte || 'Débouchage, dégorgement, fuite ou dépannage : appelez-nous, nous prenons le relais.'}</p>
     <div>
-      <a class="phone-block__number" href="${SITE.phoneHref}" data-location="cta-final-lp-${num}" data-cta="numero-final">${SITE.phoneDisplay}</a>
+      <a class="phone-block__number" href="${SITE.phoneHref}" data-location="cta-final-lp-${slug}" data-cta="numero-final">${SITE.phoneDisplay}</a>
     </div>
     <div class="btn-row">
-      ${callBtn(`cta-final-lp-${num}`, { variant: 'dark', text: 'Appeler maintenant' })}
+      ${callBtn(`cta-final-lp-${slug}`, { variant: 'dark', text: 'Appeler maintenant' })}
     </div>
     <p class="mt-24" style="font-size:15.5px">Communes couvertes notamment : ${cities.join(' · ')} — et alentours.</p>
   </div>

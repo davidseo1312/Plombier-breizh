@@ -54,6 +54,11 @@ export const AVIS = [
 /** Avis affectés à une page : 'lp29', 'lp56' ou 'accueil'. */
 export const avisDe = (cle) => AVIS.filter(a => a.page === cle);
 
+/** Sélection explicite, dans l'ordre donné : permet de mettre en avant sur
+    chaque page les avis qui parlent de la prestation concernée. */
+export const avisParNoms = (...noms) =>
+  noms.map(n => AVIS.find(a => a.nom === n)).filter(Boolean);
+
 /** Lien vers la fiche établissement Google, si vous souhaitez l'ajouter.
     Laissez vide tant que l'URL n'est pas connue : aucun lien ne sera affiché. */
 export const LIEN_GOOGLE = '';

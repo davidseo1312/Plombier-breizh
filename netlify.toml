@@ -1,48 +1,15 @@
-# Déploiement Netlify — site statique, aucune étape de build requise.
-# (Le HTML est généré en local par `node build.mjs` et versionné.)
+# Déploiement Netlify — FICHIER GÉNÉRÉ par `node build.mjs`.
+# Ne pas éditer à la main : les redirections sont déduites des pages présentes.
 [build]
   publish = "."
   command = "node build.mjs"
 
-# ---------------------------------------------------------------------------
-# URLs sans extension
-# `/plomberie` sert plomberie.html sans redirection (status 200), et
-# `/plomberie.html` redirige en 301 vers `/plomberie` pour qu'une seule URL
+# URLs sans extension : /plomberie sert plomberie.html sans redirection (200),
+# et /plomberie.html redirige en 301 vers /plomberie pour qu'une seule URL
 # fasse foi — évite le contenu dupliqué et consolide les liens entrants.
-# ---------------------------------------------------------------------------
-[[redirects]]
-  from = "/plomberie"
-  to = "/plomberie.html"
-  status = 200
-
-[[redirects]]
-  from = "/debouchage"
-  to = "/debouchage.html"
-  status = 200
-
-[[redirects]]
-  from = "/degorgement"
-  to = "/degorgement.html"
-  status = 200
-
-[[redirects]]
-  from = "/urgence-plomberie"
-  to = "/urgence-plomberie.html"
-  status = 200
-
 [[redirects]]
   from = "/bretagne"
   to = "/bretagne.html"
-  status = 200
-
-[[redirects]]
-  from = "/finistere-29"
-  to = "/finistere-29.html"
-  status = 200
-
-[[redirects]]
-  from = "/morbihan-56"
-  to = "/morbihan-56.html"
   status = 200
 
 [[redirects]]
@@ -51,8 +18,53 @@
   status = 200
 
 [[redirects]]
+  from = "/debouchage"
+  to = "/debouchage.html"
+  status = 200
+
+[[redirects]]
+  from = "/degorgement-finistere-29"
+  to = "/degorgement-finistere-29.html"
+  status = 200
+
+[[redirects]]
+  from = "/degorgement-morbihan-56"
+  to = "/degorgement-morbihan-56.html"
+  status = 200
+
+[[redirects]]
+  from = "/degorgement"
+  to = "/degorgement.html"
+  status = 200
+
+[[redirects]]
+  from = "/finistere-29"
+  to = "/finistere-29.html"
+  status = 200
+
+[[redirects]]
   from = "/mentions-legales"
   to = "/mentions-legales.html"
+  status = 200
+
+[[redirects]]
+  from = "/morbihan-56"
+  to = "/morbihan-56.html"
+  status = 200
+
+[[redirects]]
+  from = "/plomberie-finistere-29"
+  to = "/plomberie-finistere-29.html"
+  status = 200
+
+[[redirects]]
+  from = "/plomberie-morbihan-56"
+  to = "/plomberie-morbihan-56.html"
+  status = 200
+
+[[redirects]]
+  from = "/plomberie"
+  to = "/plomberie.html"
   status = 200
 
 [[redirects]]
@@ -61,38 +73,13 @@
   status = 200
 
 [[redirects]]
-  from = "/plomberie.html"
-  to = "/plomberie"
-  status = 301
-
-[[redirects]]
-  from = "/debouchage.html"
-  to = "/debouchage"
-  status = 301
-
-[[redirects]]
-  from = "/degorgement.html"
-  to = "/degorgement"
-  status = 301
-
-[[redirects]]
-  from = "/urgence-plomberie.html"
-  to = "/urgence-plomberie"
-  status = 301
+  from = "/urgence-plomberie"
+  to = "/urgence-plomberie.html"
+  status = 200
 
 [[redirects]]
   from = "/bretagne.html"
   to = "/bretagne"
-  status = 301
-
-[[redirects]]
-  from = "/finistere-29.html"
-  to = "/finistere-29"
-  status = 301
-
-[[redirects]]
-  from = "/morbihan-56.html"
-  to = "/morbihan-56"
   status = 301
 
 [[redirects]]
@@ -101,13 +88,63 @@
   status = 301
 
 [[redirects]]
+  from = "/debouchage.html"
+  to = "/debouchage"
+  status = 301
+
+[[redirects]]
+  from = "/degorgement-finistere-29.html"
+  to = "/degorgement-finistere-29"
+  status = 301
+
+[[redirects]]
+  from = "/degorgement-morbihan-56.html"
+  to = "/degorgement-morbihan-56"
+  status = 301
+
+[[redirects]]
+  from = "/degorgement.html"
+  to = "/degorgement"
+  status = 301
+
+[[redirects]]
+  from = "/finistere-29.html"
+  to = "/finistere-29"
+  status = 301
+
+[[redirects]]
   from = "/mentions-legales.html"
   to = "/mentions-legales"
   status = 301
 
 [[redirects]]
+  from = "/morbihan-56.html"
+  to = "/morbihan-56"
+  status = 301
+
+[[redirects]]
+  from = "/plomberie-finistere-29.html"
+  to = "/plomberie-finistere-29"
+  status = 301
+
+[[redirects]]
+  from = "/plomberie-morbihan-56.html"
+  to = "/plomberie-morbihan-56"
+  status = 301
+
+[[redirects]]
+  from = "/plomberie.html"
+  to = "/plomberie"
+  status = 301
+
+[[redirects]]
   from = "/politique-confidentialite.html"
   to = "/politique-confidentialite"
+  status = 301
+
+[[redirects]]
+  from = "/urgence-plomberie.html"
+  to = "/urgence-plomberie"
   status = 301
 
 [[redirects]]
