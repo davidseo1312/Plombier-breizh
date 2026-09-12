@@ -12,8 +12,8 @@ export default landingPage({
   tag: 'Dégorgement &amp; débouchage — Morbihan 56',
   h1: 'Dégorgement de canalisation dans <em>le Morbihan (56)</em>',
   sub: 'L’eau stagne, refoule, ou plusieurs évacuations lâchent en même temps ? Plombier Breizh dégorge votre réseau dans le Morbihan.',
-  heroImg: 'siphon-encrasse', heroPhotoCamion: false,
-  heroAlt: 'Siphon d’évacuation entièrement encrassé, avant dégorgement',
+  heroPhotoCamion: true,
+  heroAlt: 'Camion et matériel de dégorgement Plombier Breizh dans le Morbihan',
   atouts: [
     'Intervention rapide',
     'Camion de pompage',
