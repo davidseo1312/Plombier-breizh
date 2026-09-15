@@ -320,6 +320,13 @@ strong{font-weight:700}
 }
 .figure-wide figcaption a{font-weight:700}
 
+/* ---------- Champ légal non renseigné ----------
+   Visible mais discret : on n'invente aucune donnée, on montre ce qui manque. */
+.todo{
+  background:#FFF3CD;border:1px solid #E6D08A;border-left:3px solid #C9A227;
+  padding:1px 7px;font-size:14.5px;font-weight:700;color:#6B5309;white-space:nowrap;
+}
+
 /* ---------- FAQ ----------
    Questions réellement posées au téléphone. Angles droits, accent cyan. */
 .faq{border:1px solid var(--line);background:var(--white)}

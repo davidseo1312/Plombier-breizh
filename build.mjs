@@ -11,6 +11,7 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { page, SITE } from './src/lib/layout.mjs';
+import { champsManquants } from './src/lib/entreprise.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const pagesDir = path.join(root, 'src', 'pages');
@@ -146,3 +147,15 @@ for (const slug of built) {
   }
 }
 console.log(warnings === 0 ? '\nTous les contrôles sont passés.' : `\n${warnings} avertissement(s).`);
+
+/* ---- Identité légale : ce qui reste à renseigner --------------------------
+   Les mentions légales et la politique de confidentialité sont générées
+   depuis src/lib/entreprise.mjs. Tant qu'un champ obligatoire est vide, il
+   s'affiche « à compléter » sur le site : on ne devine aucune donnée. */
+const manquants = champsManquants();
+if (manquants.length) {
+  console.log(`\n⚖  Mentions légales — ${manquants.length} information(s) à renseigner dans src/lib/entreprise.mjs :`);
+  manquants.forEach(m => console.log(`   · ${m}`));
+} else {
+  console.log('\n⚖  Mentions légales : toutes les informations obligatoires sont renseignées.');
+}

@@ -344,6 +344,31 @@ titre en dessous. `LIEN_GOOGLE` dans `src/lib/reviews.mjs` permet d'y associer
 l'URL de la fiche établissement Google si vous souhaitez le rendre cliquable ;
 laissé vide, aucun lien n'est posé.
 
+## 9 bis. Mentions légales et politique de confidentialité
+
+Les deux pages sont **générées** depuis un fichier unique :
+`src/lib/entreprise.mjs`. Renseignez une valeur, relancez `node build.mjs`,
+et les deux pages sont à jour.
+
+Rien n'est deviné : un champ obligatoire laissé vide s'affiche
+« à compléter » sur le site (encadré jaune) **et** est listé à la fin du build :
+
+```
+⚖  Mentions légales — 12 information(s) à renseigner dans src/lib/entreprise.mjs :
+   · forme juridique
+   · adresse du siège
+   …
+```
+
+Déjà renseigné : dénomination (`ASSOUL BILAL`), enseigne (`Plombier Breizh`),
+SIREN (`901133041`, clé de Luhn vérifiée), téléphone, email.
+
+À trancher pour la TVA : si l'entreprise est assujettie, le numéro
+intracommunautaire est `FR17901133041` (clé calculée par la formule officielle
+`(12 + 3 × (SIREN mod 97)) mod 97`) ; si elle est en franchise en base,
+laissez `tva` vide et passez `franchiseTVA` à `true` — la mention
+« TVA non applicable, article 293 B du CGI » s'affiche alors automatiquement.
+
 ## 10. Informations à compléter avant mise en ligne
 
 Ces éléments n'ont pas été inventés et doivent être renseignés :
