@@ -32,7 +32,8 @@ build.mjs                         ← générateur (node build.mjs)
 src/
   lib/layout.mjs                  ← constantes + header, footer, CTA, bandeaux, formulaire…
   lib/services.mjs                ← catalogue des interventions (source unique)
-  lib/lp.mjs                      ← fabrique des landing pages Google Ads (6 pages)
+  lib/lp.mjs                      ← fabrique des landing pages Ads « débouchage » (4 pages)
+  lib/lp-plomberie.mjs            ← fabrique des landing pages Ads « plomberie » (2 pages)
   pages/*.mjs                     ← contenu de chaque page
 assets/
   css/site.css                    ← design system complet (palette + typo Lato)
@@ -243,6 +244,7 @@ vraies photos d'intervention en gardant **le même nom de base et le même ratio
 | `canalisation-bouchee` / `reseau-evacuation` / `inspection-canalisation` | Canalisation, inspection caméra |
 | `urgence-plomberie` / `technicien-camion` / `intervention-salle-de-bain` | Intervention urgente, technicien |
 | `chauffe-eau` / `wc-sanitaires` | Chauffe-eau, chasse d'eau et sanitaires |
+| `equip-camion-plombier` | Technicien devant le camion (carré) |
 | `cliente-attente` / `siphon-encrasse` | Cliente en attente, siphon encrassé |
 | `equip-pompe` / `equip-furet-electrique` / `equip-haute-pression` / `equip-camera-inspection` / `equip-recherche-fuite` / `equip-outillage` | Matériel professionnel (carré) |
 
@@ -310,6 +312,18 @@ indiquée par son champ `page`.
 | `lp29` | `/finistere-29` | 3 avis du Finistère |
 | `lp56` | `/morbihan-56` | 3 avis du Morbihan |
 | `accueil` | `/`, plus Plomberie, Débouchage, Dégorgement et Urgence | les 4 restants (29 et 56 mêlés) |
+
+Les deux landing pages **plomberie** (`/plomberie-finistere-29`,
+`/plomberie-morbihan-56`) affichent une sélection explicite : seuls les avis qui
+parlent réellement de plomberie (fuite d'eau) y figurent, sans carrousel. Dès
+que d'autres avis de plomberie seront disponibles, il suffit de les ajouter à
+`AVIS` puis de compléter l'appel `avisParNoms(...)` dans les deux fichiers de
+`src/pages/`.
+
+**Présentation « Google »** : elle n'est affichée que sur les pages où l'origine
+Google des avis est assumée. Les deux landing pages plomberie l'omettent
+volontairement : tant que les avis ne sont pas rattachés à une fiche
+établissement vérifiable, ils sont présentés simplement comme des avis clients.
 
 **Carrousel** : défilement horizontal natif (glissement tactile et navigation
 clavier gratuits) piloté par deux flèches rectangulaires et une avance

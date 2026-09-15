@@ -7,7 +7,7 @@
 export const SITE = {
   name: 'Plombier Breizh',
   phoneDisplay: '02 20 06 01 96',
-  phoneHref: 'tel:0220060196',
+  phoneHref: 'tel:+33220060196',
   email: 'contact@plombier-breizh.fr',
   region: 'Bretagne',
   baseUrl: 'https://www.plombier-breizh.fr'
@@ -102,7 +102,12 @@ export const heroPhoto = (fallback = 'hero-plombier-intervention',
    HEAD / HEADER / FOOTER
    ------------------------------------------------------------------------- */
 
-const jsonLd = () => JSON.stringify({
+const OFFRES_DEFAUT = [
+  'Dépannage plomberie', 'Débouchage de canalisation', 'Dégorgement',
+  'Recherche de fuite', 'Intervention de plomberie urgente'
+];
+
+const jsonLd = (offres = OFFRES_DEFAUT) => JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Plumber',
   name: SITE.name,
@@ -114,13 +119,10 @@ const jsonLd = () => JSON.stringify({
     { '@type': 'AdministrativeArea', name: 'Finistère (29)' },
     { '@type': 'AdministrativeArea', name: 'Morbihan (56)' }
   ],
-  makesOffer: [
-    'Dépannage plomberie', 'Débouchage de canalisation', 'Dégorgement',
-    'Recherche de fuite', 'Intervention de plomberie urgente'
-  ].map(n => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: n } }))
+  makesOffer: offres.map(n => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: n } }))
 });
 
-export const head = ({ title, description, slug }) => `<!doctype html>
+export const head = ({ title, description, slug, offres }) => `<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -138,7 +140,7 @@ export const head = ({ title, description, slug }) => `<!doctype html>
 <link rel="preload" href="/assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/lato-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css">
-<script type="application/ld+json">${jsonLd()}</script>
+<script type="application/ld+json">${jsonLd(offres)}</script>
 <!-- ===================================================================
      TRACKING — à activer lors de la mise en ligne (voir README.md).
      Aucun identifiant fictif n'est présent : décommentez et remplacez
@@ -172,7 +174,7 @@ function PBLogo(img){
 </head>`;
 
 /** `minimal` : header allégé des landing pages SEA (moins de distractions). */
-export const header = (current, minimal = false) => `
+export const header = (current, minimal = false, { services = 'Plomberie • Débouchage • Dégorgement • Urgence' } = {}) => `
 <a class="visually-hidden" href="#contenu">Aller au contenu</a>
 <div class="topbar">
   <div class="container">
@@ -181,7 +183,7 @@ export const header = (current, minimal = false) => `
       <li><span class="topbar__tag">Email</span> <a href="mailto:${SITE.email}">${SITE.email}</a></li>
     </ul>
     <ul class="topbar__list">
-      <li>Plomberie • Débouchage • Dégorgement • Urgence</li>
+      <li>${services}</li>
     </ul>
   </div>
 </div>
@@ -517,16 +519,23 @@ export const formSection = ({
   </div>
 </section>`;
 
-export const footer = () => `
+export const footer = ({
+  liens = true,
+  tagline = 'Plomberie • Débouchage • Dégorgement • Urgence',
+  stickyTexte = '',
+  colonnes = null,
+  ctaTexte = 'Demander une intervention'
+} = {}) => `
 <footer class="site-footer">
   <div class="container">
     <div class="footer__grid">
       <div>
         ${logoImg({ files: LOGO_FILES_VERTICAL, cls: 'footer__logo', alt: SITE.name, width: 148, height: 112, lazy: true })}
         <span class="brand-fallback brand-fallback--footer" hidden>Plombier<span>Breizh</span></span>
-        <p class="footer__tagline">Plomberie • Débouchage • Dégorgement • Urgence</p>
+        <p class="footer__tagline">${tagline}</p>
         <p>Intervention en Bretagne — Finistère 29 &amp; Morbihan 56</p>
       </div>
+${liens ? `
       <div>
         <h3>Nos interventions</h3>
         <ul class="footer__list">
@@ -544,14 +553,14 @@ export const footer = () => `
           <li><a href="/morbihan-56">Morbihan (56)</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
-      </div>
+      </div>` : (colonnes || '')}
       <div>
         <h3>Nous appeler</h3>
         <a class="footer__phone" href="${SITE.phoneHref}" data-location="footer" data-cta="appel-footer">${SITE.phoneDisplay}</a>
         <ul class="footer__list">
           <li><a href="mailto:${SITE.email}">${SITE.email}</a></li>
         </ul>
-        ${formBtn('footer', { variant: 'accent', size: '', block: true })}
+        ${formBtn('footer', { variant: 'accent', size: '', block: true, text: ctaTexte })}
       </div>
     </div>
     <div class="footer__bottom">
@@ -565,12 +574,18 @@ export const footer = () => `
   </div>
 </footer>
 
+${stickyTexte ? `
+<div class="sticky-cta sticky-cta--solo" aria-label="Contact rapide">
+  <a class="sticky-cta__call" href="${SITE.phoneHref}" data-location="sticky-mobile" data-cta="appel-sticky">
+    <span aria-hidden="true">📞</span> ${stickyTexte}
+  </a>
+</div>` : `
 <div class="sticky-cta" aria-label="Contact rapide">
   <a class="sticky-cta__call" href="${SITE.phoneHref}" data-location="sticky-mobile" data-cta="appel-sticky">
     <span aria-hidden="true">📞</span> Appeler — ${SITE.phoneDisplay}
   </a>
   <a class="sticky-cta__form" href="#demande-intervention" data-location="sticky-mobile" data-cta="demande-sticky">Intervention</a>
-</div>
+</div>`}
 
 <script src="/assets/js/site.js" defer></script>
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
@@ -602,11 +617,11 @@ export const pageHero = ({ tag, h1, sub, img, alt, location, photo = false, item
 </section>`;
 
 /** Assemble une page complète. */
-export const page = ({ title, description, slug, nav, body, minimalNav = false }) =>
-  `${head({ title, description, slug })}
+export const page = ({ title, description, slug, nav, body, minimalNav = false, enTete = {}, pied = {}, offres }) =>
+  `${head({ title, description, slug, offres })}
 <body data-page="${slug}">
-${header(nav, minimalNav)}
+${header(nav, minimalNav, enTete)}
 <main id="contenu">
 ${body}
 </main>
-${footer()}`;
+${footer(pied)}`;

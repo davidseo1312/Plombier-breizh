@@ -49,7 +49,8 @@ export const IMAGES = [
   ['equip-recherche-fuite', 'Matériel de recherche de fuite', 'loupe', 1],
   ['equip-outillage', 'Outillage professionnel de plomberie', 'wrench', 1],
   ['equip-camion', 'Camion équipé', 'gear', 1],
-  ['wc-sanitaires', 'WC, chasse d’eau et sanitaires', 'drop', 3 / 2]
+  ['wc-sanitaires', 'WC, chasse d’eau et sanitaires', 'drop', 3 / 2],
+  ['equip-camion-plombier', 'Technicien devant le camion équipé', 'gear', 1]
 ];
 
 const PALETTES = [

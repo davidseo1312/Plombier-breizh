@@ -1,104 +1,58 @@
-import { landingPage } from '../lib/lp.mjs';
-import { pick } from '../lib/services.mjs';
+import { landingPlomberie } from '../lib/lp-plomberie.mjs';
 import { avisParNoms } from '../lib/reviews.mjs';
 
-export default landingPage({
+export default landingPlomberie({
   slug: 'plomberie-morbihan-56',
   dept: 'Morbihan', article: 'le', num: '56',
   cities: ['Vannes', 'Lorient', 'Lanester', 'Auray', 'Pontivy', 'Hennebont', 'Ploemeur', 'Questembert'],
   title: 'Plombier Morbihan (56) — fuite d’eau et dépannage | Plombier Breizh',
-  description: 'Plombier dans le Morbihan : fuite d’eau, recherche de fuite, ballon d’eau chaude, robinetterie, vanne d’arrêt. Appelez Plombier Breizh au 02 20 06 01 96.',
+  description: 'Plombier dans le Morbihan : fuite d’eau, recherche de fuite, ballon d’eau chaude, robinetterie, sanitaires. Appelez Plombier Breizh au 02 20 06 01 96.',
 
-  tag: 'Plomberie &amp; dépannage — Morbihan 56',
+  tag: 'Plomberie — Morbihan 56',
   h1: 'Plombier dans le Morbihan (56) — <em>fuite d’eau et dépannage</em>',
-  sub: 'Une fuite à la remise en eau, un ballon qui ne chauffe plus, une vanne qui ne ferme plus ? Plombier Breizh répare vos installations dans le Morbihan.',
-  heroImg: 'fuite-eau', heroPhotoCamion: false,
-  heroAlt: 'Réparation d’une fuite sous un lavabo par Plombier Breizh, dans le Morbihan',
-  atouts: [
-    'Fuite d’eau',
-    'Recherche de fuite',
-    'Ballon d’eau chaude',
-    'Vanne d’arrêt &amp; raccords',
-    'Remise en eau d’un logement'
+  sub: 'Fuite d’eau, chauffe-eau en panne, robinetterie ou sanitaires : décrivez votre problème par téléphone pour organiser l’intervention.',
+  heroImg: 'chauffe-eau',
+  heroAlt: 'Technicien Plombier Breizh intervenant sur un ballon d’eau chaude, dans le Morbihan',
+
+  services: [
+    ['fuite-eau', 'Fuite d’eau', 'Raccord, joint, flexible ou évacuation percée. On stoppe la fuite, puis on répare.'],
+    ['urgence-plomberie', 'Robinetterie', 'Robinet ou mitigeur qui goutte, vanne d’arrêt grippée, raccord à refaire.'],
+    ['wc-sanitaires', 'Sanitaires', 'Chasse d’eau, mécanisme, raccordement de broyeur : on reprend ce qui ne tient plus.'],
+    ['recherche-fuite', 'Recherche de fuite', 'Tache d’humidité, facture qui grimpe : on localise avant d’ouvrir un mur ou une dalle.'],
+    ['depannage-plomberie', 'Réparation plomberie', 'Alimentation en cuivre, PER ou multicouche : reprise et remise en service.'],
+    ['chauffe-eau', 'Chauffe-eau', 'Plus d’eau chaude, groupe de sécurité qui goutte, ballon qui fuit.']
   ],
 
-  introTitle: 'Votre plombier dans le Morbihan',
-  introImg: 'chauffe-eau',
-  introAlt: 'Intervention sur un ballon d’eau chaude dans le Morbihan',
-  introText: [
-    'Sur le littoral morbihannais, beaucoup de logements ne sont occupés qu’une partie de l’année. On ouvre la maison, on remet l’eau, et la surprise arrive tout de suite : un raccord qui a travaillé pendant l’hiver, un groupe de sécurité entartré, un ballon qui ne chauffe plus.',
-    'À l’intérieur des terres, ce sont plutôt les installations anciennes qui appellent. Des réseaux en cuivre repris plusieurs fois, des vannes d’arrêt qui ne ferment plus vraiment — et le jour où il faut couper l’eau en urgence, on s’en rend compte au pire moment.',
-    'Dites-nous ce que vous constatez. Souvent, un simple échange au téléphone suffit à distinguer un joint à remplacer d’une fuite qu’il faut d’abord localiser.'
-  ],
-  situationsTitre: 'Ce qui nous vaut le plus d’appels dans le 56',
-  situations: [
-    'Fuite au moment de remettre l’eau dans une maison rouverte',
-    'Plus d’eau chaude, groupe de sécurité qui goutte sans arrêt',
-    'Vanne d’arrêt qui ne ferme plus correctement',
-    'Fuite sur un raccord d’alimentation',
-    'Robinet ou mitigeur à remplacer',
-    'Humidité inexpliquée au sol ou sur une cloison'
-  ],
-  moyensTitre: 'Notre façon de traiter une fuite',
-  moyens: [
-    'On situe la fuite au détecteur acoustique avant d’ouvrir quoi que ce soit',
-    'On coupe proprement : reprise ou remplacement de la vanne d’arrêt si besoin',
-    'On refait le raccord, le joint ou la robinetterie en cause',
-    'On contrôle l’installation complète après une longue période sans usage',
-    'On réintervient sur le chauffe-eau : groupe de sécurité, raccordement'
-  ],
-
-  servicesTitre: 'Nos interventions de plomberie dans le Morbihan',
-  servicesIntro: 'Fuite d’eau, recherche de fuite, ballon d’eau chaude, robinetterie, sanitaires : ici, pas de débouchage — uniquement ce qui touche à l’installation elle-même.',
-  services: pick('Dépannage plomberie', 'Chauffe-eau', 'Recherche de fuite',
-                 'Fuite d’eau', 'Chasse d’eau et sanitaires', 'Urgence plomberie'),
-  autresTitre: 'Également pris en charge dans le Morbihan',
-  autres: [
-    ['Remise en eau', 'Contrôle de l’installation à la réouverture d’un logement.'],
-    ['Vanne d’arrêt', 'Vanne grippée qui ne coupe plus l’eau correctement.'],
-    ['Groupe de sécurité', 'Pièce qui goutte en permanence sous le ballon d’eau chaude.'],
-    ['Robinetterie et mitigeurs', 'Remplacement, reprise d’étanchéité, raccordement.']
-  ],
-
-  recherchesTitre: 'Les recherches qui mènent le plus souvent à nous dans le Morbihan',
-  recherchesIntro: 'Ce sont les mots que l’on tape quand une installation lâche. Si l’un d’eux correspond à votre situation, appelez le 02 20 06 01 96 : on vous répond directement.',
-  recherches: [
-    'plombier Vannes',
-    'plombier Lorient',
-    'recherche de fuite Vannes',
-    'fuite d’eau maison que faire',
-    'ballon d’eau chaude en panne',
-    'groupe de sécurité qui coule',
-    'chauffe-eau qui fuit Lorient',
-    'dépannage plomberie 56',
-    'vanne d’arrêt bloquée',
-    'plombier Auray',
-    'plombier urgence Morbihan',
-    'fuite après le compteur d’eau'
-  ],
-
-  telephoneTitre: 'Une fuite ou une panne de plomberie dans le Morbihan ?',
-  telephoneTexte: 'Avant de chercher à couper l’eau ou à démonter, appelez-nous : on vous dit quoi faire tout de suite, et ce qu’il faut prévoir.',
-
-  equipTitre: 'Le matériel qui évite de casser pour rien',
-  equipIntro: 'Une fuite invisible se cherche avant de se réparer. Sur une dalle ou derrière une cloison, ouvrir au jugé coûte plus cher que l’intervention elle-même.',
-  equipements: [
+  materielIntro: 'Une fuite invisible se cherche avant de se réparer. Sur une dalle ou derrière une cloison, ouvrir au jugé coûte plus cher que l’intervention elle-même.',
+  materiel: [
     ['equip-recherche-fuite', 'Détecteur de fuite', 'Pour situer une fuite non visible sans ouvrir un mur ou une dalle au hasard.'],
-    ['equip-camion', 'Un camion équipé', 'Le matériel part avec le technicien, y compris pour les communes éloignées du littoral.'],
-    ['equip-outillage', 'Outillage de plomberie', 'Pour réparer sur place : joint, raccord, vanne, robinetterie, alimentation.']
+    ['equip-outillage', 'Outillage de plomberie', 'Pour réparer sur place : joint, raccord, vanne, robinetterie, alimentation.'],
+    ['equip-camion-plombier', 'Un camion équipé', 'Le matériel part avec le technicien, y compris pour les communes éloignées du littoral.']
   ],
 
-  whyTuiles: {
-    materielTitre: 'On cherche avant d’ouvrir',
-    materielTexte: 'Détecteur de fuite et outillage complet : une fuite invisible se situe avant de toucher à une cloison ou à une dalle.',
-    metierTitre: 'Des techniciens expérimentés',
-    metierTexte: 'Fuite, vanne d’arrêt, ballon d’eau chaude, robinetterie : des réparations faites tous les jours, sans improvisation.'
-  },
-  whyIntro: 'Ce sur quoi vous pouvez compter en appelant Plombier Breizh pour une fuite ou un dépannage de plomberie dans le Morbihan.',
-  avis: avisParNoms('Sophie Le Gall', 'Kevin Le Roux', 'Marie Le Floch'),
+  avis: avisParNoms('Sophie Le Gall', 'Nicolas Le Gall'),
 
-  formTitre: 'Demander un dépannage de plomberie dans le Morbihan',
-  formIntro: 'Indiquez votre commune et la panne rencontrée : nous vous rappelons pour organiser l’intervention.',
-  ctaFinalTitre: 'Besoin d’un plombier dans le Morbihan ?',
-  ctaFinalTexte: 'Fuite, ballon d’eau chaude, vanne d’arrêt ou robinetterie : appelez-nous, nous prenons le relais.'
+  etapes: [
+    ['Étape 1', 'Vous appelez', 'Vous décrivez la panne au 02 20 06 01 96. Nous notons l’adresse, ce que vous constatez et le degré d’urgence.'],
+    ['Étape 2', 'On prépare le matériel', 'Détecteur de fuite, outillage, pièces courantes : le camion part avec ce que votre description demande.'],
+    ['Étape 3', 'Le technicien répare', 'Il constate sur place, répare ce qui peut l’être dans la foulée, et vous explique ce qui a causé la panne.']
+  ],
+
+  zoneTexte: 'Nous intervenons sur ces communes du Morbihan et leurs alentours.',
+
+  faq: [
+    ['Vous intervenez dans quels délais ?',
+     'Cela dépend de votre commune et du planning du jour. Appelez-nous : nous vous disons tout de suite ce que nous pouvons organiser.'],
+    ['Combien coûte une intervention ?',
+     'Cela dépend de la panne et du temps passé. Nous en parlons au téléphone avant tout déplacement, pour que vous sachiez à quoi vous attendre.'],
+    ['Comment trouvez-vous une fuite qu’on ne voit pas ?',
+     'Au détecteur acoustique, et à la caméra quand l’accès est difficile. L’objectif est de localiser la fuite avant d’ouvrir quoi que ce soit.'],
+    ['J’ouvre une maison restée fermée, que faut-il vérifier ?',
+     'Les raccords, la vanne d’arrêt et le groupe de sécurité du ballon. C’est souvent là que la remise en eau révèle une fuite.'],
+    ['Que faire en attendant votre arrivée ?',
+     'Si vous le pouvez, fermez la vanne d’arrêt générale ou le robinet d’arrêt de l’appareil concerné, puis essuyez pour limiter les dégâts.']
+  ],
+
+  formIntro: 'Laissez votre numéro et votre commune : nous vous rappelons pour organiser l’intervention.',
+  ctaFinalTexte: 'Fuite, ballon d’eau chaude, robinetterie ou sanitaires : un appel suffit pour lancer la prise en charge.'
 });

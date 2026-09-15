@@ -320,6 +320,39 @@ strong{font-weight:700}
 }
 .figure-wide figcaption a{font-weight:700}
 
+/* ---------- FAQ ----------
+   Questions réellement posées au téléphone. Angles droits, accent cyan. */
+.faq{border:1px solid var(--line);background:var(--white)}
+.faq__item{border-bottom:1px solid var(--line)}
+.faq__item:last-child{border-bottom:0}
+.faq__item summary{
+  cursor:pointer;list-style:none;padding:18px 54px 18px 20px;position:relative;
+  font-weight:700;font-size:17px;color:var(--ink);line-height:1.4;
+}
+.faq__item summary::-webkit-details-marker{display:none}
+.faq__item summary::after{
+  content:"";position:absolute;right:22px;top:50%;width:13px;height:13px;
+  border-right:3px solid var(--cyan);border-bottom:3px solid var(--cyan);
+  transform:translateY(-70%) rotate(45deg);transition:transform .15s ease;
+}
+.faq__item[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq__item summary:hover{background:var(--tint)}
+.faq__item summary:focus-visible{outline:3px solid var(--cyan);outline-offset:-3px}
+.faq__item p{margin:0;padding:0 20px 20px;font-size:16px;color:var(--ink-soft);line-height:1.6}
+
+/* ---------- Communes couvertes ---------- */
+.communes{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.communes li{
+  margin:0;border:1px solid var(--tint-strong);background:var(--tint);
+  border-left:4px solid var(--cyan);padding:10px 16px;font-size:16px;font-weight:700;color:var(--cyan-ink);
+}
+@media (max-width:560px){
+  .communes{gap:8px}
+  .communes li{font-size:15px;padding:9px 13px}
+  .faq__item summary{font-size:16px;padding:16px 46px 16px 16px}
+  .faq__item p{padding:0 16px 16px}
+}
+
 /* ---------- Recherches fréquentes (mots-clés) ----------
    Les termes que les clients tapent réellement : utile pour la cohérence
    annonce → page, et pour que le visiteur se reconnaisse tout de suite. */
@@ -510,6 +543,8 @@ strong{font-weight:700}
 .sticky-cta a:hover{text-decoration:none}
 .sticky-cta__call{background:var(--blue);color:var(--white)}
 .sticky-cta__form{background:var(--cyan);color:var(--black)}
+.sticky-cta--solo{grid-template-columns:1fr}
+.sticky-cta--solo .sticky-cta__call{font-size:17px}
 @media (max-width:900px){
   .sticky-cta{display:grid}
   body{padding-bottom:65px}
