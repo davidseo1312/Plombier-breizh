@@ -37,8 +37,9 @@ export default {
     <p>
       ${ligne('SIREN', E.siren)}
       ${ligne('SIRET (siège)', E.siret)}
-      ${ligne(`Immatriculation ${E.rcsType || 'RCS'}`, E.rcsVille ? `${E.rcsType || 'RCS'} ${E.rcsVille} ${E.siren}` : '')}
-      ${ligne('Code APE / NAF', [E.ape, E.apeLibelle].filter(Boolean).join(' — '))}
+      ${ligne(`Immatriculation ${E.rcsType || 'RCS'}`, E.rcsVille ? `${E.siren} R.C.S. ${E.rcsVille}` : '')}
+      ${ligne('Code APE / NAF', E.ape)}
+      ${ligne('Date de création', E.dateCreation, { obligatoire: false })}
       ${E.franchiseTVA
         ? 'TVA : non applicable, article 293 B du Code général des impôts.<br>'
         : ligne('N° de TVA intracommunautaire', E.tva)}

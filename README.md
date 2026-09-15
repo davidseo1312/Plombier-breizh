@@ -360,14 +360,21 @@ Rien n'est deviné : un champ obligatoire laissé vide s'affiche
    …
 ```
 
-Déjà renseigné : dénomination (`ASSOUL BILAL`), enseigne (`Plombier Breizh`),
-SIREN (`901133041`, clé de Luhn vérifiée), téléphone, email.
+Renseigné d'après la fiche d'entreprise : dénomination `ASSOUL BILAL`,
+enseigne `Plombier Breizh`, entrepreneur individuel (EI), siège
+1 rue Albert Simonin, 92400 Courbevoie, SIREN `901 133 041`,
+SIRET `901 133 041 00011`, `901 133 041 R.C.S. Nanterre`, code APE `81.29A`,
+création le 6 juillet 2021, dirigeant et directeur de la publication
+Bilal Assoul. Hébergeur : Hostinger.
 
-À trancher pour la TVA : si l'entreprise est assujettie, le numéro
-intracommunautaire est `FR17901133041` (clé calculée par la formule officielle
-`(12 + 3 × (SIREN mod 97)) mod 97`) ; si elle est en franchise en base,
-laissez `tva` vide et passez `franchiseTVA` à `true` — la mention
-« TVA non applicable, article 293 B du CGI » s'affiche alors automatiquement.
+**TVA** : le numéro `FR17901133041` existe mais apparaît non valide au
+répertoire VIES, ce qui correspond à une franchise en base. La page affiche
+donc « TVA non applicable, article 293 B du CGI ». Si l'entreprise est en
+réalité assujettie, mettre `tva: 'FR17901133041'` et `franchiseTVA: false`.
+
+**Code APE** : le libellé enregistré (`Désinfection, désinsectisation,
+dératisation`) ne correspond pas à l'activité vendue sur le site. Seul le code
+est affiché ; le libellé reste dans `entreprise.mjs` à titre documentaire.
 
 ## 10. Informations à compléter avant mise en ligne
 

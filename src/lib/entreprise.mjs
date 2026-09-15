@@ -21,28 +21,28 @@ export const ENTREPRISE = {
   enseigne: 'Plombier Breizh',
 
   /* Ex. « Entrepreneur individuel », « SASU », « SARL »… */
-  formeJuridique: '',
+  formeJuridique: 'Entrepreneur individuel (EI)',
 
   /* Personne physique responsable. Sert aussi de directeur de la publication
      si `directeurPublication` est laissé vide. */
-  dirigeant: '',
-  dirigeantQualite: '',
-  directeurPublication: '',
+  dirigeant: 'Bilal Assoul',
+  dirigeantQualite: 'entrepreneur individuel',
+  directeurPublication: 'Bilal Assoul',
 
   /* Capital social — laisser vide pour une entreprise individuelle. */
   capital: '',
 
   /* ---- Siège social --------------------------------------------------- */
-  adresse: '',
-  codePostal: '',
-  ville: '',
+  adresse: '1 rue Albert Simonin',
+  codePostal: '92400',
+  ville: 'Courbevoie',
 
   /* ---- Immatriculation ------------------------------------------------ */
   /* SIREN à 9 chiffres — vérifié (clé de Luhn valide). */
-  siren: '901133041',
+  siren: '901 133 041',
 
   /* SIRET du siège : les 9 chiffres du SIREN + les 5 chiffres du NIC. */
-  siret: '',
+  siret: '901 133 041 00011',
 
   /* Numéro de TVA intracommunautaire.
      La clé ci-dessous est calculée par la formule officielle
@@ -50,23 +50,28 @@ export const ENTREPRISE = {
      ⚠ À NE PUBLIER QUE si l'entreprise est réellement assujettie à la TVA.
      En franchise en base (micro-entreprise), videz ce champ et laissez
      `franchiseTVA` à true : la mention légale correspondante s'affichera. */
-  /* Laissé vide volontairement : je ne peux pas vérifier le régime de TVA.
-     - si l'entreprise est assujettie   → mettre 'FR17901133041'
-     - si elle est en franchise en base → laisser vide et passer
-       `franchiseTVA` à true (la mention art. 293 B s'affichera). */
+  /* Le numéro FR17901133041 existe mais apparaît NON VALIDE sur la fiche
+     d'entreprise (non actif au répertoire VIES) : c'est la signature d'une
+     franchise en base de TVA. La mention légale correspondante est donc
+     affichée à la place du numéro.
+     Si l'entreprise est en réalité assujettie : mettre tva: 'FR17901133041'
+     et repasser franchiseTVA à false. */
   tva: '',
-  franchiseTVA: false,
+  franchiseTVA: true,
 
   /* RCS / RM : ville du greffe d'immatriculation. */
-  rcsVille: '',
+  rcsVille: 'Nanterre',
   /* 'RCS' (commerçants), 'RM' (artisans, répertoire des métiers) ou ''. */
   rcsType: 'RCS',
 
-  /* Code APE / NAF et son libellé. */
-  ape: '',
-  apeLibelle: '',
+  /* Code APE / NAF et son libellé, tels qu'enregistrés.
+     ⚠ Le libellé enregistré ne correspond PAS à l'activité vendue sur le site
+     (plomberie). Seul le CODE est affiché sur la page : le libellé reste ici
+     à titre documentaire. À régulariser auprès du greffe / de l'INPI. */
+  ape: '81.29A',
+  apeLibelle: 'Désinfection, désinsectisation, dératisation',
 
-  dateCreation: '',
+  dateCreation: '6 juillet 2021',
 
   /* ---- Activité réglementée ------------------------------------------- */
   /* Assurance responsabilité civile professionnelle : nom de l'assureur,
@@ -82,11 +87,14 @@ export const ENTREPRISE = {
   mediateurSite: '',
 
   /* ---- Hébergeur du site ---------------------------------------------- */
+  /* ⚠ Adresse à confirmer sur votre facture Hostinger : le groupe exploite
+     plusieurs entités selon le contrat. Hostinger n'expose pas de numéro de
+     téléphone d'assistance (support par chat et ticket), d'où le champ vide. */
   hebergeur: {
-    nom: '',
-    adresse: '',
+    nom: 'Hostinger International Ltd',
+    adresse: '61 Lordou Vironos Street, 6023 Larnaca, Chypre',
     telephone: '',
-    site: ''
+    site: 'https://www.hostinger.fr'
   }
 };
 
