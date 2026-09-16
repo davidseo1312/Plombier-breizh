@@ -14,7 +14,7 @@
    Ordre : hero · preuves · appel en 2 minutes · services · pourquoi nous ·
            matériel · avis · zone · FAQ · formulaire · appel final.
    ========================================================================== */
-import { SITE, callBtn, formBtn, tel } from './layout.mjs';
+import { SITE, callBtn, formBtn, tel, phoneNote } from './layout.mjs';
 import { servicePhoto } from './services.mjs';
 import { ENTREPRISE as E } from './entreprise.mjs';
 
@@ -24,7 +24,7 @@ const RAPPEL = 'Être rappelé';
 const notesCta = (...items) =>
   `<div class="cta-note">${items.map(i => `<span>${i}</span>`).join('')}</div>`;
 
-const APPEL_GRATUIT = 'Appel non surtaxé';
+const APPEL = SITE.phoneNote;
 const INTERLOCUTEUR = 'Vous parlez directement à un plombier';
 
 /* Carte d'intervention : photo, titre, deux lignes. */
@@ -97,7 +97,7 @@ export const landingPlomberie = ({
           ${callBtn(`hero-${slug}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
           ${formBtn(`hero-${slug}`, { text: RAPPEL })}
         </div>
-        ${notesCta(APPEL_GRATUIT, INTERLOCUTEUR)}
+        ${notesCta(APPEL, INTERLOCUTEUR)}
       </div>
       <div class="hero__media">
         ${heroCamion
@@ -128,7 +128,7 @@ export const landingPlomberie = ({
       </div>
       <div class="trust__item">
         <strong>Appel non surtaxé</strong>
-        <span>${SITE.phoneDisplay} est un numéro fixe, facturé comme un appel ordinaire.</span>
+        <span>${SITE.phoneDisplay} est un numéro fixe, inclus dans la plupart des forfaits. Aucun numéro payant.</span>
       </div>
       <div class="trust__item">
         <strong>Intervention dans ${article} ${dept}</strong>
@@ -155,7 +155,7 @@ export const landingPlomberie = ({
         <p>Appelez maintenant</p>
         <a class="callbox__number" href="${SITE.phoneHref}" data-location="callbox-${slug}" data-cta="numero-appel-2min">${SITE.phoneDisplay}</a>
         ${callBtn(`callbox-${slug}`, { variant: 'dark', text: 'Appeler maintenant', block: true })}
-        <small>Appel non surtaxé</small>
+        <small>${SITE.phoneNote}</small>
       </div>
     </div>
   </div>
@@ -239,7 +239,7 @@ export const landingPlomberie = ({
       ${callBtn(`materiel-${slug}`, { text: 'Parler à un plombier' })}
       ${formBtn(`materiel-${slug}`, { variant: 'outline-light', text: RAPPEL })}
     </div>
-    ${notesCta(APPEL_GRATUIT, INTERLOCUTEUR)}
+    ${notesCta(APPEL, INTERLOCUTEUR)}
   </div>
 </section>
 
@@ -313,6 +313,7 @@ export const landingPlomberie = ({
         <p class="lead">${formIntro}</p>
         <p><strong>Pour une intervention urgente, l’appel reste le plus rapide :</strong></p>
         ${callBtn(`formulaire-${slug}-colonne`, { text: `Appeler le ${SITE.phoneDisplay}` })}
+        ${phoneNote()}
         <ul class="nolist mt-32">
           <li>Vos coordonnées servent uniquement à vous rappeler.</li>
           <li>Aucun appel commercial, aucune revente de vos données.</li>
@@ -379,6 +380,7 @@ export const landingPlomberie = ({
     <div class="btn-row">
       ${callBtn(`cta-final-${slug}`, { variant: 'dark', text: 'Appeler maintenant' })}
     </div>
+    ${phoneNote({ centre: true })}
   </div>
 </section>
 `

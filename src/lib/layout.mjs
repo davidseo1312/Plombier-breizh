@@ -9,6 +9,15 @@ export const SITE = {
   phoneDisplay: '02 20 06 01 96',
   phoneHref: 'tel:+33220060196',
   email: 'contact@plombier-breizh.fr',
+  /* Mention du coût de l'appel. 02 20 06 01 96 est un numéro GÉOGRAPHIQUE :
+     il n'est pas surtaxé et il est inclus dans les forfaits, mais il n'est
+     pas « gratuit » au sens de l'Arcep — seuls les numéros verts (0800 à
+     0805) peuvent porter la mention « appel gratuit ». Écrire « gratuit »
+     sur un 02 est une pratique commerciale trompeuse (art. L.121-2 du Code
+     de la consommation). Pour un vrai « appel gratuit », il faut souscrire
+     un numéro vert et remplacer phoneDisplay / phoneHref ci-dessus. */
+  phoneNote: 'Appel non surtaxé — inclus dans la plupart des forfaits',
+  phoneNoteCourt: 'Appel non surtaxé',
   region: 'Bretagne',
   baseUrl: 'https://www.plombier-breizh.fr'
 };
@@ -29,6 +38,11 @@ export const NAV = [
 /** Lien téléphone tracké — data-location alimente l'événement phone_click. */
 export const tel = (location, label = SITE.phoneDisplay, classes = '') =>
   `<a href="${SITE.phoneHref}" ${classes ? `class="${classes}" ` : ''}data-location="${location}">${label}</a>`;
+
+/** Mention du coût de l'appel, à poser sous un bouton ou un numéro.
+    `clair` : version pour fond sombre. `court` : version compacte. */
+export const phoneNote = ({ clair = false, court = false, centre = false } = {}) =>
+  `<p class="phone-note${clair ? ' phone-note--clair' : ''}${centre ? ' phone-note--centre' : ''}">${court ? SITE.phoneNoteCourt : SITE.phoneNote}</p>`;
 
 /** Bouton d'appel rectangulaire. */
 export const callBtn = (location, { variant = 'primary', size = 'lg', text = `Appeler le ${SITE.phoneDisplay}`, block = false } = {}) =>
@@ -229,6 +243,7 @@ export const urgencyBand = (location = 'bandeau-urgence') => `
     <div class="urgency__phone">
       <a class="urgency__number" href="${SITE.phoneHref}" data-location="${location}" data-cta="numero-bandeau">${SITE.phoneDisplay}</a>
       ${callBtn(location, { variant: 'dark', size: '', text: 'Appeler maintenant' })}
+      ${phoneNote({ court: true })}
     </div>
   </div>
 </section>`;
@@ -249,6 +264,7 @@ export const ctaBand = ({
     <div class="cta-band__actions">
       ${callBtn(location, { text: `Appeler le ${SITE.phoneDisplay}` })}
       ${secondary ? formBtn(location, { variant: 'outline-light' }) : ''}
+      ${phoneNote({ clair: true })}
     </div>
   </div>
 </section>`;
@@ -270,6 +286,7 @@ export const phoneBlock = ({
       ${callBtn(location, { variant: 'dark', text: 'Appeler maintenant' })}
       ${formBtn(location, { variant: 'outline' })}
     </div>
+    ${phoneNote({ centre: true })}
   </div>
 </section>`;
 
@@ -458,6 +475,7 @@ export const formSection = ({
         <p class="lead">${intro}</p>
         <p><strong>Pour une urgence, l’appel reste le plus rapide :</strong></p>
         ${callBtn(location + '-colonne', { text: `Appeler le ${SITE.phoneDisplay}` })}
+        ${phoneNote()}
         <div class="mt-32">${checklist()}</div>
         <p class="mt-24">Par email : <a href="mailto:${SITE.email}">${SITE.email}</a></p>
       </div>
@@ -557,6 +575,7 @@ ${liens ? `
       <div>
         <h3>Nous appeler</h3>
         <a class="footer__phone" href="${SITE.phoneHref}" data-location="footer" data-cta="appel-footer">${SITE.phoneDisplay}</a>
+        ${phoneNote({ clair: true })}
         <ul class="footer__list">
           <li><a href="mailto:${SITE.email}">${SITE.email}</a></li>
         </ul>
@@ -576,11 +595,13 @@ ${liens ? `
 
 ${stickyTexte ? `
 <div class="sticky-cta sticky-cta--solo" aria-label="Contact rapide">
+  <p class="sticky-cta__note">${SITE.phoneNote}</p>
   <a class="sticky-cta__call" href="${SITE.phoneHref}" data-location="sticky-mobile" data-cta="appel-sticky">
     <span aria-hidden="true">📞</span> ${stickyTexte}
   </a>
 </div>` : `
 <div class="sticky-cta" aria-label="Contact rapide">
+  <p class="sticky-cta__note">${SITE.phoneNote}</p>
   <a class="sticky-cta__call" href="${SITE.phoneHref}" data-location="sticky-mobile" data-cta="appel-sticky">
     <span aria-hidden="true">📞</span> Appeler — ${SITE.phoneDisplay}
   </a>
@@ -605,6 +626,7 @@ export const pageHero = ({ tag, h1, sub, img, alt, location, photo = false, item
           ${callBtn(location, { text: `Appeler le ${SITE.phoneDisplay}` })}
           ${formBtn(location)}
         </div>
+        ${phoneNote({ clair: true })}
         ${checklist(items, true)}
       </div>
       <div class="hero__media">

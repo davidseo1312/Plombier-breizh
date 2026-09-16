@@ -1,5 +1,5 @@
 import {
-  SITE, callBtn, formBtn, checklist, heroPhoto, urgencyBand, ctaBand,
+  SITE, callBtn, formBtn, checklist, heroPhoto, urgencyBand, ctaBand, phoneNote,
   phoneBlock, processSection, whySection, reviewsSection, bretagneSection, formSection
 } from '../lib/layout.mjs';
 import { servicesGrid, servicePhoto } from '../lib/services.mjs';
@@ -23,6 +23,7 @@ export default {
           ${callBtn('hero', { text: `Appeler le ${SITE.phoneDisplay}` })}
           ${formBtn('hero')}
         </div>
+        ${phoneNote({ clair: true })}
         <p class="hero__note">Vous parlez directement à quelqu’un qui connaît le métier.</p>
         ${checklist(undefined, true)}
       </div>
