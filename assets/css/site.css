@@ -320,6 +320,93 @@ strong{font-weight:700}
 }
 .figure-wide figcaption a{font-weight:700}
 
+/* ---------- Bandeau de confiance (landing plomberie) ----------
+   Uniquement des faits vérifiables : immatriculation, interlocuteur, coût de
+   l'appel, zone. Aucun badge de certification inventé. */
+.trust{background:var(--tint);border-block:1px solid var(--tint-strong)}
+.trust__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.trust__item{padding:22px 24px;border-right:1px solid var(--tint-strong)}
+.trust__item:last-child{border-right:0}
+.trust__item strong{
+  display:flex;align-items:flex-start;gap:9px;font-size:16.5px;color:var(--ink);line-height:1.3;
+}
+.trust__item strong::before{
+  content:"";flex:0 0 14px;height:14px;margin-top:4px;background:var(--cyan);
+}
+.trust__item span{display:block;margin-top:7px;padding-left:23px;font-size:15px;color:var(--ink-soft);line-height:1.5}
+.trust__item a{font-weight:700}
+@media (max-width:1000px){
+  .trust__grid{grid-template-columns:repeat(2,1fr)}
+  .trust__item:nth-child(2n){border-right:0}
+  .trust__item:nth-child(-n+2){border-bottom:1px solid var(--tint-strong)}
+}
+@media (max-width:620px){
+  .trust__grid{grid-template-columns:1fr}
+  .trust__item{border-right:0;border-bottom:1px solid var(--tint-strong);padding:18px 0}
+  .trust__item:last-child{border-bottom:0}
+}
+
+/* ---------- Bloc « votre appel en 2 minutes » ---------- */
+.callbox{background:var(--black);color:var(--white)}
+.callbox h2{color:var(--white)}
+.callbox__lead{color:#C6CFD6;font-size:17.5px;max-width:62ch;margin-bottom:26px;line-height:1.6}
+.callbox__grid{display:grid;grid-template-columns:1.25fr .75fr;gap:34px;align-items:start}
+.callbox__steps{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:etape}
+.callbox__steps li{
+  counter-increment:etape;position:relative;padding:14px 18px 16px 58px;
+  background:#1A1A1A;border-left:4px solid var(--cyan);font-size:16px;color:#D8DFE4;line-height:1.5;
+}
+.callbox__steps li::before{
+  content:counter(etape);position:absolute;left:18px;top:13px;
+  width:26px;height:26px;display:flex;align-items:center;justify-content:center;
+  background:var(--cyan);color:var(--black);font-weight:900;font-size:15px;
+}
+.callbox__steps b{display:block;color:var(--white);margin-bottom:3px;font-size:16.5px}
+.callbox__aside{background:var(--cyan);color:var(--black);padding:26px 24px;text-align:center}
+.callbox__aside p{margin:0 0 6px;font-size:16px;font-weight:700}
+.callbox__number{
+  display:block;font-size:clamp(30px,3.4vw,40px);font-weight:900;color:var(--black);
+  letter-spacing:-.01em;margin:6px 0 16px;
+}
+.callbox__number:hover{color:var(--black);text-decoration:none}
+.callbox__aside small{display:block;margin-top:12px;font-size:14.5px;color:var(--cyan-ink);font-weight:700}
+@media (max-width:900px){.callbox__grid{grid-template-columns:1fr;gap:26px}}
+
+/* ---------- Micro-réassurance sous un groupe de boutons ---------- */
+.cta-note{
+  display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px;
+  font-size:15px;color:var(--ink-mute);font-weight:700;
+}
+.cta-note span{display:flex;align-items:center;gap:8px}
+.cta-note span::before{content:"";width:9px;height:9px;background:var(--cyan);flex:0 0 9px}
+.section--dark .cta-note,
+.hero .cta-note,
+.callbox .cta-note{color:#C6CFD6}
+
+/* ---------- Ce que nous ne faisons pas ---------- */
+.nolist{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.nolist li{
+  display:flex;gap:12px;align-items:flex-start;margin:0;font-size:16px;
+  color:var(--ink-soft);line-height:1.5;
+}
+.nolist li::before{
+  content:"";flex:0 0 14px;height:14px;margin-top:4px;
+  background:linear-gradient(45deg,transparent 43%,#C0392B 43%,#C0392B 57%,transparent 57%),
+             linear-gradient(-45deg,transparent 43%,#C0392B 43%,#C0392B 57%,transparent 57%);
+}
+
+/* ---------- Qui vous répond ---------- */
+.who{
+  background:var(--white);border:1px solid var(--line);border-top:4px solid var(--cyan);
+  padding:24px 26px;margin-top:26px;
+}
+.who h3{margin:0 0 10px}
+.who p{margin:0 0 8px;font-size:16px;color:var(--ink-soft);line-height:1.6}
+.who p:last-child{margin-bottom:0}
+.who dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:14px 0 0;font-size:15.5px}
+.who dt{font-weight:700;color:var(--ink)}
+.who dd{margin:0;color:var(--ink-soft)}
+
 /* ---------- Champ légal non renseigné ----------
    Visible mais discret : on n'invente aucune donnée, on montre ce qui manque. */
 .todo{

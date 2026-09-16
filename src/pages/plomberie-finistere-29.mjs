@@ -33,9 +33,15 @@ export default landingPlomberie({
   avis: avisParNoms('Nicolas Le Gall', 'Sophie Le Gall'),
 
   etapes: [
-    ['Étape 1', 'Vous appelez', 'Vous décrivez la panne au 02 20 06 01 96. Nous notons l’adresse, ce que vous constatez et le degré d’urgence.'],
-    ['Étape 2', 'On prépare le matériel', 'Détecteur de fuite, outillage, pièces courantes : le camion part avec ce que votre description demande.'],
-    ['Étape 3', 'Le technicien répare', 'Il constate sur place, répare ce qui peut l’être dans la foulée, et vous explique ce qui a causé la panne.']
+    ['Vous décrivez — 1 minute', 'Ce que vous voyez, ce que vous entendez, depuis quand. Pas besoin de vocabulaire technique.'],
+    ['On identifie — 30 secondes', 'On vous dit de quoi il s’agit, si c’est réparable sur place, et ce qu’il faut prévoir.'],
+    ['On fixe le passage — 30 secondes', 'Vous validez, on convient du créneau. Sans votre accord, rien n’est lancé.']
+  ],
+
+  nonFaits: [
+    'On ne se déplace jamais sans que vous ayez validé le passage.',
+    'On n’ouvre pas un mur ni une dalle « pour voir » : on localise d’abord.',
+    'On ne commence pas une réparation sans vous avoir dit ce qu’on va faire.'
   ],
 
   zoneTexte: 'Nous intervenons sur ces communes du Finistère et leurs alentours.',

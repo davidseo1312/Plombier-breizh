@@ -1,23 +1,33 @@
 /* ==========================================================================
    LANDING PAGE GOOGLE ADS — PLOMBERIE UNIQUEMENT
    --------------------------------------------------------------------------
-   Page volontairement courte et linéaire : on comprend en un écran qu'on est
-   plombier, où l'on intervient, et qu'il suffit d'appeler.
+   Objectif unique : rassurer, puis déclencher l'appel. Rien d'autre.
 
-   Aucune mention de débouchage, de dégorgement ni de canalisation bouchée :
-   ces prestations ont leurs propres pages. Aucun bandeau d'urgence répété
-   juste sous le premier écran.
+   Toute la réassurance repose sur des éléments VÉRIFIABLES :
+   immatriculation réelle (src/lib/entreprise.mjs), interlocuteur, coût de
+   l'appel, zone couverte, photos réelles, avis réels. Aucune certification,
+   garantie, note moyenne, ancienneté ni statistique n'est inventée.
 
-   Ordre : hero · services · pourquoi nous · matériel · avis · déroulé ·
-           zone · FAQ · formulaire · appel final.
+   Aucune mention de débouchage ni de dégorgement : ces prestations ont leurs
+   propres pages.
+
+   Ordre : hero · preuves · appel en 2 minutes · services · pourquoi nous ·
+           matériel · avis · zone · FAQ · formulaire · appel final.
    ========================================================================== */
 import { SITE, callBtn, formBtn, tel } from './layout.mjs';
 import { servicePhoto } from './services.mjs';
+import { ENTREPRISE as E } from './entreprise.mjs';
 
 const RAPPEL = 'Être rappelé';
 
-/* Carte d'intervention : photo, titre, deux lignes. Pas de bouton par carte —
-   les appels à l'action sont regroupés sous la grille. */
+/* Micro-réassurance posée sous un groupe de boutons. Faits uniquement. */
+const notesCta = (...items) =>
+  `<div class="cta-note">${items.map(i => `<span>${i}</span>`).join('')}</div>`;
+
+const APPEL_GRATUIT = 'Appel non surtaxé';
+const INTERLOCUTEUR = 'Vous parlez directement à un plombier';
+
+/* Carte d'intervention : photo, titre, deux lignes. */
 const carte = (img, titre, texte) => `
       <article class="card">
         <div class="card__media">${servicePhoto(img, `${titre} — ${SITE.name}`)}</div>
@@ -33,9 +43,9 @@ export const landingPlomberie = ({
   tag, h1, sub,
   heroImg, heroAlt, heroCamion = false,
   services,
+  etapes, nonFaits,
   materielIntro, materiel,
   avis,
-  etapes,
   zoneTexte,
   faq,
   formIntro,
@@ -87,6 +97,7 @@ export const landingPlomberie = ({
           ${callBtn(`hero-${slug}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
           ${formBtn(`hero-${slug}`, { text: RAPPEL })}
         </div>
+        ${notesCta(APPEL_GRATUIT, INTERLOCUTEUR)}
       </div>
       <div class="hero__media">
         ${heroCamion
@@ -102,7 +113,55 @@ export const landingPlomberie = ({
   </div>
 </section>
 
-<!-- 2. CE QUE NOUS RÉPARONS ----------------------------------------------- -->
+<!-- 2. PREUVES VÉRIFIABLES ------------------------------------------------ -->
+<section class="trust" aria-label="Ce que vous pouvez vérifier">
+  <div class="container">
+    <div class="trust__grid">
+      <div class="trust__item">
+        <strong>Entreprise immatriculée</strong>
+        <span>SIREN ${E.siren} — ${E.siren} R.C.S. ${E.rcsVille}.
+        <a href="/mentions-legales">Vérifier</a></span>
+      </div>
+      <div class="trust__item">
+        <strong>Un plombier au téléphone</strong>
+        <span>Pas de standard, pas de plateforme d’intermédiaires.</span>
+      </div>
+      <div class="trust__item">
+        <strong>Appel non surtaxé</strong>
+        <span>${SITE.phoneDisplay} est un numéro fixe, facturé comme un appel ordinaire.</span>
+      </div>
+      <div class="trust__item">
+        <strong>Intervention dans ${article} ${dept}</strong>
+        <span>${cities.slice(0, 4).join(', ')} et alentours.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. L'APPEL EN 2 MINUTES ----------------------------------------------- -->
+<section class="section callbox">
+  <div class="container">
+    <div class="section__head">
+      <span class="eyebrow">Avant d’appeler</span>
+      <h2>Ce qui se passe quand vous appelez</h2>
+      <p class="callbox__lead">Deux minutes au téléphone suffisent à savoir où vous en êtes.
+      Vous n’engagez rien en appelant : aucun déplacement n’est lancé sans votre accord.</p>
+    </div>
+    <div class="callbox__grid">
+      <ol class="callbox__steps">
+        ${etapes.map(([titre, texte]) => `<li><b>${titre}</b>${texte}</li>`).join('\n        ')}
+      </ol>
+      <div class="callbox__aside">
+        <p>Appelez maintenant</p>
+        <a class="callbox__number" href="${SITE.phoneHref}" data-location="callbox-${slug}" data-cta="numero-appel-2min">${SITE.phoneDisplay}</a>
+        ${callBtn(`callbox-${slug}`, { variant: 'dark', text: 'Appeler maintenant', block: true })}
+        <small>Appel non surtaxé</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. CE QUE NOUS RÉPARONS ----------------------------------------------- -->
 <section class="section section--tint">
   <div class="container">
     <div class="section__head section__head--center">
@@ -115,10 +174,11 @@ export const landingPlomberie = ({
       ${callBtn(`services-${slug}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
       ${formBtn(`services-${slug}`, { variant: 'outline', text: RAPPEL })}
     </div>
+    ${notesCta('Vous décrivez, on vous dit si c’est réparable', 'Pas de déplacement sans votre accord')}
   </div>
 </section>
 
-<!-- 3. POURQUOI NOUS ------------------------------------------------------ -->
+<!-- 5. POURQUOI NOUS ------------------------------------------------------ -->
 <section class="section" id="pourquoi">
   <div class="container">
     <div class="section__head">
@@ -139,10 +199,30 @@ export const landingPlomberie = ({
         <p>Vous savez ce qui a été constaté, ce qui a été fait, et ce qu’il reste éventuellement à prévoir.</p>
       </div>
     </div>
+
+    <div class="grid grid--2 mt-32">
+      <div>
+        <h3>Ce que nous ne faisons pas</h3>
+        <ul class="nolist">
+          ${nonFaits.map(x => `<li>${x}</li>`).join('\n          ')}
+        </ul>
+      </div>
+      <div class="who">
+        <h3>Qui vous répond</h3>
+        <p>${E.dirigeant}, ${E.dirigeantQualite}, qui exerce sous l’enseigne <strong>${E.enseigne}</strong>.
+        C’est la même personne au téléphone et sur le chantier.</p>
+        <dl>
+          <dt>SIREN</dt><dd>${E.siren}</dd>
+          <dt>SIRET</dt><dd>${E.siret}</dd>
+          <dt>Immatriculation</dt><dd>${E.siren} R.C.S. ${E.rcsVille}</dd>
+        </dl>
+        <p class="mt-24"><a href="/mentions-legales">Voir les mentions légales</a></p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- 4. MATÉRIEL / PREUVES ------------------------------------------------- -->
+<!-- 6. MATÉRIEL ----------------------------------------------------------- -->
 <section class="section section--dark">
   <div class="container">
     <div class="section__head">
@@ -159,10 +239,11 @@ export const landingPlomberie = ({
       ${callBtn(`materiel-${slug}`, { text: 'Parler à un plombier' })}
       ${formBtn(`materiel-${slug}`, { variant: 'outline-light', text: RAPPEL })}
     </div>
+    ${notesCta(APPEL_GRATUIT, INTERLOCUTEUR)}
   </div>
 </section>
 
-<!-- 5. AVIS --------------------------------------------------------------- -->
+<!-- 7. AVIS --------------------------------------------------------------- -->
 <section class="section section--paper" id="avis">
   <div class="container">
     <div class="section__head section__head--center">
@@ -183,25 +264,7 @@ export const landingPlomberie = ({
   </div>
 </section>
 
-<!-- 6. DÉROULÉ ------------------------------------------------------------ -->
-<section class="section">
-  <div class="container">
-    <div class="section__head">
-      <span class="eyebrow">Comment ça se passe</span>
-      <h2>Une intervention en trois temps</h2>
-    </div>
-    <div class="steps">
-      ${etapes.map(([num_, titre, texte]) => `
-      <div class="steps__item">
-        <span class="steps__num">${num_}</span>
-        <h3>${titre}</h3>
-        <p>${texte}</p>
-      </div>`).join('')}
-    </div>
-  </div>
-</section>
-
-<!-- 7. ZONE D'INTERVENTION ------------------------------------------------ -->
+<!-- 8. ZONE D'INTERVENTION ------------------------------------------------ -->
 <section class="section section--tint">
   <div class="container">
     <div class="section__head">
@@ -219,7 +282,7 @@ export const landingPlomberie = ({
   </div>
 </section>
 
-<!-- 8. FAQ ---------------------------------------------------------------- -->
+<!-- 9. FAQ ---------------------------------------------------------------- -->
 <section class="section">
   <div class="container">
     <div class="section__head">
@@ -233,10 +296,14 @@ export const landingPlomberie = ({
         <p>${r}</p>
       </details>`).join('')}
     </div>
+    <div class="btn-row mt-32">
+      ${callBtn(`faq-${slug}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
+      ${formBtn(`faq-${slug}`, { variant: 'outline', text: RAPPEL })}
+    </div>
   </div>
 </section>
 
-<!-- 9. FORMULAIRE --------------------------------------------------------- -->
+<!-- 10. FORMULAIRE -------------------------------------------------------- -->
 <section class="section section--tint" id="demande-intervention">
   <div class="container">
     <div class="form-block">
@@ -246,6 +313,11 @@ export const landingPlomberie = ({
         <p class="lead">${formIntro}</p>
         <p><strong>Pour une intervention urgente, l’appel reste le plus rapide :</strong></p>
         ${callBtn(`formulaire-${slug}-colonne`, { text: `Appeler le ${SITE.phoneDisplay}` })}
+        <ul class="nolist mt-32">
+          <li>Vos coordonnées servent uniquement à vous rappeler.</li>
+          <li>Aucun appel commercial, aucune revente de vos données.</li>
+          <li>C’est un plombier qui rappelle, pas un centre d’appels.</li>
+        </ul>
         <p class="mt-24">Par email : <a href="mailto:${SITE.email}">${SITE.email}</a></p>
       </div>
 
@@ -296,7 +368,7 @@ export const landingPlomberie = ({
   </div>
 </section>
 
-<!-- 10. APPEL FINAL ------------------------------------------------------- -->
+<!-- 11. APPEL FINAL ------------------------------------------------------- -->
 <section class="phone-block">
   <div class="container">
     <h2>Un plombier dans ${article} ${dept} ?</h2>
