@@ -15,6 +15,7 @@ import {
 import { servicesGrid, servicePhoto, servicePhotoLarge, pick } from './services.mjs';
 import { photo } from './media.mjs';
 import { carte } from './carte.mjs';
+import { hermine } from './breizh.mjs';
 import { tarifsSection, TARIFS_TOUS } from './tarifs.mjs';
 import { avisDe } from './reviews.mjs';
 
@@ -222,7 +223,7 @@ ${reviewsSection(avis || avisDe(`lp${num}`))}
       ${carte(num)}
       <div>
         <ul class="communes">
-          ${cities.map(v => `<li>${v}</li>`).join('\n          ')}
+          ${cities.map(v => `<li>${hermine()}${v}</li>`).join('\n          ')}
         </ul>
         <div class="notice mt-24">
           <p class="mb-0">Votre commune n’est pas dans la liste ? Appelez le

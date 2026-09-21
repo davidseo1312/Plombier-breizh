@@ -20,7 +20,7 @@ import { servicePhoto } from './services.mjs';
 import { photo } from './media.mjs';
 import { carte as carteZone } from './carte.mjs';
 import { tarifsSection } from './tarifs.mjs';
-import { ENTREPRISE as E } from './entreprise.mjs';
+import { hermine, bandeBreizh } from './breizh.mjs';
 
 const RAPPEL = 'Être rappelé';
 
@@ -50,6 +50,7 @@ export const landingService = ({
   tag, h1, sub,
   heroImg, heroAlt, heroCamion = false,
   servicesTitre, services,
+  ancrageTitre, ancrage,
   tarifs, tarifsTitre,
   appelTitre, appelIntro, etapes, nonFaits,
   materielTitre, materielIntro, materiel,
@@ -96,10 +97,12 @@ export const landingService = ({
   body: `
 <!-- 1. PREMIER ÉCRAN ------------------------------------------------------ -->
 <section class="hero">
+  <span class="hero__filigrane">${hermine()}</span>
   <div class="container">
     <div class="hero__grid">
       <div>
-        <span class="hero__tag">${tag}</span>
+        ${bandeBreizh()}
+        <span class="hero__tag">${hermine()}${tag}</span>
         <h1>${h1}</h1>
         <p class="hero__sub">${sub}</p>
         <div class="hero__cta">
@@ -177,6 +180,24 @@ ${infographie ? `
   </div>
 </section>
 
+${ancrage ? `
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      ${bandeBreizh()}
+      <span class="eyebrow">Sur le terrain</span>
+      <h2>${ancrageTitre || `Ce qu’on voit vraiment dans ${article} ${dept}`}</h2>
+    </div>
+    <div class="ancrage">
+      ${ancrage.map(([t, p]) => `<div class="ancrage__item"><h3>${t}</h3><p>${p}</p></div>`).join('\n      ')}
+    </div>
+    <div class="btn-row mt-32">
+      ${callBtn(`ancrage-${slug}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
+      ${formBtn(`ancrage-${slug}`, { variant: 'outline', text: RAPPEL })}
+    </div>
+  </div>
+</section>` : ''}
+
 ${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${article} ${dept}`, tint: false }) : ''}
 
 <!-- 5. POURQUOI NOUS ------------------------------------------------------ -->
@@ -210,13 +231,10 @@ ${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${arti
       </div>
       <div class="who">
         <h3>Qui vous répond</h3>
-        <p>${E.dirigeant}, ${E.dirigeantQualite}, qui exerce sous l’enseigne <strong>${E.enseigne}</strong>.
-        C’est la même personne au téléphone et sur le chantier.</p>
-        <dl>
-          <dt>SIREN</dt><dd>${E.siren}</dd>
-          <dt>SIRET</dt><dd>${E.siret}</dd>
-          <dt>Immatriculation</dt><dd>${E.siren} R.C.S. ${E.rcsVille}</dd>
-        </dl>
+        <p>Une entreprise bretonne, enregistrée et assurée. Pas une plateforme qui revend
+        votre demande au premier artisan disponible.</p>
+        <p>La personne qui prend l’appel est celle qui organise l’intervention, et vous
+        retrouvez le même interlocuteur du premier appel jusqu’à la fin du chantier.</p>
         <p class="mt-24"><a href="/mentions-legales">Voir les mentions légales</a></p>
       </div>
     </div>
@@ -277,7 +295,7 @@ ${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${arti
       ${carteZone(num)}
       <div>
         <ul class="communes">
-          ${cities.map(v => `<li>${v}</li>`).join('\n          ')}
+          ${cities.map(v => `<li>${hermine()}${v}</li>`).join('\n          ')}
         </ul>
         <div class="notice mt-24">
           <p class="mb-0">Votre commune n’est pas dans la liste ? Appelez le

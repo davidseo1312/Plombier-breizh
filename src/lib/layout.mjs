@@ -4,10 +4,10 @@
    Ne modifiez pas les .html à la racine : ils sont régénérés.
    ========================================================================== */
 
-import { ENTREPRISE } from './entreprise.mjs';
 import { confianceSection } from './confiance.mjs';
 import { photo as photoImg, preloadPhoto } from './media.mjs';
 import { carte } from './carte.mjs';
+import { hermine } from './breizh.mjs';
 
 export const SITE = {
   name: 'Plombier Breizh',
@@ -264,8 +264,8 @@ export const preuves = ({ zone, villes } = {}) => `
     <div class="trust__grid">
       <div class="trust__item">
         <strong>Entreprise immatriculée</strong>
-        <span>SIREN ${ENTREPRISE.siren} — ${ENTREPRISE.siren} R.C.S. ${ENTREPRISE.rcsVille}.
-        <a href="/mentions-legales">Vérifier</a></span>
+        <span>Société enregistrée et assurée, pas un intermédiaire.
+        <a href="/mentions-legales">Mentions légales</a></span>
       </div>
       <div class="trust__item">
         <strong>${SITE.dispoLong}</strong>
@@ -675,6 +675,7 @@ ${stickyTexte ? `
 export const pageHero = ({ tag, h1, sub, img, alt, location, photo: estPhotoCamion = false, items = REASSURANCE,
                           badge = 'Bretagne', preuvesZone, preuvesVilles }) => `
 <section class="hero">
+  <span class="hero__filigrane">${hermine()}</span>
   <div class="container">
     <div class="hero__grid">
       <div>

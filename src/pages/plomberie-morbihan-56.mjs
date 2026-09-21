@@ -17,6 +17,16 @@ export default landingService({
   heroImg: 'chauffe-eau',
   heroAlt: 'Technicien Plombier Breizh intervenant sur un ballon d’eau chaude, dans le Morbihan',
 
+  ancrageTitre: 'Ce qu’on voit vraiment dans le Morbihan',
+  ancrage: [
+    ['Des maisons qu’on rouvre',
+     'Sur le littoral, beaucoup de logements ne servent qu’une partie de l’année. La remise en eau révèle d’un coup le raccord qui a travaillé pendant l’hiver — c’est notre motif d’appel le plus fréquent au printemps.'],
+    ['Des vannes qu’on n’a pas touchées depuis dix ans',
+     'À l’intérieur des terres, les vannes d’arrêt ne ferment plus vraiment. On s’en aperçoit le jour où il faut couper l’eau en urgence, au pire moment.'],
+    ['Des ballons entartrés',
+     'Groupe de sécurité qui goutte en permanence, résistance couverte de calcaire : sur l’eau du secteur, un chauffe-eau se fatigue vite. Souvent réparable, pas toujours à remplacer.']
+  ],
+
   services: [
     ['fuite-eau', 'Fuite d’eau', 'Raccord, joint, flexible ou évacuation percée. On stoppe la fuite, puis on répare.'],
     ['urgence-plomberie', 'Robinetterie', 'Robinet ou mitigeur qui goutte, vanne d’arrêt grippée, raccord à refaire.'],

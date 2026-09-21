@@ -3,6 +3,7 @@ import {
   phoneBlock, processSection, whySection, reviewsSection, bretagneSection, formSection
 } from '../lib/layout.mjs';
 import { servicesGrid, servicePhoto } from '../lib/services.mjs';
+import { hermine } from '../lib/breizh.mjs';
 import { avisDe } from '../lib/reviews.mjs';
 
 export default {
@@ -13,6 +14,7 @@ export default {
   description: 'Une fuite, une canalisation bouchée ou un problème de plomberie en Bretagne ? Plombier Breizh assure dépannage, débouchage et dégorgement. Appelez le 02 20 06 01 96.',
   body: `
 <section class="hero">
+  <span class="hero__filigrane">${hermine()}</span>
   <div class="container">
     <div class="hero__grid">
       <div>

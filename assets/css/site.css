@@ -255,6 +255,7 @@ strong{font-weight:700}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(118deg,#06283B 0%,#111 60%);z-index:0}
 .hero .container{position:relative;z-index:1}
 .hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(26px,3.5vw,54px);align-items:center;padding-block:clamp(38px,5vw,70px)}
+.hero__tag .hermine{width:15px;height:15px;flex:0 0 15px}
 .hero__tag{
   display:inline-flex;align-items:center;gap:9px;background:var(--cyan);color:var(--black);
   font-size:14px;font-weight:700;padding:7px 14px;margin-bottom:20px;
@@ -339,6 +340,45 @@ strong{font-weight:700}
   background:var(--tint);border-top:3px solid var(--cyan);
 }
 .figure-wide figcaption a{font-weight:700}
+
+/* ---------- Signature bretonne ----------
+   Mouchetures d'hermine et bandes du gwenn-ha-du, reprises du logo. */
+.hermine{width:100%;height:100%;fill:currentColor;display:block}
+
+.gwenn{display:flex;width:max-content;align-items:center;gap:12px;height:24px;margin-bottom:18px}
+.gwenn__hermine{width:24px;height:24px;color:var(--ink);flex:0 0 24px}
+/* Quatre bandes, comme le gwenn-ha-du. */
+.gwenn__bandes{
+  display:block;width:66px;height:17px;
+  background:repeating-linear-gradient(to bottom,
+    var(--ink) 0 2.5px, transparent 2.5px 5px);
+}
+.section--dark .gwenn__hermine,.callbox .gwenn__hermine,.hero .gwenn__hermine{color:var(--white)}
+.section--dark .gwenn__bandes,.callbox .gwenn__bandes,.hero .gwenn__bandes{
+  background:repeating-linear-gradient(to bottom,
+    var(--white) 0 3px, transparent 3px 6px);
+}
+
+/* Filigrane du premier écran : discret, il signe sans gêner la lecture. */
+.hero{position:relative;overflow:hidden}
+.hero__filigrane{
+  position:absolute;left:-46px;top:-54px;width:300px;height:300px;
+  color:var(--cyan);opacity:.16;pointer-events:none;z-index:1;
+}
+.hero .container{position:relative;z-index:1}
+@media (max-width:1000px){.hero__filigrane{width:180px;height:180px;left:-52px;top:-44px;opacity:.13}}
+
+/* ---------- Ancrage local ----------
+   Ce que l'on voit vraiment sur le terrain, département par département.
+   C'est ce bloc qui empêche la page de ressembler à toutes les autres. */
+.ancrage{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ancrage__item{border-left:4px solid var(--cyan);padding:2px 0 2px 20px}
+.ancrage__item:nth-child(2){border-left-color:var(--green)}
+.ancrage__item:nth-child(3){border-left-color:var(--orange)}
+.ancrage__item h3{margin:0 0 8px;font-size:18.5px}
+.ancrage__item p{margin:0;font-size:16px;color:var(--ink-soft);line-height:1.6}
+.section--dark .ancrage__item p{color:#C6CFD6}
+@media (max-width:860px){.ancrage{grid-template-columns:1fr;gap:20px}}
 
 /* ---------- Tarifs ----------
    Lecture immédiate : la prestation à gauche, le prix à droite, en gros. */
@@ -549,9 +589,11 @@ strong{font-weight:700}
 /* ---------- Communes couvertes ---------- */
 .communes{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
 .communes li{
+  display:flex;align-items:center;gap:9px;
   margin:0;border:1px solid var(--tint-strong);background:var(--tint);
   border-left:4px solid var(--cyan);padding:10px 16px;font-size:16px;font-weight:700;color:var(--cyan-ink);
 }
+.communes .hermine{width:13px;height:13px;flex:0 0 13px;color:var(--cyan-deep);opacity:.85}
 @media (max-width:560px){
   .communes{gap:8px}
   .communes li{font-size:15px;padding:9px 13px}

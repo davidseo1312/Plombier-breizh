@@ -276,6 +276,34 @@ préchargée (`<link rel="preload">`) pour accélérer l'affichage.
 Après avoir ajouté ou remplacé une photo : relancez `node tools/images.mjs`
 puis `node build.mjs`.
 
+## 8 ter. Identité visuelle bretonne
+
+Le site ne doit pas ressembler à un gabarit de dépannage interchangeable.
+`src/lib/breizh.mjs` fournit deux motifs repris du gwenn-ha-du, déjà présents
+dans le logo :
+
+- **la moucheture d'hermine** — filigrane du premier écran, badge du hero,
+  pastilles de communes ;
+- **le filet à quatre bandes** — au-dessus des titres de section signature.
+
+Usage mesuré : ces motifs signent, ils ne décorent pas. Trois emplacements par
+page au maximum.
+
+L'identité tient surtout au **bloc d'ancrage local** des quatre landings
+dédiées (`ancrage` dans les fichiers de `src/pages/`) : trois constats
+concrets, propres au département et au métier — le cuivre ancien des
+longères finistériennes, les vannes grippées de l'intérieur du Morbihan, les
+colonnes partagées des immeubles brestois. C'est ce qui distingue la page
+d'un texte interchangeable, et ce qui se lit comme une vraie connaissance du
+terrain.
+
+### Données personnelles sur les pages publiques
+
+Le SIREN, le SIRET et le nom du dirigeant **ne sont publiés que sur les pages
+légales**, où ils sont obligatoires. Les pages de conversion parlent
+d'« entreprise enregistrée et assurée » avec un lien vers les mentions
+légales : la preuve reste accessible sans exposer l'identité.
+
 ### Tarifs et disponibilité
 
 `src/lib/tarifs.mjs` porte les montants et le texte qui les encadre ; ils

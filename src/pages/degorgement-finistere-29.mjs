@@ -17,6 +17,16 @@ export default landingService({
   heroCamion: true,
   heroAlt: 'Camion et matériel de dégorgement Plombier Breizh, dans le Finistère',
 
+  ancrageTitre: 'Ce qu’on voit vraiment dans le Finistère',
+  ancrage: [
+    ['Des réseaux enterrés anciens',
+     'Des dépôts accumulés sur les parois année après année, parfois des racines infiltrées à un joint. Le diamètre utile se réduit sans qu’on voie rien, jusqu’au jour où l’eau ne passe plus du tout.'],
+    ['Des colonnes partagées',
+     'Dans les immeubles brestois, quand la douche, l’évier et les WC lâchent le même jour, le bouchon n’est pas dans votre siphon : il est sur la partie que tout le bâtiment partage.'],
+    ['Des regards en limite de propriété',
+     'Sur les pavillons, le regard se remplit bien avant que ça remonte à l’intérieur. C’est le premier endroit qu’on ouvre — souvent, tout se joue là.']
+  ],
+
   servicesTitre: 'Ce que nous débouchons dans le Finistère',
   services: [
     ['debouchage-wc', 'WC bouché', 'Les WC ne s’évacuent plus. On rétablit l’écoulement sans rien casser.'],
