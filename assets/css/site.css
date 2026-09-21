@@ -4,6 +4,8 @@
 
    Palette : #007BCB (bleu) · #00AEEF (bleu clair, accent principal)
              #111111 (texte) · #FFFFFF (respiration)
+   Appuis  : #F26B21 (urgence) · #17915B (engagement, validation)
+             #F5A623 (étoiles d'avis) — jamais décoratifs, toujours un rôle.
    Typo    : Lato — chaleureuse, lisible, professionnelle.
    Formes  : angles droits. Aucun bouton pilule, aucune image ronde.
    ========================================================================== */
@@ -34,6 +36,17 @@
   --cyan:#00AEEF;
   --black:#111111;
   --white:#FFFFFF;
+
+  /* Couleurs d'appui — chacune a un rôle, elles ne sont jamais décoratives :
+     orange = urgence et action immédiate, vert = engagement tenu / validation,
+     ambre = étoiles d'avis. Le bleu et le cyan restent majoritaires. */
+  --orange:#F26B21;
+  --orange-deep:#D2540F;
+  --orange-soft:#FFF1E8;
+  --green:#17915B;
+  --green-deep:#0F6E44;
+  --green-soft:#E9F7F0;
+  --amber:#F5A623;
 
   /* Déclinaisons de travail */
   --blue-deep:#005E9B;
@@ -131,6 +144,8 @@ strong{font-weight:700}
 .btn--primary:hover{background:var(--blue-deep);border-color:var(--blue-deep);color:var(--white)}
 .btn--accent{background:var(--cyan);color:var(--black);border-color:var(--cyan)}
 .btn--accent:hover{background:var(--cyan-deep);border-color:var(--cyan-deep);color:var(--white)}
+.btn--urgence{background:var(--orange);color:var(--white);border-color:var(--orange)}
+.btn--urgence:hover{background:var(--orange-deep);border-color:var(--orange-deep);color:var(--white)}
 .btn--dark{background:var(--black);color:var(--white);border-color:var(--black)}
 .btn--dark:hover{background:#000;border-color:#000;color:var(--white)}
 .btn--outline{background:transparent;color:var(--ink);border-color:var(--cyan)}
@@ -264,10 +279,11 @@ strong{font-weight:700}
 .checklist--inline{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 26px}
 .checklist li{display:flex;gap:11px;align-items:flex-start;margin:0;font-size:16px;line-height:1.45}
 .checklist li::before{
-  content:"";flex:0 0 20px;height:20px;margin-top:2px;background:var(--cyan);
+  content:"";flex:0 0 20px;height:20px;margin-top:2px;background:var(--green);
   clip-path:polygon(14% 46%,0 60%,40% 100%,100% 22%,86% 8%,38% 70%);
 }
 .hero .checklist li,.section--dark .checklist li{color:#EAF1F6}
+.hero .checklist li::before,.section--dark .checklist li::before{background:#2ECC8F}
 @media (max-width:600px){.checklist--inline{grid-template-columns:1fr}}
 
 /* ---------- Bandeau urgence — bleu clair dominant ---------- */
@@ -297,6 +313,8 @@ strong{font-weight:700}
 
 /* Bloc bordé sans image */
 .tile{background:var(--white);border:1px solid var(--line);border-top:4px solid var(--cyan);padding:22px 22px 24px;height:100%}
+.grid .tile:nth-child(3n+2){border-top-color:var(--green)}
+.grid .tile:nth-child(3n){border-top-color:var(--orange)}
 .tile h3{margin:0 0 8px}
 .tile p{margin:0;font-size:16px;color:var(--ink-soft)}
 .tile--dark{background:#1A1A1A;border-color:#262626;border-top-color:var(--cyan)}
@@ -320,6 +338,36 @@ strong{font-weight:700}
 }
 .figure-wide figcaption a{font-weight:700}
 
+/* ---------- Logos de confiance ----------
+   Bandeau posé en bas de chaque page. Logos en couleur, détourés, alignés sur
+   une hauteur commune. Voir src/lib/confiance.mjs pour les libellés. */
+.confiance{background:var(--white);border-top:1px solid var(--line);padding-block:38px 42px}
+.confiance__titre{
+  margin:0 0 26px;text-align:center;font-size:14px;font-weight:900;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);
+}
+.confiance__list{
+  list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;
+  justify-content:center;align-items:stretch;gap:26px;
+}
+.confiance__item{
+  margin:0;flex:1 1 260px;max-width:340px;text-align:center;
+  border:1px solid var(--line);border-top:4px solid var(--cyan);
+  background:var(--white);padding:22px 20px 20px;
+  display:flex;flex-direction:column;justify-content:center;gap:14px;
+}
+.confiance__item:nth-child(2){border-top-color:var(--green)}
+.confiance__item:nth-child(3){border-top-color:var(--orange)}
+.confiance__item img{height:58px;width:auto;max-width:100%;object-fit:contain;display:block;margin:0 auto}
+.confiance__item span{display:block;font-size:15px;font-weight:700;color:var(--ink-soft);line-height:1.45}
+@media (max-width:760px){
+  .confiance{padding-block:30px 34px}
+  .confiance__list{gap:16px}
+  .confiance__item{flex:1 1 100%;max-width:none;padding:18px 16px 16px;gap:12px}
+  .confiance__item img{height:48px}
+  .confiance__item span{font-size:14.5px}
+}
+
 /* ---------- Mention du coût de l'appel ----------
    02 20 06 01 96 est un numéro géographique : non surtaxé, inclus dans les
    forfaits. Voir le commentaire de SITE.phoneNote dans src/lib/layout.mjs. */
@@ -329,6 +377,7 @@ strong{font-weight:700}
 }
 .phone-note::before{content:"";flex:0 0 10px;height:10px;background:var(--cyan)}
 .phone-note--clair{color:#C6CFD6}
+.hero .phone-note{margin-bottom:18px}
 .phone-note--centre{justify-content:center;color:var(--cyan-ink)}
 .urgency .phone-note{flex:1 0 100%;margin:0;color:var(--cyan-ink);justify-content:flex-end}
 .site-footer .phone-note{margin:10px 0 14px}
@@ -347,6 +396,9 @@ strong{font-weight:700}
 .trust__item strong::before{
   content:"";flex:0 0 14px;height:14px;margin-top:4px;background:var(--cyan);
 }
+.trust__item:nth-child(2) strong::before{background:var(--green)}
+.trust__item:nth-child(3) strong::before{background:var(--orange)}
+.trust__item:nth-child(4) strong::before{background:var(--blue)}
 .trust__item span{display:block;margin-top:7px;padding-left:23px;font-size:15px;color:var(--ink-soft);line-height:1.5}
 .trust__item a{font-weight:700}
 @media (max-width:1000px){
@@ -404,9 +456,8 @@ strong{font-weight:700}
   color:var(--ink-soft);line-height:1.5;
 }
 .nolist li::before{
-  content:"";flex:0 0 14px;height:14px;margin-top:4px;
-  background:linear-gradient(45deg,transparent 43%,#C0392B 43%,#C0392B 57%,transparent 57%),
-             linear-gradient(-45deg,transparent 43%,#C0392B 43%,#C0392B 57%,transparent 57%);
+  content:"";flex:0 0 16px;height:16px;margin-top:3px;background:var(--green);
+  clip-path:polygon(14% 46%,0 60%,40% 100%,100% 22%,86% 8%,38% 70%);
 }
 
 /* ---------- Qui vous répond ---------- */
@@ -492,6 +543,12 @@ strong{font-weight:700}
 .steps__item:first-child::before{opacity:1}
 .steps__item:last-child{border-right:0}
 .steps__num{display:block;font-size:15px;font-weight:700;color:var(--cyan-deep);letter-spacing:.1em;margin-bottom:10px}
+.steps__item:nth-child(2) .steps__num{color:var(--blue)}
+.steps__item:nth-child(3) .steps__num{color:var(--green-deep)}
+.steps__item::before{background:var(--cyan)}
+.steps__item:nth-child(2)::before{background:var(--blue)}
+.steps__item:nth-child(3)::before{background:var(--green)}
+.steps__item:hover::before{opacity:1}
 .steps__item h3{margin:0 0 8px}
 .steps__item p{margin:0;font-size:16px;color:var(--ink-soft)}
 @media (max-width:860px){
@@ -514,7 +571,7 @@ strong{font-weight:700}
 
 /* ---------- Avis clients ---------- */
 .review{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--cyan);padding:24px;display:flex;flex-direction:column;height:100%}
-.review__stars{color:var(--cyan-deep);font-size:19px;letter-spacing:.12em;margin-bottom:10px}
+.review__stars{color:var(--amber);font-size:19px;letter-spacing:.12em;margin-bottom:10px}
 .review__text{font-size:16.5px;color:var(--ink-soft);margin:0 0 18px;flex:1;line-height:1.6}
 .review__author{margin:0;padding-top:14px;border-top:1px solid var(--line);font-size:15.5px}
 .review__name{display:block;font-weight:700;color:var(--ink)}
@@ -653,7 +710,7 @@ strong{font-weight:700}
   font-weight:700;font-size:16px;text-align:center;white-space:nowrap;
 }
 .sticky-cta a:hover{text-decoration:none}
-.sticky-cta__call{background:var(--blue);color:var(--white)}
+.sticky-cta__call{background:var(--orange);color:var(--white)}
 .sticky-cta__form{background:var(--cyan);color:var(--black)}
 .sticky-cta--solo{grid-template-columns:1fr}
 .sticky-cta--solo .sticky-cta__call{font-size:17px}

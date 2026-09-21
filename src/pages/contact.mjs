@@ -1,4 +1,4 @@
-import { SITE, callBtn, urgencyBand, formSection, bretagneSection, phoneBlock } from '../lib/layout.mjs';
+import { SITE, callBtn, urgencyBand, formSection, bretagneSection, phoneBlock, preuves } from '../lib/layout.mjs';
 
 export default {
   slug: 'contact',
@@ -30,6 +30,8 @@ export default {
     <div class="btn-row mt-32">${callBtn('contact-page-bas', { text: `Appeler le ${SITE.phoneDisplay}` })}</div>
   </div>
 </section>
+
+${preuves()}
 
 ${urgencyBand('bandeau-contact')}
 ${formSection({ intro: 'Quelques informations suffisent : nous vous rappelons pour organiser l’intervention.', location: 'formulaire-contact' })}

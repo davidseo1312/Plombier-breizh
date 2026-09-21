@@ -39,9 +39,9 @@ export default landingPlomberie({
   ],
 
   nonFaits: [
-    'On ne se déplace jamais sans que vous ayez validé le passage.',
-    'On n’ouvre pas un mur ni une dalle « pour voir » : on localise d’abord.',
-    'On ne commence pas une réparation sans vous avoir dit ce qu’on va faire.'
+    'Aucun déplacement sans que vous ayez validé le passage.',
+    'On localise avant d’ouvrir : jamais un mur ni une dalle « pour voir ».',
+    'Vous savez ce qu’on va faire avant qu’on commence.'
   ],
 
   zoneTexte: 'Nous intervenons sur ces communes du Finistère et leurs alentours.',

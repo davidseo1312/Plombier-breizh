@@ -151,6 +151,12 @@ Les anciennes URLs (`/plombier-finistere`, `/plombier-morbihan`,
 | `--blue` | `#007BCB` | CTA d'appel principaux, liens |
 | `--black` | `#111111` | Texte et sections sombres |
 | `--white` | `#FFFFFF` | Fonds et respiration |
+| `--orange` | `#F26B21` | **Urgence et action immédiate** : bouton du bandeau urgence, CTA fixe mobile, 3ᵉ liseré de carte |
+| `--green` | `#17915B` | **Engagement tenu, validation** : coches, engagements, 3ᵉ étape, 2ᵉ liseré de carte |
+| `--amber` | `#F5A623` | Étoiles des avis |
+
+Les trois couleurs d'appui ne sont jamais décoratives : chacune porte un sens
+constant d'une page à l'autre.
 
 Le bleu clair passe de 2 à 44 usages dans la feuille de style : il structure le
 site sans le saturer, les grandes surfaces restant blanches ou noires.
@@ -247,6 +253,17 @@ vraies photos d'intervention en gardant **le même nom de base et le même ratio
 | `equip-camion-plombier` | Technicien devant le camion (carré) |
 | `cliente-attente` / `siphon-encrasse` | Cliente en attente, siphon encrassé |
 | `equip-pompe` / `equip-furet-electrique` / `equip-haute-pression` / `equip-camera-inspection` / `equip-recherche-fuite` / `equip-outillage` | Matériel professionnel (carré) |
+
+### Logos de confiance
+
+`assets/img/confiance/` — logos détourés, fond transparent, hauteur commune de
+160 px. Les libellés et l'ordre sont dans `src/lib/confiance.mjs` ; le bandeau
+est posé automatiquement en bas de **toutes** les pages par `page()`.
+
+Pour retirer un logo, commentez sa ligne dans `LOGOS_CONFIANCE`. Deux
+vérifications avant mise en ligne : le lien affiché doit être exact (contrat
+d'assurance en cours, adhésion à jour) et l'usage du logo doit être autorisé
+par l'organisme.
 
 Aucune image n'est circulaire : `border-radius: 0` est appliqué globalement.
 

@@ -76,7 +76,9 @@ export const ENTREPRISE = {
   /* ---- Activité réglementée ------------------------------------------- */
   /* Assurance responsabilité civile professionnelle : nom de l'assureur,
      numéro de contrat et couverture géographique (art. L.111-4 code conso). */
-  assureur: '',
+  /* Repris du logo MIC Insurance fourni pour le bandeau de confiance.
+     ⚠ À confirmer : contrat en cours, et n° de police à compléter ci-dessous. */
+  assureur: 'MIC Insurance',
   assuranceContrat: '',
   assuranceZone: 'France',
 

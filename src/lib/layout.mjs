@@ -4,6 +4,9 @@
    Ne modifiez pas les .html à la racine : ils sont régénérés.
    ========================================================================== */
 
+import { ENTREPRISE } from './entreprise.mjs';
+import { confianceSection } from './confiance.mjs';
+
 export const SITE = {
   name: 'Plombier Breizh',
   phoneDisplay: '02 20 06 01 96',
@@ -232,6 +235,34 @@ ${minimal ? '' : `
   </div>
 </header>`;
 
+/* Bande de preuves vérifiables, posée juste sous le premier écran.
+   Que des faits contrôlables : immatriculation, interlocuteur, coût de
+   l'appel, zone couverte. Aucun badge ni label inventé. */
+export const preuves = ({ zone, villes } = {}) => `
+<section class="trust" aria-label="Ce que vous pouvez vérifier">
+  <div class="container">
+    <div class="trust__grid">
+      <div class="trust__item">
+        <strong>Entreprise immatriculée</strong>
+        <span>SIREN ${ENTREPRISE.siren} — ${ENTREPRISE.siren} R.C.S. ${ENTREPRISE.rcsVille}.
+        <a href="/mentions-legales">Vérifier</a></span>
+      </div>
+      <div class="trust__item">
+        <strong>Un plombier au téléphone</strong>
+        <span>Pas de standard, pas de plateforme d’intermédiaires.</span>
+      </div>
+      <div class="trust__item">
+        <strong>Appel non surtaxé</strong>
+        <span>${SITE.phoneDisplay} est un numéro fixe, inclus dans la plupart des forfaits.</span>
+      </div>
+      <div class="trust__item">
+        <strong>Intervention — ${zone || 'Bretagne'}</strong>
+        <span>${villes || 'Finistère (29), Morbihan (56) et alentours'}.</span>
+      </div>
+    </div>
+  </div>
+</section>`;
+
 /* Bandeau urgence — bleu clair, très visible. */
 export const urgencyBand = (location = 'bandeau-urgence') => `
 <section class="urgency" aria-label="Urgence plomberie">
@@ -242,7 +273,7 @@ export const urgencyBand = (location = 'bandeau-urgence') => `
     </div>
     <div class="urgency__phone">
       <a class="urgency__number" href="${SITE.phoneHref}" data-location="${location}" data-cta="numero-bandeau">${SITE.phoneDisplay}</a>
-      ${callBtn(location, { variant: 'dark', size: '', text: 'Appeler maintenant' })}
+      ${callBtn(location, { variant: 'urgence', size: '', text: 'Appeler maintenant' })}
       ${phoneNote({ court: true })}
     </div>
   </div>
@@ -614,7 +645,8 @@ ${stickyTexte ? `
 </html>`;
 
 /* Hero des pages internes et des landing pages. */
-export const pageHero = ({ tag, h1, sub, img, alt, location, photo = false, items = REASSURANCE, badge = 'Bretagne' }) => `
+export const pageHero = ({ tag, h1, sub, img, alt, location, photo = false, items = REASSURANCE,
+                          badge = 'Bretagne', preuvesZone, preuvesVilles }) => `
 <section class="hero">
   <div class="container">
     <div class="hero__grid">
@@ -636,14 +668,16 @@ export const pageHero = ({ tag, h1, sub, img, alt, location, photo = false, item
       </div>
     </div>
   </div>
-</section>`;
+</section>
+${preuves({ zone: preuvesZone, villes: preuvesVilles })}`;
 
 /** Assemble une page complète. */
-export const page = ({ title, description, slug, nav, body, minimalNav = false, enTete = {}, pied = {}, offres }) =>
+export const page = ({ title, description, slug, nav, body, minimalNav = false, enTete = {}, pied = {}, offres, confiance = true }) =>
   `${head({ title, description, slug, offres })}
 <body data-page="${slug}">
 ${header(nav, minimalNav, enTete)}
 <main id="contenu">
 ${body}
+${confiance ? confianceSection() : ''}
 </main>
 ${footer(pied)}`;

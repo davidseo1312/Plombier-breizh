@@ -77,6 +77,8 @@ ${pageHero({
     location: `hero-lp-${slug}`,
     photo: heroPhotoCamion,
     badge: `${dept} — ${num}`,
+    preuvesZone: `${dept} (${num})`,
+    preuvesVilles: `${cities.slice(0, 4).join(', ')} et alentours`,
     items: atouts || [
       'Intervention rapide',
       'Débouchage &amp; dégorgement',

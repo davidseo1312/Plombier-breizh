@@ -1,5 +1,5 @@
 import {
-  SITE, callBtn, formBtn, checklist, heroPhoto, urgencyBand, ctaBand, phoneNote,
+  SITE, callBtn, formBtn, checklist, heroPhoto, urgencyBand, ctaBand, phoneNote, preuves,
   phoneBlock, processSection, whySection, reviewsSection, bretagneSection, formSection
 } from '../lib/layout.mjs';
 import { servicesGrid, servicePhoto } from '../lib/services.mjs';
@@ -34,6 +34,8 @@ export default {
     </div>
   </div>
 </section>
+
+${preuves()}
 
 ${urgencyBand('bandeau-urgence-accueil')}
 

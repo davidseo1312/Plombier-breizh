@@ -14,7 +14,7 @@
    Ordre : hero · preuves · appel en 2 minutes · services · pourquoi nous ·
            matériel · avis · zone · FAQ · formulaire · appel final.
    ========================================================================== */
-import { SITE, callBtn, formBtn, tel, phoneNote } from './layout.mjs';
+import { SITE, callBtn, formBtn, tel, phoneNote, preuves } from './layout.mjs';
 import { servicePhoto } from './services.mjs';
 import { ENTREPRISE as E } from './entreprise.mjs';
 
@@ -114,29 +114,7 @@ export const landingPlomberie = ({
 </section>
 
 <!-- 2. PREUVES VÉRIFIABLES ------------------------------------------------ -->
-<section class="trust" aria-label="Ce que vous pouvez vérifier">
-  <div class="container">
-    <div class="trust__grid">
-      <div class="trust__item">
-        <strong>Entreprise immatriculée</strong>
-        <span>SIREN ${E.siren} — ${E.siren} R.C.S. ${E.rcsVille}.
-        <a href="/mentions-legales">Vérifier</a></span>
-      </div>
-      <div class="trust__item">
-        <strong>Un plombier au téléphone</strong>
-        <span>Pas de standard, pas de plateforme d’intermédiaires.</span>
-      </div>
-      <div class="trust__item">
-        <strong>Appel non surtaxé</strong>
-        <span>${SITE.phoneDisplay} est un numéro fixe, inclus dans la plupart des forfaits. Aucun numéro payant.</span>
-      </div>
-      <div class="trust__item">
-        <strong>Intervention dans ${article} ${dept}</strong>
-        <span>${cities.slice(0, 4).join(', ')} et alentours.</span>
-      </div>
-    </div>
-  </div>
-</section>
+${preuves({ zone: `${dept} (${num})`, villes: cities.slice(0, 4).join(', ') + ' et alentours' })}
 
 <!-- 3. L'APPEL EN 2 MINUTES ----------------------------------------------- -->
 <section class="section callbox">
@@ -202,7 +180,7 @@ export const landingPlomberie = ({
 
     <div class="grid grid--2 mt-32">
       <div>
-        <h3>Ce que nous ne faisons pas</h3>
+        <h3>Nos engagements</h3>
         <ul class="nolist">
           ${nonFaits.map(x => `<li>${x}</li>`).join('\n          ')}
         </ul>
