@@ -32,7 +32,7 @@
 
 :root{
   /* Palette de marque */
-  --blue:#007BCB;
+  --blue:#0076C0;   /* 4,8:1 avec le blanc — #007BCB était à 4,47 */
   --cyan:#00AEEF;
   --black:#111111;
   --white:#FFFFFF;
@@ -41,16 +41,16 @@
      orange = urgence et action immédiate, vert = engagement tenu / validation,
      ambre = étoiles d'avis. Le bleu et le cyan restent majoritaires. */
   --orange:#F26B21;
-  --orange-deep:#D2540F;
+  --orange-deep:#C94E0C;   /* blanc dessus : 4,6:1 */
   --orange-soft:#FFF1E8;
   --green:#17915B;
   --green-deep:#0F6E44;
   --green-soft:#E9F7F0;
-  --amber:#F5A623;
+  --amber:#C97C00;   /* 3,3:1 sur blanc : lisible en tant qu'élément graphique */
 
   /* Déclinaisons de travail */
   --blue-deep:#005E9B;
-  --cyan-deep:#0092C8;
+  --cyan-deep:#00739C;   /* contraste AA sur blanc et sur les fonds teintés */
   --cyan-ink:#063A52;      /* texte sombre lisible sur aplat cyan */
   --tint:#F1FAFE;          /* voile bleu clair : sections alternées */
   --tint-strong:#DFF3FC;
@@ -116,7 +116,9 @@ strong{font-weight:700}
   color:var(--cyan-deep);margin-bottom:14px;
 }
 .eyebrow::before{content:"";width:26px;height:3px;background:var(--cyan);display:block}
-.section--dark .eyebrow{color:var(--cyan)}
+.section--dark .eyebrow,
+.callbox .eyebrow,
+.hero .eyebrow{color:var(--cyan)}
 .section__head--center .eyebrow{justify-content:center}
 
 .lead{font-size:clamp(17px,1.4vw,19px);color:var(--ink-soft);max-width:66ch;line-height:1.62}
@@ -144,8 +146,8 @@ strong{font-weight:700}
 .btn--primary:hover{background:var(--blue-deep);border-color:var(--blue-deep);color:var(--white)}
 .btn--accent{background:var(--cyan);color:var(--black);border-color:var(--cyan)}
 .btn--accent:hover{background:var(--cyan-deep);border-color:var(--cyan-deep);color:var(--white)}
-.btn--urgence{background:var(--orange);color:var(--white);border-color:var(--orange)}
-.btn--urgence:hover{background:var(--orange-deep);border-color:var(--orange-deep);color:var(--white)}
+.btn--urgence{background:var(--orange-deep);color:var(--white);border-color:var(--orange-deep)}
+.btn--urgence:hover{background:#A93E08;border-color:#A93E08;color:var(--white)}
 .btn--dark{background:var(--black);color:var(--white);border-color:var(--black)}
 .btn--dark:hover{background:#000;border-color:#000;color:var(--white)}
 .btn--outline{background:transparent;color:var(--ink);border-color:var(--cyan)}
@@ -576,7 +578,7 @@ strong{font-weight:700}
 .review__author{margin:0;padding-top:14px;border-top:1px solid var(--line);font-size:15.5px}
 .review__name{display:block;font-weight:700;color:var(--ink)}
 .review__city{color:var(--ink-mute)}
-.review__stars-off{color:var(--line-strong,#C3CDD6);opacity:.6}
+.review__stars-off{color:#9AA7B2}
 
 /* Logo « Avis Google » — calé dans le coin haut droit de la section.
    Fichier PNG à fond transparent : aucun cartouche n'est nécessaire. */
@@ -680,8 +682,8 @@ strong{font-weight:700}
 /* ---------- Footer ---------- */
 .site-footer{background:var(--black);color:#BFC8D0;padding-block:clamp(40px,4vw,58px) 0;font-size:16px;border-top:4px solid var(--cyan)}
 .site-footer h3{color:var(--white);font-size:16.5px;margin:0 0 14px}
-.site-footer a{color:#BFC8D0}
-.site-footer a:hover{color:var(--cyan)}
+.site-footer a:not(.btn){color:#BFC8D0}
+.site-footer a:not(.btn):hover{color:var(--cyan)}
 .footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:34px}
 @media (max-width:960px){.footer__grid{grid-template-columns:1fr 1fr}}
 @media (max-width:620px){.footer__grid{grid-template-columns:1fr;gap:28px}}
@@ -710,7 +712,7 @@ strong{font-weight:700}
   font-weight:700;font-size:16px;text-align:center;white-space:nowrap;
 }
 .sticky-cta a:hover{text-decoration:none}
-.sticky-cta__call{background:var(--orange);color:var(--white)}
+.sticky-cta__call{background:var(--orange-deep);color:var(--white)}
 .sticky-cta__form{background:var(--cyan);color:var(--black)}
 .sticky-cta--solo{grid-template-columns:1fr}
 .sticky-cta--solo .sticky-cta__call{font-size:17px}
