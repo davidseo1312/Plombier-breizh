@@ -4,6 +4,7 @@ import { avisDe } from '../lib/reviews.mjs';
 
 export default {
   slug: 'debouchage',
+  heroImage: { chemin: '/assets/img/hero-plombier-breizh-camion', ext: 'jpg' },
   nav: 'debouchage',
   title: 'Débouchage de canalisation en Bretagne | Plombier Breizh',
   description: 'WC, évier, douche ou canalisation bouchée en Bretagne ? Débouchage professionnel par Plombier Breizh. Appelez le 02 20 06 01 96.',

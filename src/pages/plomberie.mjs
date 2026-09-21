@@ -4,6 +4,7 @@ import { avisDe } from '../lib/reviews.mjs';
 
 export default {
   slug: 'plomberie',
+  heroImage: { chemin: '/assets/photos/chauffe-eau', ext: 'jpg' },
   nav: 'plomberie',
   title: 'Plombier en Bretagne — dépannage et fuite d’eau | Plombier Breizh',
   description: 'Dépannage plomberie, fuite d’eau et recherche de fuite en Bretagne. Plombier Breizh intervient rapidement — 02 20 06 01 96.',

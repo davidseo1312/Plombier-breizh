@@ -6,7 +6,7 @@ export default landingPage({
   article: 'le',
   num: '56',
   cities: ['Vannes', 'Lorient', 'Lanester', 'Auray', 'Pontivy', 'Hennebont', 'Ploemeur', 'Questembert'],
-  title: 'Plombier Morbihan (56) — débouchage, dégorgement, urgence | Plombier Breizh',
+  title: 'Plombier Morbihan (56) — dégorgement | Plombier Breizh',
   description: 'Plombier dans le Morbihan : débouchage, dégorgement, fuite d’eau et dépannage. Appelez Plombier Breizh au 02 20 06 01 96 pour votre intervention.',
 
   introTitle: 'Votre plombier dans le Morbihan',

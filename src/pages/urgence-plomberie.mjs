@@ -4,8 +4,9 @@ import { avisDe } from '../lib/reviews.mjs';
 
 export default {
   slug: 'urgence-plomberie',
+  heroImage: { chemin: '/assets/img/hero-plombier-breizh-camion', ext: 'jpg' },
   nav: 'urgence',
-  title: 'Urgence plomberie en Bretagne — plombier en urgence | Plombier Breizh',
+  title: 'Urgence plomberie en Bretagne | Plombier Breizh',
   description: 'Fuite active, refoulement, WC bouché, canalisation obstruée en Bretagne ? Appelez Plombier Breizh au 02 20 06 01 96 pour une intervention en urgence.',
   body: `
 ${pageHero({

@@ -6,6 +6,7 @@
 
 import { ENTREPRISE } from './entreprise.mjs';
 import { confianceSection } from './confiance.mjs';
+import { photo as photoImg, preloadPhoto } from './media.mjs';
 
 export const SITE = {
   name: 'Plombier Breizh',
@@ -78,6 +79,9 @@ export const checklist = (items = REASSURANCE, inline = false) =>
    Déposez-le dans assets/ sous n'importe lequel de ces noms.
    ------------------------------------------------------------------------- */
 export const LOGO_FILES = [
+  /* Le WebP d'abord : 17 Ko au lieu de 88. Les navigateurs qui ne le lisent
+     pas échouent silencieusement et la chaîne bascule sur le PNG juste après. */
+  '/assets/logo-plombier-breizh.webp',
   '/assets/logo-plombier-breizh.png',
   '/assets/logo-plombier-breizh.webp',
   '/assets/logo-plombier-breizh.jpg',
@@ -111,9 +115,11 @@ const logoImg = ({ files, cls, alt, width, height, lazy = false }) => {
    ------------------------------------------------------------------------- */
 export const heroPhoto = (fallback = 'hero-plombier-intervention',
   alt = 'Technicien Plombier Breizh devant son camion d’intervention') =>
-  `<img src="/assets/img/hero-plombier-breizh-camion.jpg" alt="${alt}"
-             width="1536" height="1024" fetchpriority="high" decoding="async"
-             onerror="this.onerror=null;this.src='/assets/img/${fallback}.svg';">`;
+  photoImg({
+    chemin: '/assets/img/hero-plombier-breizh-camion', alt,
+    largeur: 1536, hauteur: 1024, usage: 'hero', priorite: true,
+    repli: `/assets/img/${fallback}.svg`
+  });
 
 /* -------------------------------------------------------------------------
    HEAD / HEADER / FOOTER
@@ -139,7 +145,7 @@ const jsonLd = (offres = OFFRES_DEFAUT) => JSON.stringify({
   makesOffer: offres.map(n => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: n } }))
 });
 
-export const head = ({ title, description, slug, offres }) => `<!doctype html>
+export const head = ({ title, description, slug, offres, preload = '' }) => `<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -153,7 +159,15 @@ export const head = ({ title, description, slug, offres }) => `<!doctype html>
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${description}">
 <meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="${SITE.baseUrl}/${slug === 'index' ? '' : slug}">
+<meta property="og:image" content="${SITE.baseUrl}/assets/img/og-plombier-breizh.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Plombier Breizh — plomberie, débouchage et dégorgement en Bretagne">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+${preload}
 <link rel="preload" href="/assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/lato-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css">
@@ -253,7 +267,7 @@ export const preuves = ({ zone, villes } = {}) => `
       </div>
       <div class="trust__item">
         <strong>Appel non surtaxé</strong>
-        <span>${SITE.phoneDisplay} est un numéro fixe, inclus dans la plupart des forfaits.</span>
+        <span>${tel('preuves-numero', SITE.phoneDisplay)} est un numéro fixe, inclus dans la plupart des forfaits.</span>
       </div>
       <div class="trust__item">
         <strong>Intervention — ${zone || 'Bretagne'}</strong>
@@ -645,7 +659,7 @@ ${stickyTexte ? `
 </html>`;
 
 /* Hero des pages internes et des landing pages. */
-export const pageHero = ({ tag, h1, sub, img, alt, location, photo = false, items = REASSURANCE,
+export const pageHero = ({ tag, h1, sub, img, alt, location, photo: estPhotoCamion = false, items = REASSURANCE,
                           badge = 'Bretagne', preuvesZone, preuvesVilles }) => `
 <section class="hero">
   <div class="container">
@@ -662,8 +676,10 @@ export const pageHero = ({ tag, h1, sub, img, alt, location, photo = false, item
         ${checklist(items, true)}
       </div>
       <div class="hero__media">
-        ${photo ? heroPhoto(img, alt) : `<img src="/assets/photos/${img}.jpg" alt="${alt}" width="1100" height="733" fetchpriority="high" decoding="async"
-             onerror="this.onerror=null;this.src='/assets/img/${img}.svg';">`}
+        ${estPhotoCamion ? heroPhoto(img, alt) : photoImg({
+          chemin: `/assets/photos/${img}`, alt, largeur: 1100, hauteur: 733,
+          usage: 'hero', priorite: true, repli: `/assets/img/${img}.svg`
+        })}
         <span class="hero__badge">${badge}</span>
       </div>
     </div>
@@ -672,8 +688,8 @@ export const pageHero = ({ tag, h1, sub, img, alt, location, photo = false, item
 ${preuves({ zone: preuvesZone, villes: preuvesVilles })}`;
 
 /** Assemble une page complète. */
-export const page = ({ title, description, slug, nav, body, minimalNav = false, enTete = {}, pied = {}, offres, confiance = true }) =>
-  `${head({ title, description, slug, offres })}
+export const page = ({ title, description, slug, nav, body, minimalNav = false, enTete = {}, pied = {}, offres, confiance = true, heroImage }) =>
+  `${head({ title, description, slug, offres, preload: heroImage ? preloadPhoto(heroImage.chemin, heroImage.ext, 'hero') : '' })}
 <body data-page="${slug}">
 ${header(nav, minimalNav, enTete)}
 <main id="contenu">

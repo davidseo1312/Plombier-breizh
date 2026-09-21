@@ -6,7 +6,7 @@ export default landingPage({
   article: 'le',
   num: '29',
   cities: ['Brest', 'Quimper', 'Morlaix', 'Concarneau', 'Landerneau', 'Douarnenez', 'Quimperlé', 'Châteaulin'],
-  title: 'Plombier Finistère (29) — débouchage, dégorgement, urgence | Plombier Breizh',
+  title: 'Plombier Finistère (29) — urgence 7j/7 | Plombier Breizh',
   description: 'Plombier dans le Finistère : débouchage, dégorgement, fuite d’eau et dépannage. Appelez Plombier Breizh au 02 20 06 01 96 pour votre intervention.',
 
   introTitle: 'Votre plombier dans le Finistère',

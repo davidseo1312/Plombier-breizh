@@ -12,7 +12,8 @@ import {
   SITE, callBtn, formBtn, pageHero, urgencyBand, phoneBlock,
   whySection, reviewsSection, formSection, tel
 } from './layout.mjs';
-import { servicesGrid, servicePhoto, pick } from './services.mjs';
+import { servicesGrid, servicePhoto, servicePhotoLarge, pick } from './services.mjs';
+import { photo } from './media.mjs';
 import { avisDe } from './reviews.mjs';
 
 /* Valeurs par défaut : celles des landing pages « tous services » 29 et 56. */
@@ -65,6 +66,9 @@ export const landingPage = ({
   slug,
   nav: '',
   minimalNav: true,
+  heroImage: heroPhotoCamion
+    ? { chemin: '/assets/img/hero-plombier-breizh-camion', ext: 'jpg' }
+    : { chemin: `/assets/photos/${heroImg}`, ext: 'jpg' },
   title,
   description,
   body: `
@@ -103,7 +107,7 @@ ${urgencyBand(`bandeau-lp-${slug}`)}
         </div>
       </div>
       <div class="split__media">
-        ${servicePhoto(introImg, introAlt || `Plombier Breizh en intervention dans ${article} ${dept}`)}
+        ${servicePhotoLarge(introImg, introAlt || `Plombier Breizh en intervention dans ${article} ${dept}`)}
       </div>
     </div>
 
@@ -125,9 +129,9 @@ ${urgencyBand(`bandeau-lp-${slug}`)}
     </div>
 ${infographie ? `
     <figure class="figure-wide mt-32">
-      <img src="/assets/img/infographie-origine-bouchon.jpg"
-           alt="Origine du bouchon et outil adapté : graisses, cheveux et savon, lingettes, racines"
-           width="1020" height="776" loading="lazy" decoding="async">
+      ${photo({ chemin: '/assets/img/infographie-origine-bouchon',
+                alt: 'Origine du bouchon et outil adapté : graisses, cheveux et savon, lingettes, racines',
+                largeur: 1536, hauteur: 1024, usage: 'large' })}
       <figcaption>Graisses de cuisine, cheveux et savon, lingettes, racines : l’origine du bouchon
       détermine l’outil à utiliser. C’est ce que nous cherchons à établir dès votre appel.</figcaption>
     </figure>` : ''}

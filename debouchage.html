@@ -12,7 +12,15 @@
 <meta property="og:title" content="Débouchage de canalisation en Bretagne | Plombier Breizh">
 <meta property="og:description" content="WC, évier, douche ou canalisation bouchée en Bretagne ? Débouchage professionnel par Plombier Breizh. Appelez le 02 20 06 01 96.">
 <meta property="og:locale" content="fr_FR">
-<link rel="icon" href="/assets/favicon.png?v=1b83d390">
+<meta property="og:url" content="https://www.plombier-breizh.fr/debouchage">
+<meta property="og:image" content="https://www.plombier-breizh.fr/assets/img/og-plombier-breizh.jpg?v=bee0a83f">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Plombier Breizh — plomberie, débouchage et dégorgement en Bretagne">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.png?v=7755622d">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=1b83d390">
+<link rel="preload" as="image" type="image/webp" imagesrcset="/assets/img/hero-plombier-breizh-camion-480.webp?v=0972d65b 480w, /assets/img/hero-plombier-breizh-camion-760.webp?v=4d1c8ce3 760w, /assets/img/hero-plombier-breizh-camion-1100.webp?v=3d80d13f 1100w, /assets/img/hero-plombier-breizh-camion-1536.webp?v=f89a66f1 1536w" imagesizes="(min-width:1000px) 570px, calc(100vw - 40px)">
 <link rel="preload" href="/assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/lato-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css?v=3e604065">
@@ -66,8 +74,8 @@ function PBLogo(img){
 <header class="site-header">
   <div class="container">
     <a class="brand" href="/" aria-label="Plombier Breizh — accueil">
-      <img class="brand__logo" src="/assets/logo-plombier-breizh.png?v=1b73a9f6" alt="Plombier Breizh" width="100" height="76"
-           data-logo-fallbacks="" onerror="PBLogo(this)">
+      <img class="brand__logo" src="/assets/logo-plombier-breizh.webp?v=109089c4" alt="Plombier Breizh" width="100" height="76"
+           data-logo-fallbacks="/assets/logo-plombier-breizh.png?v=1b73a9f6,/assets/logo-plombier-breizh.webp?v=109089c4" onerror="PBLogo(this)">
       <span class="brand-fallback brand-fallback--header" hidden>Plombier<span>Breizh</span></span>
     </a>
 
@@ -126,9 +134,10 @@ function PBLogo(img){
       </ul>
       </div>
       <div class="hero__media">
-        <img src="/assets/img/hero-plombier-breizh-camion.jpg?v=040cb2c0" alt="Plombier Breizh en intervention de débouchage"
-             width="1536" height="1024" fetchpriority="high" decoding="async"
-             onerror="this.onerror=null;this.src='/assets/img/debouchage-canalisation.svg?v=6e8742e0';">
+        <picture>
+        <source type="image/webp" srcset="/assets/img/hero-plombier-breizh-camion-480.webp?v=0972d65b 480w, /assets/img/hero-plombier-breizh-camion-760.webp?v=4d1c8ce3 760w, /assets/img/hero-plombier-breizh-camion-1100.webp?v=3d80d13f 1100w, /assets/img/hero-plombier-breizh-camion-1536.webp?v=f89a66f1 1536w" sizes="(min-width:1000px) 570px, calc(100vw - 40px)">
+        <img src="/assets/img/hero-plombier-breizh-camion-1536.jpg?v=13feea20" srcset="/assets/img/hero-plombier-breizh-camion-480.jpg?v=d18198a4 480w, /assets/img/hero-plombier-breizh-camion-760.jpg?v=e2fbde27 760w, /assets/img/hero-plombier-breizh-camion-1100.jpg?v=5d9e62b3 1100w, /assets/img/hero-plombier-breizh-camion-1536.jpg?v=13feea20 1536w" sizes="(min-width:1000px) 570px, calc(100vw - 40px)" alt="Plombier Breizh en intervention de débouchage" width="1536" height="1024" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.srcset='';this.src='/assets/img/debouchage-canalisation.svg?v=6e8742e0';">
+      </picture>
         <span class="hero__badge">Bretagne</span>
       </div>
     </div>
@@ -149,7 +158,7 @@ function PBLogo(img){
       </div>
       <div class="trust__item">
         <strong>Appel non surtaxé</strong>
-        <span>02 20 06 01 96 est un numéro fixe, inclus dans la plupart des forfaits.</span>
+        <span><a href="tel:+33220060196" data-location="preuves-numero">02 20 06 01 96</a> est un numéro fixe, inclus dans la plupart des forfaits.</span>
       </div>
       <div class="trust__item">
         <strong>Intervention — Bretagne</strong>
@@ -244,8 +253,10 @@ function PBLogo(img){
     <div class="grid grid--3">
       <article class="card">
         <div class="card__media">
-          <img src="/assets/photos/debouchage-wc.jpg?v=2406960e" alt="WC bouché — Plombier Breizh" width="1100" height="733" loading="lazy" decoding="async"
-               onerror="this.onerror=null;this.src='/assets/img/debouchage-wc.svg?v=83e80345';">
+          <picture>
+        <source type="image/webp" srcset="/assets/photos/debouchage-wc-480.webp?v=96ad2ee5 480w, /assets/photos/debouchage-wc-760.webp?v=91fd407f 760w, /assets/photos/debouchage-wc-1100.webp?v=c9dbcd01 1100w" sizes="(min-width:1280px) 400px, (min-width:1000px) 31vw, (min-width:700px) 47vw, calc(100vw - 40px)">
+        <img src="/assets/photos/debouchage-wc-1100.jpg?v=184cc2f8" srcset="/assets/photos/debouchage-wc-480.jpg?v=2520bc53 480w, /assets/photos/debouchage-wc-760.jpg?v=b286c52c 760w, /assets/photos/debouchage-wc-1100.jpg?v=184cc2f8 1100w" sizes="(min-width:1280px) 400px, (min-width:1000px) 31vw, (min-width:700px) 47vw, calc(100vw - 40px)" alt="WC bouché — Plombier Breizh" width="1100" height="733" loading="lazy" decoding="async" onerror="this.onerror=null;this.srcset='';this.src='/assets/img/debouchage-wc.svg?v=83e80345';">
+      </picture>
         </div>
         <div class="card__body">
           <h3 class="card__title">WC bouché</h3>
@@ -255,8 +266,10 @@ function PBLogo(img){
       </article>
       <article class="card">
         <div class="card__media">
-          <img src="/assets/photos/debouchage-evier.jpg?v=773b418a" alt="Évier bouché — Plombier Breizh" width="1100" height="733" loading="lazy" decoding="async"
-               onerror="this.onerror=null;this.src='/assets/img/debouchage-evier.svg?v=b41164f4';">
+          <picture>
+        <source type="image/webp" srcset="/assets/photos/debouchage-evier-480.webp?v=d8c7ba8f 480w, /assets/photos/debouchage-evier-760.webp?v=fb0836e8 760w, /assets/photos/debouchage-evier-1100.webp?v=8efd023a 1100w" sizes="(min-width:1280px) 400px, (min-width:1000px) 31vw, (min-width:700px) 47vw, calc(100vw - 40px)">
+        <img src="/assets/photos/debouchage-evier-1100.jpg?v=543b024a" srcset="/assets/photos/debouchage-evier-480.jpg?v=e8bf5614 480w, /assets/photos/debouchage-evier-760.jpg?v=a3981788 760w, /assets/photos/debouchage-evier-1100.jpg?v=543b024a 1100w" sizes="(min-width:1280px) 400px, (min-width:1000px) 31vw, (min-width:700px) 47vw, calc(100vw - 40px)" alt="Évier bouché — Plombier Breizh" width="1100" height="733" loading="lazy" decoding="async" onerror="this.onerror=null;this.srcset='';this.src='/assets/img/debouchage-evier.svg?v=b41164f4';">
+      </picture>
         </div>
         <div class="card__body">
           <h3 class="card__title">Évier bouché</h3>
@@ -266,8 +279,10 @@ function PBLogo(img){
       </article>
       <article class="card">
         <div class="card__media">
-          <img src="/assets/photos/debouchage-douche.jpg?v=a863c313" alt="Douche bouchée — Plombier Breizh" width="1100" height="733" loading="lazy" decoding="async"
-               onerror="this.onerror=null;this.src='/assets/img/debouchage-douche.svg?v=937fe398';">
+          <picture>
+        <source type="image/webp" srcset="/assets/photos/debouchage-douche-480.webp?v=ceae87b7 480w, /assets/photos/debouchage-douche-760.webp?v=d1f26c84 760w, /assets/photos/debouchage-douche-1100.webp?v=cb66f1b0 1100w" sizes="(min-width:1280px) 400px, (min-width:1000px) 31vw, (min-width:700px) 47vw, calc(100vw - 40px)">
+        <img src="/assets/photos/debouchage-douche-1100.jpg?v=a269ab1d" srcset="/assets/photos/debouchage-douche-480.jpg?v=d0b082c7 480w, /assets/photos/debouchage-douche-760.jpg?v=ebb39db4 760w, /assets/photos/debouchage-douche-1100.jpg?v=a269ab1d 1100w" sizes="(min-width:1280px) 400px, (min-width:1000px) 31vw, (min-width:700px) 47vw, calc(100vw - 40px)" alt="Douche bouchée — Plombier Breizh" width="1100" height="733" loading="lazy" decoding="async" onerror="this.onerror=null;this.srcset='';this.src='/assets/img/debouchage-douche.svg?v=937fe398';">
+      </picture>
         </div>
         <div class="card__body">
           <h3 class="card__title">Douche bouchée</h3>
@@ -277,8 +292,10 @@ function PBLogo(img){
       </article>
       <article class="card">
         <div class="card__media">
-          <img src="/assets/photos/canalisation-bouchee.jpg?v=75ec33f2" alt="Canalisation obstruée — Plombier Breizh" width="1100" height="733" loading="lazy" decoding="async"
-               onerror="this.onerror=null;this.src='/assets/img/canalisation-bouchee.svg?v=de7dcee0';">
+          <picture>
+        <source type="image/webp" srcset="/assets/photos/canalisation-bouchee-480.webp?v=8bb8482f 480w, /assets/photos/canalisation-bouchee-760.webp?v=602688ca 760w, /assets/photos/canalisation-bouchee-1100.webp?v=89996c52 1100w" sizes="(min-width:1280px) 400px, (min-width:1000px) 31vw, (min-width:700px) 47vw, calc(100vw - 40px)">
+        <img src="/assets/photos/canalisation-bouchee-1100.jpg?v=52045a1c" srcset="/assets/photos/canalisation-bouchee-480.jpg?v=2dcda896 480w, /assets/photos/canalisation-bouchee-760.jpg?v=48441a5e 760w, /assets/photos/canalisation-bouchee-1100.jpg?v=52045a1c 1100w" sizes="(min-width:1280px) 400px, (min-width:1000px) 31vw, (min-width:700px) 47vw, calc(100vw - 40px)" alt="Canalisation obstruée — Plombier Breizh" width="1100" height="733" loading="lazy" decoding="async" onerror="this.onerror=null;this.srcset='';this.src='/assets/img/canalisation-bouchee.svg?v=de7dcee0';">
+      </picture>
         </div>
         <div class="card__body">
           <h3 class="card__title">Canalisation obstruée</h3>
@@ -288,8 +305,10 @@ function PBLogo(img){
       </article>
       <article class="card">
         <div class="card__media">
-          <img src="/assets/photos/debouchage-canalisation.jpg?v=6ad6ad5b" alt="Débouchage — Plombier Breizh" width="1100" height="733" loading="lazy" decoding="async"
-               onerror="this.onerror=null;this.src='/assets/img/debouchage-canalisation.svg?v=6e8742e0';">
+          <picture>
+        <source type="image/webp" srcset="/assets/photos/debouchage-canalisation-480.webp?v=52d67a97 480w, /assets/photos/debouchage-canalisation-760.webp?v=47bcc647 760w, /assets/photos/debouchage-canalisation-1100.webp?v=ef1a4ba0 1100w" sizes="(min-width:1280px) 400px, (min-width:1000px) 31vw, (min-width:700px) 47vw, calc(100vw - 40px)">
+        <img src="/assets/photos/debouchage-canalisation-1100.jpg?v=68ce7524" srcset="/assets/photos/debouchage-canalisation-480.jpg?v=f2eca172 480w, /assets/photos/debouchage-canalisation-760.jpg?v=c26c564a 760w, /assets/photos/debouchage-canalisation-1100.jpg?v=68ce7524 1100w" sizes="(min-width:1280px) 400px, (min-width:1000px) 31vw, (min-width:700px) 47vw, calc(100vw - 40px)" alt="Débouchage — Plombier Breizh" width="1100" height="733" loading="lazy" decoding="async" onerror="this.onerror=null;this.srcset='';this.src='/assets/img/debouchage-canalisation.svg?v=6e8742e0';">
+      </picture>
         </div>
         <div class="card__body">
           <h3 class="card__title">Débouchage</h3>
@@ -299,8 +318,10 @@ function PBLogo(img){
       </article>
       <article class="card">
         <div class="card__media">
-          <img src="/assets/photos/degorgement.jpg?v=915210b7" alt="Dégorgement — Plombier Breizh" width="1100" height="733" loading="lazy" decoding="async"
-               onerror="this.onerror=null;this.src='/assets/img/degorgement.svg?v=de7dcee0';">
+          <picture>
+        <source type="image/webp" srcset="/assets/photos/degorgement-480.webp?v=f98941b2 480w, /assets/photos/degorgement-760.webp?v=d7d8f662 760w, /assets/photos/degorgement-1100.webp?v=d8527cf3 1100w" sizes="(min-width:1280px) 400px, (min-width:1000px) 31vw, (min-width:700px) 47vw, calc(100vw - 40px)">
+        <img src="/assets/photos/degorgement-1100.jpg?v=678713f2" srcset="/assets/photos/degorgement-480.jpg?v=68fb0682 480w, /assets/photos/degorgement-760.jpg?v=16756fef 760w, /assets/photos/degorgement-1100.jpg?v=678713f2 1100w" sizes="(min-width:1280px) 400px, (min-width:1000px) 31vw, (min-width:700px) 47vw, calc(100vw - 40px)" alt="Dégorgement — Plombier Breizh" width="1100" height="733" loading="lazy" decoding="async" onerror="this.onerror=null;this.srcset='';this.src='/assets/img/degorgement.svg?v=de7dcee0';">
+      </picture>
         </div>
         <div class="card__body">
           <h3 class="card__title">Dégorgement</h3>
@@ -612,18 +633,24 @@ function PBLogo(img){
     <p class="confiance__titre">Assurance et affiliations professionnelles</p>
     <ul class="confiance__list">
       <li class="confiance__item">
-        <img src="/assets/img/confiance/mic-insurance.png?v=42ed1d72" alt="MIC Insurance"
-             width="430" height="160" loading="lazy" decoding="async">
+        <picture>
+        <source type="image/webp" srcset="/assets/img/confiance/mic-insurance-430.webp?v=2bbf1817 430w" sizes="210px">
+        <img src="/assets/img/confiance/mic-insurance-430.png?v=42ed1d72" srcset="/assets/img/confiance/mic-insurance-430.png?v=42ed1d72 430w" sizes="210px" alt="MIC Insurance" width="430" height="160" loading="lazy" decoding="async">
+      </picture>
         <span>Assurance responsabilité civile professionnelle</span>
       </li>
       <li class="confiance__item">
-        <img src="/assets/img/confiance/chambre-metiers-artisanat.png?v=60ac37c1" alt="Chambres de Métiers et de l’Artisanat"
-             width="204" height="160" loading="lazy" decoding="async">
+        <picture>
+        <source type="image/webp" srcset="/assets/img/confiance/chambre-metiers-artisanat-204.webp?v=f135c3db 204w" sizes="210px">
+        <img src="/assets/img/confiance/chambre-metiers-artisanat-204.png?v=60ac37c1" srcset="/assets/img/confiance/chambre-metiers-artisanat-204.png?v=60ac37c1 204w" sizes="210px" alt="Chambres de Métiers et de l’Artisanat" width="204" height="160" loading="lazy" decoding="async">
+      </picture>
         <span>Entreprise artisanale enregistrée</span>
       </li>
       <li class="confiance__item">
-        <img src="/assets/img/confiance/artisan-de-france.png?v=6bbd797d" alt="Artisan de France"
-             width="277" height="160" loading="lazy" decoding="async">
+        <picture>
+        <source type="image/webp" srcset="/assets/img/confiance/artisan-de-france-277.webp?v=98eb6e7e 277w" sizes="210px">
+        <img src="/assets/img/confiance/artisan-de-france-277.png?v=6bbd797d" srcset="/assets/img/confiance/artisan-de-france-277.png?v=6bbd797d 277w" sizes="210px" alt="Artisan de France" width="277" height="160" loading="lazy" decoding="async">
+      </picture>
         <span>Membre du réseau Artisan de France</span>
       </li>
     </ul>
@@ -635,8 +662,8 @@ function PBLogo(img){
   <div class="container">
     <div class="footer__grid">
       <div>
-        <img class="footer__logo" src="/assets/logo-plombier-breizh.png?v=1b73a9f6" alt="Plombier Breizh" width="148" height="112" loading="lazy"
-           data-logo-fallbacks="" onerror="PBLogo(this)">
+        <img class="footer__logo" src="/assets/logo-plombier-breizh.webp?v=109089c4" alt="Plombier Breizh" width="148" height="112" loading="lazy"
+           data-logo-fallbacks="/assets/logo-plombier-breizh.png?v=1b73a9f6,/assets/logo-plombier-breizh.webp?v=109089c4" onerror="PBLogo(this)">
         <span class="brand-fallback brand-fallback--footer" hidden>Plombier<span>Breizh</span></span>
         <p class="footer__tagline">Plomberie • Débouchage • Dégorgement • Urgence</p>
         <p>Intervention en Bretagne — Finistère 29 &amp; Morbihan 56</p>

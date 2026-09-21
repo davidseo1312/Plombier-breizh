@@ -5,7 +5,7 @@ export default landingPlomberie({
   slug: 'plomberie-morbihan-56',
   dept: 'Morbihan', article: 'le', num: '56',
   cities: ['Vannes', 'Lorient', 'Lanester', 'Auray', 'Pontivy', 'Hennebont', 'Ploemeur', 'Questembert'],
-  title: 'Plombier Morbihan (56) — fuite d’eau et dépannage | Plombier Breizh',
+  title: 'Plombier Morbihan (56) — fuite d’eau | Plombier Breizh',
   description: 'Plombier dans le Morbihan : fuite d’eau, recherche de fuite, ballon d’eau chaude, robinetterie, sanitaires. Appelez Plombier Breizh au 02 20 06 01 96.',
 
   tag: 'Plomberie — Morbihan 56',

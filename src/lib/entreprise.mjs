@@ -64,10 +64,10 @@ export const ENTREPRISE = {
   /* 'RCS' (commerçants), 'RM' (artisans, répertoire des métiers) ou ''. */
   rcsType: 'RCS',
 
-  /* Code APE / NAF et son libellé, tels qu'enregistrés.
-     ⚠ Le libellé enregistré ne correspond PAS à l'activité vendue sur le site
-     (plomberie). Seul le CODE est affiché sur la page : le libellé reste ici
-     à titre documentaire. À régulariser auprès du greffe / de l'INPI. */
+  /* Code APE / NAF enregistré. N'EST PLUS PUBLIÉ sur le site : il ne
+     correspond pas à l'activité vendue (plomberie) et n'est pas une mention
+     légale obligatoire. Conservé ici à titre documentaire, à régulariser
+     auprès du greffe / de l'INPI. */
   ape: '81.29A',
   apeLibelle: 'Désinfection, désinsectisation, dératisation',
 
@@ -109,7 +109,6 @@ export const CHAMPS_OBLIGATOIRES = [
   ['ville', 'ville du siège'],
   ['siret', 'SIRET du siège'],
   ['rcsVille', 'ville du greffe (RCS / RM)'],
-  ['ape', 'code APE / NAF'],
   ['assureur', 'assureur responsabilité civile professionnelle'],
   ['mediateurNom', 'médiateur de la consommation']
 ];

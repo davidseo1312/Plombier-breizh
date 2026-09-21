@@ -6,7 +6,7 @@ export default landingPage({
   slug: 'degorgement-finistere-29',
   dept: 'Finistère', article: 'le', num: '29',
   cities: ['Brest', 'Quimper', 'Morlaix', 'Concarneau', 'Landerneau', 'Douarnenez', 'Quimperlé', 'Châteaulin'],
-  title: 'Dégorgement Finistère (29) — canalisation bouchée | Plombier Breizh',
+  title: 'Dégorgement Finistère (29) | Plombier Breizh',
   description: 'Dégorgement et débouchage de canalisation dans le Finistère : camion de pompage, furet, haute pression, caméra. Appelez Plombier Breizh au 02 20 06 01 96.',
 
   tag: 'Dégorgement &amp; débouchage — Finistère 29',

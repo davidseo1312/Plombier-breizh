@@ -4,6 +4,7 @@ import { avisDe } from '../lib/reviews.mjs';
 
 export default {
   slug: 'degorgement',
+  heroImage: { chemin: '/assets/photos/degorgement', ext: 'jpg' },
   nav: 'degorgement',
   title: 'Dégorgement de canalisation en Bretagne | Plombier Breizh',
   description: 'Dégorgement de canalisation et d’évacuation en Bretagne. Matériel professionnel, intervention rapide : appelez Plombier Breizh au 02 20 06 01 96.',

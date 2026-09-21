@@ -1,5 +1,6 @@
 /* Catalogue des interventions — source unique utilisée par toutes les pages. */
 import { formBtn } from './layout.mjs';
+import { photo } from './media.mjs';
 
 export const SERVICES = [
   { img: 'depannage-plomberie', title: 'Dépannage plomberie',
@@ -35,9 +36,17 @@ export const servicePhoto = (img, alt) => {
      annoncées correspondent au fichier pour éviter tout décalage d'affichage. */
   const carre = img.startsWith('equip-');
   const [w, h] = carre ? [700, 700] : [1100, 733];
-  return `<img src="/assets/photos/${img}.jpg" alt="${alt}" width="${w}" height="${h}" loading="lazy" decoding="async"
-               onerror="this.onerror=null;this.src='/assets/img/${img}.svg';">`;
+  return photo({
+    chemin: `/assets/photos/${img}`, alt, largeur: w, hauteur: h,
+    usage: 'carte', repli: `/assets/img/${img}.svg`
+  });
 };
+
+/* Variante pour les grands visuels de section (colonne « split », hero interne). */
+export const servicePhotoLarge = (img, alt, usage = 'split') => photo({
+  chemin: `/assets/photos/${img}`, alt, largeur: 1100, hauteur: 733,
+  usage, repli: `/assets/img/${img}.svg`
+});
 
 export const serviceCard = (s, location) => `
       <article class="card">

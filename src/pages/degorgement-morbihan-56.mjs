@@ -6,7 +6,7 @@ export default landingPage({
   slug: 'degorgement-morbihan-56',
   dept: 'Morbihan', article: 'le', num: '56',
   cities: ['Vannes', 'Lorient', 'Lanester', 'Auray', 'Pontivy', 'Hennebont', 'Ploemeur', 'Questembert'],
-  title: 'Dégorgement Morbihan (56) — canalisation bouchée | Plombier Breizh',
+  title: 'Dégorgement Morbihan (56) | Plombier Breizh',
   description: 'Dégorgement et débouchage de canalisation dans le Morbihan : camion de pompage, furet, haute pression, pompage de fosse. Appelez Plombier Breizh au 02 20 06 01 96.',
 
   tag: 'Dégorgement &amp; débouchage — Morbihan 56',

@@ -5,7 +5,7 @@ export default landingPlomberie({
   slug: 'plomberie-finistere-29',
   dept: 'Finistère', article: 'le', num: '29',
   cities: ['Brest', 'Quimper', 'Morlaix', 'Concarneau', 'Landerneau', 'Douarnenez', 'Quimperlé', 'Châteaulin'],
-  title: 'Plombier Finistère (29) — fuite d’eau et dépannage | Plombier Breizh',
+  title: 'Plombier Finistère (29) — fuite d’eau | Plombier Breizh',
   description: 'Plombier dans le Finistère : fuite d’eau, recherche de fuite, chauffe-eau, robinetterie, sanitaires. Appelez Plombier Breizh au 02 20 06 01 96.',
 
   tag: 'Plomberie — Finistère 29',

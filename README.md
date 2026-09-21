@@ -254,6 +254,27 @@ vraies photos d'intervention en gardant **le même nom de base et le même ratio
 | `cliente-attente` / `siphon-encrasse` | Cliente en attente, siphon encrassé |
 | `equip-pompe` / `equip-furet-electrique` / `equip-haute-pression` / `equip-camera-inspection` / `equip-recherche-fuite` / `equip-outillage` | Matériel professionnel (carré) |
 
+### Images WebP et responsives
+
+`node tools/images.mjs` (Chromium sur le port 9222) produit, pour chaque photo,
+les déclinaisons `-480`, `-760`, `-1100`, `-1536` en **WebP** et dans le format
+d'origine. `src/lib/media.mjs` assemble un `<picture>` qui ne référence que les
+fichiers réellement présents : si le script n'a jamais tourné, le site affiche
+l'original et rien ne casse.
+
+Le navigateur choisit la largeur d'après l'attribut `sizes` : un téléphone
+télécharge la version 480 px, pas l'originale. L'image du premier écran est
+préchargée (`<link rel="preload">`) pour accélérer l'affichage.
+
+| Page (mobile 390 px) | Avant | Après |
+|---|---|---|
+| Accueil, premier écran | 510 Ko | **257 Ko** |
+| Accueil, page entière | 2 619 Ko | **1 084 Ko** |
+| Landing plomberie, page entière | 1 310 Ko | **592 Ko** |
+
+Après avoir ajouté ou remplacé une photo : relancez `node tools/images.mjs`
+puis `node build.mjs`.
+
 ### Logos de confiance
 
 `assets/img/confiance/` — logos détourés, fond transparent, hauteur commune de

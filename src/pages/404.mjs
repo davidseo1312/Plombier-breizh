@@ -1,4 +1,4 @@
-import { SITE, callBtn, formBtn } from '../lib/layout.mjs';
+import { SITE, callBtn, formBtn, phoneNote } from '../lib/layout.mjs';
 
 export default {
   slug: '404',
@@ -14,8 +14,9 @@ export default {
     dégorgement dans le Finistère (29) et le Morbihan (56), contactez-nous directement.</p>
     <div class="btn-row mt-24">
       ${callBtn('page-404', { text: `Appeler le ${SITE.phoneDisplay}` })}
-      ${formBtn('page-404', { variant: 'outline-light', href: 'index.html#demande-intervention' })}
+      ${formBtn('page-404', { variant: 'outline-light', href: '/#demande-intervention' })}
     </div>
+    ${phoneNote({ clair: true })}
     <p class="mt-32"><a href="/" style="color:#00AEEF">← Retour à l’accueil</a></p>
   </div>
 </section>

@@ -7,6 +7,7 @@ import { avisDe } from '../lib/reviews.mjs';
 
 export default {
   slug: 'index',
+  heroImage: { chemin: '/assets/img/hero-plombier-breizh-camion', ext: 'jpg' },
   nav: 'accueil',
   title: 'Plombier Breizh — plomberie, débouchage et dépannage en Bretagne',
   description: 'Une fuite, une canalisation bouchée ou un problème de plomberie en Bretagne ? Plombier Breizh assure dépannage, débouchage et dégorgement. Appelez le 02 20 06 01 96.',

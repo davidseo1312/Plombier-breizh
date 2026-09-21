@@ -14,6 +14,8 @@
    Pour retirer un logo : commentez sa ligne et relancez `node build.mjs`.
    ========================================================================== */
 
+import { photo } from './media.mjs';
+
 export const LOGOS_CONFIANCE = [
   {
     fichier: 'mic-insurance',
@@ -44,8 +46,8 @@ export const confianceSection = (titre = 'Assurance et affiliations professionne
     <p class="confiance__titre">${titre}</p>
     <ul class="confiance__list">
       ${LOGOS_CONFIANCE.map(l => `<li class="confiance__item">
-        <img src="/assets/img/confiance/${l.fichier}.png" alt="${l.nom}"
-             width="${l.largeur}" height="${l.hauteur}" loading="lazy" decoding="async">
+        ${photo({ chemin: `/assets/img/confiance/${l.fichier}`, ext: 'png', alt: l.nom,
+                  largeur: l.largeur, hauteur: l.hauteur, usage: '210px' })}
         <span>${l.libelle}</span>
       </li>`).join('\n      ')}
     </ul>

@@ -16,6 +16,7 @@
    ========================================================================== */
 import { SITE, callBtn, formBtn, tel, phoneNote, preuves } from './layout.mjs';
 import { servicePhoto } from './services.mjs';
+import { photo } from './media.mjs';
 import { ENTREPRISE as E } from './entreprise.mjs';
 
 const RAPPEL = 'Être rappelé';
@@ -54,6 +55,9 @@ export const landingPlomberie = ({
   slug,
   nav: '',
   minimalNav: true,
+  heroImage: heroCamion
+    ? { chemin: '/assets/img/hero-plombier-breizh-camion', ext: 'jpg' }
+    : { chemin: `/assets/photos/${heroImg}`, ext: 'jpg' },
   /* Données structurées limitées à la plomberie : cette page ne parle que de ça. */
   offres: ['Dépannage plomberie', 'Réparation de fuite d’eau', 'Recherche de fuite',
            'Intervention sur chauffe-eau', 'Robinetterie et sanitaires'],
@@ -101,12 +105,12 @@ export const landingPlomberie = ({
       </div>
       <div class="hero__media">
         ${heroCamion
-          ? `<img src="/assets/img/hero-plombier-breizh-camion.jpg" alt="${heroAlt}"
-             width="1536" height="1024" fetchpriority="high" decoding="async"
-             onerror="this.onerror=null;this.src='/assets/img/hero-plombier-intervention.svg';">`
-          : `<img src="/assets/photos/${heroImg}.jpg" alt="${heroAlt}" width="1100" height="733"
-             fetchpriority="high" decoding="async"
-             onerror="this.onerror=null;this.src='/assets/img/${heroImg}.svg';">`}
+          ? photo({ chemin: '/assets/img/hero-plombier-breizh-camion', alt: heroAlt,
+                    largeur: 1536, hauteur: 1024, usage: 'hero', priorite: true,
+                    repli: '/assets/img/hero-plombier-intervention.svg' })
+          : photo({ chemin: `/assets/photos/${heroImg}`, alt: heroAlt,
+                    largeur: 1100, hauteur: 733, usage: 'hero', priorite: true,
+                    repli: `/assets/img/${heroImg}.svg` })}
         <span class="hero__badge">${dept} — ${num}</span>
       </div>
     </div>

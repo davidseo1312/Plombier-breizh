@@ -2,6 +2,7 @@ import { SITE, callBtn, formBtn, pageHero, urgencyBand, ctaBand, phoneBlock, pro
 
 export default {
   slug: 'bretagne',
+  heroImage: { chemin: '/assets/img/hero-plombier-breizh-camion', ext: 'jpg' },
   nav: 'bretagne',
   title: 'Plombier Breizh en Bretagne — Finistère 29 & Morbihan 56',
   description: 'Plombier Breizh intervient en Bretagne pour la plomberie, le débouchage et le dégorgement, avec une présence forte dans le Finistère (29) et le Morbihan (56).',
