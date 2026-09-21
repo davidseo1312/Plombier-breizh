@@ -4,6 +4,7 @@ import { avisParNoms } from '../lib/reviews.mjs';
 
 export default landingService({
   metier: PLOMBERIE,
+  tarifs: PLOMBERIE.tarifs,
   slug: 'plomberie-finistere-29',
   dept: 'Finistère', article: 'le', num: '29',
   cities: ['Brest', 'Quimper', 'Morlaix', 'Concarneau', 'Landerneau', 'Douarnenez', 'Quimperlé', 'Châteaulin'],
@@ -50,9 +51,9 @@ export default landingService({
 
   faq: [
     ['Vous intervenez dans quels délais ?',
-     'Cela dépend de votre commune et du planning du jour. Appelez-nous : nous vous disons tout de suite ce que nous pouvons organiser.'],
+     'Nous sommes joignables 7j/7, 24h/24, soir et week-end compris. Le créneau dépend ensuite de votre commune et du planning : nous vous le disons dès l’appel.'],
     ['Combien coûte une intervention ?',
-     'Cela dépend de la panne et du temps passé. Nous en parlons au téléphone avant tout déplacement, pour que vous sachiez à quoi vous attendre.'],
+     'Le déplacement et le diagnostic sur place sont à 45 € TTC. Un dépannage courant démarre à 69 € TTC, une intervention technique à 89 € TTC. Le montant exact dépend de la panne et du temps passé : il vous est annoncé avant que le travail commence.'],
     ['Comment trouvez-vous une fuite qu’on ne voit pas ?',
      'Au détecteur acoustique, et à la caméra quand l’accès est difficile. L’objectif est de localiser la fuite avant d’ouvrir quoi que ce soit.'],
     ['Mon chauffe-eau ne chauffe plus, faut-il le remplacer ?',

@@ -19,6 +19,7 @@ import { SITE, callBtn, formBtn, tel, phoneNote, preuves } from './layout.mjs';
 import { servicePhoto } from './services.mjs';
 import { photo } from './media.mjs';
 import { carte as carteZone } from './carte.mjs';
+import { tarifsSection } from './tarifs.mjs';
 import { ENTREPRISE as E } from './entreprise.mjs';
 
 const RAPPEL = 'Être rappelé';
@@ -49,6 +50,7 @@ export const landingService = ({
   tag, h1, sub,
   heroImg, heroAlt, heroCamion = false,
   servicesTitre, services,
+  tarifs, tarifsTitre,
   appelTitre, appelIntro, etapes, nonFaits,
   materielTitre, materielIntro, materiel,
   infographie = false,
@@ -174,6 +176,8 @@ ${infographie ? `
     ${notesCta('Vous décrivez, on vous dit si c’est réparable', 'Pas de déplacement sans votre accord')}
   </div>
 </section>
+
+${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${article} ${dept}`, tint: false }) : ''}
 
 <!-- 5. POURQUOI NOUS ------------------------------------------------------ -->
 <section class="section" id="pourquoi">

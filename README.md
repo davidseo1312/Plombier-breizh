@@ -276,6 +276,34 @@ préchargée (`<link rel="preload">`) pour accélérer l'affichage.
 Après avoir ajouté ou remplacé une photo : relancez `node tools/images.mjs`
 puis `node build.mjs`.
 
+### Tarifs et disponibilité
+
+`src/lib/tarifs.mjs` porte les montants et le texte qui les encadre ; ils
+s'affichent sur les six pages de conversion (quatre landings dédiées et deux
+landings départementales), et dans la FAQ de chaque landing dédiée.
+
+| | |
+|---|---|
+| Déplacement et diagnostic sur place | 45 € TTC |
+| Dépannage courant / débouchage d'un point d'eau | à partir de 69 € TTC |
+| Intervention technique / dégorgement de réseau | à partir de 89 € TTC |
+
+La disponibilité (`SITE.dispo`) apparaît sur toutes les pages : bandeau du
+haut, en-tête, bande de preuves, bandeau d'urgence, mention sous les boutons,
+CTA fixe mobile et pied de page.
+
+**Trois règles à tenir**, sinon l'affichage devient trompeur au sens de
+l'article L.121-2 du Code de la consommation :
+
+1. « À partir de » suppose qu'une intervention est réellement facturée à ce
+   prix. Si le ticket plancher monte, relevez le chiffre dans `tarifs.mjs`.
+2. Les prix affichés au consommateur sont TTC.
+3. « 7j/7, 24h/24 » engage : une ligne qui ne décroche pas la nuit rend la
+   mention fausse.
+
+La note sous le tableau annonce le devis écrit au-delà de 150 € TTC, comme
+l'impose le dépannage dans le bâtiment.
+
 ### Carte d'intervention
 
 `node tools/carte.mjs` construit les trois cartes de `assets/img/` :

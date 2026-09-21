@@ -15,6 +15,7 @@ import {
 import { servicesGrid, servicePhoto, servicePhotoLarge, pick } from './services.mjs';
 import { photo } from './media.mjs';
 import { carte } from './carte.mjs';
+import { tarifsSection, TARIFS_TOUS } from './tarifs.mjs';
 import { avisDe } from './reviews.mjs';
 
 /* Valeurs par défaut : celles des landing pages « tous services » 29 et 56. */
@@ -179,6 +180,8 @@ ${recherches.length ? `
     </div>
   </div>
 </section>` : ''}
+
+${tarifsSection(TARIFS_TOUS, { titre: `Nos tarifs dans ${article} ${dept}`, tint: false })}
 
 ${phoneBlock({
     title: telephoneTitre,

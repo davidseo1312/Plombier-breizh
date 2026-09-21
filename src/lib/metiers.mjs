@@ -1,3 +1,5 @@
+import { TARIFS_PLOMBERIE, TARIFS_DEGORGEMENT } from './tarifs.mjs';
+
 /* ==========================================================================
    MÉTIERS — ce qui sépare une landing plomberie d'une landing dégorgement
    --------------------------------------------------------------------------
@@ -19,7 +21,8 @@ export const PLOMBERIE = {
            'Intervention sur chauffe-eau', 'Robinetterie et sanitaires'],
   problemes: ['Fuite d’eau', 'Recherche de fuite', 'Chauffe-eau / eau chaude',
               'Robinetterie', 'Sanitaires', 'Autre problème de plomberie'],
-  og: { fichier: 'og-plomberie', alt: 'Plombier Breizh — fuite d’eau, recherche de fuite et chauffe-eau en Bretagne' }
+  og: { fichier: 'og-plomberie', alt: 'Plombier Breizh — fuite d’eau, recherche de fuite et chauffe-eau en Bretagne' },
+  tarifs: TARIFS_PLOMBERIE
 };
 
 export const DEGORGEMENT = {
@@ -36,5 +39,6 @@ export const DEGORGEMENT = {
   problemes: ['WC bouché', 'Évier bouché', 'Douche ou baignoire bouchée',
               'Canalisation bouchée', 'Regard ou fosse qui déborde',
               'Plusieurs évacuations bloquées', 'Autre problème d’évacuation'],
-  og: { fichier: 'og-degorgement', alt: 'Plombier Breizh — débouchage et dégorgement de canalisation en Bretagne' }
+  og: { fichier: 'og-degorgement', alt: 'Plombier Breizh — débouchage et dégorgement de canalisation en Bretagne' },
+  tarifs: TARIFS_DEGORGEMENT
 };

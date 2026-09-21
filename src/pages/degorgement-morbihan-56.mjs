@@ -4,6 +4,7 @@ import { avisParNoms } from '../lib/reviews.mjs';
 
 export default landingService({
   metier: DEGORGEMENT,
+  tarifs: DEGORGEMENT.tarifs,
   slug: 'degorgement-morbihan-56',
   dept: 'Morbihan', article: 'le', num: '56',
   cities: ['Vannes', 'Lorient', 'Lanester', 'Auray', 'Pontivy', 'Hennebont', 'Ploemeur', 'Questembert'],
@@ -54,9 +55,9 @@ export default landingService({
 
   faq: [
     ['Vous intervenez dans quels délais ?',
-     'Cela dépend de votre commune et du planning du jour. Appelez-nous : nous vous disons tout de suite ce que nous pouvons organiser.'],
+     'Nous sommes joignables 7j/7, 24h/24, soir et week-end compris. Le créneau dépend ensuite de votre commune et du planning : nous vous le disons dès l’appel.'],
     ['Combien coûte un débouchage ?',
-     'Cela dépend de l’accès, de la méthode et du temps passé. Nous en parlons au téléphone avant tout déplacement, pour que vous sachiez à quoi vous attendre.'],
+     'Le déplacement et le diagnostic sur place sont à 45 € TTC. Le débouchage d’un point d’eau démarre à 69 € TTC, un dégorgement de réseau à 89 € TTC. Le montant exact dépend de l’accès et de la méthode : il vous est annoncé avant que le travail commence.'],
     ['Les déboucheurs chimiques, ça marche ?',
      'Rarement durablement. Le produit ouvre parfois un passage pour une journée, puis le bouchon revient plus compact — et il reste dans la canalisation pour celui qui interviendra ensuite.'],
     ['Je rouvre une maison restée fermée, l’évacuation ne passe plus',

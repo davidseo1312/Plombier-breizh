@@ -21,8 +21,13 @@ export const SITE = {
      sur un 02 est une pratique commerciale trompeuse (art. L.121-2 du Code
      de la consommation). Pour un vrai « appel gratuit », il faut souscrire
      un numéro vert et remplacer phoneDisplay / phoneHref ci-dessus. */
-  phoneNote: 'Appel non surtaxé — inclus dans la plupart des forfaits',
+  phoneNote: 'Joignable 7j/7, 24h/24 — appel non surtaxé',
   phoneNoteCourt: 'Appel non surtaxé',
+  /* Disponibilité annoncée par l'entreprise. Elle est affichée sur toutes
+     les pages : elle engage, une ligne qui ne décroche pas la nuit rend la
+     mention trompeuse. */
+  dispo: '7j/7 — 24h/24',
+  dispoLong: 'Joignable 7j/7, 24h/24',
   region: 'Bretagne',
   baseUrl: 'https://www.plombier-breizh.fr'
 };
@@ -211,7 +216,7 @@ export const header = (current, minimal = false, { services = 'Plomberie • Dé
 <div class="topbar">
   <div class="container">
     <ul class="topbar__list">
-      <li><span class="topbar__tag">Bretagne</span> — Finistère 29 &amp; Morbihan 56</li>
+      <li><span class="topbar__tag">${SITE.dispo}</span> Bretagne — Finistère 29 &amp; Morbihan 56</li>
       <li><span class="topbar__tag">Email</span> <a href="mailto:${SITE.email}">${SITE.email}</a></li>
     </ul>
     <ul class="topbar__list">
@@ -242,7 +247,7 @@ ${minimal ? '' : `
     </nav>`}
     <div class="header-cta"${minimal ? ' style="margin-left:auto"' : ''}>
       <a class="header-phone" href="${SITE.phoneHref}" data-location="header-desktop" data-cta="appel-header">
-        <span class="header-phone__label">Une urgence ?</span>
+        <span class="header-phone__label">${SITE.dispo}</span>
         <span class="header-phone__number">${SITE.phoneDisplay}</span>
       </a>
       ${callBtn('header-desktop-bouton', { size: '', text: 'Appeler maintenant' })}
@@ -263,8 +268,8 @@ export const preuves = ({ zone, villes } = {}) => `
         <a href="/mentions-legales">Vérifier</a></span>
       </div>
       <div class="trust__item">
-        <strong>Un plombier au téléphone</strong>
-        <span>Pas de standard, pas de plateforme d’intermédiaires.</span>
+        <strong>${SITE.dispoLong}</strong>
+        <span>Soir, week-end et jours fériés compris. Vous parlez à un plombier, pas à un standard.</span>
       </div>
       <div class="trust__item">
         <strong>Appel non surtaxé</strong>
@@ -281,7 +286,7 @@ export const preuves = ({ zone, villes } = {}) => `
 /* Bandeau urgence — bleu clair, très visible. */
 export const urgencyBand = (location = 'bandeau-urgence', {
   titre = 'Une urgence plomberie ?',
-  texte = 'Ne laissez pas une fuite ou une canalisation bouchée s’aggraver.'
+  texte = 'Ne laissez pas une fuite ou une canalisation bouchée s’aggraver. Nous répondons 7j/7, 24h/24.'
 } = {}) => `
 <section class="urgency" aria-label="Urgence plomberie">
   <div class="container">
@@ -415,7 +420,7 @@ export const whySection = (
         <p>Plombier Breizh intervient en Bretagne, avec une présence marquée dans le Finistère et le Morbihan.</p>
       </div>
       <div class="tile">
-        <h3>Un seul numéro</h3>
+        <h3>Un seul numéro, 7j/7</h3>
         <p>${tel(location + '-tuile', `<strong>${SITE.phoneDisplay}</strong>`)} ${numeroTexte}.</p>
       </div>
     </div>
@@ -626,8 +631,9 @@ ${liens ? `
       </div>` : (colonnes || '')}
       <div>
         <h3>Nous appeler</h3>
+        <p class="dispo mb-0" style="margin-bottom:12px">${SITE.dispoLong}</p>
         <a class="footer__phone" href="${SITE.phoneHref}" data-location="footer" data-cta="appel-footer">${SITE.phoneDisplay}</a>
-        ${phoneNote({ clair: true })}
+        ${phoneNote({ clair: true, court: true })}
         <ul class="footer__list">
           <li><a href="mailto:${SITE.email}">${SITE.email}</a></li>
         </ul>
