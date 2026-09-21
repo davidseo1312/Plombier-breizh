@@ -1,9 +1,11 @@
 import { SITE, callBtn, formBtn, pageHero, urgencyBand, ctaBand, phoneBlock, processSection, whySection, reviewsSection, bretagneSection, formSection } from '../lib/layout.mjs';
+import { DEGORGEMENT } from '../lib/metiers.mjs';
 import { servicePhoto } from '../lib/services.mjs';
 import { avisDe } from '../lib/reviews.mjs';
 
 export default {
   slug: 'degorgement',
+  og: DEGORGEMENT.og,
   heroImage: { chemin: '/assets/photos/degorgement', ext: 'jpg' },
   nav: 'degorgement',
   title: 'Dégorgement de canalisation en Bretagne | Plombier Breizh',

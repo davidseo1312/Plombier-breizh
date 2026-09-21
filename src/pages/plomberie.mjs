@@ -1,9 +1,11 @@
 import { SITE, callBtn, formBtn, pageHero, urgencyBand, ctaBand, phoneBlock, processSection, whySection, reviewsSection, bretagneSection, formSection } from '../lib/layout.mjs';
 import { servicesGrid, servicePhoto, pick } from '../lib/services.mjs';
-import { avisDe } from '../lib/reviews.mjs';
+import { avisParNoms } from '../lib/reviews.mjs';
+import { PLOMBERIE } from '../lib/metiers.mjs';
 
 export default {
   slug: 'plomberie',
+  og: PLOMBERIE.og,
   heroImage: { chemin: '/assets/photos/chauffe-eau', ext: 'jpg' },
   nav: 'plomberie',
   title: 'Plombier en Bretagne — dépannage et fuite d’eau | Plombier Breizh',
@@ -12,23 +14,29 @@ export default {
 ${pageHero({
     tag: 'Plomberie &amp; dépannage',
     h1: 'Votre plombier en Bretagne',
-    sub: 'Une fuite, un robinet qui lâche, plus d’eau chaude ou une évacuation bloquée : on répare ce qui pose problème au quotidien.',
+    sub: 'Une fuite, un robinet qui lâche, plus d’eau chaude, un chauffe-eau en panne : on répare l’installation elle-même.',
     img: 'chauffe-eau',
     alt: 'Technicien Plombier Breizh intervenant sur un chauffe-eau',
-    location: 'hero-plomberie'
+    location: 'hero-plomberie',
+    items: ['Intervention rapide', 'Fuite d’eau', 'Recherche de fuite',
+            'Chauffe-eau', 'Robinetterie &amp; sanitaires']
   })}
 
-${urgencyBand('bandeau-plomberie')}
+${urgencyBand('bandeau-plomberie', {
+  titre: 'Une fuite en cours ?',
+  texte: 'Une fuite qui coule depuis des jours fait plus de dégâts que la réparation elle-même.'
+})}
 
 <section class="section">
   <div class="container">
     <div class="section__head">
       <span class="eyebrow">Dépannage</span>
       <h2>Les pannes que nous traitons</h2>
-      <p class="lead">Un problème de plomberie immobilise vite un logement : plus d’eau, une fuite qui s’étend,
-      une évacuation bloquée. On rétablit la situation.</p>
+      <p class="lead">Un problème de plomberie immobilise vite un logement : plus d’eau chaude, une fuite
+      qui s’étend, un robinet qu’on ne peut plus fermer. On rétablit la situation.</p>
     </div>
-    ${servicesGrid(pick('Dépannage plomberie', 'Fuite d’eau', 'Recherche de fuite', 'Débouchage', 'WC bouché', 'Urgence plomberie'), 'services-plomberie')}
+    ${servicesGrid(pick('Dépannage plomberie', 'Chauffe-eau', 'Fuite d’eau',
+                        'Recherche de fuite', 'Chasse d’eau et sanitaires', 'Urgence plomberie'), 'services-plomberie')}
   </div>
 </section>
 
@@ -83,11 +91,31 @@ ${ctaBand({ title: 'Décrivez votre panne à un plombier', location: 'cta-plombe
   </div>
 </section>
 
-${processSection('process-plomberie')}
-${whySection('pourquoi-plomberie')}
-${reviewsSection(avisDe('accueil'))}
-${bretagneSection('bretagne-plomberie')}
+${processSection('process-plomberie', {
+  materiel: 'recherche de fuite, réparation d’alimentation, robinetterie ou chauffe-eau'
+})}
+${whySection('pourquoi-plomberie',
+  'Ce sur quoi vous pouvez compter en nous appelant pour une fuite ou une panne de plomberie.', {
+    materielTitre: 'On cherche avant d’ouvrir',
+    materielTexte: 'Détecteur de fuite et outillage complet : on localise d’abord, on casse seulement si c’est vraiment nécessaire.',
+    metierTitre: 'Des techniciens expérimentés',
+    metierTexte: 'Fuite, robinetterie, chauffe-eau, sanitaires : des réparations faites tous les jours, sans improvisation.',
+    numeroTexte: 'pour une fuite, un chauffe-eau ou une urgence de plomberie'
+  })}
+${reviewsSection(avisParNoms('Nicolas Le Gall', 'Sophie Le Gall'))}
+${bretagneSection('bretagne-plomberie', {
+  intro: 'Nous intervenons partout en Bretagne sur les fuites, la robinetterie, les chauffe-eau et les sanitaires, avec une présence particulièrement forte sur deux départements.',
+  texte29: 'De Brest à Quimper : fuites sur cuivre ancien comme sur PER récent, chauffe-eau, robinetterie, en ville comme en périphérie.',
+  texte56: 'De Vannes à Lorient : remises en eau après fermeture, groupes de sécurité, vannes d’arrêt, sur le littoral comme à l’intérieur.',
+  lien29: '/plomberie-finistere-29', lien56: '/plomberie-morbihan-56'
+})}
 ${phoneBlock({ location: 'bloc-telephone-plomberie' })}
-${formSection({ intro: 'Décrivez votre panne de plomberie : nous vous rappelons pour organiser l’intervention.', location: 'formulaire-plomberie' })}
+${formSection({
+  intro: 'Décrivez votre panne de plomberie : nous vous rappelons pour organiser l’intervention.',
+  location: 'formulaire-plomberie',
+  problemes: PLOMBERIE.problemes,
+  atouts: ['Intervention rapide', 'Techniciens expérimentés', 'Recherche de fuite',
+           'Chauffe-eau et robinetterie', 'Réparation sur place']
+})}
 `
 };

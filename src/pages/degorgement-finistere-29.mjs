@@ -1,105 +1,70 @@
-import { landingPage } from '../lib/lp.mjs';
-import { pick } from '../lib/services.mjs';
+import { landingService } from '../lib/lp-service.mjs';
+import { DEGORGEMENT } from '../lib/metiers.mjs';
 import { avisParNoms } from '../lib/reviews.mjs';
 
-export default landingPage({
+export default landingService({
+  metier: DEGORGEMENT,
   slug: 'degorgement-finistere-29',
   dept: 'Finistère', article: 'le', num: '29',
   cities: ['Brest', 'Quimper', 'Morlaix', 'Concarneau', 'Landerneau', 'Douarnenez', 'Quimperlé', 'Châteaulin'],
   title: 'Dégorgement Finistère (29) | Plombier Breizh',
-  description: 'Dégorgement et débouchage de canalisation dans le Finistère : camion de pompage, furet, haute pression, caméra. Appelez Plombier Breizh au 02 20 06 01 96.',
+  description: 'Débouchage et dégorgement de canalisation dans le Finistère : furet, haute pression, camion de pompage. Appelez Plombier Breizh au 02 20 06 01 96.',
 
   tag: 'Dégorgement &amp; débouchage — Finistère 29',
   h1: 'Dégorgement de canalisation dans <em>le Finistère (29)</em>',
-  sub: 'L’eau stagne, refoule, ou plusieurs évacuations lâchent en même temps ? Plombier Breizh dégorge votre réseau dans le Finistère.',
-  heroPhotoCamion: true,
-  heroAlt: 'Camion et matériel de dégorgement Plombier Breizh dans le Finistère',
-  atouts: [
-    'Canalisation bouchée',
-    'Camion de pompage',
-    'Furet &amp; haute pression',
-    'Caméra d’inspection',
-    'Réseau enterré &amp; regard'
+  sub: 'Une évacuation bloquée, de l’eau qui remonte, un regard plein : décrivez ce que vous constatez par téléphone pour organiser l’intervention.',
+  heroCamion: true,
+  heroAlt: 'Camion et matériel de dégorgement Plombier Breizh, dans le Finistère',
+
+  servicesTitre: 'Ce que nous débouchons dans le Finistère',
+  services: [
+    ['debouchage-wc', 'WC bouché', 'Les WC ne s’évacuent plus. On rétablit l’écoulement sans rien casser.'],
+    ['debouchage-evier', 'Évier bouché', 'Graisses et résidus : on démonte, on nettoie le siphon, on contrôle l’évacuation.'],
+    ['debouchage-douche', 'Douche bouchée', 'Cheveux, savon, calcaire : on dégage la bonde et la conduite.'],
+    ['debouchage-canalisation', 'Débouchage', 'Une évacuation qui ralentit finit par se boucher. On retire le bouchon avant le refoulement.'],
+    ['canalisation-bouchee', 'Canalisation obstruée', 'Bouchon profond, dépôts, racines : on cherche d’abord où ça bloque.'],
+    ['degorgement', 'Dégorgement de réseau', 'Plusieurs évacuations lâchent en même temps : le bouchon est en aval, on dégorge.']
   ],
 
-  introTitle: 'Le dégorgement dans le Finistère',
-  introImg: 'siphon-encrasse',
-  introAlt: 'Siphon entièrement encrassé, avant dégorgement',
-  introText: [
-    'Un seul point d’eau qui ralentit, c’est un débouchage : le bouchon est proche, souvent dans le siphon ou juste après. Mais quand la douche, l’évier et les WC lâchent le même jour, l’obstruction est ailleurs — en aval, sur la partie du réseau que tout le logement partage. Là, un coup de furet dans le siphon ne sert à rien.',
-    'Dans le Finistère, une bonne part des appels concerne des réseaux enterrés anciens. Des dépôts se sont accumulés sur les parois année après année, parfois des racines se sont infiltrées à un joint. Le diamètre utile se réduit sans qu’on voie rien, jusqu’au jour où l’eau ne passe plus du tout.',
-    'On commence par identifier où ça bloque, puis on choisit : furet électrique, haute pression, ou pompage quand le regard est plein. Décrivez-nous ce que vous constatez, on vous dit tout de suite dans quel cas vous êtes.'
+  appelTitre: 'Ce qui se passe quand vous appelez',
+  appelIntro: 'Deux minutes au téléphone suffisent à savoir dans quel cas vous êtes : un débouchage sur un point d’eau, ou un dégorgement du réseau. Vous n’engagez rien en appelant.',
+  etapes: [
+    ['Vous décrivez — 1 minute', 'Quelles évacuations sont touchées, depuis quand, si l’eau remonte. Pas besoin de vocabulaire technique.'],
+    ['On identifie — 30 secondes', 'On vous dit si le bouchon est proche ou sur le réseau commun, et quel matériel il faut prévoir.'],
+    ['On fixe le passage — 30 secondes', 'Vous validez, on convient du créneau. Sans votre accord, rien n’est lancé.']
   ],
-  situationsTitre: 'Les signes d’un réseau bouché',
-  situations: [
-    'Plusieurs évacuations lentes en même temps dans le logement',
-    'Eau sale qui remonte dans la douche ou la baignoire',
-    'Regard extérieur plein, qui ne se vide plus',
-    'Odeurs persistantes malgré le nettoyage des siphons',
-    'Gargouillis dans les canalisations quand on tire la chasse',
-    'Canalisation enterrée obstruée par des dépôts ou des racines'
-  ],
-  moyensTitre: 'Le déroulé d’un dégorgement',
-  moyens: [
-    'On localise l’obstruction avant de travailler, à la caméra si besoin',
-    'On vide le regard ou la fosse au camion de pompage quand c’est nécessaire',
-    'On perce le bouchon compact au furet électrique',
-    'On décolle les dépôts de paroi au déboucheur haute pression',
-    'On contrôle l’écoulement complet avant de repartir'
+  nonFaits: [
+    'Aucun déplacement sans que vous ayez validé le passage.',
+    'On cherche l’origine du bouchon avant de forcer quoi que ce soit.',
+    'Vous savez ce qu’on va faire avant qu’on commence.'
   ],
   infographie: true,
 
-  servicesTitre: 'Nos interventions de dégorgement dans le Finistère',
-  servicesIntro: 'Débouchage de WC, d’évier, de douche, dégorgement du réseau complet ou canalisation enterrée obstruée : ce sont nos interventions du quotidien dans le 29.',
-  services: pick('Dégorgement', 'Canalisation obstruée', 'Débouchage',
-                 'WC bouché', 'Douche bouchée', 'Évier bouché'),
-  autresTitre: 'Les cas plus lourds que nous traitons dans le Finistère',
-  autres: [
-    ['Pompage de regard', 'Vidange du regard avant de pouvoir intervenir sur le réseau.'],
-    ['Inspection caméra', 'On regarde dans la conduite pour voir ce qui bloque, sans casser.'],
-    ['Racines dans une conduite', 'Réseau enterré envahi à hauteur d’un joint ou d’un raccord.'],
-    ['Refoulement en cours', 'L’eau remonte déjà : appelez, n’attendez pas que ça déborde.']
-  ],
-
-  recherchesTitre: 'Les recherches qui mènent le plus souvent à nous dans le Finistère',
-  recherchesIntro: 'Ce sont les mots que l’on tape quand une évacuation lâche. Si l’un d’eux correspond à votre situation, appelez le 02 20 06 01 96 : on vous répond directement.',
-  recherches: [
-    'débouchage canalisation Brest',
-    'dégorgement canalisation Quimper',
-    'canalisation bouchée que faire',
-    'camion de pompage Finistère',
-    'déboucher WC sans ventouse',
-    'entreprise de débouchage 29',
-    'eau qui remonte dans la douche',
-    'regard extérieur qui déborde',
-    'furet canalisation Morlaix',
-    'débouchage urgence Brest',
-    'curage de canalisation Finistère',
-    'déboucher une canalisation enterrée'
-  ],
-
-  telephoneTitre: 'Une canalisation bouchée dans le Finistère ?',
-  telephoneTexte: 'Une évacuation bloquée ne s’arrange jamais toute seule : elle finit par refouler. Un appel suffit pour lancer la prise en charge.',
-
-  equipTitre: 'Le matériel du dégorgement',
-  equipIntro: 'Un bouchon ne se traite pas au hasard : ce qui marche sur des graisses de cuisine n’a aucun effet sur des racines dans une conduite enterrée. C’est le diagnostic qui choisit l’outil, pas l’inverse.',
-  equipements: [
-    ['equip-pompe', 'Camion de pompage', 'Pour vider un regard ou une fosse et évacuer ce qui bloque le réseau avant toute intervention.'],
+  materielTitre: 'Le matériel du dégorgement',
+  materielIntro: 'Un bouchon ne se traite pas au hasard : ce qui marche sur des graisses de cuisine n’a aucun effet sur des racines dans une conduite enterrée. C’est le diagnostic qui choisit l’outil.',
+  materiel: [
     ['equip-furet-electrique', 'Furet électrique', 'Pour percer les bouchons compacts installés en profondeur dans la conduite.'],
-    ['equip-haute-pression', 'Déboucheur haute pression', 'Pour décoller les dépôts accumulés sur les parois d’un réseau ancien.']
+    ['equip-haute-pression', 'Déboucheur haute pression', 'Pour décoller les dépôts accumulés sur les parois d’un réseau ancien.'],
+    ['equip-pompe', 'Camion de pompage', 'Pour vider un regard ou une fosse avant d’intervenir sur le réseau.']
   ],
 
-  whyTuiles: {
-    materielTitre: 'Le bon outil pour le bon bouchon',
-    materielTexte: 'Furet électrique, haute pression, caméra d’inspection, camion de pompage : le camion part avec ce que le réseau demande.',
-    metierTitre: 'Le débouchage, tous les jours',
-    metierTexte: 'Siphons, WC, réseaux enterrés, regards : ce sont nos interventions quotidiennes dans le Finistère.'
-  },
-  whyIntro: 'Ce sur quoi vous pouvez compter en appelant Plombier Breizh pour un dégorgement ou un débouchage dans le Finistère.',
-  avis: avisParNoms('Julien Le Roux', 'Élodie Martin', 'Thomas Le Goff'),
+  avis: avisParNoms('Thomas Le Goff', 'Élodie Martin', 'Julien Le Roux'),
 
-  formTitre: 'Demander un dégorgement dans le Finistère',
-  formIntro: 'Indiquez votre commune et les évacuations concernées : nous vous rappelons pour organiser l’intervention.',
-  ctaFinalTitre: 'Besoin d’un dégorgement dans le Finistère ?',
-  ctaFinalTexte: 'Canalisation bouchée, refoulement, regard plein : appelez-nous, nous prenons le relais.'
+  zoneTexte: 'Nous intervenons sur ces communes du Finistère et leurs alentours.',
+
+  faq: [
+    ['Vous intervenez dans quels délais ?',
+     'Cela dépend de votre commune et du planning du jour. Appelez-nous : nous vous disons tout de suite ce que nous pouvons organiser.'],
+    ['Combien coûte un débouchage ?',
+     'Cela dépend de l’accès, de la méthode et du temps passé. Nous en parlons au téléphone avant tout déplacement, pour que vous sachiez à quoi vous attendre.'],
+    ['Les déboucheurs chimiques, ça marche ?',
+     'Rarement durablement. Le produit ouvre parfois un passage pour une journée, puis le bouchon revient plus compact — et il reste dans la canalisation pour celui qui interviendra ensuite.'],
+    ['Comment savez-vous où se situe le bouchon ?',
+     'Si un seul point d’eau est touché, il est proche. Si plusieurs lâchent le même jour, il est en aval, sur la partie commune. En cas de doute, la caméra d’inspection tranche.'],
+    ['Que faire en attendant votre arrivée ?',
+     'N’utilisez plus les évacuations concernées et évitez de tirer la chasse, pour ne pas provoquer de débordement.']
+  ],
+
+  formIntro: 'Laissez votre numéro et votre commune : nous vous rappelons pour organiser l’intervention.',
+  ctaFinalTexte: 'Canalisation bouchée, refoulement, regard plein : un appel suffit pour lancer la prise en charge.'
 });

@@ -1,15 +1,16 @@
 /* ==========================================================================
-   LANDING PAGE GOOGLE ADS — PLOMBERIE UNIQUEMENT
+   LANDING PAGE GOOGLE ADS — UN SEUL MÉTIER, UN SEUL DÉPARTEMENT
    --------------------------------------------------------------------------
    Objectif unique : rassurer, puis déclencher l'appel. Rien d'autre.
+
+   Un métier par page. Une landing plomberie ne parle jamais de débouchage
+   ni de dégorgement, et inversement : l'annonce Google et la page doivent
+   dire la même chose, sinon le visiteur doute et repart.
 
    Toute la réassurance repose sur des éléments VÉRIFIABLES :
    immatriculation réelle (src/lib/entreprise.mjs), interlocuteur, coût de
    l'appel, zone couverte, photos réelles, avis réels. Aucune certification,
    garantie, note moyenne, ancienneté ni statistique n'est inventée.
-
-   Aucune mention de débouchage ni de dégorgement : ces prestations ont leurs
-   propres pages.
 
    Ordre : hero · preuves · appel en 2 minutes · services · pourquoi nous ·
            matériel · avis · zone · FAQ · formulaire · appel final.
@@ -38,14 +39,18 @@ const carte = (img, titre, texte) => `
         </div>
       </article>`;
 
-export const landingPlomberie = ({
+export const landingService = ({
   slug, dept, article, num, cities,
+  /* -- métier : ce qui distingue une landing plomberie d'une landing
+        dégorgement, en dehors des textes -- */
+  metier = {},
   title, description,
   tag, h1, sub,
   heroImg, heroAlt, heroCamion = false,
-  services,
-  etapes, nonFaits,
-  materielIntro, materiel,
+  servicesTitre, services,
+  appelTitre, appelIntro, etapes, nonFaits,
+  materielTitre, materielIntro, materiel,
+  infographie = false,
   avis,
   zoneTexte,
   faq,
@@ -59,22 +64,19 @@ export const landingPlomberie = ({
     ? { chemin: '/assets/img/hero-plombier-breizh-camion', ext: 'jpg' }
     : { chemin: `/assets/photos/${heroImg}`, ext: 'jpg' },
   /* Données structurées limitées à la plomberie : cette page ne parle que de ça. */
-  offres: ['Dépannage plomberie', 'Réparation de fuite d’eau', 'Recherche de fuite',
-           'Intervention sur chauffe-eau', 'Robinetterie et sanitaires'],
-  enTete: { services: 'Fuite d’eau • Recherche de fuite • Chauffe-eau • Robinetterie' },
+  offres: metier.offres,
+  og: metier.og,
+  enTete: { services: metier.bandeau },
   pied: {
     liens: false,
-    tagline: 'Plomberie • Fuite d’eau • Recherche de fuite • Chauffe-eau',
+    tagline: metier.tagline,
     stickyTexte: 'Appeler maintenant',
     ctaTexte: RAPPEL,
     colonnes: `
       <div>
         <h3>Nos interventions</h3>
         <ul class="footer__list">
-          <li>Fuite d’eau et recherche de fuite</li>
-          <li>Chauffe-eau et eau chaude</li>
-          <li>Robinetterie et sanitaires</li>
-          <li>Réparation de plomberie</li>
+          ${metier.piedServices.map(x => `<li>${x}</li>`).join('\n          ')}
         </ul>
       </div>
       <div>
@@ -125,9 +127,8 @@ ${preuves({ zone: `${dept} (${num})`, villes: cities.slice(0, 4).join(', ') + ' 
   <div class="container">
     <div class="section__head">
       <span class="eyebrow">Avant d’appeler</span>
-      <h2>Ce qui se passe quand vous appelez</h2>
-      <p class="callbox__lead">Deux minutes au téléphone suffisent à savoir où vous en êtes.
-      Vous n’engagez rien en appelant : aucun déplacement n’est lancé sans votre accord.</p>
+      <h2>${appelTitre || 'Ce qui se passe quand vous appelez'}</h2>
+      <p class="callbox__lead">${appelIntro || 'Deux minutes au téléphone suffisent à savoir où vous en êtes. Vous n’engagez rien en appelant : aucun déplacement n’est lancé sans votre accord.'}</p>
     </div>
     <div class="callbox__grid">
       <ol class="callbox__steps">
@@ -143,12 +144,25 @@ ${preuves({ zone: `${dept} (${num})`, villes: cities.slice(0, 4).join(', ') + ' 
   </div>
 </section>
 
+${infographie ? `
+<section class="section">
+  <div class="container">
+    <figure class="figure-wide">
+      ${photo({ chemin: '/assets/img/infographie-origine-bouchon',
+                alt: 'Origine du bouchon et outil adapté : graisses, cheveux et savon, lingettes, racines',
+                largeur: 1536, hauteur: 1024, usage: 'large' })}
+      <figcaption>Graisses de cuisine, cheveux et savon, lingettes, racines : l’origine du bouchon
+      détermine l’outil à utiliser. C’est ce que nous cherchons à établir dès votre appel.</figcaption>
+    </figure>
+  </div>
+</section>` : ''}
+
 <!-- 4. CE QUE NOUS RÉPARONS ----------------------------------------------- -->
 <section class="section section--tint">
   <div class="container">
     <div class="section__head section__head--center">
       <span class="eyebrow">Nos interventions</span>
-      <h2>Ce que nous réparons dans ${article} ${dept}</h2>
+      <h2>${servicesTitre || `Ce que nous réparons dans ${article} ${dept}`}</h2>
     </div>
     <div class="grid grid--3">${services.map(([img, titre, texte]) => carte(img, titre, texte)).join('')}
     </div>
@@ -209,7 +223,7 @@ ${preuves({ zone: `${dept} (${num})`, villes: cities.slice(0, 4).join(', ') + ' 
   <div class="container">
     <div class="section__head">
       <span class="eyebrow">Sur le terrain</span>
-      <h2>Le matériel qui part avec le technicien</h2>
+      <h2>${materielTitre || 'Le matériel qui part avec le technicien'}</h2>
       <p class="lead">${materielIntro}</p>
     </div>
     <div class="equip">
@@ -232,7 +246,7 @@ ${preuves({ zone: `${dept} (${num})`, villes: cities.slice(0, 4).join(', ') + ' 
       <span class="eyebrow">Avis</span>
       <h2>Ce que disent nos clients</h2>
     </div>
-    <div class="grid grid--2">
+    <div class="grid grid--${avis.length >= 3 ? 3 : 2}">
       ${avis.map(a => `
       <article class="review">
         <p class="review__stars" aria-label="Note : ${a.note} sur 5">${'★'.repeat(a.note)}<span class="review__stars-off">${'☆'.repeat(5 - a.note)}</span></p>
@@ -323,12 +337,7 @@ ${preuves({ zone: `${dept} (${num})`, villes: cities.slice(0, 4).join(', ') + ' 
           <span class="field__label">Type de problème</span>
           <select name="probleme" required>
             <option value="">Choisir…</option>
-            <option>Fuite d’eau</option>
-            <option>Recherche de fuite</option>
-            <option>Chauffe-eau / eau chaude</option>
-            <option>Robinetterie</option>
-            <option>Sanitaires</option>
-            <option>Autre problème de plomberie</option>
+            ${metier.problemes.map(o => `<option>${o}</option>`).join('\n            ')}
           </select>
         </label>
 

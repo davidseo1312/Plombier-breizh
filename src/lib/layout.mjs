@@ -145,7 +145,7 @@ const jsonLd = (offres = OFFRES_DEFAUT) => JSON.stringify({
   makesOffer: offres.map(n => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: n } }))
 });
 
-export const head = ({ title, description, slug, offres, preload = '' }) => `<!doctype html>
+export const head = ({ title, description, slug, offres, preload = '', og = {} }) => `<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -160,10 +160,10 @@ export const head = ({ title, description, slug, offres, preload = '' }) => `<!d
 <meta property="og:description" content="${description}">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="${SITE.baseUrl}/${slug === 'index' ? '' : slug}">
-<meta property="og:image" content="${SITE.baseUrl}/assets/img/og-plombier-breizh.jpg">
+<meta property="og:image" content="${SITE.baseUrl}/assets/img/${og.fichier || 'og-plombier-breizh'}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Plombier Breizh — plomberie, débouchage et dégorgement en Bretagne">
+<meta property="og:image:alt" content="${og.alt || 'Plombier Breizh — plomberie, débouchage et dégorgement en Bretagne'}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -278,12 +278,15 @@ export const preuves = ({ zone, villes } = {}) => `
 </section>`;
 
 /* Bandeau urgence — bleu clair, très visible. */
-export const urgencyBand = (location = 'bandeau-urgence') => `
+export const urgencyBand = (location = 'bandeau-urgence', {
+  titre = 'Une urgence plomberie ?',
+  texte = 'Ne laissez pas une fuite ou une canalisation bouchée s’aggraver.'
+} = {}) => `
 <section class="urgency" aria-label="Urgence plomberie">
   <div class="container">
     <div>
-      <p class="urgency__title">Une urgence plomberie ?</p>
-      <p class="urgency__text">Ne laissez pas une fuite ou une canalisation bouchée s’aggraver.</p>
+      <p class="urgency__title">${titre}</p>
+      <p class="urgency__text">${texte}</p>
     </div>
     <div class="urgency__phone">
       <a class="urgency__number" href="${SITE.phoneHref}" data-location="${location}" data-cta="numero-bandeau">${SITE.phoneDisplay}</a>
@@ -336,7 +339,9 @@ export const phoneBlock = ({
 </section>`;
 
 /* Processus en 3 étapes. */
-export const processSection = (location = 'process') => `
+export const processSection = (location = 'process', {
+  materiel = 'débouchage, dégorgement, recherche de fuite ou dépannage'
+} = {}) => `
 <section class="section section--tint" id="intervention">
   <div class="container">
     <div class="section__head section__head--center">
@@ -353,7 +358,7 @@ export const processSection = (location = 'process') => `
       <div class="steps__item">
         <span class="steps__num">Étape 2</span>
         <h3>Nous évaluons le besoin</h3>
-        <p>Nous déterminons avec vous le type d’intervention et le matériel à prévoir : débouchage, dégorgement, recherche de fuite ou dépannage.</p>
+        <p>Nous déterminons avec vous le type d’intervention et le matériel à prévoir : ${materiel}.</p>
       </div>
       <div class="steps__item">
         <span class="steps__num">Étape 3</span>
@@ -376,7 +381,8 @@ export const whySection = (
     materielTitre = 'Le bon matériel au bon moment',
     materielTexte = 'Furet électrique, haute pression, caméra d’inspection : le camion part avec ce que la situation demande.',
     metierTitre = 'Des techniciens expérimentés',
-    metierTexte = 'Débouchage, dégorgement, fuite, dépannage : des interventions faites tous les jours, sans improvisation.'
+    metierTexte = 'Débouchage, dégorgement, fuite, dépannage : des interventions faites tous les jours, sans improvisation.',
+    numeroTexte = 'pour un dépannage, un débouchage ou une urgence'
   } = {}
 ) => `
 <section class="section" id="pourquoi">
@@ -409,7 +415,7 @@ export const whySection = (
       </div>
       <div class="tile">
         <h3>Un seul numéro</h3>
-        <p>${tel(location + '-tuile', `<strong>${SITE.phoneDisplay}</strong>`)} pour un dépannage, un débouchage ou une urgence.</p>
+        <p>${tel(location + '-tuile', `<strong>${SITE.phoneDisplay}</strong>`)} ${numeroTexte}.</p>
       </div>
     </div>
   </div>
@@ -464,36 +470,39 @@ export const reviewsSection = (avis = [], dark = false) => `
 </section>`;
 
 /* La Bretagne, avec mise en avant du 29 et du 56. */
-export const bretagneSection = (location = 'bretagne') => `
+export const bretagneSection = (location = 'bretagne', {
+  intro = 'Nous travaillons partout en Bretagne pour la plomberie, le débouchage et le dégorgement, avec une présence particulièrement forte sur deux départements.',
+  texte29 = 'De Brest à Quimper, nous intervenons sur les problèmes de canalisation, les fuites et le dépannage courant, en ville comme en périphérie.',
+  texte56 = 'De Vannes à Lorient, nous prenons en charge les évacuations bouchées, les dégorgements et les urgences de plomberie, sur le littoral comme à l’intérieur.',
+  lien29 = '/finistere-29', lien56 = '/morbihan-56',
+  libelle29 = 'Plombier dans le Finistère', libelle56 = 'Plombier dans le Morbihan'
+} = {}) => `
 <section class="section" id="bretagne">
   <div class="container">
     <div class="section__head">
       <span class="eyebrow">Zone d’intervention</span>
       <h2>Plombier Breizh intervient en Bretagne</h2>
-      <p class="lead">Nous travaillons partout en Bretagne pour la plomberie, le débouchage et le dégorgement,
-      avec une présence particulièrement forte sur deux départements.</p>
+      <p class="lead">${intro}</p>
     </div>
     <div class="grid grid--2">
       <div class="zone">
         <div class="zone__head"><h3>Finistère</h3><span class="zone__num">29</span></div>
         <div class="zone__body">
-          <p>De Brest à Quimper, nous intervenons sur les problèmes de canalisation, les fuites et le
-          dépannage courant, en ville comme en périphérie.</p>
+          <p>${texte29}</p>
           <ul class="zone__cities">
             <li>Brest</li><li>Quimper</li><li>Morlaix</li><li>Concarneau</li><li>Landerneau</li><li>Quimperlé</li>
           </ul>
-          <div class="mt-24"><a class="btn btn--accent btn--block" href="/finistere-29" data-cta="lp-29" data-location="${location}">Plombier dans le Finistère</a></div>
+          <div class="mt-24"><a class="btn btn--accent btn--block" href="${lien29}" data-cta="lp-29" data-location="${location}">${libelle29}</a></div>
         </div>
       </div>
       <div class="zone">
         <div class="zone__head"><h3>Morbihan</h3><span class="zone__num">56</span></div>
         <div class="zone__body">
-          <p>De Vannes à Lorient, nous prenons en charge les évacuations bouchées, les dégorgements et
-          les urgences de plomberie, sur le littoral comme à l’intérieur.</p>
+          <p>${texte56}</p>
           <ul class="zone__cities">
             <li>Vannes</li><li>Lorient</li><li>Lanester</li><li>Auray</li><li>Pontivy</li><li>Hennebont</li>
           </ul>
-          <div class="mt-24"><a class="btn btn--accent btn--block" href="/morbihan-56" data-cta="lp-56" data-location="${location}">Plombier dans le Morbihan</a></div>
+          <div class="mt-24"><a class="btn btn--accent btn--block" href="${lien56}" data-cta="lp-56" data-location="${location}">${libelle56}</a></div>
         </div>
       </div>
     </div>
@@ -505,11 +514,16 @@ export const bretagneSection = (location = 'bretagne') => `
 </section>`;
 
 /* Formulaire court. */
+const PROBLEMES_TOUS = ['Canalisation bouchée', 'WC bouché', 'Évier bouché', 'Douche bouchée',
+  'Dégorgement', 'Fuite d’eau', 'Recherche de fuite', 'Dépannage plomberie', 'Urgence plomberie', 'Autre'];
+
 export const formSection = ({
   title = 'Demander une intervention',
   intro = 'Laissez-nous vos coordonnées et le problème rencontré : nous vous rappelons pour organiser l’intervention.',
   location = 'formulaire',
-  tint = false
+  tint = false,
+  problemes = PROBLEMES_TOUS,
+  atouts = REASSURANCE
 } = {}) => `
 <section class="section${tint ? ' section--tint' : ''}" id="demande-intervention">
   <div class="container">
@@ -521,7 +535,7 @@ export const formSection = ({
         <p><strong>Pour une urgence, l’appel reste le plus rapide :</strong></p>
         ${callBtn(location + '-colonne', { text: `Appeler le ${SITE.phoneDisplay}` })}
         ${phoneNote()}
-        <div class="mt-32">${checklist()}</div>
+        <div class="mt-32">${checklist(atouts)}</div>
         <p class="mt-24">Par email : <a href="mailto:${SITE.email}">${SITE.email}</a></p>
       </div>
 
@@ -549,16 +563,7 @@ export const formSection = ({
             <span class="field__label">Type de problème</span>
             <select name="probleme" required>
               <option value="">Choisir…</option>
-              <option>Canalisation bouchée</option>
-              <option>WC bouché</option>
-              <option>Évier bouché</option>
-              <option>Douche bouchée</option>
-              <option>Dégorgement</option>
-              <option>Fuite d’eau</option>
-              <option>Recherche de fuite</option>
-              <option>Dépannage plomberie</option>
-              <option>Urgence plomberie</option>
-              <option>Autre</option>
+              ${problemes.map(o => `<option>${o}</option>`).join('\n              ')}
             </select>
           </label>
         </div>
@@ -688,8 +693,8 @@ export const pageHero = ({ tag, h1, sub, img, alt, location, photo: estPhotoCami
 ${preuves({ zone: preuvesZone, villes: preuvesVilles })}`;
 
 /** Assemble une page complète. */
-export const page = ({ title, description, slug, nav, body, minimalNav = false, enTete = {}, pied = {}, offres, confiance = true, heroImage }) =>
-  `${head({ title, description, slug, offres, preload: heroImage ? preloadPhoto(heroImage.chemin, heroImage.ext, 'hero') : '' })}
+export const page = ({ title, description, slug, nav, body, minimalNav = false, enTete = {}, pied = {}, offres, confiance = true, heroImage, og }) =>
+  `${head({ title, description, slug, offres, og, preload: heroImage ? preloadPhoto(heroImage.chemin, heroImage.ext, 'hero') : '' })}
 <body data-page="${slug}">
 ${header(nav, minimalNav, enTete)}
 <main id="contenu">

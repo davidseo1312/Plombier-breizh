@@ -1,9 +1,11 @@
 import { SITE, callBtn, formBtn, pageHero, urgencyBand, ctaBand, phoneBlock, processSection, whySection, reviewsSection, bretagneSection, formSection, tel } from '../lib/layout.mjs';
+import { DEGORGEMENT } from '../lib/metiers.mjs';
 import { servicesGrid, servicePhoto, pick } from '../lib/services.mjs';
 import { avisDe } from '../lib/reviews.mjs';
 
 export default {
   slug: 'debouchage',
+  og: DEGORGEMENT.og,
   heroImage: { chemin: '/assets/img/hero-plombier-breizh-camion', ext: 'jpg' },
   nav: 'debouchage',
   title: 'Débouchage de canalisation en Bretagne | Plombier Breizh',

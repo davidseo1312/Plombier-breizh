@@ -1,7 +1,9 @@
-import { landingPlomberie } from '../lib/lp-plomberie.mjs';
+import { landingService } from '../lib/lp-service.mjs';
+import { PLOMBERIE } from '../lib/metiers.mjs';
 import { avisParNoms } from '../lib/reviews.mjs';
 
-export default landingPlomberie({
+export default landingService({
+  metier: PLOMBERIE,
   slug: 'plomberie-morbihan-56',
   dept: 'Morbihan', article: 'le', num: '56',
   cities: ['Vannes', 'Lorient', 'Lanester', 'Auray', 'Pontivy', 'Hennebont', 'Ploemeur', 'Questembert'],

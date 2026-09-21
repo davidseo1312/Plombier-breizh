@@ -16,7 +16,7 @@ export const SERVICES = [
   { img: 'debouchage-douche', title: 'Douche bouchée',
     text: 'Cheveux, savon, calcaire : l’eau stagne dans le bac. On dégage la bonde et la conduite.' },
   { img: 'urgence-plomberie', title: 'Urgence plomberie',
-    text: 'Débordement, refoulement, fuite qui ne s’arrête pas : appelez-nous, on organise le passage au plus vite.' },
+    text: 'Débordement, fuite qui ne s’arrête pas, impossible de couper l’eau : appelez-nous, on organise le passage au plus vite.' },
   { img: 'canalisation-bouchee', title: 'Canalisation obstruée',
     text: 'Bouchon profond, dépôts, racines : on cherche d’abord où ça bloque, puis on adapte la méthode.' },
   { img: 'fuite-eau', title: 'Fuite d’eau',

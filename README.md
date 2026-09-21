@@ -32,8 +32,9 @@ build.mjs                         ← générateur (node build.mjs)
 src/
   lib/layout.mjs                  ← constantes + header, footer, CTA, bandeaux, formulaire…
   lib/services.mjs                ← catalogue des interventions (source unique)
-  lib/lp.mjs                      ← fabrique des landing pages Ads « débouchage » (4 pages)
-  lib/lp-plomberie.mjs            ← fabrique des landing pages Ads « plomberie » (2 pages)
+  lib/lp.mjs                      ← fabrique des landings « tous services » (29 et 56)
+  lib/lp-service.mjs              ← fabrique des landings Ads dédiées (1 métier × 1 département)
+  lib/metiers.mjs                 ← ce qui sépare plomberie et dégorgement
   pages/*.mjs                     ← contenu de chaque page
 assets/
   css/site.css                    ← design system complet (palette + typo Lato)
@@ -381,6 +382,29 @@ dans le coin haut droit de la section au-delà de 860 px, centré au-dessus du
 titre en dessous. `LIEN_GOOGLE` dans `src/lib/reviews.mjs` permet d'y associer
 l'URL de la fiche établissement Google si vous souhaitez le rendre cliquable ;
 laissé vide, aucun lien n'est posé.
+
+## 8 bis. Séparation des métiers
+
+Une annonce Google et la page qu'elle ouvre doivent dire la même chose. Chaque
+métier a donc ses propres landings, et **aucune ne parle du métier voisin** :
+
+| Page | Métier | Portée |
+|---|---|---|
+| `/plomberie-finistere-29`, `/plomberie-morbihan-56` | plomberie | landing Ads dédiée |
+| `/degorgement-finistere-29`, `/degorgement-morbihan-56` | dégorgement | landing Ads dédiée |
+| `/plomberie` | plomberie | page de site |
+| `/debouchage`, `/degorgement` | dégorgement | page de site |
+| `/finistere-29`, `/morbihan-56` | tous services | landing départementale |
+
+`src/lib/metiers.mjs` porte ce qui distingue les deux métiers en dehors des
+textes : bandeau d'en-tête, pied de page, options du formulaire, données
+structurées et image de partage. Les blocs partagés (bandeau d'urgence,
+processus, section Bretagne, formulaire, réassurance) acceptent tous un
+cadrage par métier.
+
+Sur les quatre landings dédiées, le compte est net : **zéro mention** du métier
+voisin. Sur les pages de site, seules l'en-tête et le pied de page citent les
+autres prestations — c'est la navigation, le visiteur doit pouvoir y accéder.
 
 ## 9 bis. Mentions légales et politique de confidentialité
 
