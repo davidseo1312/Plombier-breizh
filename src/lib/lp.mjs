@@ -14,6 +14,7 @@ import {
 } from './layout.mjs';
 import { servicesGrid, servicePhoto, servicePhotoLarge, pick } from './services.mjs';
 import { photo } from './media.mjs';
+import { carte } from './carte.mjs';
 import { avisDe } from './reviews.mjs';
 
 /* Valeurs par défaut : celles des landing pages « tous services » 29 et 56. */
@@ -207,6 +208,30 @@ ${phoneBlock({
 ${whySection(`pourquoi-lp-${slug}`, whyIntro, whyTuiles)}
 
 ${reviewsSection(avis || avisDe(`lp${num}`))}
+
+<section class="section section--tint">
+  <div class="container">
+    <div class="section__head">
+      <span class="eyebrow">Zone d’intervention</span>
+      <h2>Où nous intervenons dans ${article} ${dept}</h2>
+    </div>
+    <div class="zone-grid">
+      ${carte(num)}
+      <div>
+        <ul class="communes">
+          ${cities.map(v => `<li>${v}</li>`).join('\n          ')}
+        </ul>
+        <div class="notice mt-24">
+          <p class="mb-0">Votre commune n’est pas dans la liste ? Appelez le
+          ${tel(`zone-lp-${slug}`, `<strong>${SITE.phoneDisplay}</strong>`)} : nous vous dirons tout de suite si nous pouvons intervenir.</p>
+        </div>
+        <div class="btn-row mt-24">
+          ${callBtn(`zone-lp-${slug}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 ${formSection({
     title: formTitre || `Demander une intervention dans ${article} ${dept}`,

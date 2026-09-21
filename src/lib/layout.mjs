@@ -7,6 +7,7 @@
 import { ENTREPRISE } from './entreprise.mjs';
 import { confianceSection } from './confiance.mjs';
 import { photo as photoImg, preloadPhoto } from './media.mjs';
+import { carte } from './carte.mjs';
 
 export const SITE = {
   name: 'Plombier Breizh',
@@ -484,6 +485,7 @@ export const bretagneSection = (location = 'bretagne', {
       <h2>Plombier Breizh intervient en Bretagne</h2>
       <p class="lead">${intro}</p>
     </div>
+    <div class="mb-32">${carte()}</div>
     <div class="grid grid--2">
       <div class="zone">
         <div class="zone__head"><h3>Finistère</h3><span class="zone__num">29</span></div>

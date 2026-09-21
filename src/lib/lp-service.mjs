@@ -18,6 +18,7 @@
 import { SITE, callBtn, formBtn, tel, phoneNote, preuves } from './layout.mjs';
 import { servicePhoto } from './services.mjs';
 import { photo } from './media.mjs';
+import { carte as carteZone } from './carte.mjs';
 import { ENTREPRISE as E } from './entreprise.mjs';
 
 const RAPPEL = 'Être rappelé';
@@ -268,12 +269,20 @@ ${infographie ? `
       <h2>Zones d’intervention dans ${article} ${dept}</h2>
       <p class="lead">${zoneTexte}</p>
     </div>
-    <ul class="communes">
-      ${cities.map(v => `<li>${v}</li>`).join('\n      ')}
-    </ul>
-    <div class="notice mt-32">
-      <p class="mb-0">Votre commune n’est pas dans la liste ? Appelez le
-      ${tel(`zone-${slug}`, `<strong>${SITE.phoneDisplay}</strong>`)} : nous vous dirons tout de suite si nous pouvons intervenir.</p>
+    <div class="zone-grid">
+      ${carteZone(num)}
+      <div>
+        <ul class="communes">
+          ${cities.map(v => `<li>${v}</li>`).join('\n          ')}
+        </ul>
+        <div class="notice mt-24">
+          <p class="mb-0">Votre commune n’est pas dans la liste ? Appelez le
+          ${tel(`zone-${slug}`, `<strong>${SITE.phoneDisplay}</strong>`)} : nous vous dirons tout de suite si nous pouvons intervenir.</p>
+        </div>
+        <div class="btn-row mt-24">
+          ${callBtn(`zone-${slug}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
+        </div>
+      </div>
     </div>
   </div>
 </section>

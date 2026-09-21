@@ -276,6 +276,26 @@ préchargée (`<link rel="preload">`) pour accélérer l'affichage.
 Après avoir ajouté ou remplacé une photo : relancez `node tools/images.mjs`
 puis `node build.mjs`.
 
+### Carte d'intervention
+
+`node tools/carte.mjs` construit les trois cartes de `assets/img/` :
+
+| Fichier | Usage |
+|---|---|
+| `carte-intervention.svg` | les deux départements au même niveau — pages de site |
+| `carte-intervention-29.svg` | Finistère mis en avant — landings 29 |
+| `carte-intervention-56.svg` | Morbihan mis en avant — landings 56 |
+
+Les contours viennent du dépôt **france-geojson**, construit à partir du
+découpage administratif officiel (INSEE / IGN), et les communes couvertes sont
+positionnées d'après la même source : rien n'est dessiné à main levée. Les
+fichiers sources sont mis en cache dans `tools/.cache-geo/` (non versionné) et
+ne sont retéléchargés que s'ils manquent.
+
+Pour changer la liste des communes : `VILLES_COUVERTES` dans `tools/carte.mjs`,
+puis relancer l'outil. Les étiquettes qui se chevaucheraient sont
+automatiquement omises, les points restent.
+
 ### Logos de confiance
 
 `assets/img/confiance/` — logos détourés, fond transparent, hauteur commune de
