@@ -66,7 +66,7 @@
   --gutter:20px;
   --radius:0px;
   --radius-soft:2px;
-  --header-h:98px;
+  --header-h:88px;
 
   --font:"Lato",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
@@ -168,19 +168,28 @@ strong{font-weight:700}
 }
 
 /* ---------- Header ---------- */
-.topbar{background:var(--black);color:#C9D2D9;font-size:14px}
-.topbar .container{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:42px}
-.topbar a{color:var(--white)}
-.topbar__list{display:flex;gap:24px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
-.topbar__list li{margin:0;display:flex;align-items:center;gap:7px}
-.topbar__tag{color:var(--cyan);font-weight:700}
+.topbar{
+  background:var(--tint);color:var(--ink-soft);font-size:14.5px;
+  border-bottom:1px solid var(--tint-strong);
+}
+.topbar .container{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px}
+.topbar a{color:var(--cyan-deep);font-weight:700}
+.topbar__list{display:flex;gap:22px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.topbar__list li{margin:0;display:flex;align-items:center;gap:8px}
+/* Pastille de disponibilité : le seul élément coloré du bandeau. */
+.topbar__tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--green-deep);color:var(--white);
+  padding:4px 10px;font-weight:900;font-size:13.5px;letter-spacing:.01em;
+}
+.topbar__tag::before{content:"";width:8px;height:8px;background:#8CF0C0}
 @media (max-width:900px){.topbar{display:none}}
 
-.site-header{position:sticky;top:0;z-index:60;background:var(--white);border-bottom:3px solid var(--cyan)}
+.site-header{position:sticky;top:0;z-index:60;background:var(--white);border-bottom:3px solid var(--cyan);box-shadow:0 1px 0 rgba(17,17,17,.04)}
 .site-header .container{display:flex;align-items:center;gap:14px;min-height:var(--header-h);flex-wrap:nowrap}
 .brand{display:flex;align-items:center;flex:0 0 auto;text-decoration:none}
 .brand:hover{text-decoration:none}
-.brand__logo{height:78px;width:auto;display:block}
+.brand__logo{height:66px;width:auto;display:block}
 
 /* Nom écrit en toutes lettres, affiché tant qu'aucun fichier logo n'est déposé.
    Ce n'est pas un logo : aucun symbole n'est inventé. */
@@ -194,22 +203,17 @@ strong{font-weight:700}
 @media (max-width:430px){.brand-fallback--header{font-size:16.5px}}
 
 .main-nav{margin-left:auto;min-width:0}
-.main-nav__list{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.main-nav__list{display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0}
 .main-nav__list li{margin:0}
 .main-nav__list a{
-  display:block;padding:10px 9px;color:var(--ink);font-weight:400;font-size:16px;
+  display:block;padding:11px 10px;color:var(--ink-soft);font-weight:700;font-size:15.5px;
   white-space:nowrap;border-bottom:3px solid transparent;
 }
-.main-nav__list a:hover{color:var(--cyan-deep);text-decoration:none;border-bottom-color:var(--cyan)}
-.main-nav__list a[aria-current="page"]{color:var(--cyan-deep);font-weight:700;border-bottom-color:var(--cyan)}
+.main-nav__list a:hover{color:var(--ink);text-decoration:none;border-bottom-color:var(--cyan)}
+.main-nav__list a[aria-current="page"]{color:var(--ink);font-weight:900;border-bottom-color:var(--cyan)}
 
-.header-cta{display:flex;align-items:center;gap:14px;flex:0 0 auto}
-.header-cta .btn{padding:13px 18px;font-size:15.5px;min-height:52px}
-.header-phone{display:block;text-align:right;line-height:1.2;text-decoration:none}
-.header-phone:hover{text-decoration:none}
-.header-phone__label{display:block;font-size:12.5px;font-weight:700;color:var(--cyan-deep)}
-.header-phone__number{display:block;font-size:21px;font-weight:900;color:var(--black);white-space:nowrap}
-.header-phone:hover .header-phone__number{color:var(--blue)}
+.header-cta{display:flex;align-items:center;gap:14px;flex:0 0 auto;margin-left:18px}
+.header-cta .btn{padding:13px 20px;font-size:17px;font-weight:900;min-height:52px}
 
 .nav-toggle{display:none;align-items:center;justify-content:center;width:52px;height:52px;background:var(--white);border:2px solid var(--cyan);border-radius:0;cursor:pointer;margin-left:10px}
 .nav-toggle span{display:block;width:24px;height:2px;background:var(--black);position:relative}
@@ -222,8 +226,8 @@ strong{font-weight:700}
 .header-call{display:none}
 
 @media (max-width:1320px){
-  :root{--header-h:82px}
-  .brand__logo{height:62px}
+  :root{--header-h:78px}
+  .brand__logo{height:58px}
   .main-nav{
     position:absolute;left:0;right:0;top:100%;background:var(--white);
     border-bottom:3px solid var(--cyan);box-shadow:0 14px 22px rgba(17,17,17,.09);

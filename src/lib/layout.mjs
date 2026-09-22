@@ -216,8 +216,8 @@ export const header = (current, minimal = false, { services = 'Plomberie • Dé
 <div class="topbar">
   <div class="container">
     <ul class="topbar__list">
-      <li><span class="topbar__tag">${SITE.dispo}</span> Bretagne — Finistère 29 &amp; Morbihan 56</li>
-      <li><span class="topbar__tag">Email</span> <a href="mailto:${SITE.email}">${SITE.email}</a></li>
+      <li><span class="topbar__tag">${SITE.dispo}</span></li>
+      <li>Finistère 29 &amp; Morbihan 56</li>
     </ul>
     <ul class="topbar__list">
       <li>${services}</li>
@@ -246,11 +246,7 @@ ${minimal ? '' : `
       </ul>
     </nav>`}
     <div class="header-cta"${minimal ? ' style="margin-left:auto"' : ''}>
-      <a class="header-phone" href="${SITE.phoneHref}" data-location="header-desktop" data-cta="appel-header">
-        <span class="header-phone__label">${SITE.dispo}</span>
-        <span class="header-phone__number">${SITE.phoneDisplay}</span>
-      </a>
-      ${callBtn('header-desktop-bouton', { size: '', text: 'Appeler maintenant' })}
+      ${callBtn('header-desktop-bouton', { size: '', text: SITE.phoneDisplay })}
     </div>
   </div>
 </header>`;

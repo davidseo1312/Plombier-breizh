@@ -276,6 +276,19 @@ préchargée (`<link rel="preload">`) pour accélérer l'affichage.
 Après avoir ajouté ou remplacé une photo : relancez `node tools/images.mjs`
 puis `node build.mjs`.
 
+## 7 bis. En-tête
+
+Le bandeau du haut était noir et portait trois blocs de texte ; la barre
+principale affichait le numéro deux fois, en bloc et dans le bouton.
+
+Il est désormais **clair et lisible** :
+
+- bandeau sur fond `--tint`, avec une seule pastille colorée — la
+  disponibilité — puis la zone à gauche et la ligne métier à droite ;
+- un **seul** appel à l'action dans la barre : le bouton porte directement le
+  numéro, il n'est plus doublé par un bloc texte ;
+- logo ramené de 78 à 66 px, hauteur de barre de 98 à 88 px, menu plus aéré.
+
 ## 8 ter. Identité visuelle bretonne
 
 Le site ne doit pas ressembler à un gabarit de dépannage interchangeable.
