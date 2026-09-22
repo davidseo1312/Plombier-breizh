@@ -483,11 +483,14 @@ strong{font-weight:700}
    lettres un peu plus petites pour que 45 € reste le seul chiffre du bloc. */
 .tarifs__prix--devis{font-size:clamp(17px,1.5vw,20px);color:var(--cyan-deep)}
 .tarifs__note{
-  margin:18px 0 0;padding:18px 22px;background:var(--tint);
+  margin:18px 0 0;padding:20px 22px;background:var(--tint);
   border:1px solid var(--tint-strong);border-left:4px solid var(--cyan);
   border-radius:var(--radius-soft);
   font-size:15.5px;color:var(--ink-soft);line-height:1.6;
 }
+.tarifs__ttc{margin:0 0 12px;font-size:15px;font-weight:700;color:var(--ink)}
+.tarifs__note .nolist{gap:9px}
+.tarifs__note .nolist li{font-size:15.5px;color:var(--ink-soft)}
 @media (max-width:620px){
   .tarifs__ligne{flex-direction:column;align-items:flex-start;gap:10px;padding:18px 18px 20px}
   .tarifs__prix{text-align:left;white-space:normal;font-size:22px}

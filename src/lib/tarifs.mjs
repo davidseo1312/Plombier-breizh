@@ -39,7 +39,7 @@ export const INTERVENTION = 'à partir de 89 €';
    -------------------------------------------------------------------------- */
 
 const FRAIS = ['Frais de déplacement', DEPLACEMENT,
-  'Le technicien se déplace et constate sur place ce qu’il y a à faire.'];
+  'Déplacement du technicien et constat de la panne sur place.'];
 
 /* prix : '' tant que la fourchette n'est pas connue. */
 export const FOURCHETTES_PLOMBERIE = [
@@ -71,15 +71,15 @@ const avecFourchettes = (fourchettes, libelleGenerique, detailGenerique) => {
 
 export const TARIFS_PLOMBERIE = avecFourchettes(FOURCHETTES_PLOMBERIE,
   'Intervention de plomberie',
-  'Robinetterie, mitigeur, chasse d’eau, recherche de fuite, chauffe-eau, sanitaires.');
+  'Recherche et réparation de fuite, robinetterie, chasse d’eau, chauffe-eau, sanitaires.');
 
 export const TARIFS_DEGORGEMENT = avecFourchettes(FOURCHETTES_DEGORGEMENT,
   'Débouchage et dégorgement',
-  'WC, évier, lavabo, douche, baignoire, réseau d’évacuation, regard ou fosse.');
+  'WC, évier, lavabo, douche, baignoire, canalisation et réseau d’évacuation.');
 
 export const TARIFS_TOUS = avecFourchettes([...FOURCHETTES_PLOMBERIE, ...FOURCHETTES_DEGORGEMENT],
   'Intervention',
-  'Plomberie, débouchage ou dégorgement : le montant dépend de ce qu’il y a à faire.');
+  'Dépannage de plomberie, débouchage et dégorgement de canalisation.');
 
 /** Fourchettes encore vides, listées à chaque build. */
 export const fourchettesManquantes = () => {
@@ -88,10 +88,15 @@ export const fourchettesManquantes = () => {
   return vides.map(([nom]) => nom);
 };
 
-export const NOTE_TARIFS = `Montants TTC. Le montant exact dépend de l’intervention, de l’accès et du
-temps passé : il est arrêté sur place, une fois le problème constaté, et vous est annoncé avant que
-le travail commence. Un devis écrit vous est remis dès que le montant dépasse 150&nbsp;€ TTC.
-Rien n’est engagé sans votre accord.`;
+/* Trois engagements, une idée par ligne. La version précédente enchaînait
+   les quatre dans une seule phrase : illisible sur mobile. */
+export const ENGAGEMENTS_TARIFS = [
+  'Le prix définitif est établi sur place, après constat, et vous est annoncé avant le début des travaux.',
+  'Un devis écrit vous est remis dès que le montant dépasse 150&nbsp;€ TTC.',
+  'Aucune intervention n’est engagée sans votre accord.'
+];
+
+export const NOTE_TARIFS = 'Tous les montants sont indiqués TTC.';
 
 /** Bloc tarifs. `lignes` : une des listes ci-dessus. */
 export const tarifsSection = (lignes, { titre = 'Nos tarifs', eyebrow = 'Tarifs', tint = true } = {}) => `
@@ -107,6 +112,11 @@ export const tarifsSection = (lignes, { titre = 'Nos tarifs', eyebrow = 'Tarifs'
         <div class="tarifs__prix${prix === SUR_DEVIS ? ' tarifs__prix--devis' : ''}">${prix}</div>
       </li>`).join('\n      ')}
     </ul>
-    <p class="tarifs__note">${NOTE_TARIFS}</p>
+    <div class="tarifs__note">
+      <p class="tarifs__ttc">${NOTE_TARIFS}</p>
+      <ul class="nolist">
+        ${ENGAGEMENTS_TARIFS.map(e => `<li>${e}</li>`).join('\n        ')}
+      </ul>
+    </div>
   </div>
 </section>`;

@@ -54,7 +54,7 @@ export default landingService({
     ['Vous intervenez dans quels délais ?',
      'Nous sommes joignables 7j/7, 24h/24, soir et week-end compris. Le créneau dépend ensuite de votre commune et du planning : nous vous le disons dès l’appel.'],
     ['Combien coûte une intervention ?',
-     'Les frais de déplacement sont de 45 € TTC, et l’intervention démarre à 89 € TTC. Le technicien constate la panne, puis vous annonce le montant avant de commencer. Un devis écrit vous est remis au-delà de 150 € TTC, et rien n’est engagé sans votre accord.'],
+     'Les frais de déplacement sont de 45 € TTC. L’intervention démarre à 89 € TTC. Le technicien constate d’abord la panne, puis vous annonce le prix définitif avant de commencer. Un devis écrit vous est remis au-delà de 150 € TTC. Aucune intervention n’est engagée sans votre accord.'],
     ['Comment trouvez-vous une fuite qu’on ne voit pas ?',
      'Au détecteur acoustique, et à la caméra quand l’accès est difficile. L’objectif est de localiser la fuite avant d’ouvrir quoi que ce soit.'],
     ['J’ouvre une maison restée fermée, que faut-il vérifier ?',
