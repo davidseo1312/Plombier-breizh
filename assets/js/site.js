@@ -72,6 +72,20 @@
   }, true);
 
   /* --------------------------------------------------------------------
+     1 bis. BOUTON D'APPEL FLOTTANT
+     Il s'efface quand le pied de page entre dans l'écran, sinon il recouvre
+     la ligne de mentions. Sans IntersectionObserver, il reste affiché :
+     le comportement se dégrade sans rien casser.
+     -------------------------------------------------------------------- */
+  var flottant = document.querySelector('.appel-flottant');
+  var pied = document.querySelector('.site-footer');
+  if (flottant && pied && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entrees) {
+      flottant.classList.toggle('appel-flottant--cache', entrees[0].isIntersecting);
+    }, { rootMargin: '0px 0px -40px 0px' }).observe(pied);
+  }
+
+  /* --------------------------------------------------------------------
      2. NAVIGATION MOBILE
      -------------------------------------------------------------------- */
   var toggle = document.querySelector('.nav-toggle');

@@ -874,9 +874,10 @@ strong{font-weight:700}
   background:var(--terracotta-deep);color:var(--white);
   font-size:16.5px;font-weight:700;line-height:1;
   box-shadow:0 6px 20px rgba(6,25,38,.28);
-  transition:background-color .15s ease,transform .15s ease;
+  transition:background-color .15s ease,transform .2s ease,opacity .2s ease,visibility .2s;
 }
 .appel-flottant:hover{background:#A93E25;color:var(--white);text-decoration:none;transform:translateY(-2px)}
+.appel-flottant--cache{opacity:0;visibility:hidden;transform:translateY(8px)}
 @media (max-width:900px){.appel-flottant{display:none}}
 @media (prefers-reduced-motion:reduce){.appel-flottant{transition:none}}
 @media (max-width:430px){

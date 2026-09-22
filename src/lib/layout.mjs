@@ -758,14 +758,28 @@ export const pageHero = ({ tag, h1, sub, img, alt, location, photo: estPhotoCami
 </section>
 ${preuves({ zone: preuvesZone, villes: preuvesVilles })}`;
 
+/* Savoir-faire et assurances : ces deux blocs répondent à « puis-je leur
+   faire confiance ». Ils doivent donc arriver AVANT les avis et la FAQ, pas
+   en fin de page où le visiteur ne descend jamais. On les insère devant la
+   première de ces deux sections ; sur les pages qui n'en ont aucune
+   (mentions légales, contact, 404), ils restent en fin de contenu. */
+const avecBlocsConfiance = (body, blocs) => {
+  const reperes = ['id="avis"', 'id="faq"']
+    .map(r => body.indexOf(r))
+    .filter(i => i !== -1);
+  if (!reperes.length) return body + blocs;
+  const debutSection = body.lastIndexOf('<section', Math.min(...reperes));
+  if (debutSection === -1) return body + blocs;
+  return body.slice(0, debutSection) + blocs + '\n' + body.slice(debutSection);
+};
+
 /** Assemble une page complète. */
 export const page = ({ title, description, slug, nav, body, minimalNav = false, enTete = {}, pied = {}, offres, zones, confiance = true, heroImage, og }) =>
   `${head({ title, description, slug, offres, zones, og, preload: heroImage ? preloadPhoto(heroImage.chemin, heroImage.ext, 'hero') : '' })}
 <body data-page="${slug}">
 ${header(nav, minimalNav, enTete)}
 <main id="contenu">
-${body}
-${confiance ? expertiseSection() + confianceSection() : ''}
+${confiance ? avecBlocsConfiance(body, expertiseSection() + confianceSection()) : body}
 </main>
 <a class="appel-flottant" href="${SITE.phoneHref}" data-location="bouton-flottant" data-cta="appel"
    aria-label="Appeler le ${SITE.phoneDisplay}">

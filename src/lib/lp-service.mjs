@@ -335,7 +335,7 @@ ${syntheseAvis()}
 </section>
 
 <!-- 9. FAQ ---------------------------------------------------------------- -->
-<section class="section">
+<section class="section" id="faq">
   <div class="container">
     <div class="section__head">
       <span class="eyebrow">Questions fréquentes</span>
