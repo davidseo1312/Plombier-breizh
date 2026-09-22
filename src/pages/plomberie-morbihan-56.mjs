@@ -43,7 +43,7 @@ export default landingService({
     ['equip-camion-plombier', 'Un camion équipé', 'Le matériel part avec le technicien, y compris pour les communes éloignées du littoral.']
   ],
 
-  avis: avisParNoms('Sophie Le Gall', 'Nicolas Le Gall'),
+  avis: avisParNoms('Sophie Le Gall'),
 
   etapes: [
     ['Vous décrivez — 1 minute', 'Ce que vous voyez, ce que vous entendez, depuis quand. Pas besoin de vocabulaire technique.'],

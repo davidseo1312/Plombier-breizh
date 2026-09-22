@@ -36,17 +36,20 @@ const carteAvis = (a) => `
           </p>
         </article>`;
 
-/* Les avis sont regroupés par département : le visiteur du 29 voit tout de
-   suite ce qui vient de chez lui, et le 56 n'est pas mélangé au 29. Le
-   département de la page passe en premier. */
-const blocsAvis = (avis, num) => avisParDept(avis, num === '56' ? ['56', '29'] : ['29', '56'])
+/* Un secteur par page : une page du 56 n'affiche que des avis du 56, une page
+   du 29 que des avis du 29. `avisParDept` ne garde que le département de la
+   page — si un avis d'un autre département se glisse dans la sélection, il est
+   écarté au lieu d'être mélangé. */
+const colonnes = (n) => (n === 3 ? 3 : 2);
+
+const blocsAvis = (avis, num) => avisParDept(avis, [num])
   .map(([dept, liste]) => `
     <div class="avis-dept${liste.length === 1 ? ' avis-dept--solo' : ''}">
       <h3 class="avis-dept__titre">
         <span class="avis-dept__num">${dept}</span>
         <span>${DEPARTEMENTS[dept]} — ${liste.length} avis</span>
       </h3>
-      <div class="grid grid--${liste.length >= 3 ? 3 : 2}">${liste.map(carteAvis).join('')}
+      <div class="grid grid--${colonnes(liste.length)}">${liste.map(carteAvis).join('')}
       </div>
     </div>`).join('');
 
@@ -293,8 +296,7 @@ ${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${arti
     <div class="section__head section__head--center">
       <span class="eyebrow">Avis</span>
       <h2>Ce que disent nos clients</h2>
-      <p class="lead">Des interventions réelles, classées par département : le Finistère
-      d’un côté, le Morbihan de l’autre.</p>
+      <p class="lead">Uniquement des interventions réalisées dans ${article} ${dept} (${num}).</p>
     </div>
     ${blocsAvis(avis, num)}
   </div>

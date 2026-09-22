@@ -59,7 +59,7 @@ export default landingService({
     ['equip-furet-electrique', 'Furet électrique', 'Pour percer les bouchons compacts installés en profondeur dans la conduite.']
   ],
 
-  avis: avisParNoms('Kevin Le Roux', 'Pierre Le Guen', 'Julien Le Roux', 'Camille Kerbrat'),
+  avis: avisParNoms('Alexandre Le Goff', 'Marie Le Floch', 'Kevin Le Roux', 'Pierre Le Guen'),
 
   zoneTexte: 'Nous intervenons sur ces communes du Morbihan et leurs alentours.',
 

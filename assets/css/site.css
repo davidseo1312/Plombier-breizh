@@ -689,9 +689,14 @@ strong{font-weight:700}
 }
 .avis-dept:nth-child(odd) .avis-dept__num{background:var(--blue)}
 .avis-dept:nth-child(even) .avis-dept__num{background:var(--cyan-deep)}
-/* Un seul avis dans un département : la carte ne s'étire pas sur la moitié
-   d'un écran vide, elle garde une largeur de lecture. */
-.avis-dept--solo .grid{grid-template-columns:minmax(0,680px)}
+/* Un seul avis dans un département : plutôt qu'une carte perdue dans une
+   demi-page vide, on l'assume en avis mis en avant — pleine largeur, citation
+   plus grande. */
+.avis-dept--solo .grid{grid-template-columns:minmax(0,1fr)}
+.avis-dept--solo .review{border-left-width:6px;padding:30px clamp(26px,3.5vw,44px)}
+.avis-dept--solo .review__text{font-size:clamp(17.5px,1.8vw,21px);line-height:1.55;max-width:70ch}
+.avis-dept--solo .review__stars{font-size:22px}
+.avis-dept--solo .review__author{max-width:70ch}
 @media (max-width:430px){
   .avis-dept__titre{font-size:17px;gap:11px}
   .avis-dept__num{min-width:40px;height:30px;font-size:15px}

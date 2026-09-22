@@ -59,7 +59,7 @@ export default landingService({
     ['equip-pompe', 'Camion de pompage', 'Pour vider un regard ou une fosse avant d’intervenir sur le réseau.']
   ],
 
-  avis: avisParNoms('Thomas Le Goff', 'Élodie Martin', 'Alexandre Le Goff', 'Marie Le Floch'),
+  avis: avisParNoms('Thomas Le Goff', 'Élodie Martin', 'Julien Le Roux', 'Camille Kerbrat'),
 
   zoneTexte: 'Nous intervenons sur ces communes du Finistère et leurs alentours.',
 
