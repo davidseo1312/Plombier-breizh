@@ -13,7 +13,8 @@
    garantie, note moyenne, ancienneté ni statistique n'est inventée.
 
    Ordre : hero · preuves · appel en 2 minutes · services · pourquoi nous ·
-           matériel · avis · zone · FAQ · formulaire · appel final.
+           matériel · avis · zone · FAQ · formulaire · l'appel en
+           2 minutes · appel final.
    ========================================================================== */
 import { SITE, callBtn, formBtn, tel, phoneNote, preuves, heroAvis, syntheseAvis, ligneIdentite } from './layout.mjs';
 import { servicePhoto } from './services.mjs';
@@ -160,42 +161,7 @@ export const landingService = ({
 <!-- 2. PREUVES VÉRIFIABLES ------------------------------------------------ -->
 ${preuves({ zone: `${dept} (${num})`, villes: cities.slice(0, 4).join(', ') + ' et alentours' })}
 
-<!-- 3. L'APPEL EN 2 MINUTES ----------------------------------------------- -->
-<section class="section callbox">
-  <div class="container">
-    <div class="section__head">
-      <span class="eyebrow">Avant d’appeler</span>
-      <h2>${appelTitre || 'Ce qui se passe quand vous appelez'}</h2>
-      <p class="callbox__lead">${appelIntro || 'Deux minutes au téléphone suffisent à savoir où vous en êtes. Vous n’engagez rien en appelant : aucun déplacement n’est lancé sans votre accord.'}</p>
-    </div>
-    <div class="callbox__grid">
-      <ol class="callbox__steps">
-        ${etapes.map(([titre, texte]) => `<li><b>${titre}</b>${texte}</li>`).join('\n        ')}
-      </ol>
-      <div class="callbox__aside">
-        <p>Appelez maintenant</p>
-        <a class="callbox__number" href="${SITE.phoneHref}" data-location="callbox-${slug}" data-cta="numero-appel-2min">${SITE.phoneDisplay}</a>
-        ${callBtn(`callbox-${slug}`, { variant: 'dark', text: 'Appeler maintenant', block: true })}
-        <small>${SITE.phoneNote}</small>
-      </div>
-    </div>
-  </div>
-</section>
-
-${infographie ? `
-<section class="section">
-  <div class="container">
-    <figure class="figure-wide">
-      ${photo({ chemin: '/assets/img/infographie-origine-bouchon',
-                alt: 'Origine du bouchon et outil adapté : graisses, cheveux et savon, lingettes, racines',
-                largeur: 1536, hauteur: 1024, usage: 'large' })}
-      <figcaption>Graisses de cuisine, cheveux et savon, lingettes, racines : l’origine du bouchon
-      détermine l’outil à utiliser. C’est ce que nous cherchons à établir dès votre appel.</figcaption>
-    </figure>
-  </div>
-</section>` : ''}
-
-<!-- 4. CE QUE NOUS RÉPARONS ----------------------------------------------- -->
+<!-- 3. CE QUE NOUS RÉPARONS ----------------------------------------------- -->
 <section class="section section--tint">
   <div class="container">
     <div class="section__head section__head--center">
@@ -232,7 +198,7 @@ ${ancrage ? `
 
 ${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${article} ${dept}`, tint: false }) : ''}
 
-<!-- 5. POURQUOI NOUS ------------------------------------------------------ -->
+<!-- 4. POURQUOI NOUS ------------------------------------------------------ -->
 <section class="section" id="pourquoi">
   <div class="container">
     <div class="section__head">
@@ -274,7 +240,7 @@ ${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${arti
   </div>
 </section>
 
-<!-- 6. MATÉRIEL ----------------------------------------------------------- -->
+<!-- 5. MATÉRIEL ----------------------------------------------------------- -->
 <section class="section section--dark">
   <div class="container">
     <div class="section__head">
@@ -295,7 +261,7 @@ ${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${arti
   </div>
 </section>
 
-<!-- 7. AVIS --------------------------------------------------------------- -->
+<!-- 6. AVIS --------------------------------------------------------------- -->
 <section class="section section--creme" id="avis">
   <div class="container">
     <div class="section__head section__head--center">
@@ -308,7 +274,7 @@ ${syntheseAvis()}
   </div>
 </section>
 
-<!-- 8. ZONE D'INTERVENTION ------------------------------------------------ -->
+<!-- 7. ZONE D'INTERVENTION ------------------------------------------------ -->
 <section class="section section--tint">
   <div class="container">
     <div class="section__head">
@@ -334,7 +300,7 @@ ${syntheseAvis()}
   </div>
 </section>
 
-<!-- 9. FAQ ---------------------------------------------------------------- -->
+<!-- 8. FAQ ---------------------------------------------------------------- -->
 <section class="section" id="faq">
   <div class="container">
     <div class="section__head">
@@ -355,7 +321,7 @@ ${syntheseAvis()}
   </div>
 </section>
 
-<!-- 10. FORMULAIRE -------------------------------------------------------- -->
+<!-- 9. FORMULAIRE -------------------------------------------------------- -->
 <section class="section section--tint" id="demande-intervention">
   <div class="container">
     <div class="form-block">
@@ -415,6 +381,44 @@ ${syntheseAvis()}
     </div>
   </div>
 </section>
+
+<!-- 10. L'APPEL EN 2 MINUTES ----------------------------------------
+     Placé juste avant l'appel final : la dernière objection à lever, c'est
+     « qu'est-ce qui se passe si je décroche ». La réponse tombe donc au
+     moment où le visiteur s'apprête à le faire. ---------------------- -->
+<section class="section callbox">
+  <div class="container">
+    <div class="section__head">
+      <span class="eyebrow">Avant d’appeler</span>
+      <h2>${appelTitre || 'Ce qui se passe quand vous appelez'}</h2>
+      <p class="callbox__lead">${appelIntro || 'Deux minutes au téléphone suffisent à savoir où vous en êtes. Vous n’engagez rien en appelant : aucun déplacement n’est lancé sans votre accord.'}</p>
+    </div>
+    <div class="callbox__grid">
+      <ol class="callbox__steps">
+        ${etapes.map(([titre, texte]) => `<li><b>${titre}</b>${texte}</li>`).join('\n        ')}
+      </ol>
+      <div class="callbox__aside">
+        <p>Appelez maintenant</p>
+        <a class="callbox__number" href="${SITE.phoneHref}" data-location="callbox-${slug}" data-cta="numero-appel-2min">${SITE.phoneDisplay}</a>
+        ${callBtn(`callbox-${slug}`, { variant: 'dark', text: 'Appeler maintenant', block: true })}
+        <small>${SITE.phoneNote}</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+${infographie ? `
+<section class="section">
+  <div class="container">
+    <figure class="figure-wide">
+      ${photo({ chemin: '/assets/img/infographie-origine-bouchon',
+                alt: 'Origine du bouchon et outil adapté : graisses, cheveux et savon, lingettes, racines',
+                largeur: 1536, hauteur: 1024, usage: 'large' })}
+      <figcaption>Graisses de cuisine, cheveux et savon, lingettes, racines : l’origine du bouchon
+      détermine l’outil à utiliser. C’est ce que nous cherchons à établir dès votre appel.</figcaption>
+    </figure>
+  </div>
+</section>` : ''}
 
 <!-- 11. APPEL FINAL ------------------------------------------------------- -->
 <section class="phone-block">
