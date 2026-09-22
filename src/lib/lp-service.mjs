@@ -13,7 +13,8 @@
    garantie, note moyenne, ancienneté ni statistique n'est inventée.
 
    Ordre : hero · preuves · appel en 2 minutes · services · pourquoi nous ·
-           matériel · avis · zone · FAQ · formulaire · l'appel en
+           pourquoi nous · interventions · tarifs · matériel · avis · zone ·
+           FAQ · formulaire · l'appel en
            2 minutes · appel final.
    ========================================================================== */
 import { SITE, callBtn, formBtn, tel, phoneNote, preuves, heroAvis, syntheseAvis, ligneIdentite } from './layout.mjs';
@@ -160,26 +161,9 @@ export const landingService = ({
 <!-- 2. PREUVES VÉRIFIABLES ------------------------------------------------ -->
 ${preuves({ zone: `${dept} (${num})`, villes: cities.slice(0, 4).join(', ') + ' et alentours' })}
 
-<!-- 3. CE QUE NOUS RÉPARONS ----------------------------------------------- -->
-<section class="section section--tint">
-  <div class="container">
-    <div class="section__head section__head--center">
-      <span class="eyebrow">Nos interventions</span>
-      <h2>${servicesTitre || `Ce que nous réparons dans ${article} ${dept}`}</h2>
-    </div>
-    <div class="grid grid--3">${services.map(([img, titre, texte]) => carte(img, titre, texte)).join('')}
-    </div>
-    <div class="btn-row mt-32">
-      ${callBtn(`services-${slug}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
-      ${formBtn(`services-${slug}`, { variant: 'outline', text: RAPPEL })}
-    </div>
-    ${notesCta('Vous décrivez, on vous dit si c’est réparable', 'Pas de déplacement sans votre accord')}
-  </div>
-</section>
-
-${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${article} ${dept}`, tint: false }) : ''}
-
-<!-- 4. POURQUOI NOUS ------------------------------------------------------ -->
+<!-- 3. POURQUOI NOUS ------------------------------------------------------
+     Première section après la bande de preuves : le visiteur d'une annonce
+     se demande d'abord à qui il a affaire, pas ce qu'on répare. --------- -->
 <section class="section" id="pourquoi">
   <div class="container">
     <div class="section__head">
@@ -220,6 +204,25 @@ ${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${arti
     </div>
   </div>
 </section>
+
+<!-- 4. CE QUE NOUS RÉPARONS ----------------------------------------------- -->
+<section class="section section--tint">
+  <div class="container">
+    <div class="section__head section__head--center">
+      <span class="eyebrow">Nos interventions</span>
+      <h2>${servicesTitre || `Ce que nous réparons dans ${article} ${dept}`}</h2>
+    </div>
+    <div class="grid grid--3">${services.map(([img, titre, texte]) => carte(img, titre, texte)).join('')}
+    </div>
+    <div class="btn-row mt-32">
+      ${callBtn(`services-${slug}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
+      ${formBtn(`services-${slug}`, { variant: 'outline', text: RAPPEL })}
+    </div>
+    ${notesCta('Vous décrivez, on vous dit si c’est réparable', 'Pas de déplacement sans votre accord')}
+  </div>
+</section>
+
+${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${article} ${dept}`, tint: false }) : ''}
 
 <!-- 5. MATÉRIEL ----------------------------------------------------------- -->
 <section class="section section--dark">
