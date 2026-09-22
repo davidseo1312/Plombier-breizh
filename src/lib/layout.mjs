@@ -19,7 +19,7 @@ export const syntheseAvis = () => `
     <p class="avis-synthese">
       <span class="avis-synthese__etoiles" aria-hidden="true">★★★★★</span>
       <span><b>${String(STATS_AVIS.moyenne).replace('.', ',')}/5</b> de moyenne sur les
-      ${STATS_AVIS.total} avis clients publiés sur le site</span>
+      avis clients publiés sur le site</span>
     </p>`;
 
 export const SITE = {
@@ -94,7 +94,7 @@ export const heroAvis = () => googleDisponible() ? `
 <p class="hero-avis">
           <span class="hero-avis__etoiles" aria-hidden="true">★★★★★</span>
           <span><b>${String(STATS_AVIS.moyenne).replace('.', ',')}/5</b> — moyenne des
-          ${STATS_AVIS.total} avis clients publiés sur cette page</span>
+          avis clients publiés sur cette page</span>
         </p>`;
 
 /** « Vous parlez à Untel, plombier depuis X ans. » L'argument anti-plateforme
