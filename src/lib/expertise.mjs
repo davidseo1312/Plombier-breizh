@@ -21,9 +21,12 @@ import { ENTREPRISE } from './entreprise.mjs';
 const ANNEE_CREATION = (String(ENTREPRISE.dateCreation).match(/\b(19|20)\d{2}\b/) || [])[0] || '';
 
 export const POINTS_EXPERTISE = [
+  /* Formulation neutre : ce bloc est posé sur les seize pages, y compris les
+     landings plomberie où le mot « dégorgement » n'a rien à faire. */
   ['Plusieurs années d’expérience',
    `Plombier Breizh${ANNEE_CREATION ? ` existe depuis ${ANNEE_CREATION}` : ''} et intervient en Finistère et
-    dans le Morbihan. La plomberie et le dégorgement ne sont pas une activité d’appoint : c’est le métier.`],
+    dans le Morbihan. Ce n’est pas une activité d’appoint exercée à côté d’un autre métier :
+    c’est le métier, tous les jours.`],
   ['Vous parlez au plombier, pas à une plateforme',
    `Pas de centre d’appels, pas de mise en relation avec un sous-traitant inconnu. La personne qui
     répond connaît le métier et sait vous dire au téléphone ce qu’elle va probablement trouver.`],

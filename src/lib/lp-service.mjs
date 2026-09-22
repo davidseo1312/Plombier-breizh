@@ -221,6 +221,24 @@ ${preuves({ zone: `${dept} (${num})`, villes: cities.slice(0, 4).join(', ') + ' 
   </div>
 </section>
 
+<!-- 4 bis. ORIGINE DU BOUCHON ---------------------------------------------
+     Sur les pages dégorgement seulement. Placée juste avant le matériel :
+     elle explique ce qui bouche, la section suivante montre avec quoi on
+     le retire. Elle s'était retrouvée entre le bloc d'appel et le
+     formulaire au fil des déplacements de sections. --------------------- -->
+${infographie ? `
+<section class="section">
+  <div class="container">
+    <figure class="figure-wide">
+      ${photo({ chemin: '/assets/img/infographie-origine-bouchon',
+                alt: 'Origine du bouchon et outil adapté : graisses, cheveux et savon, lingettes, racines',
+                largeur: 1536, hauteur: 1024, usage: 'large' })}
+      <figcaption>Graisses de cuisine, cheveux et savon, lingettes, racines : l’origine du bouchon
+      détermine l’outil à utiliser. C’est ce que nous cherchons à établir dès votre appel.</figcaption>
+    </figure>
+  </div>
+</section>` : ''}
+
 <!-- 5. MATÉRIEL ------------------------------------------------------------
      Placé juste avant les tarifs : on montre l'équipement, puis le prix.
      Un montant se justifie mieux quand on vient de voir ce qui part sur
@@ -333,18 +351,6 @@ ${syntheseAvis()}
   </div>
 </section>
 
-${infographie ? `
-<section class="section">
-  <div class="container">
-    <figure class="figure-wide">
-      ${photo({ chemin: '/assets/img/infographie-origine-bouchon',
-                alt: 'Origine du bouchon et outil adapté : graisses, cheveux et savon, lingettes, racines',
-                largeur: 1536, hauteur: 1024, usage: 'large' })}
-      <figcaption>Graisses de cuisine, cheveux et savon, lingettes, racines : l’origine du bouchon
-      détermine l’outil à utiliser. C’est ce que nous cherchons à établir dès votre appel.</figcaption>
-    </figure>
-  </div>
-</section>` : ''}
 
 <!-- 11. FORMULAIRE -------------------------------------------------------- -->
 <section class="section section--tint" id="demande-intervention">
