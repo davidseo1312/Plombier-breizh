@@ -1,6 +1,6 @@
 import {
   SITE, callBtn, formBtn, checklist, heroPhoto, urgencyBand, ctaBand, phoneNote, preuves,
-  phoneBlock, processSection, whySection, reviewsSection, bretagneSection, formSection
+  phoneBlock, processSection, whySection, reviewsSection, bretagneSection, formSection, heroAvis
 } from '../lib/layout.mjs';
 import { servicesGrid, servicePhoto } from '../lib/services.mjs';
 import { hermine } from '../lib/breizh.mjs';
@@ -13,11 +13,12 @@ export default {
   title: 'Plombier Breizh — plomberie, débouchage et dépannage en Bretagne',
   description: 'Une fuite, une canalisation bouchée ou un problème de plomberie en Bretagne ? Plombier Breizh assure dépannage, débouchage et dégorgement. Appelez le 02 20 06 01 96.',
   body: `
-<section class="hero">
-  <span class="hero__filigrane">${hermine()}</span>
+<section class="hero hero--photo">
+  <div class="hero__fond">${heroPhoto()}</div>
   <div class="container">
-    <div class="hero__grid">
-      <div>
+    <div class="hero__panneau">
+      <span class="hero__filigrane">${hermine()}</span>
+      <div class="hero__contenu">
         <span class="hero__tag">Plomberie • Débouchage • Dégorgement • Urgence</span>
         <h1>Plombier &amp; <em>dégorgement d’urgence</em> en Bretagne</h1>
         <p class="hero__sub">Une fuite, une canalisation bouchée ou un problème de plomberie ?
@@ -27,14 +28,11 @@ export default {
           ${formBtn('hero')}
         </div>
         ${phoneNote()}
-        <p class="hero__note">Vous parlez directement à quelqu’un qui connaît le métier.</p>
+        ${heroAvis()}
         ${checklist(undefined, true)}
       </div>
-      <div class="hero__media">
-        ${heroPhoto()}
-        <span class="hero__badge">Bretagne — Finistère 29 &amp; Morbihan 56</span>
-      </div>
     </div>
+    <span class="hero__badge">Bretagne — Finistère 29 &amp; Morbihan 56</span>
   </div>
 </section>
 

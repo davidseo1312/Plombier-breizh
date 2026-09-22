@@ -15,7 +15,7 @@
    Ordre : hero · preuves · appel en 2 minutes · services · pourquoi nous ·
            matériel · avis · zone · FAQ · formulaire · appel final.
    ========================================================================== */
-import { SITE, callBtn, formBtn, tel, phoneNote, preuves } from './layout.mjs';
+import { SITE, callBtn, formBtn, tel, phoneNote, preuves, heroAvis, syntheseAvis } from './layout.mjs';
 import { servicePhoto } from './services.mjs';
 import { photo } from './media.mjs';
 import { carte as carteZone } from './carte.mjs';
@@ -126,11 +126,18 @@ export const landingService = ({
   description,
   body: `
 <!-- 1. PREMIER ÉCRAN ------------------------------------------------------ -->
-<section class="hero">
-  <span class="hero__filigrane">${hermine()}</span>
+<section class="hero hero--photo">
+  <div class="hero__fond">${heroCamion
+    ? photo({ chemin: '/assets/img/hero-plombier-breizh-camion', alt: heroAlt,
+              largeur: 1536, hauteur: 1024, usage: 'hero', priorite: true,
+              repli: '/assets/img/hero-plombier-intervention.svg' })
+    : photo({ chemin: `/assets/photos/${heroImg}`, alt: heroAlt,
+              largeur: 1100, hauteur: 733, usage: 'hero', priorite: true,
+              repli: `/assets/img/${heroImg}.svg` })}</div>
   <div class="container">
-    <div class="hero__grid">
-      <div>
+    <div class="hero__panneau">
+      <span class="hero__filigrane">${hermine()}</span>
+      <div class="hero__contenu">
         ${bandeBreizh()}
         <span class="hero__tag">${hermine()}${tag}</span>
         <h1>${h1}</h1>
@@ -140,18 +147,10 @@ export const landingService = ({
           ${formBtn(`hero-${slug}`, { text: RAPPEL })}
         </div>
         ${notesCta(APPEL, INTERLOCUTEUR)}
-      </div>
-      <div class="hero__media">
-        ${heroCamion
-          ? photo({ chemin: '/assets/img/hero-plombier-breizh-camion', alt: heroAlt,
-                    largeur: 1536, hauteur: 1024, usage: 'hero', priorite: true,
-                    repli: '/assets/img/hero-plombier-intervention.svg' })
-          : photo({ chemin: `/assets/photos/${heroImg}`, alt: heroAlt,
-                    largeur: 1100, hauteur: 733, usage: 'hero', priorite: true,
-                    repli: `/assets/img/${heroImg}.svg` })}
-        <span class="hero__badge">${dept} — ${num}</span>
+        ${heroAvis()}
       </div>
     </div>
+    <span class="hero__badge">${dept} — ${num}</span>
   </div>
 </section>
 
@@ -294,14 +293,15 @@ ${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${arti
 </section>
 
 <!-- 7. AVIS --------------------------------------------------------------- -->
-<section class="section section--paper" id="avis">
+<section class="section section--creme" id="avis">
   <div class="container">
     <div class="section__head section__head--center">
-      <span class="eyebrow">Avis</span>
+      <span class="eyebrow eyebrow--tirets">${SITE.name}</span>
       <h2>Ce que disent nos clients</h2>
       <p class="lead">Uniquement des interventions réalisées dans ${article} ${dept} (${num}).</p>
     </div>
     ${blocsAvis(avis, num)}
+${syntheseAvis()}
   </div>
 </section>
 

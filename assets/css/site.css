@@ -47,10 +47,13 @@
   --terracotta:#D0553A;
   --terracotta-deep:#C0492F;   /* blanc dessus : 4,96:1 */
   --terracotta-soft:#FBEFEB;
+  --creme:#FDF5F0;         /* fond de la section avis */
+  --creme-fort:#F9E8E0;    /* cartes d'avis posées dessus */
   --green:#17915B;
   --green-deep:#0F6E44;
   --green-soft:#E9F7F0;
-  --amber:#C97C00;   /* 3,3:1 sur blanc : lisible en tant qu'élément graphique */
+  --amber:#C97C00;        /* 3,3:1 sur blanc : lisible en tant qu'élément graphique */
+  --amber-creme:#A06200;  /* même rôle, assombri pour tenir sur le fond crème */
 
   /* Déclinaisons de travail */
   --blue-deep:#005E9B;
@@ -114,6 +117,16 @@ strong{font-weight:700}
 .section{padding-block:clamp(46px,6vw,80px)}
 .section--tint{background:var(--tint)}
 .section--paper{background:var(--paper)}
+/* Les avis sont la seule section sur fond chaud : elle tranche avec les
+   bleus du reste de la page, ce qui la rend impossible à manquer. */
+.section--creme{background:var(--creme)}
+.section--creme .review{background:var(--creme-fort);border-color:#F0D8CC}
+/* Le fond chaud éclaircit tout ce qui est posé dessus : étoiles et mentions
+   secondaires sont assombries pour rester au-dessus des seuils de contraste. */
+.section--creme .review__stars,.section--creme .avis-synthese__etoiles{color:var(--amber-creme)}
+.section--creme .review__stars-off{color:#78818A}
+.section--creme .review__city{color:#5A666F}
+.section--creme .review__author{border-top-color:#EFD6C9}
 .section--dark{background:var(--black);color:var(--white)}
 .section--dark h2,.section--dark h3{color:var(--white)}
 .section--dark p{color:#D5DCE2}
@@ -127,6 +140,9 @@ strong{font-weight:700}
   color:var(--cyan-deep);margin-bottom:14px;
 }
 .eyebrow::before{content:"";width:26px;height:3px;background:var(--cyan);display:block}
+.eyebrow--tirets::after{content:"";width:26px;height:3px;background:var(--cyan);display:block}
+.section--creme .eyebrow::before,.section--creme .eyebrow--tirets::after{background:var(--terracotta)}
+.section--creme .eyebrow{color:var(--terracotta-deep)}
 .section--dark .eyebrow,
 .callbox .eyebrow,
 .section__head--center .eyebrow{justify-content:center}
@@ -271,6 +287,43 @@ strong{font-weight:700}
 .hero::after{content:"";position:absolute;inset:0;
   background:linear-gradient(118deg,#E2F3FD 0%,#F6FBFE 46%,var(--white) 78%);z-index:0}
 .hero .container{position:relative;z-index:1}
+/* Premier écran en photo plein cadre : le contenu est posé sur un panneau
+   clair opaque, jamais directement sur l'image. La lisibilité ne dépend donc
+   d'aucune photo en particulier — elle tient quel que soit le visuel. */
+.hero--photo{background:var(--black)}
+.hero--photo::after{display:none}
+.hero__fond{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero__fond picture,.hero__fond img{width:100%;height:100%;object-fit:cover;object-position:50% 32%;
+  border:0;border-radius:0;box-shadow:none;display:block}
+/* Voile : assombrit très légèrement la photo pour que le panneau blanc se
+   détache, et rattrape les visuels surexposés. */
+.hero__fond::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(6,25,38,.34) 0%,rgba(6,25,38,.14) 54%,rgba(6,25,38,.30) 100%);
+}
+.hero--photo .container{padding-block:clamp(30px,4vw,60px)}
+.hero__panneau{
+  position:relative;background:rgba(255,255,255,.987);
+  max-width:640px;padding:clamp(26px,3vw,40px) clamp(22px,2.6vw,38px) clamp(28px,3vw,38px);
+  border-radius:var(--radius-card);box-shadow:0 18px 48px rgba(6,25,38,.20);
+  border-top:4px solid var(--blue);
+}
+.hero__contenu{position:relative;z-index:1}
+/* Trait d'accent en bas du premier écran : il ferme le bloc et annonce la
+   bande de preuves qui suit. */
+.hero--photo{border-bottom:4px solid var(--terracotta)}
+.hero--photo .hero__badge{
+  position:absolute;right:var(--gutter);bottom:0;left:auto;
+  background:var(--blue);color:var(--white);border-bottom-left-radius:0;
+}
+@media (max-width:900px){
+  /* Sur mobile, une bande de photo reste visible au-dessus du panneau. */
+  .hero--photo .container{padding-top:150px;padding-bottom:26px}
+  .hero__panneau{max-width:none}
+  .hero--photo .hero__badge{display:none}
+}
+@media (max-width:430px){.hero--photo .container{padding-top:118px}}
+
 .hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(26px,3.5vw,54px);align-items:center;padding-block:clamp(38px,5vw,70px)}
 .hero__tag .hermine{width:15px;height:15px;flex:0 0 15px}
 .hero__tag{
@@ -388,11 +441,11 @@ strong{font-weight:700}
 /* Filigrane du premier écran : discret, il signe sans gêner la lecture. */
 .hero{position:relative;overflow:hidden}
 .hero__filigrane{
-  position:absolute;left:-46px;top:-54px;width:300px;height:300px;
-  color:var(--blue);opacity:.10;pointer-events:none;z-index:1;
+  position:absolute;left:-30px;top:-38px;width:210px;height:210px;
+  color:var(--blue);opacity:.085;pointer-events:none;z-index:0;
 }
 .hero .container{position:relative;z-index:1}
-@media (max-width:1000px){.hero__filigrane{width:180px;height:180px;left:-52px;top:-44px;opacity:.09}}
+@media (max-width:1000px){.hero__filigrane{width:150px;height:150px;left:-34px;top:-30px;opacity:.075}}
 
 /* ---------- Ancrage local ----------
    Ce que l'on voit vraiment sur le terrain, département par département.
@@ -531,7 +584,16 @@ strong{font-weight:700}
 }
 .phone-note::before{content:"";flex:0 0 10px;height:10px;background:var(--cyan)}
 .phone-note--clair{color:#C6CFD6}
-.hero .phone-note{margin-bottom:18px}
+.hero .phone-note{margin-bottom:14px}
+/* ---------- Note moyenne du premier écran ----------
+   Les étoiles sont décoratives : la note et le nombre d'avis sont écrits en
+   toutes lettres juste à côté, donc rien n'est perdu sans les images. */
+.hero-avis{
+  display:flex;align-items:center;gap:11px;flex-wrap:wrap;
+  margin:0 0 18px;font-size:15px;color:var(--ink-soft);line-height:1.45;
+}
+.hero-avis__etoiles{color:var(--amber);font-size:17px;letter-spacing:.1em}
+.hero-avis b{color:var(--ink)}
 .phone-note--centre{justify-content:center;color:var(--cyan-ink)}
 .urgency .phone-note{flex:1 0 100%;margin:0;color:var(--cyan-ink);justify-content:flex-end}
 .site-footer .phone-note{margin:10px 0 14px}
@@ -765,22 +827,40 @@ strong{font-weight:700}
 .avis-dept--solo .review__text{font-size:clamp(17.5px,1.8vw,21px);line-height:1.55;max-width:70ch}
 .avis-dept--solo .review__stars{font-size:22px}
 .avis-dept--solo .review__author{max-width:70ch}
+
+/* ---------- Synthèse sous un bloc d'avis ---------- */
+.avis-synthese{
+  display:flex;align-items:center;justify-content:center;gap:11px;flex-wrap:wrap;
+  margin:clamp(26px,3vw,38px) 0 0;text-align:center;
+  font-size:16px;color:var(--ink-soft);line-height:1.45;
+}
+.avis-synthese__etoiles{color:var(--amber);font-size:19px;letter-spacing:.1em}
+.avis-synthese b{color:var(--ink);font-size:18px}
+
+/* ---------- Bouton d'appel flottant ----------
+   Grand écran seulement : sur mobile, la barre collante en bas fait déjà ce
+   travail et deux boutons d'appel se gêneraient. */
+.appel-flottant{
+  position:fixed;left:22px;bottom:22px;z-index:70;
+  display:inline-flex;align-items:center;gap:11px;
+  padding:14px 20px;border-radius:var(--radius-btn);
+  background:var(--terracotta-deep);color:var(--white);
+  font-size:16.5px;font-weight:700;line-height:1;
+  box-shadow:0 6px 20px rgba(6,25,38,.28);
+  transition:background-color .15s ease,transform .15s ease;
+}
+.appel-flottant:hover{background:#A93E25;color:var(--white);text-decoration:none;transform:translateY(-2px)}
+@media (max-width:900px){.appel-flottant{display:none}}
+@media (prefers-reduced-motion:reduce){.appel-flottant{transition:none}}
 @media (max-width:430px){
   .avis-dept__titre{font-size:17px;gap:11px}
   .avis-dept__num{min-width:40px;height:30px;font-size:15px}
 }
 
-/* Logo « Avis Google » — calé dans le coin haut droit de la section.
-   Fichier PNG à fond transparent : aucun cartouche n'est nécessaire. */
+/* Aucun logo de plateforme n'est affiché au-dessus des avis : leur origine
+   n'est pas vérifiable, et l'afficher laisserait croire à une validation par
+   un tiers. La moyenne publiée est calculée sur les avis de la page. */
 .reviews{position:relative}
-.reviews__google{
-  position:absolute;top:0;right:var(--gutter);
-  height:60px;width:auto;display:block;
-}
-@media (max-width:1099px){.reviews__google{height:52px}}
-@media (max-width:860px){
-  .reviews__google{position:static;height:48px;margin:0 auto 22px}
-}
 
 /* Carrousel d'avis — défile de droite à gauche */
 .carousel{position:relative}

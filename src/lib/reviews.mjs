@@ -91,6 +91,15 @@ export const avisDe = (cle) => AVIS.filter(a => a.page === cle);
 export const avisParNoms = (...cles) =>
   cles.map(c => AVIS.find(a => a.nom === c || a.id === c)).filter(Boolean);
 
+/** Moyenne et volume des avis RÉELLEMENT publiés sur le site. Calculés, jamais
+    saisis à la main : la note affichée correspond donc toujours exactement aux
+    avis qu'un visiteur peut lire sur la page. On ne l'attribue à aucune
+    plateforme tierce, faute de pouvoir la vérifier. */
+export const STATS_AVIS = {
+  total: AVIS.length,
+  moyenne: Math.round((AVIS.reduce((n, a) => n + a.note, 0) / AVIS.length) * 10) / 10
+};
+
 /** Regroupe une sélection d'avis par département, dans l'ordre demandé.
     Rend `[['29', [...]], ['56', [...]]]` en laissant de côté les départements
     sans avis : les pages n'affichent jamais un bloc vide. */

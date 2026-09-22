@@ -9,6 +9,17 @@ import { expertiseSection } from './expertise.mjs';
 import { photo as photoImg, preloadPhoto } from './media.mjs';
 import { carte } from './carte.mjs';
 import { hermine } from './breizh.mjs';
+import { STATS_AVIS } from './reviews.mjs';
+
+/** Ligne de synthèse posée sous un bloc d'avis. Même règle que heroAvis :
+    la note est calculée sur les avis affichés, et aucune plateforme n'est
+    citée tant que l'origine des avis n'est pas vérifiable. */
+export const syntheseAvis = () => `
+    <p class="avis-synthese">
+      <span class="avis-synthese__etoiles" aria-hidden="true">★★★★★</span>
+      <span><b>${String(STATS_AVIS.moyenne).replace('.', ',')}/5</b> de moyenne sur les
+      ${STATS_AVIS.total} avis clients publiés sur le site</span>
+    </p>`;
 
 export const SITE = {
   name: 'Plombier Breizh',
@@ -64,6 +75,17 @@ export const callBtn = (location, { variant = 'primary', size = 'lg', text = `Ap
 /** Bouton vers le formulaire d'intervention. */
 export const formBtn = (location, { variant = 'accent', size = 'lg', text = 'Demander une intervention', block = false, href = '#demande-intervention' } = {}) =>
   `<a class="btn btn--${variant}${size ? ` btn--${size}` : ''}${block ? ' btn--block' : ''}" href="${href}" data-location="${location}" data-cta="demande-intervention">${text}</a>`;
+
+/** Note moyenne affichée sous les boutons du premier écran.
+    Elle est CALCULÉE sur les avis publiés plus bas dans la page : un visiteur
+    peut la recompter lui-même. Aucune plateforme n'est citée, faute de
+    pouvoir prouver l'origine des avis. */
+export const heroAvis = () => `
+<p class="hero-avis">
+          <span class="hero-avis__etoiles" aria-hidden="true">★★★★★</span>
+          <span><b>${String(STATS_AVIS.moyenne).replace('.', ',')}/5</b> — moyenne des
+          ${STATS_AVIS.total} avis clients publiés sur cette page</span>
+        </p>`;
 
 export const REASSURANCE = [
   'Intervention rapide',
@@ -444,12 +466,10 @@ const carteAvis = (a) => `
           </article>`;
 
 export const reviewsSection = (avis = [], dark = false) => `
-<section class="section${dark ? ' section--dark' : ' section--paper'}" id="avis">
+<section class="section${dark ? ' section--dark' : ' section--creme'}" id="avis">
   <div class="container reviews">
-    <img class="reviews__google" src="/assets/img/google-reviews.png" alt="Avis Google"
-         width="297" height="120" loading="lazy" decoding="async">
     <div class="section__head section__head--center">
-      <span class="eyebrow">Avis</span>
+      <span class="eyebrow eyebrow--tirets">${SITE.name}</span>
       <h2>Les avis de nos clients</h2>
       <p class="lead">Votre satisfaction est au cœur de nos interventions.</p>
     </div>
@@ -469,6 +489,7 @@ export const reviewsSection = (avis = [], dark = false) => `
         </button>
       </div>
     </div>
+${syntheseAvis()}
   </div>
 </section>`;
 
@@ -671,11 +692,15 @@ ${stickyTexte ? `
 /* Hero des pages internes et des landing pages. */
 export const pageHero = ({ tag, h1, sub, img, alt, location, photo: estPhotoCamion = false, items = REASSURANCE,
                           badge = 'Bretagne', preuvesZone, preuvesVilles }) => `
-<section class="hero">
-  <span class="hero__filigrane">${hermine()}</span>
+<section class="hero hero--photo">
+  <div class="hero__fond">${estPhotoCamion ? heroPhoto(img, alt) : photoImg({
+    chemin: `/assets/photos/${img}`, alt, largeur: 1100, hauteur: 733,
+    usage: 'hero', priorite: true, repli: `/assets/img/${img}.svg`
+  })}</div>
   <div class="container">
-    <div class="hero__grid">
-      <div>
+    <div class="hero__panneau">
+      <span class="hero__filigrane">${hermine()}</span>
+      <div class="hero__contenu">
         <span class="hero__tag">${tag}</span>
         <h1>${h1}</h1>
         <p class="hero__sub">${sub}</p>
@@ -684,16 +709,11 @@ export const pageHero = ({ tag, h1, sub, img, alt, location, photo: estPhotoCami
           ${formBtn(location)}
         </div>
         ${phoneNote()}
+        ${heroAvis()}
         ${checklist(items, true)}
       </div>
-      <div class="hero__media">
-        ${estPhotoCamion ? heroPhoto(img, alt) : photoImg({
-          chemin: `/assets/photos/${img}`, alt, largeur: 1100, hauteur: 733,
-          usage: 'hero', priorite: true, repli: `/assets/img/${img}.svg`
-        })}
-        <span class="hero__badge">${badge}</span>
-      </div>
     </div>
+    <span class="hero__badge">${badge}</span>
   </div>
 </section>
 ${preuves({ zone: preuvesZone, villes: preuvesVilles })}`;
@@ -707,4 +727,9 @@ ${header(nav, minimalNav, enTete)}
 ${body}
 ${confiance ? expertiseSection() + confianceSection() : ''}
 </main>
+<a class="appel-flottant" href="${SITE.phoneHref}" data-location="bouton-flottant" data-cta="appel"
+   aria-label="Appeler le ${SITE.phoneDisplay}">
+  <span aria-hidden="true">📞</span>
+  <span class="appel-flottant__texte">${SITE.phoneDisplay}</span>
+</a>
 ${footer(pied)}`;

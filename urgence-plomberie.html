@@ -23,7 +23,7 @@
 <link rel="preload" as="image" type="image/webp" imagesrcset="/assets/img/hero-plombier-breizh-camion-480.webp?v=299e54e2 480w, /assets/img/hero-plombier-breizh-camion-760.webp?v=986b7a13 760w, /assets/img/hero-plombier-breizh-camion-1100.webp?v=4879b617 1100w, /assets/img/hero-plombier-breizh-camion-1536.webp?v=1f2e06c0 1536w" imagesizes="(min-width:1000px) 570px, calc(100vw - 40px)">
 <link rel="preload" href="/assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/lato-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=1b876562">
+<link rel="stylesheet" href="/assets/css/site.css?v=3f49a022">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Plumber","name":"Plombier Breizh","telephone":"+33220060196","email":"contact@plombier-breizh.fr","url":"https://www.plombier-breizh.fr","areaServed":[{"@type":"AdministrativeArea","name":"Bretagne"},{"@type":"AdministrativeArea","name":"Finistère (29)"},{"@type":"AdministrativeArea","name":"Morbihan (56)"}],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Dépannage plomberie"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Débouchage de canalisation"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Dégorgement"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Recherche de fuite"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Intervention de plomberie urgente"}}]}</script>
 <!-- ===================================================================
      TRACKING — à activer lors de la mise en ligne (voir README.md).
@@ -107,14 +107,18 @@ function PBLogo(img){
 <main id="contenu">
 
 
-<section class="hero">
-  <span class="hero__filigrane"><svg class="hermine" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+<section class="hero hero--photo">
+  <div class="hero__fond"><picture>
+        <source type="image/webp" srcset="/assets/img/hero-plombier-breizh-camion-480.webp?v=299e54e2 480w, /assets/img/hero-plombier-breizh-camion-760.webp?v=986b7a13 760w, /assets/img/hero-plombier-breizh-camion-1100.webp?v=4879b617 1100w, /assets/img/hero-plombier-breizh-camion-1536.webp?v=1f2e06c0 1536w" sizes="(min-width:1000px) 570px, calc(100vw - 40px)">
+        <img src="/assets/img/hero-plombier-breizh-camion-1536.jpg?v=6262ae6b" srcset="/assets/img/hero-plombier-breizh-camion-480.jpg?v=60ca32ba 480w, /assets/img/hero-plombier-breizh-camion-760.jpg?v=6ed06282 760w, /assets/img/hero-plombier-breizh-camion-1100.jpg?v=f3f43210 1100w, /assets/img/hero-plombier-breizh-camion-1536.jpg?v=6262ae6b 1536w" sizes="(min-width:1000px) 570px, calc(100vw - 40px)" alt="Intervention de plomberie en urgence" width="1536" height="1024" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.srcset='';this.src='/assets/img/urgence-plomberie.svg?v=648412d6';">
+      </picture></div>
+  <div class="container">
+    <div class="hero__panneau">
+      <span class="hero__filigrane"><svg class="hermine" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
   <path d="M50 24C50 41 41 56 29 67c7 0 13 4 15 11l6-9 6 9c2-7 8-11 15-11C59 56 50 41 50 24Z"/>
   <circle cx="50" cy="11" r="5.4"/><circle cx="35" cy="20" r="4.8"/><circle cx="65" cy="20" r="4.8"/>
 </svg></span>
-  <div class="container">
-    <div class="hero__grid">
-      <div>
+      <div class="hero__contenu">
         <span class="hero__tag">Urgence plomberie</span>
         <h1>Urgence plomberie en Bretagne</h1>
         <p class="hero__sub">Une fuite qui ne s’arrête pas, un refoulement, une canalisation totalement bouchée : appelez-nous, nous organisons le passage au plus vite.</p>
@@ -125,6 +129,12 @@ function PBLogo(img){
           <a class="btn btn--accent btn--lg" href="#demande-intervention" data-location="hero-urgence" data-cta="demande-intervention">Demander une intervention</a>
         </div>
         <p class="phone-note">Joignable 7j/7, 24h/24 — appel non surtaxé</p>
+        
+<p class="hero-avis">
+          <span class="hero-avis__etoiles" aria-hidden="true">★★★★★</span>
+          <span><b>4,9/5</b> — moyenne des
+          16 avis clients publiés sur cette page</span>
+        </p>
         <ul class="checklist checklist--inline">
         <li>Intervention rapide</li>
         <li>Débouchage &amp; dégorgement</li>
@@ -133,14 +143,8 @@ function PBLogo(img){
         <li>Intervention en Bretagne</li>
       </ul>
       </div>
-      <div class="hero__media">
-        <picture>
-        <source type="image/webp" srcset="/assets/img/hero-plombier-breizh-camion-480.webp?v=299e54e2 480w, /assets/img/hero-plombier-breizh-camion-760.webp?v=986b7a13 760w, /assets/img/hero-plombier-breizh-camion-1100.webp?v=4879b617 1100w, /assets/img/hero-plombier-breizh-camion-1536.webp?v=1f2e06c0 1536w" sizes="(min-width:1000px) 570px, calc(100vw - 40px)">
-        <img src="/assets/img/hero-plombier-breizh-camion-1536.jpg?v=6262ae6b" srcset="/assets/img/hero-plombier-breizh-camion-480.jpg?v=60ca32ba 480w, /assets/img/hero-plombier-breizh-camion-760.jpg?v=6ed06282 760w, /assets/img/hero-plombier-breizh-camion-1100.jpg?v=f3f43210 1100w, /assets/img/hero-plombier-breizh-camion-1536.jpg?v=6262ae6b 1536w" sizes="(min-width:1000px) 570px, calc(100vw - 40px)" alt="Intervention de plomberie en urgence" width="1536" height="1024" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.srcset='';this.src='/assets/img/urgence-plomberie.svg?v=648412d6';">
-      </picture>
-        <span class="hero__badge">Bretagne</span>
-      </div>
     </div>
+    <span class="hero__badge">Bretagne</span>
   </div>
 </section>
 
@@ -344,12 +348,10 @@ function PBLogo(img){
   </div>
 </section>
 
-<section class="section section--paper" id="avis">
+<section class="section section--creme" id="avis">
   <div class="container reviews">
-    <img class="reviews__google" src="/assets/img/google-reviews.png?v=95671073" alt="Avis Google"
-         width="297" height="120" loading="lazy" decoding="async">
     <div class="section__head section__head--center">
-      <span class="eyebrow">Avis</span>
+      <span class="eyebrow eyebrow--tirets">Plombier Breizh</span>
       <h2>Les avis de nos clients</h2>
       <p class="lead">Votre satisfaction est au cœur de nos interventions.</p>
     </div>
@@ -401,6 +403,12 @@ function PBLogo(img){
         </button>
       </div>
     </div>
+
+    <p class="avis-synthese">
+      <span class="avis-synthese__etoiles" aria-hidden="true">★★★★★</span>
+      <span><b>4,9/5</b> de moyenne sur les
+      16 avis clients publiés sur le site</span>
+    </p>
   </div>
 </section>
 
@@ -601,6 +609,11 @@ function PBLogo(img){
   </div>
 </section>
 </main>
+<a class="appel-flottant" href="tel:+33220060196" data-location="bouton-flottant" data-cta="appel"
+   aria-label="Appeler le 02 20 06 01 96">
+  <span aria-hidden="true">📞</span>
+  <span class="appel-flottant__texte">02 20 06 01 96</span>
+</a>
 
 <footer class="site-footer">
   <div class="container">
