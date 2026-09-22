@@ -63,7 +63,7 @@ export default landingService({
     ['Vous intervenez dans quels délais ?',
      'Nous sommes joignables 7j/7, 24h/24, soir et week-end compris. Le créneau dépend ensuite de votre commune et du planning : nous vous le disons dès l’appel.'],
     ['Combien coûte une intervention ?',
-     'Le déplacement et le diagnostic sur place sont à 45 € TTC. Un dépannage courant démarre à 69 € TTC, une intervention technique à 89 € TTC. Le montant exact dépend de la panne et du temps passé : il vous est annoncé avant que le travail commence.'],
+     'Le déplacement et le diagnostic sur place sont à 45 € TTC. Ensuite, toute intervention démarre à 99 € TTC, du dépannage courant à l’intervention technique. Le montant exact dépend de la panne et du temps passé : il vous est annoncé avant que le travail commence.'],
     ['Comment trouvez-vous une fuite qu’on ne voit pas ?',
      'Au détecteur acoustique, et à la caméra quand l’accès est difficile. L’objectif est de localiser la fuite avant d’ouvrir quoi que ce soit.'],
     ['J’ouvre une maison restée fermée, que faut-il vérifier ?',

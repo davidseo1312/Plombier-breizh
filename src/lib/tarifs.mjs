@@ -14,28 +14,30 @@
    ========================================================================== */
 
 export const DEPLACEMENT = '45 €';
+export const INTERVENTION = 'à partir de 99 €';
 
 export const TARIFS_PLOMBERIE = [
   ['Déplacement et diagnostic sur place', DEPLACEMENT, 'Le technicien se déplace, constate et vous dit ce qu’il faut faire.'],
-  ['Dépannage courant', 'à partir de 69 €', 'Robinetterie, mitigeur, chasse d’eau, raccord, joint, vanne d’arrêt.'],
-  ['Intervention technique', 'à partir de 89 €', 'Recherche de fuite, chauffe-eau, reprise d’alimentation, sanitaires.']
+  ['Dépannage courant', INTERVENTION, 'Robinetterie, mitigeur, chasse d’eau, raccord, joint, vanne d’arrêt.'],
+  ['Intervention technique', INTERVENTION, 'Recherche de fuite, chauffe-eau, reprise d’alimentation, sanitaires.']
 ];
 
 export const TARIFS_DEGORGEMENT = [
   ['Déplacement et diagnostic sur place', DEPLACEMENT, 'Le technicien se déplace, constate et vous dit ce qu’il faut faire.'],
-  ['Débouchage d’un point d’eau', 'à partir de 69 €', 'WC, évier, lavabo, douche ou baignoire : un seul point bloqué.'],
-  ['Dégorgement de réseau', 'à partir de 89 €', 'Plusieurs évacuations, canalisation enterrée, regard ou fosse.']
+  ['Débouchage d’un point d’eau', INTERVENTION, 'WC, évier, lavabo, douche ou baignoire : un seul point bloqué.'],
+  ['Dégorgement de réseau', INTERVENTION, 'Plusieurs évacuations, canalisation enterrée, regard ou fosse.']
 ];
 
 export const TARIFS_TOUS = [
   ['Déplacement et diagnostic sur place', DEPLACEMENT, 'Le technicien se déplace, constate et vous dit ce qu’il faut faire.'],
-  ['Dépannage courant et débouchage', 'à partir de 69 €', 'Robinetterie, chasse d’eau, WC, évier, douche : une intervention simple.'],
-  ['Intervention technique ou dégorgement', 'à partir de 89 €', 'Recherche de fuite, chauffe-eau, réseau d’évacuation, pompage.']
+  ['Dépannage courant et débouchage', INTERVENTION, 'Robinetterie, chasse d’eau, WC, évier, douche : une intervention simple.'],
+  ['Intervention technique ou dégorgement', INTERVENTION, 'Recherche de fuite, chauffe-eau, réseau d’évacuation, pompage.']
 ];
 
-export const NOTE_TARIFS = `Montants TTC. Le prix exact dépend de l’intervention, de l’accès et du temps passé :
-il vous est annoncé avant que le travail commence, et un devis écrit vous est remis
-dès que le montant dépasse 150 € TTC. Rien n’est engagé sans votre accord.`;
+export const NOTE_TARIFS = `Montants TTC. Quelle que soit l’intervention, elle démarre à 99 € : le prix exact
+dépend de l’accès, de la méthode et du temps passé. Il vous est annoncé avant que le travail
+commence, et un devis écrit vous est remis dès que le montant dépasse 150 € TTC.
+Rien n’est engagé sans votre accord.`;
 
 /** Bloc tarifs. `lignes` : une des listes ci-dessus. */
 export const tarifsSection = (lignes, { titre = 'Nos tarifs', eyebrow = 'Tarifs', tint = true } = {}) => `

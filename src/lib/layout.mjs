@@ -682,7 +682,7 @@ export const pageHero = ({ tag, h1, sub, img, alt, location, photo: estPhotoCami
           ${callBtn(location, { text: `Appeler le ${SITE.phoneDisplay}` })}
           ${formBtn(location)}
         </div>
-        ${phoneNote({ clair: true })}
+        ${phoneNote()}
         ${checklist(items, true)}
       </div>
       <div class="hero__media">

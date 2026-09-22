@@ -59,6 +59,16 @@ export const avisDe = (cle) => AVIS.filter(a => a.page === cle);
 export const avisParNoms = (...noms) =>
   noms.map(n => AVIS.find(a => a.nom === n)).filter(Boolean);
 
+/** Regroupe une sélection d'avis par département, dans l'ordre demandé.
+    Rend `[['29', [...]], ['56', [...]]]` en laissant de côté les départements
+    sans avis : les pages n'affichent jamais un bloc vide. */
+export const DEPARTEMENTS = { '29': 'Finistère', '56': 'Morbihan' };
+
+export const avisParDept = (liste, ordre = ['29', '56']) =>
+  ordre
+    .map(d => [d, liste.filter(a => a.dept === d)])
+    .filter(([, avis]) => avis.length > 0);
+
 /** Lien vers la fiche établissement Google, si vous souhaitez l'ajouter.
     Laissez vide tant que l'URL n'est pas connue : aucun lien ne sera affiché. */
 export const LIEN_GOOGLE = '';

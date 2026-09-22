@@ -26,7 +26,7 @@ export default {
           ${callBtn('hero', { text: `Appeler le ${SITE.phoneDisplay}` })}
           ${formBtn('hero')}
         </div>
-        ${phoneNote({ clair: true })}
+        ${phoneNote()}
         <p class="hero__note">Vous parlez directement à quelqu’un qui connaît le métier.</p>
         ${checklist(undefined, true)}
       </div>

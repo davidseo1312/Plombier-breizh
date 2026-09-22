@@ -23,7 +23,7 @@
 <link rel="preload" as="image" type="image/webp" imagesrcset="/assets/img/hero-plombier-breizh-camion-480.webp?v=0972d65b 480w, /assets/img/hero-plombier-breizh-camion-760.webp?v=4d1c8ce3 760w, /assets/img/hero-plombier-breizh-camion-1100.webp?v=3d80d13f 1100w, /assets/img/hero-plombier-breizh-camion-1536.webp?v=f89a66f1 1536w" imagesizes="(min-width:1000px) 570px, calc(100vw - 40px)">
 <link rel="preload" href="/assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/lato-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=ff533c86">
+<link rel="stylesheet" href="/assets/css/site.css?v=ed6576ee">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Plumber","name":"Plombier Breizh","telephone":"+33220060196","email":"contact@plombier-breizh.fr","url":"https://www.plombier-breizh.fr","areaServed":[{"@type":"AdministrativeArea","name":"Bretagne"},{"@type":"AdministrativeArea","name":"Finistère (29)"},{"@type":"AdministrativeArea","name":"Morbihan (56)"}],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Débouchage de canalisation"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Dégorgement de réseau d’évacuation"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Pompage de regard et de fosse"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Inspection de canalisation par caméra"}}]}</script>
 <!-- ===================================================================
      TRACKING — à activer lors de la mise en ligne (voir README.md).
@@ -314,16 +314,17 @@ function PBLogo(img){
       </li>
       <li class="tarifs__ligne">
         <div class="tarifs__nom"><strong>Débouchage d’un point d’eau</strong><span>WC, évier, lavabo, douche ou baignoire : un seul point bloqué.</span></div>
-        <div class="tarifs__prix">à partir de 69 €</div>
+        <div class="tarifs__prix">à partir de 99 €</div>
       </li>
       <li class="tarifs__ligne">
         <div class="tarifs__nom"><strong>Dégorgement de réseau</strong><span>Plusieurs évacuations, canalisation enterrée, regard ou fosse.</span></div>
-        <div class="tarifs__prix">à partir de 89 €</div>
+        <div class="tarifs__prix">à partir de 99 €</div>
       </li>
     </ul>
-    <p class="tarifs__note">Montants TTC. Le prix exact dépend de l’intervention, de l’accès et du temps passé :
-il vous est annoncé avant que le travail commence, et un devis écrit vous est remis
-dès que le montant dépasse 150 € TTC. Rien n’est engagé sans votre accord.</p>
+    <p class="tarifs__note">Montants TTC. Quelle que soit l’intervention, elle démarre à 99 € : le prix exact
+dépend de l’accès, de la méthode et du temps passé. Il vous est annoncé avant que le travail
+commence, et un devis écrit vous est remis dès que le montant dépasse 150 € TTC.
+Rien n’est engagé sans votre accord.</p>
   </div>
 </section>
 
@@ -408,33 +409,57 @@ dès que le montant dépasse 150 € TTC. Rien n’est engagé sans votre accord
     <div class="section__head section__head--center">
       <span class="eyebrow">Avis</span>
       <h2>Ce que disent nos clients</h2>
+      <p class="lead">Des interventions réelles, classées par département : le Finistère
+      d’un côté, le Morbihan de l’autre.</p>
     </div>
-    <div class="grid grid--3">
-      
-      <article class="review">
-        <p class="review__stars" aria-label="Note : 5 sur 5">★★★★★<span class="review__stars-off"></span></p>
-        <p class="review__text">« Gros bouchon dans les WC un dimanche matin… J’ai appelé et le technicien a pu intervenir assez rapidement. Travail efficace et surtout il a pris le temps de m’expliquer ce qui avait provoqué le problème. »</p>
-        <p class="review__author">
-          <span class="review__name">Thomas Le Goff</span>
-          <span class="review__city">Quimper (29)</span>
-        </p>
-      </article>
-      <article class="review">
-        <p class="review__stars" aria-label="Note : 5 sur 5">★★★★★<span class="review__stars-off"></span></p>
-        <p class="review__text">« Mon évier était complètement bouché et l’eau ne s’écoulait quasiment plus. Intervention rapide, technicien sympa et travail propre. Le problème a été réglé sans perdre de temps. »</p>
-        <p class="review__author">
-          <span class="review__name">Élodie Martin</span>
-          <span class="review__city">Brest (29)</span>
-        </p>
-      </article>
-      <article class="review">
-        <p class="review__stars" aria-label="Note : 5 sur 5">★★★★★<span class="review__stars-off"></span></p>
-        <p class="review__text">« Canalisation complètement engorgée avec de l’eau qui remontait dans la douche. Le technicien a rapidement trouvé l’origine du bouchon et a effectué le dégorgement. Depuis, plus aucun problème. »</p>
-        <p class="review__author">
-          <span class="review__name">Julien Le Roux</span>
-          <span class="review__city">Concarneau (29)</span>
-        </p>
-      </article>
+    
+    <div class="avis-dept">
+      <h3 class="avis-dept__titre">
+        <span class="avis-dept__num">29</span>
+        <span>Finistère — 2 avis</span>
+      </h3>
+      <div class="grid grid--2">
+        <article class="review">
+          <p class="review__stars" aria-label="Note : 5 sur 5">★★★★★<span class="review__stars-off"></span></p>
+          <p class="review__text">« Gros bouchon dans les WC un dimanche matin… J’ai appelé et le technicien a pu intervenir assez rapidement. Travail efficace et surtout il a pris le temps de m’expliquer ce qui avait provoqué le problème. »</p>
+          <p class="review__author">
+            <span class="review__name">Thomas Le Goff</span>
+            <span class="review__city">Quimper (29)</span>
+          </p>
+        </article>
+        <article class="review">
+          <p class="review__stars" aria-label="Note : 5 sur 5">★★★★★<span class="review__stars-off"></span></p>
+          <p class="review__text">« Mon évier était complètement bouché et l’eau ne s’écoulait quasiment plus. Intervention rapide, technicien sympa et travail propre. Le problème a été réglé sans perdre de temps. »</p>
+          <p class="review__author">
+            <span class="review__name">Élodie Martin</span>
+            <span class="review__city">Brest (29)</span>
+          </p>
+        </article>
+      </div>
+    </div>
+    <div class="avis-dept">
+      <h3 class="avis-dept__titre">
+        <span class="avis-dept__num">56</span>
+        <span>Morbihan — 2 avis</span>
+      </h3>
+      <div class="grid grid--2">
+        <article class="review">
+          <p class="review__stars" aria-label="Note : 5 sur 5">★★★★★<span class="review__stars-off"></span></p>
+          <p class="review__text">« Douche totalement bouchée, impossible de faire couler l’eau correctement. J’ai appelé le matin et l’intervention s’est faite rapidement. Débouchage efficace, rien à redire. »</p>
+          <p class="review__author">
+            <span class="review__name">Alexandre Le Goff</span>
+            <span class="review__city">Vannes (56)</span>
+          </p>
+        </article>
+        <article class="review">
+          <p class="review__stars" aria-label="Note : 5 sur 5">★★★★★<span class="review__stars-off"></span></p>
+          <p class="review__text">« WC bouchés avec l’eau qui commençait à remonter. Le technicien est arrivé avec le matériel nécessaire et a réglé le problème rapidement. Intervention propre et efficace. »</p>
+          <p class="review__author">
+            <span class="review__name">Marie Le Floch</span>
+            <span class="review__city">Lorient (56)</span>
+          </p>
+        </article>
+      </div>
     </div>
   </div>
 </section>
@@ -520,7 +545,7 @@ dès que le montant dépasse 150 € TTC. Rien n’est engagé sans votre accord
       </details>
       <details class="faq__item">
         <summary>Combien coûte un débouchage ?</summary>
-        <p>Le déplacement et le diagnostic sur place sont à 45 € TTC. Le débouchage d’un point d’eau démarre à 69 € TTC, un dégorgement de réseau à 89 € TTC. Le montant exact dépend de l’accès et de la méthode : il vous est annoncé avant que le travail commence.</p>
+        <p>Le déplacement et le diagnostic sur place sont à 45 € TTC. Ensuite, toute intervention démarre à 99 € TTC, qu’il s’agisse d’un point d’eau bouché ou d’un dégorgement de réseau. Le montant exact dépend de l’accès et de la méthode : il vous est annoncé avant que le travail commence.</p>
       </details>
       <details class="faq__item">
         <summary>Les déboucheurs chimiques, ça marche ?</summary>

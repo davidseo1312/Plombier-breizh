@@ -59,7 +59,7 @@ export default landingService({
     ['equip-furet-electrique', 'Furet électrique', 'Pour percer les bouchons compacts installés en profondeur dans la conduite.']
   ],
 
-  avis: avisParNoms('Alexandre Le Goff', 'Marie Le Floch', 'Pierre Le Guen'),
+  avis: avisParNoms('Kevin Le Roux', 'Pierre Le Guen', 'Julien Le Roux', 'Camille Kerbrat'),
 
   zoneTexte: 'Nous intervenons sur ces communes du Morbihan et leurs alentours.',
 
@@ -67,7 +67,7 @@ export default landingService({
     ['Vous intervenez dans quels délais ?',
      'Nous sommes joignables 7j/7, 24h/24, soir et week-end compris. Le créneau dépend ensuite de votre commune et du planning : nous vous le disons dès l’appel.'],
     ['Combien coûte un débouchage ?',
-     'Le déplacement et le diagnostic sur place sont à 45 € TTC. Le débouchage d’un point d’eau démarre à 69 € TTC, un dégorgement de réseau à 89 € TTC. Le montant exact dépend de l’accès et de la méthode : il vous est annoncé avant que le travail commence.'],
+     'Le déplacement et le diagnostic sur place sont à 45 € TTC. Ensuite, toute intervention démarre à 99 € TTC, qu’il s’agisse d’un point d’eau bouché ou d’un dégorgement de réseau. Le montant exact dépend de l’accès et de la méthode : il vous est annoncé avant que le travail commence.'],
     ['Les déboucheurs chimiques, ça marche ?',
      'Rarement durablement. Le produit ouvre parfois un passage pour une journée, puis le bouchon revient plus compact — et il reste dans la canalisation pour celui qui interviendra ensuite.'],
     ['Je rouvre une maison restée fermée, l’évacuation ne passe plus',

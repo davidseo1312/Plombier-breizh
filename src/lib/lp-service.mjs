@@ -21,10 +21,35 @@ import { photo } from './media.mjs';
 import { carte as carteZone } from './carte.mjs';
 import { tarifsSection } from './tarifs.mjs';
 import { hermine, bandeBreizh } from './breizh.mjs';
+import { avisParDept, DEPARTEMENTS } from './reviews.mjs';
 
 const RAPPEL = 'Être rappelé';
 
 /* Micro-réassurance posée sous un groupe de boutons. Faits uniquement. */
+const carteAvis = (a) => `
+        <article class="review">
+          <p class="review__stars" aria-label="Note : ${a.note} sur 5">${'★'.repeat(a.note)}<span class="review__stars-off">${'☆'.repeat(5 - a.note)}</span></p>
+          <p class="review__text">« ${a.texte} »</p>
+          <p class="review__author">
+            <span class="review__name">${a.nom}</span>
+            <span class="review__city">${a.ville} (${a.dept})</span>
+          </p>
+        </article>`;
+
+/* Les avis sont regroupés par département : le visiteur du 29 voit tout de
+   suite ce qui vient de chez lui, et le 56 n'est pas mélangé au 29. Le
+   département de la page passe en premier. */
+const blocsAvis = (avis, num) => avisParDept(avis, num === '56' ? ['56', '29'] : ['29', '56'])
+  .map(([dept, liste]) => `
+    <div class="avis-dept${liste.length === 1 ? ' avis-dept--solo' : ''}">
+      <h3 class="avis-dept__titre">
+        <span class="avis-dept__num">${dept}</span>
+        <span>${DEPARTEMENTS[dept]} — ${liste.length} avis</span>
+      </h3>
+      <div class="grid grid--${liste.length >= 3 ? 3 : 2}">${liste.map(carteAvis).join('')}
+      </div>
+    </div>`).join('');
+
 const notesCta = (...items) =>
   `<div class="cta-note">${items.map(i => `<span>${i}</span>`).join('')}</div>`;
 
@@ -268,18 +293,10 @@ ${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${arti
     <div class="section__head section__head--center">
       <span class="eyebrow">Avis</span>
       <h2>Ce que disent nos clients</h2>
+      <p class="lead">Des interventions réelles, classées par département : le Finistère
+      d’un côté, le Morbihan de l’autre.</p>
     </div>
-    <div class="grid grid--${avis.length >= 3 ? 3 : 2}">
-      ${avis.map(a => `
-      <article class="review">
-        <p class="review__stars" aria-label="Note : ${a.note} sur 5">${'★'.repeat(a.note)}<span class="review__stars-off">${'☆'.repeat(5 - a.note)}</span></p>
-        <p class="review__text">« ${a.texte} »</p>
-        <p class="review__author">
-          <span class="review__name">${a.nom}</span>
-          <span class="review__city">${a.ville} (${a.dept})</span>
-        </p>
-      </article>`).join('')}
-    </div>
+    ${blocsAvis(avis, num)}
   </div>
 </section>
 
