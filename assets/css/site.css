@@ -403,6 +403,9 @@ strong{font-weight:700}
   flex:0 0 auto;font-size:clamp(20px,2.2vw,25px);font-weight:900;color:var(--blue);
   text-align:right;line-height:1.2;white-space:nowrap;
 }
+/* « Devis sur place » n'est pas un montant : même poids visuel, mais en
+   lettres un peu plus petites pour que 45 € reste le seul chiffre du bloc. */
+.tarifs__prix--devis{font-size:clamp(17px,1.5vw,20px);color:var(--cyan-deep)}
 .tarifs__note{
   margin:18px 0 0;padding:18px 22px;background:var(--tint);
   border:1px solid var(--tint-strong);border-left:4px solid var(--cyan);
