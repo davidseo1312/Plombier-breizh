@@ -15,7 +15,7 @@
    Ordre : hero · preuves · appel en 2 minutes · services · pourquoi nous ·
            matériel · avis · zone · FAQ · formulaire · appel final.
    ========================================================================== */
-import { SITE, callBtn, formBtn, tel, phoneNote, preuves, heroAvis, syntheseAvis } from './layout.mjs';
+import { SITE, callBtn, formBtn, tel, phoneNote, preuves, heroAvis, syntheseAvis, ligneIdentite } from './layout.mjs';
 import { servicePhoto } from './services.mjs';
 import { photo } from './media.mjs';
 import { carte as carteZone } from './carte.mjs';
@@ -77,7 +77,7 @@ export const landingService = ({
         dégorgement, en dehors des textes -- */
   metier = {},
   title, description,
-  tag, h1, sub,
+  tag, h1, sub, subArguments,
   heroImg, heroAlt, heroCamion = false,
   servicesTitre, services,
   ancrageTitre, ancrage,
@@ -141,13 +141,16 @@ export const landingService = ({
         ${bandeBreizh()}
         <span class="hero__tag">${hermine()}${tag}</span>
         <h1>${h1}</h1>
-        <p class="hero__sub">${sub}</p>
+        ${subArguments && subArguments.length ? `<ul class="hero__args">
+          ${subArguments.map(a => `<li>${a}</li>`).join('\n          ')}
+        </ul>` : `<p class="hero__sub">${sub}</p>`}
         <div class="hero__cta">
           ${callBtn(`hero-${slug}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
           ${formBtn(`hero-${slug}`, { text: RAPPEL })}
         </div>
         ${notesCta(APPEL, INTERLOCUTEUR)}
         ${heroAvis()}
+        ${ligneIdentite()}
       </div>
     </div>
     <span class="hero__badge">${dept} — ${num}</span>

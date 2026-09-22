@@ -10,6 +10,7 @@ import { photo as photoImg, preloadPhoto } from './media.mjs';
 import { carte } from './carte.mjs';
 import { hermine } from './breizh.mjs';
 import { STATS_AVIS } from './reviews.mjs';
+import { REGLAGES, identiteDisponible, googleDisponible, suiviDisponible } from './reglages.mjs';
 
 /** Ligne de synthèse posée sous un bloc d'avis. Même règle que heroAvis :
     la note est calculée sur les avis affichés, et aucune plateforme n'est
@@ -33,13 +34,16 @@ export const SITE = {
      sur un 02 est une pratique commerciale trompeuse (art. L.121-2 du Code
      de la consommation). Pour un vrai « appel gratuit », il faut souscrire
      un numéro vert et remplacer phoneDisplay / phoneHref ci-dessus. */
-  phoneNote: 'Joignable 7j/7, 24h/24 — appel non surtaxé',
+  phoneNote: `${REGLAGES.horaires.long} — appel non surtaxé`,
   phoneNoteCourt: 'Appel non surtaxé',
   /* Disponibilité annoncée par l'entreprise. Elle est affichée sur toutes
      les pages : elle engage, une ligne qui ne décroche pas la nuit rend la
      mention trompeuse. */
-  dispo: '7j/7 — 24h/24',
-  dispoLong: 'Joignable 7j/7, 24h/24',
+  /* Repris de REGLAGES.horaires : une seule valeur à corriger si les
+     horaires réels changent, et toutes les pages suivent. */
+  dispo: REGLAGES.horaires.court,
+  dispoLong: REGLAGES.horaires.long,
+  dispoDetail: REGLAGES.horaires.detail,
   region: 'Bretagne',
   baseUrl: 'https://www.plombier-breizh.fr'
 };
@@ -80,12 +84,28 @@ export const formBtn = (location, { variant = 'accent', size = 'lg', text = 'Dem
     Elle est CALCULÉE sur les avis publiés plus bas dans la page : un visiteur
     peut la recompter lui-même. Aucune plateforme n'est citée, faute de
     pouvoir prouver l'origine des avis. */
-export const heroAvis = () => `
+export const heroAvis = () => googleDisponible() ? `
+<p class="hero-avis">
+          <span class="hero-avis__etoiles" aria-hidden="true">★★★★★</span>
+          <span><b>${String(REGLAGES.google.note).replace('.', ',')}/5</b> sur Google${
+            REGLAGES.google.nombreAvis ? ` — ${REGLAGES.google.nombreAvis} avis` : ''} ·
+          <a href="${REGLAGES.google.url}" target="_blank" rel="noopener">voir la fiche</a></span>
+        </p>` : `
 <p class="hero-avis">
           <span class="hero-avis__etoiles" aria-hidden="true">★★★★★</span>
           <span><b>${String(STATS_AVIS.moyenne).replace('.', ',')}/5</b> — moyenne des
           ${STATS_AVIS.total} avis clients publiés sur cette page</span>
         </p>`;
+
+/** « Vous parlez à Untel, plombier depuis X ans. » L'argument anti-plateforme
+    le plus direct — affiché seulement si les deux champs sont renseignés,
+    jamais approximé. */
+export const ligneIdentite = () => identiteDisponible() ? `
+<p class="hero-identite">
+          <span class="hero-identite__pastille" aria-hidden="true"></span>
+          Vous parlez à <b>${REGLAGES.interlocuteur}</b>, plombier depuis
+          ${REGLAGES.anneesExperience}&nbsp;ans.
+        </p>` : '';
 
 export const REASSURANCE = [
   'Intervention rapide',
@@ -159,22 +179,56 @@ const OFFRES_DEFAUT = [
   'Recherche de fuite', 'Intervention de plomberie urgente'
 ];
 
-const jsonLd = (offres = OFFRES_DEFAUT) => JSON.stringify({
+const jsonLd = (offres = OFFRES_DEFAUT, zones) => JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Plumber',
   name: SITE.name,
   telephone: '+33220060196',
   email: SITE.email,
   url: SITE.baseUrl,
-  areaServed: [
+  /* Fourchette de prix : un seul cran, le déplacement étant à 45 €. */
+  priceRange: '€',
+  areaServed: (zones || [
     { '@type': 'AdministrativeArea', name: 'Bretagne' },
     { '@type': 'AdministrativeArea', name: 'Finistère (29)' },
     { '@type': 'AdministrativeArea', name: 'Morbihan (56)' }
-  ],
+  ]),
+  openingHoursSpecification: REGLAGES.horaires.schema.map(h => {
+    const [jours, plage] = h.split(' ');
+    const [ouvre, ferme] = plage.split('-');
+    return {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: jours, opens: ouvre, closes: ferme
+    };
+  }),
+  /* aggregateRating n'est publié que si une note Google vérifiable est
+     renseignée. Baliser une note issue de nos propres avis auto-hébergés est
+     interdit par Google pour un LocalBusiness, et expose à une action
+     manuelle sur les extraits enrichis. */
+  ...(googleDisponible() ? {
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: REGLAGES.google.note,
+      ...(REGLAGES.google.nombreAvis ? { reviewCount: REGLAGES.google.nombreAvis } : {})
+    }
+  } : {}),
   makesOffer: offres.map(n => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: n } }))
 });
 
-export const head = ({ title, description, slug, offres, preload = '', og = {} }) => `<!doctype html>
+/* Script de mesure. Rien n'est injecté tant qu'aucun identifiant n'est
+   renseigné : pas de requête tierce, pas de poids inutile, pas de gtag
+   fantôme qui ferait échouer les appels de conversion. */
+const mesure = () => suiviDisponible() ? `
+<script async src="https://www.googletagmanager.com/gtag/js?id=${REGLAGES.ads.id || REGLAGES.ga4}"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+${REGLAGES.ga4 ? `gtag('config','${REGLAGES.ga4}');` : ''}
+${REGLAGES.ads.id ? `gtag('config','${REGLAGES.ads.id}');` : ''}
+window.PB_CONVERSIONS={appel:${JSON.stringify(REGLAGES.ads.conversionAppel || '')},rappel:${JSON.stringify(REGLAGES.ads.conversionRappel || '')}};
+</script>` : '';
+
+export const head = ({ title, description, slug, offres, zones, preload = '', og = {} }) => `<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -200,24 +254,10 @@ ${preload}
 <link rel="preload" href="/assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/lato-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css">
-<script type="application/ld+json">${jsonLd(offres)}</script>
-<!-- ===================================================================
-     TRACKING — à activer lors de la mise en ligne (voir README.md).
-     Aucun identifiant fictif n'est présent : décommentez et remplacez
-     GTM-XXXXXXX / G-XXXXXXXXXX / AW-XXXXXXXXX par vos identifiants.
-
-     Google Tag Manager :
-     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-     })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-
-     OU Google Analytics 4 / Google Ads en direct :
-     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-     gtag('js',new Date());gtag('config','G-XXXXXXXXXX');gtag('config','AW-XXXXXXXXX');</script>
-     =================================================================== -->
+<script type="application/ld+json">${jsonLd(offres, zones)}</script>${mesure()}
+<!-- Mesure d'audience et conversions : voir src/lib/reglages.mjs.
+     Le script gtag est injecté automatiquement dès qu'un identifiant y est
+     renseigné. Ne rien coller ici : ce fichier est régénéré à chaque build. -->
 <script>
 /* Repli du logo : parcourt les noms/formats possibles, puis affiche le nom
    de l'entreprise en toutes lettres. Aucun logo n'est reconstitué. */
@@ -719,8 +759,8 @@ export const pageHero = ({ tag, h1, sub, img, alt, location, photo: estPhotoCami
 ${preuves({ zone: preuvesZone, villes: preuvesVilles })}`;
 
 /** Assemble une page complète. */
-export const page = ({ title, description, slug, nav, body, minimalNav = false, enTete = {}, pied = {}, offres, confiance = true, heroImage, og }) =>
-  `${head({ title, description, slug, offres, og, preload: heroImage ? preloadPhoto(heroImage.chemin, heroImage.ext, 'hero') : '' })}
+export const page = ({ title, description, slug, nav, body, minimalNav = false, enTete = {}, pied = {}, offres, zones, confiance = true, heroImage, og }) =>
+  `${head({ title, description, slug, offres, zones, og, preload: heroImage ? preloadPhoto(heroImage.chemin, heroImage.ext, 'hero') : '' })}
 <body data-page="${slug}">
 ${header(nav, minimalNav, enTete)}
 <main id="contenu">

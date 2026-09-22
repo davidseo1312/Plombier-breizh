@@ -12,6 +12,9 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { page, SITE } from './src/lib/layout.mjs';
 import { champsManquants } from './src/lib/entreprise.mjs';
+import { reglagesManquants } from './src/lib/reglages.mjs';
+import { fourchettesManquantes } from './src/lib/tarifs.mjs';
+import { photosReellesManquantes } from './src/lib/media.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const pagesDir = path.join(root, 'src', 'pages');
@@ -152,10 +155,24 @@ console.log(warnings === 0 ? '\nTous les contrôles sont passés.' : `\n${warnin
    Les mentions légales et la politique de confidentialité sont générées
    depuis src/lib/entreprise.mjs. Tant qu'un champ obligatoire est vide, il
    s'affiche « à compléter » sur le site : on ne devine aucune donnée. */
-const manquants = champsManquants();
-if (manquants.length) {
-  console.log(`\n⚖  Mentions légales — ${manquants.length} information(s) à renseigner dans src/lib/entreprise.mjs :`);
-  manquants.forEach(m => console.log(`   · ${m}`));
-} else {
-  console.log('\n⚖  Mentions légales : toutes les informations obligatoires sont renseignées.');
-}
+/* ------------------------------------------------------------------------
+   RAPPORT DE COMPLÉTUDE
+   Tout ce qui attend une information de l'entreprise est listé à chaque
+   build : rien ne se perd, et l'effet de chaque champ est rappelé.
+   ------------------------------------------------------------------------ */
+const bloc = (titre, fichier, items) => {
+  if (!items.length) return;
+  console.log(`\n${titre} — ${items.length} à compléter dans ${fichier} :`);
+  items.forEach(m => console.log(`   · ${m}`));
+};
+
+bloc('⚖  Mentions légales', 'src/lib/entreprise.mjs', champsManquants());
+bloc('📣 Conversion et identité', 'src/lib/reglages.mjs', reglagesManquants());
+bloc('💶 Fourchettes de prix', 'src/lib/tarifs.mjs', fourchettesManquantes());
+bloc('📷 Photos réelles', 'assets/photos/reelles/', photosReellesManquantes());
+
+const restant = champsManquants().length + reglagesManquants().length
+              + fourchettesManquantes().length + photosReellesManquantes().length;
+console.log(restant
+  ? `\n→ ${restant} information(s) attendue(s) au total. Chaque champ rempli s'applique aux seize pages au prochain build.`
+  : '\n✓ Toutes les informations attendues sont renseignées.');

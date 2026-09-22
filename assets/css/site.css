@@ -594,6 +594,33 @@ strong{font-weight:700}
 }
 .hero-avis__etoiles{color:var(--amber);font-size:17px;letter-spacing:.1em}
 .hero-avis b{color:var(--ink)}
+
+/* ---------- Trois arguments du premier écran ----------
+   Ils remplacent le paragraphe d'introduction : sur mobile, trois éclats
+   courts se lisent d'un coup d'œil là où trois lignes de texte se sautent. */
+.hero__args{
+  list-style:none;margin:0 0 26px;padding:0;
+  display:flex;flex-wrap:wrap;gap:9px 10px;
+}
+.hero__args li{
+  margin:0;display:inline-flex;align-items:center;gap:8px;
+  background:var(--tint);border:1px solid var(--tint-strong);
+  border-radius:var(--radius-btn);padding:8px 13px;
+  font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.3;
+}
+.hero__args li::before{content:"";width:9px;height:9px;flex:0 0 9px;background:var(--blue)}
+.hero__args li:nth-child(2)::before{background:var(--green)}
+.hero__args li:nth-child(3)::before{background:var(--terracotta-deep)}
+
+/* ---------- Qui décroche ---------- */
+.hero-identite{
+  display:flex;align-items:center;gap:10px;margin:0 0 18px;
+  font-size:15.5px;color:var(--ink-soft);line-height:1.45;
+}
+.hero-identite b{color:var(--ink)}
+.hero-identite__pastille{
+  width:10px;height:10px;flex:0 0 10px;background:var(--green-deep);
+}
 .phone-note--centre{justify-content:center;color:var(--cyan-ink)}
 .urgency .phone-note{flex:1 0 100%;margin:0;color:var(--cyan-ink);justify-content:flex-end}
 .site-footer .phone-note{margin:10px 0 14px}

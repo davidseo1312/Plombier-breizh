@@ -1,3 +1,30 @@
+# ============================================================================
+# Plombier Breizh — robots.txt
+#
+# AdsBot-Google n'obéit PAS aux règles écrites sous « User-agent: * » : il lui
+# faut son propre bloc. Sans lui, Google Ads ne peut pas contrôler les pages de
+# destination, ce qui dégrade le niveau de qualité et peut faire refuser des
+# annonces. Les deux variantes du robot sont déclarées : ordinateur et mobile.
+# ============================================================================
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+User-agent: AdsBot-Google-Mobile-Apps
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 User-agent: *
 Allow: /
 

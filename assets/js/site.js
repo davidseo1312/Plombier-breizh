@@ -31,6 +31,17 @@
     for (var k in payload) { if (Object.prototype.hasOwnProperty.call(payload, k)) data[k] = payload[k]; }
     window.dataLayer.push(data);
     if (typeof window.gtag === 'function') { window.gtag('event', eventName, payload); }
+
+    /* Conversion Google Ads. Les libellés viennent de src/lib/reglages.mjs et
+       sont exposés par la page dans window.PB_CONVERSIONS. Sans identifiant
+       renseigné, rien n'est envoyé : aucun appel fantôme. */
+    var conv = window.PB_CONVERSIONS || {};
+    var rappel = eventName === 'intervention_request'
+      || (eventName === 'cta_click' && /demande-intervention|rappel/.test(payload.cta_label || ''));
+    var envoi = eventName === 'phone_click' ? conv.appel : rappel ? conv.rappel : '';
+    if (envoi && typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', { send_to: envoi });
+    }
   }
   window.pbTrack = track;
 

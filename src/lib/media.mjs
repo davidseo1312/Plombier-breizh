@@ -32,10 +32,54 @@ const variantes = (chemin, ext, naturelle) =>
  * @param usage   clé de SIZES, ou chaîne `sizes` complète
  * @param repli   image affichée si le fichier manque (SVG de substitution)
  */
+/* --------------------------------------------------------------------------
+   PHOTOS RÉELLES — bascule automatique
+   --------------------------------------------------------------------------
+   Chaque visuel générée est associée à un nom de fichier « réel ». Dès que ce
+   fichier existe dans assets/photos/reelles/, il est servi à sa place, sur
+   toutes les pages, sans autre modification. Tant qu'il est absent, la photo
+   actuelle reste : un emplacement vide convertit moins bien qu'une image
+   imparfaite. Voir assets/photos/reelles/README.md.
+   -------------------------------------------------------------------------- */
+export const REMPLACEMENTS = {
+  'hero-plombier-breizh-camion': 'camion',
+  'equip-camion-plombier': 'camion',
+  'equip-camion': 'camion',
+  'depannage-plomberie': 'artisan',
+  'fuite-eau': 'chantier-fuite',
+  'recherche-fuite': 'chantier-fuite',
+  'equip-recherche-fuite': 'chantier-fuite',
+  'chauffe-eau': 'chantier-chauffe-eau',
+  'wc-sanitaires': 'chantier-sanitaire',
+  'equip-outillage': 'materiel',
+  'equip-furet-electrique': 'materiel',
+  'equip-haute-pression': 'materiel',
+  'equip-pompe': 'materiel'
+};
+
+/** Rend le chemin de la vraie photo si elle a été déposée, sinon le chemin
+    d'origine. Le nom de base suffit : le dossier est déduit. */
+export const cheminReel = (chemin, ext = 'jpg') => {
+  const base = chemin.split('/').pop();
+  const reel = REMPLACEMENTS[base];
+  if (!reel) return chemin;
+  return existsSync(`assets/photos/reelles/${reel}.${ext}`)
+    ? `/assets/photos/reelles/${reel}`
+    : chemin;
+};
+
+/** Noms de fichiers encore attendus dans assets/photos/reelles/. */
+export const photosReellesManquantes = (ext = 'jpg') =>
+  [...new Set(Object.values(REMPLACEMENTS))]
+    .filter(n => !existsSync(`assets/photos/reelles/${n}.${ext}`))
+    .map(n => `${n}.${ext}`);
+
 export const photo = ({
   chemin, ext = 'jpg', alt = '', largeur, hauteur,
   usage = 'carte', priorite = false, classe = '', repli = ''
 }) => {
+  /* Bascule vers la vraie photo si elle a été déposée. */
+  chemin = cheminReel(chemin, ext);
   const sizes = SIZES[usage] || usage;
   const dispo = variantes(chemin, ext, largeur);
   const attrs = [
@@ -61,6 +105,7 @@ export const photo = ({
 
 /** Balise de préchargement de l'image du premier écran (gain de LCP). */
 export const preloadPhoto = (chemin, ext = 'jpg', usage = 'hero') => {
+  chemin = cheminReel(chemin, ext);
   const webp = variantes(chemin, 'webp');
   if (!webp.length) return existsSync(chemin.slice(1) + '.' + ext)
     ? `<link rel="preload" as="image" href="${chemin}.${ext}">` : '';
