@@ -81,7 +81,6 @@ export const landingService = ({
   tag, h1, sub, subArguments,
   heroImg, heroAlt, heroCamion = false,
   servicesTitre, services,
-  ancrageTitre, ancrage,
   tarifs, tarifsTitre,
   appelTitre, appelIntro, etapes, nonFaits,
   materielTitre, materielIntro, materiel,
@@ -177,24 +176,6 @@ ${preuves({ zone: `${dept} (${num})`, villes: cities.slice(0, 4).join(', ') + ' 
     ${notesCta('Vous décrivez, on vous dit si c’est réparable', 'Pas de déplacement sans votre accord')}
   </div>
 </section>
-
-${ancrage ? `
-<section class="section">
-  <div class="container">
-    <div class="section__head">
-      ${bandeBreizh()}
-      <span class="eyebrow">Sur le terrain</span>
-      <h2>${ancrageTitre || `Ce qu’on voit vraiment dans ${article} ${dept}`}</h2>
-    </div>
-    <div class="ancrage">
-      ${ancrage.map(([t, p]) => `<div class="ancrage__item"><h3>${t}</h3><p>${p}</p></div>`).join('\n      ')}
-    </div>
-    <div class="btn-row mt-32">
-      ${callBtn(`ancrage-${slug}`, { text: `Appeler le ${SITE.phoneDisplay}` })}
-      ${formBtn(`ancrage-${slug}`, { variant: 'outline', text: RAPPEL })}
-    </div>
-  </div>
-</section>` : ''}
 
 ${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${article} ${dept}`, tint: false }) : ''}
 

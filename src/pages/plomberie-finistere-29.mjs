@@ -18,16 +18,6 @@ export default landingService({
   heroImg: 'recherche-fuite',
   heroAlt: 'Technicien Plombier Breizh recherchant une fuite d’eau au détecteur, dans le Finistère',
 
-  ancrageTitre: 'Ce qu’on voit vraiment dans le Finistère',
-  ancrage: [
-    ['Du cuivre ancien, du PER récent',
-     'Le parc va de la longère rénovée à l’appartement brestois des années 70. Sur du cuivre repris trois fois, on ne travaille pas comme sur du multicouche neuf — et c’est ce qui fait la différence entre une réparation qui tient et une qui recommence.'],
-    ['L’air marin n’arrange rien',
-     'Sur la côte, les raccords et les groupes de sécurité s’entartrent et se grippent plus vite qu’ailleurs. C’est très souvent là que la fuite commence, bien avant qu’elle se voie.'],
-    ['Des communes éloignées',
-     'Entre Châteaulin, Douarnenez et Quimperlé, on ne repasse pas le lendemain chercher une pièce. Le camion part chargé d’après ce que vous décrivez au téléphone.']
-  ],
-
   services: [
     ['fuite-eau', 'Fuite d’eau', 'Raccord, joint, flexible ou évacuation percée. On stoppe la fuite, puis on répare.'],
     ['wc-sanitaires', 'Sanitaires', 'Chasse d’eau, mécanisme, raccordement de broyeur : on reprend ce qui ne tient plus.'],

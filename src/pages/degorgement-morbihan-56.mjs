@@ -18,16 +18,6 @@ export default landingService({
   heroCamion: true,
   heroAlt: 'Camion et matériel de dégorgement Plombier Breizh, dans le Morbihan',
 
-  ancrageTitre: 'Ce qu’on voit vraiment dans le Morbihan',
-  ancrage: [
-    ['Des réseaux qui ne servent pas toute l’année',
-     'Un réseau laissé sans usage pendant des semaines s’assèche, les dépôts durcissent et la remise en service se passe mal. La haute pression reprend généralement la conduite en une intervention.'],
-    ['Des fosses et des regards',
-     'Hors agglomération, beaucoup de maisons ont leur propre assainissement. Quand le regard ne se vide plus, il faut pomper avant de déboucher, sinon on travaille dans l’eau.'],
-    ['Le déboucheur chimique',
-     'Il donne l’illusion que ça repart une journée, puis le bouchon revient plus compact. Et le produit, lui, reste dans la canalisation pour celui qui interviendra ensuite.']
-  ],
-
   servicesTitre: 'Ce que nous débouchons dans le Morbihan',
   services: [
     ['debouchage-wc', 'WC bouché', 'Les WC ne s’évacuent plus. On rétablit l’écoulement sans rien casser.'],

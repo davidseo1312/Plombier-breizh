@@ -461,18 +461,6 @@ strong{font-weight:700}
 .hero .container{position:relative;z-index:1}
 @media (max-width:1000px){.hero__filigrane{width:150px;height:150px;left:-34px;top:-30px;opacity:.075}}
 
-/* ---------- Ancrage local ----------
-   Ce que l'on voit vraiment sur le terrain, département par département.
-   C'est ce bloc qui empêche la page de ressembler à toutes les autres. */
-.ancrage{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.ancrage__item{border-left:4px solid var(--cyan);padding:2px 0 2px 20px}
-.ancrage__item:nth-child(2){border-left-color:var(--green)}
-.ancrage__item:nth-child(3){border-left-color:var(--ambre-accent)}
-.ancrage__item h3{margin:0 0 8px;font-size:18.5px}
-.ancrage__item p{margin:0;font-size:16px;color:var(--ink-soft);line-height:1.6}
-.section--dark .ancrage__item p{color:#C6CFD6}
-@media (max-width:860px){.ancrage{grid-template-columns:1fr;gap:20px}}
-
 /* ---------- Tarifs ----------
    Lecture immédiate : la prestation à gauche, le prix à droite, en gros. */
 .tarifs{list-style:none;margin:0;padding:0;border:1px solid var(--line);background:var(--white);
