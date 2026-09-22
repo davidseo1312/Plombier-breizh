@@ -50,34 +50,33 @@ export const AVIS = [
     texte: 'Fuite d’eau assez urgente à la maison. Très bon échange au téléphone et intervention rapide. Le problème a été identifié et réparé proprement. Service sérieux.'
   },
 
-  /* ---------------- Plomberie — avis transmis sans nom ni commune ----------
-     Textes fournis tels quels par l'entreprise. Aucun nom ni aucune ville ne
-     leur a été attribué : inventer une identité de client serait aussi
-     trompeur qu'inventer l'avis lui-même. Ils s'affichent donc sous la seule
-     mention du département. Si vous récupérez le prénom et la commune,
-     ajoutez `nom` et `ville` ici : la carte les reprendra automatiquement. */
+  /* ---------------- Plomberie — avis transmis sans commune -----------------
+     Textes et noms fournis par l'entreprise. La commune n'a pas été
+     communiquée et n'est pas inventée : la carte affiche alors le département
+     sous le nom. Ajoutez `ville` ici dès que vous l'avez, elle sera reprise
+     automatiquement. */
   {
-    id: 'plomberie-29-a', note: 5, dept: '29', page: 'plomberie29',
+    id: 'plomberie-29-a', note: 5, nom: 'Antoine Leclerc', dept: '29', page: 'plomberie29',
     texte: 'Intervention rapide et efficace pour une fuite d’eau dans la cuisine. Le plombier a trouvé l’origine du problème rapidement et a effectué la réparation proprement. Travail sérieux et professionnel. Je recommande.'
   },
   {
-    id: 'plomberie-29-b', note: 5, dept: '29', page: 'plomberie29',
+    id: 'plomberie-29-b', note: 5, nom: 'Camille Morel', dept: '29', page: 'plomberie29',
     texte: 'Très satisfait de l’intervention. Notre canalisation était complètement bouchée et le technicien est intervenu rapidement. Ponctuel, efficace et de bons conseils. Le problème a été réglé sans perdre de temps.'
   },
   {
-    id: 'plomberie-29-c', note: 5, dept: '29', page: 'plomberie29',
+    id: 'plomberie-29-c', note: 5, nom: 'Thomas Garnier', dept: '29', page: 'plomberie29',
     texte: 'Plombier très professionnel. Intervention pour une fuite sur une canalisation avec recherche de fuite et réparation. Travail propre, explications claires et tarif annoncé avant l’intervention. Rien à redire.'
   },
   {
-    id: 'plomberie-56-a', note: 5, dept: '56', page: 'plomberie56',
+    id: 'plomberie-56-a', note: 5, nom: 'Julie Perrin', dept: '56', page: 'plomberie56',
     texte: 'Très bonne expérience avec ce plombier. Intervention rapide pour un problème de chauffe-eau, diagnostic effectué rapidement et réparation réalisée dans la foulée. Technicien sérieux et agréable.'
   },
   {
-    id: 'plomberie-56-b', note: 5, dept: '56', page: 'plomberie56',
+    id: 'plomberie-56-b', note: 5, nom: 'Nicolas Fontaine', dept: '56', page: 'plomberie56',
     texte: 'Appel pour un évier complètement bouché. Le plombier est arrivé rapidement avec le matériel nécessaire et a réglé le problème efficacement. Intervention propre et professionnelle. Je recommande sans hésiter.'
   },
   {
-    id: 'plomberie-56-c', note: 5, dept: '56', page: 'plomberie56',
+    id: 'plomberie-56-c', note: 5, nom: 'Laura Marchand', dept: '56', page: 'plomberie56',
     texte: 'Excellent service pour une fuite d’eau dans la salle de bain. Le technicien a pris le temps de rechercher précisément la fuite avant de faire la réparation. Ponctuel, professionnel et travail soigné.'
   }
 ];
