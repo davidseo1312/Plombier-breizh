@@ -14,6 +14,26 @@ Aucune autre modification n'est nécessaire.
 | `chantier-sanitaire.jpg`  | Une pose ou un remplacement de sanitaire, WC, évier, douche. |
 | `materiel.jpg`            | Votre matériel réel : furet électrique, haute pression, caméra, détecteur. |
 
+## La séance : 20 minutes sur un chantier ordinaire
+
+Pas besoin d'organiser quoi que ce soit. Sur votre prochaine intervention,
+sortez le téléphone six fois. C'est tout.
+
+1. **Avant de commencer** — la panne telle que vous la trouvez : le siphon
+   encrassé, la fuite, l'évacuation bouchée. → `chantier-fuite.jpg`
+2. **Le camion** garé devant, portes ouvertes si le matériel se voit.
+   → `camion.jpg`
+3. **Le matériel posé au sol** avant d'attaquer : furet, caméra, détecteur.
+   → `materiel.jpg`
+4. **Vos mains au travail**, cadré serré sur le geste. Demandez au client de
+   déclencher, ou calez le téléphone. → `chantier-chauffe-eau.jpg` ou
+   `chantier-sanitaire.jpg`
+5. **Après**, la réparation terminée et le sol essuyé.
+6. **Vous**, une seule fois, de face, devant le camion. → `artisan.jpg`
+
+Les cinq premières ne demandent aucune mise en scène : ce sont des photos que
+vous prenez déjà pour vos devis et vos constats d'assurance.
+
 ## Consignes de prise de vue
 
 - **Format paysage**, au moins 1400 px de large. Le site fabrique tout seul les
@@ -36,3 +56,14 @@ node build.mjs                    # régénère les pages
 
 Les photos actuelles restent en place tant qu'un fichier n'est pas déposé :
 une image imparfaite convertit toujours mieux qu'un emplacement vide.
+
+## Pourquoi ça compte
+
+Les visuels actuels sont générés. Ils ont été recadrés sur le geste — mains,
+outil, pièce réparée — parce que ce sont les VISAGES qui trahissent une image
+générée, et parce que le même technicien apparaissait dans onze photos sur
+vingt et une : aucun artisan ne dispose de onze portraits de studio.
+
+Ce recadrage fait gagner beaucoup, mais il a un plafond. Une photo de VOTRE
+camion devant une vraie maison bretonne, avec VOTRE plaque, fait une chose
+qu'aucun traitement ne peut imiter : elle prouve que l'entreprise existe.
