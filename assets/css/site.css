@@ -38,15 +38,20 @@
   --white:#FFFFFF;
 
   /* Couleurs d'appui — chacune a un rôle, elles ne sont jamais décoratives :
-     terre cuite = urgence et action immédiate, vert = engagement tenu,
-     ambre = étoiles d'avis. Le bleu et le cyan restent majoritaires.
+     vert d'appel = le bouton qui déclenche l'appel, vert = engagement tenu,
+     ambre doré = accents chauds et étoiles d'avis. Le bleu et le cyan
+     restent majoritaires.
 
-     La terre cuite a remplacé l'orange vif #F26B21 : même rôle, mais
-     désaturée et plus foncée, elle s'accorde au bleu au lieu de lui crier
-     dessus, et elle passe le contraste AA sur blanc. */
-  --terracotta:#D0553A;
-  --terracotta-deep:#C0492F;   /* blanc dessus : 4,96:1 */
-  --terracotta-soft:#FBEFEB;
+     La terre cuite, elle-même héritée d'un orange vif, laisse la place à un
+     vert d'appel. Sur un bouton « Appeler », le vert dit « on décroche »
+     là où le rouge-orangé disait « danger », et il s'accorde au bleu de la
+     marque au lieu de lui répondre en opposition. Les accents décoratifs
+     passent à l'ambre doré : une chaleur qui accompagne le bleu au lieu de
+     le contrarier. */
+  --vert-cta:#12855A;          /* blanc dessus : 4,64:1 */
+  --vert-cta-deep:#0F6E4A;     /* survol : 6,27:1 */
+  --ambre-accent:#C97C00;      /* filets et bordures, jamais du texte */
+  --ambre-texte:#A06200;       /* même famille, lisible en texte : 4,95:1 */
   --creme:#FDF5F0;         /* fond de la section avis */
   --creme-fort:#F9E8E0;    /* cartes d'avis posées dessus */
   --green:#17915B;
@@ -141,8 +146,8 @@ strong{font-weight:700}
 }
 .eyebrow::before{content:"";width:26px;height:3px;background:var(--cyan);display:block}
 .eyebrow--tirets::after{content:"";width:26px;height:3px;background:var(--cyan);display:block}
-.section--creme .eyebrow::before,.section--creme .eyebrow--tirets::after{background:var(--terracotta)}
-.section--creme .eyebrow{color:var(--terracotta-deep)}
+.section--creme .eyebrow::before,.section--creme .eyebrow--tirets::after{background:var(--ambre-accent)}
+.section--creme .eyebrow{color:var(--ambre-texte)}
 .section--dark .eyebrow,
 .callbox .eyebrow,
 .section__head--center .eyebrow{justify-content:center}
@@ -173,8 +178,8 @@ strong{font-weight:700}
 .btn--primary:hover{background:var(--blue-deep);border-color:var(--blue-deep);color:var(--white)}
 .btn--accent{background:var(--cyan);color:var(--black);border-color:var(--cyan)}
 .btn--accent:hover{background:var(--cyan-deep);border-color:var(--cyan-deep);color:var(--white)}
-.btn--urgence{background:var(--terracotta-deep);color:var(--white);border-color:var(--terracotta-deep)}
-.btn--urgence:hover{background:#A93E08;border-color:#A93E08;color:var(--white)}
+.btn--urgence{background:var(--vert-cta);color:var(--white);border-color:var(--vert-cta)}
+.btn--urgence:hover{background:var(--vert-cta-deep);border-color:var(--vert-cta-deep);color:var(--white)}
 .btn--dark{background:var(--black);color:var(--white);border-color:var(--black)}
 .btn--dark:hover{background:#000;border-color:#000;color:var(--white)}
 .btn--outline{background:transparent;color:var(--ink);border-color:var(--cyan)}
@@ -290,7 +295,7 @@ strong{font-weight:700}
 /* Premier écran en photo plein cadre : le contenu est posé sur un panneau
    clair opaque, jamais directement sur l'image. La lisibilité ne dépend donc
    d'aucune photo en particulier — elle tient quel que soit le visuel. */
-.hero--photo{background:var(--black)}
+.hero--photo{background:var(--tint)}
 .hero--photo::after{display:none}
 .hero__fond{position:absolute;inset:0;z-index:0;overflow:hidden}
 .hero__fond picture,.hero__fond img{width:100%;height:100%;object-fit:cover;object-position:50% 32%;
@@ -311,18 +316,27 @@ strong{font-weight:700}
 .hero__contenu{position:relative;z-index:1}
 /* Trait d'accent en bas du premier écran : il ferme le bloc et annonce la
    bande de preuves qui suit. */
-.hero--photo{border-bottom:4px solid var(--terracotta)}
+.hero--photo{border-bottom:4px solid var(--ambre-accent)}
 .hero--photo .hero__badge{
   position:absolute;right:var(--gutter);bottom:0;left:auto;
   background:var(--blue);color:var(--white);border-bottom-left-radius:0;
 }
 @media (max-width:900px){
-  /* Sur mobile, une bande de photo reste visible au-dessus du panneau. */
-  .hero--photo .container{padding-top:150px;padding-bottom:26px}
+  /* Sur mobile, la photo n'est plus un fond pleine hauteur mais une bande.
+     En fond pleine hauteur, « cover » cadrait sur la colonne centrale de
+     l'image et la bande visible tombait sur le haut du mur : on ne voyait
+     rien. Réduite à une bande, la photo est cadrée sur son centre — donc
+     sur le sujet. Le panneau chevauche la bande de quelques pixels. */
+  .hero__fond{inset:0 0 auto 0;height:230px}
+  .hero__fond picture,.hero__fond img{object-position:50% 50%}
+  .hero--photo .container{padding-top:196px;padding-bottom:26px}
   .hero__panneau{max-width:none}
   .hero--photo .hero__badge{display:none}
 }
-@media (max-width:430px){.hero--photo .container{padding-top:118px}}
+@media (max-width:430px){
+  .hero__fond{height:190px}
+  .hero--photo .container{padding-top:158px}
+}
 
 .hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(26px,3.5vw,54px);align-items:center;padding-block:clamp(38px,5vw,70px)}
 .hero__tag .hermine{width:15px;height:15px;flex:0 0 15px}
@@ -394,7 +408,7 @@ strong{font-weight:700}
 .tile{background:var(--white);border:1px solid var(--line);border-top:4px solid var(--cyan);
   border-radius:var(--radius-card);box-shadow:var(--ombre-carte);padding:22px 22px 24px;height:100%}
 .grid .tile:nth-child(3n+2){border-top-color:var(--green)}
-.grid .tile:nth-child(3n){border-top-color:var(--terracotta)}
+.grid .tile:nth-child(3n){border-top-color:var(--ambre-accent)}
 .tile h3{margin:0 0 8px}
 .tile p{margin:0;font-size:16px;color:var(--ink-soft)}
 .tile--dark{background:#1A1A1A;border-color:#262626;border-top-color:var(--cyan)}
@@ -453,7 +467,7 @@ strong{font-weight:700}
 .ancrage{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .ancrage__item{border-left:4px solid var(--cyan);padding:2px 0 2px 20px}
 .ancrage__item:nth-child(2){border-left-color:var(--green)}
-.ancrage__item:nth-child(3){border-left-color:var(--terracotta)}
+.ancrage__item:nth-child(3){border-left-color:var(--ambre-accent)}
 .ancrage__item h3{margin:0 0 8px;font-size:18.5px}
 .ancrage__item p{margin:0;font-size:16px;color:var(--ink-soft);line-height:1.6}
 .section--dark .ancrage__item p{color:#C6CFD6}
@@ -470,7 +484,7 @@ strong{font-weight:700}
 .tarifs__ligne:last-child{border-bottom:0}
 .tarifs__ligne:first-child{border-left:4px solid var(--cyan)}
 .tarifs__ligne:nth-child(2){border-left:4px solid var(--green)}
-.tarifs__ligne:nth-child(3){border-left:4px solid var(--terracotta)}
+.tarifs__ligne:nth-child(3){border-left:4px solid var(--ambre-accent)}
 .tarifs__nom strong{display:block;font-size:18px;color:var(--ink);line-height:1.3}
 .tarifs__nom span{display:block;margin-top:5px;font-size:15.5px;color:var(--ink-soft);line-height:1.5}
 .tarifs__prix{
@@ -529,7 +543,7 @@ strong{font-weight:700}
 }
 .expertise__item:nth-child(2){border-left-color:var(--cyan-deep)}
 .expertise__item:nth-child(3){border-left-color:var(--green)}
-.expertise__item:nth-child(4){border-left-color:var(--terracotta-deep)}
+.expertise__item:nth-child(4){border-left-color:var(--ambre-accent)}
 /* Les numéros restent lisibles : pleine opacité et teintes foncées. Un
    chiffre délavé passait sous le seuil de contraste sans rien apporter. */
 .expertise__num{
@@ -538,7 +552,7 @@ strong{font-weight:700}
 }
 .expertise__item:nth-child(2) .expertise__num{color:var(--cyan-deep)}
 .expertise__item:nth-child(3) .expertise__num{color:var(--green-deep)}
-.expertise__item:nth-child(4) .expertise__num{color:var(--terracotta-deep)}
+.expertise__item:nth-child(4) .expertise__num{color:var(--ambre-texte)}
 .expertise__item strong{display:block;font-size:17.5px;color:var(--ink);line-height:1.3;margin-bottom:7px}
 .expertise__item span{display:block;font-size:15.5px;color:var(--ink-soft);line-height:1.58}
 @media (max-width:820px){
@@ -564,7 +578,7 @@ strong{font-weight:700}
   display:flex;flex-direction:column;justify-content:center;gap:14px;
 }
 .confiance__item:nth-child(2){border-top-color:var(--green)}
-.confiance__item:nth-child(3){border-top-color:var(--terracotta)}
+.confiance__item:nth-child(3){border-top-color:var(--ambre-accent)}
 .confiance__item img{height:58px;width:auto;max-width:100%;object-fit:contain;display:block;margin:0 auto}
 .confiance__item span{display:block;font-size:15px;font-weight:700;color:var(--ink-soft);line-height:1.45}
 @media (max-width:760px){
@@ -610,7 +624,7 @@ strong{font-weight:700}
 }
 .hero__args li::before{content:"";width:9px;height:9px;flex:0 0 9px;background:var(--blue)}
 .hero__args li:nth-child(2)::before{background:var(--green)}
-.hero__args li:nth-child(3)::before{background:var(--terracotta-deep)}
+.hero__args li:nth-child(3)::before{background:var(--ambre-accent)}
 
 /* ---------- Qui décroche ---------- */
 .hero-identite{
@@ -640,7 +654,7 @@ strong{font-weight:700}
   content:"";flex:0 0 14px;height:14px;margin-top:4px;background:var(--cyan);
 }
 .trust__item:nth-child(2) strong::before{background:var(--green)}
-.trust__item:nth-child(3) strong::before{background:var(--terracotta)}
+.trust__item:nth-child(3) strong::before{background:var(--ambre-accent)}
 .trust__item:nth-child(4) strong::before{background:var(--blue)}
 .trust__item span{display:block;margin-top:7px;padding-left:23px;font-size:15px;color:var(--ink-soft);line-height:1.5}
 .trust__item a{font-weight:700}
@@ -871,12 +885,12 @@ strong{font-weight:700}
   position:fixed;left:22px;bottom:22px;z-index:70;
   display:inline-flex;align-items:center;gap:11px;
   padding:14px 20px;border-radius:var(--radius-btn);
-  background:var(--terracotta-deep);color:var(--white);
+  background:var(--vert-cta);color:var(--white);
   font-size:16.5px;font-weight:700;line-height:1;
   box-shadow:0 6px 20px rgba(6,25,38,.28);
   transition:background-color .15s ease,transform .2s ease,opacity .2s ease,visibility .2s;
 }
-.appel-flottant:hover{background:#A93E25;color:var(--white);text-decoration:none;transform:translateY(-2px)}
+.appel-flottant:hover{background:var(--vert-cta-deep);color:var(--white);text-decoration:none;transform:translateY(-2px)}
 .appel-flottant--cache{opacity:0;visibility:hidden;transform:translateY(8px)}
 @media (max-width:900px){.appel-flottant{display:none}}
 @media (prefers-reduced-motion:reduce){.appel-flottant{transition:none}}
@@ -1012,7 +1026,7 @@ strong{font-weight:700}
   font-weight:700;font-size:16px;text-align:center;white-space:nowrap;
 }
 .sticky-cta a:hover{text-decoration:none}
-.sticky-cta__call{background:var(--terracotta-deep);color:var(--white)}
+.sticky-cta__call{background:var(--vert-cta);color:var(--white)}
 .sticky-cta__form{background:var(--cyan);color:var(--black)}
 .sticky-cta--solo{grid-template-columns:1fr}
 .sticky-cta--solo .sticky-cta__call{font-size:17px}
