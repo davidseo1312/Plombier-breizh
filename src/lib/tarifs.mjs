@@ -13,6 +13,14 @@
 export const DEPLACEMENT = '45 €';
 export const SUR_DEVIS = 'Devis sur place';
 
+/* Plancher annoncé pour toute intervention, une fois le déplacement facturé.
+
+   ⚠ « À partir de » suppose qu'une intervention est RÉELLEMENT facturée à ce
+   montant. Si le ticket plancher remonte, corrigez ici : afficher un prix
+   d'appel qu'aucun client ne paie est une pratique commerciale trompeuse
+   (art. L.121-2 du Code de la consommation). */
+export const INTERVENTION = 'à partir de 89 €';
+
 /* --------------------------------------------------------------------------
    FOURCHETTES PAR INTERVENTION — À COMPLÉTER
    --------------------------------------------------------------------------
@@ -58,7 +66,7 @@ const avecFourchettes = (fourchettes, libelleGenerique, detailGenerique) => {
   const connues = fourchettes.filter(([, prix]) => prix && String(prix).trim());
   return connues.length
     ? [FRAIS, ...connues]
-    : [FRAIS, [libelleGenerique, SUR_DEVIS, detailGenerique]];
+    : [FRAIS, [libelleGenerique, INTERVENTION, detailGenerique]];
 };
 
 export const TARIFS_PLOMBERIE = avecFourchettes(FOURCHETTES_PLOMBERIE,
@@ -80,9 +88,10 @@ export const fourchettesManquantes = () => {
   return vides.map(([nom]) => nom);
 };
 
-export const NOTE_TARIFS = `Montants TTC. Le prix de l’intervention est établi sur place, une fois
-le problème constaté : il vous est annoncé avant que le travail commence, et un devis écrit
-vous est remis dès que le montant dépasse 150&nbsp;€ TTC. Rien n’est engagé sans votre accord.`;
+export const NOTE_TARIFS = `Montants TTC. Le montant exact dépend de l’intervention, de l’accès et du
+temps passé : il est arrêté sur place, une fois le problème constaté, et vous est annoncé avant que
+le travail commence. Un devis écrit vous est remis dès que le montant dépasse 150&nbsp;€ TTC.
+Rien n’est engagé sans votre accord.`;
 
 /** Bloc tarifs. `lignes` : une des listes ci-dessus. */
 export const tarifsSection = (lignes, { titre = 'Nos tarifs', eyebrow = 'Tarifs', tint = true } = {}) => `
