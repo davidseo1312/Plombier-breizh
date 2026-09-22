@@ -26,13 +26,15 @@ import { avisParDept, DEPARTEMENTS } from './reviews.mjs';
 const RAPPEL = 'Être rappelé';
 
 /* Micro-réassurance posée sous un groupe de boutons. Faits uniquement. */
+/* Certains avis ont été transmis sans nom ni commune. On ne leur en invente
+   pas : la signature se réduit alors au département. */
 const carteAvis = (a) => `
         <article class="review">
           <p class="review__stars" aria-label="Note : ${a.note} sur 5">${'★'.repeat(a.note)}<span class="review__stars-off">${'☆'.repeat(5 - a.note)}</span></p>
           <p class="review__text">« ${a.texte} »</p>
           <p class="review__author">
-            <span class="review__name">${a.nom}</span>
-            <span class="review__city">${a.ville} (${a.dept})</span>
+            <span class="review__name">${a.nom || 'Client'}</span>
+            <span class="review__city">${a.ville ? `${a.ville} (${a.dept})` : `${DEPARTEMENTS[a.dept]} (${a.dept})`}</span>
           </p>
         </article>`;
 

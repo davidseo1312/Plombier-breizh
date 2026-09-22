@@ -48,6 +48,37 @@ export const AVIS = [
   {
     note: 5, nom: 'Sophie Le Gall', ville: 'Hennebont', dept: '56', page: 'accueil',
     texte: 'Fuite d’eau assez urgente à la maison. Très bon échange au téléphone et intervention rapide. Le problème a été identifié et réparé proprement. Service sérieux.'
+  },
+
+  /* ---------------- Plomberie — avis transmis sans nom ni commune ----------
+     Textes fournis tels quels par l'entreprise. Aucun nom ni aucune ville ne
+     leur a été attribué : inventer une identité de client serait aussi
+     trompeur qu'inventer l'avis lui-même. Ils s'affichent donc sous la seule
+     mention du département. Si vous récupérez le prénom et la commune,
+     ajoutez `nom` et `ville` ici : la carte les reprendra automatiquement. */
+  {
+    id: 'plomberie-29-a', note: 5, dept: '29', page: 'plomberie29',
+    texte: 'Intervention rapide et efficace pour une fuite d’eau dans la cuisine. Le plombier a trouvé l’origine du problème rapidement et a effectué la réparation proprement. Travail sérieux et professionnel. Je recommande.'
+  },
+  {
+    id: 'plomberie-29-b', note: 5, dept: '29', page: 'plomberie29',
+    texte: 'Très satisfait de l’intervention. Notre canalisation était complètement bouchée et le technicien est intervenu rapidement. Ponctuel, efficace et de bons conseils. Le problème a été réglé sans perdre de temps.'
+  },
+  {
+    id: 'plomberie-29-c', note: 5, dept: '29', page: 'plomberie29',
+    texte: 'Plombier très professionnel. Intervention pour une fuite sur une canalisation avec recherche de fuite et réparation. Travail propre, explications claires et tarif annoncé avant l’intervention. Rien à redire.'
+  },
+  {
+    id: 'plomberie-56-a', note: 5, dept: '56', page: 'plomberie56',
+    texte: 'Très bonne expérience avec ce plombier. Intervention rapide pour un problème de chauffe-eau, diagnostic effectué rapidement et réparation réalisée dans la foulée. Technicien sérieux et agréable.'
+  },
+  {
+    id: 'plomberie-56-b', note: 5, dept: '56', page: 'plomberie56',
+    texte: 'Appel pour un évier complètement bouché. Le plombier est arrivé rapidement avec le matériel nécessaire et a réglé le problème efficacement. Intervention propre et professionnelle. Je recommande sans hésiter.'
+  },
+  {
+    id: 'plomberie-56-c', note: 5, dept: '56', page: 'plomberie56',
+    texte: 'Excellent service pour une fuite d’eau dans la salle de bain. Le technicien a pris le temps de rechercher précisément la fuite avant de faire la réparation. Ponctuel, professionnel et travail soigné.'
   }
 ];
 
@@ -55,9 +86,11 @@ export const AVIS = [
 export const avisDe = (cle) => AVIS.filter(a => a.page === cle);
 
 /** Sélection explicite, dans l'ordre donné : permet de mettre en avant sur
-    chaque page les avis qui parlent de la prestation concernée. */
-export const avisParNoms = (...noms) =>
-  noms.map(n => AVIS.find(a => a.nom === n)).filter(Boolean);
+    chaque page les avis qui parlent de la prestation concernée. Une clé est
+    soit le nom du client, soit l'`id` de l'avis quand il a été transmis
+    sans nom. */
+export const avisParNoms = (...cles) =>
+  cles.map(c => AVIS.find(a => a.nom === c || a.id === c)).filter(Boolean);
 
 /** Regroupe une sélection d'avis par département, dans l'ordre demandé.
     Rend `[['29', [...]], ['56', [...]]]` en laissant de côté les départements

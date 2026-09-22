@@ -437,8 +437,8 @@ const carteAvis = (a) => `
             ${etoiles(a.note)}
             <p class="review__text">« ${a.texte} »</p>
             <p class="review__author">
-              <span class="review__name">${a.nom}</span>
-              <span class="review__city">${a.ville} (${a.dept})</span>
+              <span class="review__name">${a.nom || 'Client'}</span>
+              <span class="review__city">${a.ville ? `${a.ville} (${a.dept})` : `${a.dept === '56' ? 'Morbihan' : 'Finistère'} (${a.dept})`}</span>
             </p>
           </article>`;
 
