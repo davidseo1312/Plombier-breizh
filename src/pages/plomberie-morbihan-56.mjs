@@ -13,7 +13,7 @@ export default landingService({
 
   tag: 'Plomberie — Morbihan 56',
   h1: 'Plombier dans le Morbihan (56) — <em>fuite d’eau et dépannage</em>',
-  subArguments: ['Déplacement 45 €', 'Prix annoncé avant travaux', 'Artisan local, pas une plateforme'],
+  subArguments: ['Déplacement 45 €', 'Prix annoncé avant travaux'],
   sub: 'Fuite d’eau, chauffe-eau en panne, robinetterie ou sanitaires : décrivez votre problème par téléphone pour organiser l’intervention.',
   heroImg: 'chauffe-eau',
   heroAlt: 'Technicien Plombier Breizh intervenant sur un ballon d’eau chaude, dans le Morbihan',

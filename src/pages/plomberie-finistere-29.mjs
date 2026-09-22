@@ -13,7 +13,7 @@ export default landingService({
 
   tag: 'Plomberie — Finistère 29',
   h1: 'Plombier dans le Finistère (29) — <em>fuite d’eau et dépannage</em>',
-  subArguments: ['Déplacement 45 €', 'Prix annoncé avant travaux', 'Artisan local, pas une plateforme'],
+  subArguments: ['Déplacement 45 €', 'Prix annoncé avant travaux'],
   sub: 'Fuite d’eau, chauffe-eau en panne, robinetterie ou sanitaires : décrivez votre problème par téléphone pour organiser l’intervention.',
   heroImg: 'recherche-fuite',
   heroAlt: 'Technicien Plombier Breizh recherchant une fuite d’eau au détecteur, dans le Finistère',

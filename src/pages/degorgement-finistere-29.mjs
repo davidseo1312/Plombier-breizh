@@ -13,7 +13,7 @@ export default landingService({
 
   tag: 'Dégorgement &amp; débouchage — Finistère 29',
   h1: 'Dégorgement de canalisation dans <em>le Finistère (29)</em>',
-  subArguments: ['Déplacement 45 €', 'Prix annoncé avant travaux', 'Artisan local, pas une plateforme'],
+  subArguments: ['Déplacement 45 €', 'Prix annoncé avant travaux'],
   sub: 'Une évacuation bloquée, de l’eau qui remonte, un regard plein : décrivez ce que vous constatez par téléphone pour organiser l’intervention.',
   heroCamion: true,
   heroAlt: 'Camion et matériel de dégorgement Plombier Breizh, dans le Finistère',
