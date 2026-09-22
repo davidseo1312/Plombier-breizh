@@ -36,7 +36,7 @@ export const TARIFS_TOUS = [
 
 export const NOTE_TARIFS = `Montants TTC. Le prix de l’intervention est établi sur place, une fois
 le problème constaté : il vous est annoncé avant que le travail commence, et un devis écrit
-vous est remis dès que le montant dépasse 150 € TTC. Rien n’est engagé sans votre accord.`;
+vous est remis dès que le montant dépasse 150&nbsp;€ TTC. Rien n’est engagé sans votre accord.`;
 
 /** Bloc tarifs. `lignes` : une des listes ci-dessus. */
 export const tarifsSection = (lignes, { titre = 'Nos tarifs', eyebrow = 'Tarifs', tint = true } = {}) => `

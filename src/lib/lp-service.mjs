@@ -261,8 +261,9 @@ ${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${arti
       </div>
       <div class="who">
         <h3>Qui vous répond</h3>
-        <p>Une entreprise bretonne, enregistrée et assurée. Pas une plateforme qui revend
-        votre demande au premier artisan disponible.</p>
+        <p>Une entreprise bretonne, enregistrée et assurée, avec plusieurs années
+        d’expérience sur le terrain. Pas une plateforme qui revend votre demande au
+        premier artisan disponible.</p>
         <p>La personne qui prend l’appel est celle qui organise l’intervention, et vous
         retrouvez le même interlocuteur du premier appel jusqu’à la fin du chantier.</p>
         <p class="mt-24"><a href="/mentions-legales">Voir les mentions légales</a></p>

@@ -5,6 +5,7 @@
    ========================================================================== */
 
 import { confianceSection } from './confiance.mjs';
+import { expertiseSection } from './expertise.mjs';
 import { photo as photoImg, preloadPhoto } from './media.mjs';
 import { carte } from './carte.mjs';
 import { hermine } from './breizh.mjs';
@@ -259,8 +260,8 @@ export const preuves = ({ zone, villes } = {}) => `
   <div class="container">
     <div class="trust__grid">
       <div class="trust__item">
-        <strong>Entreprise immatriculée</strong>
-        <span>Société enregistrée et assurée, pas un intermédiaire.
+        <strong>Plusieurs années d’expérience</strong>
+        <span>Entreprise enregistrée et assurée, pas un intermédiaire.
         <a href="/mentions-legales">Mentions légales</a></span>
       </div>
       <div class="trust__item">
@@ -704,6 +705,6 @@ export const page = ({ title, description, slug, nav, body, minimalNav = false, 
 ${header(nav, minimalNav, enTete)}
 <main id="contenu">
 ${body}
-${confiance ? confianceSection() : ''}
+${confiance ? expertiseSection() + confianceSection() : ''}
 </main>
 ${footer(pied)}`;
