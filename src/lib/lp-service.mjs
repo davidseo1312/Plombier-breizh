@@ -13,7 +13,7 @@
    garantie, note moyenne, ancienneté ni statistique n'est inventée.
 
    Ordre : hero · preuves · appel en 2 minutes · services · pourquoi nous ·
-           pourquoi nous · interventions · tarifs · matériel · avis · zone ·
+           pourquoi nous · interventions · matériel · tarifs · avis · zone ·
            FAQ · l'appel en 2 minutes · formulaire · appel final.
    ========================================================================== */
 import { SITE, callBtn, formBtn, tel, phoneNote, preuves, heroAvis, syntheseAvis, ligneIdentite } from './layout.mjs';
@@ -221,9 +221,10 @@ ${preuves({ zone: `${dept} (${num})`, villes: cities.slice(0, 4).join(', ') + ' 
   </div>
 </section>
 
-${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${article} ${dept}`, tint: false }) : ''}
-
-<!-- 5. MATÉRIEL ----------------------------------------------------------- -->
+<!-- 5. MATÉRIEL ------------------------------------------------------------
+     Placé juste avant les tarifs : on montre l'équipement, puis le prix.
+     Un montant se justifie mieux quand on vient de voir ce qui part sur
+     le chantier. -------------------------------------------------------- -->
 <section class="section section--dark">
   <div class="container">
     <div class="section__head">
@@ -244,7 +245,10 @@ ${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${arti
   </div>
 </section>
 
-<!-- 6. AVIS --------------------------------------------------------------- -->
+<!-- 6. TARIFS ----------------------------------------------------------- -->
+${tarifs ? tarifsSection(tarifs, { titre: tarifsTitre || `Nos tarifs dans ${article} ${dept}`, tint: false }) : ''}
+
+<!-- 7. AVIS --------------------------------------------------------------- -->
 <section class="section section--creme" id="avis">
   <div class="container">
     <div class="section__head section__head--center">
@@ -257,7 +261,7 @@ ${syntheseAvis()}
   </div>
 </section>
 
-<!-- 7. ZONE D'INTERVENTION ------------------------------------------------ -->
+<!-- 8. ZONE D'INTERVENTION ------------------------------------------------ -->
 <section class="section section--tint">
   <div class="container">
     <div class="section__head">
@@ -283,7 +287,7 @@ ${syntheseAvis()}
   </div>
 </section>
 
-<!-- 8. FAQ ---------------------------------------------------------------- -->
+<!-- 9. FAQ ---------------------------------------------------------------- -->
 <section class="section" id="faq">
   <div class="container">
     <div class="section__head">
@@ -304,7 +308,7 @@ ${syntheseAvis()}
   </div>
 </section>
 
-<!-- 9. L'APPEL EN 2 MINUTES -----------------------------------------------
+<!-- 10. L'APPEL EN 2 MINUTES -----------------------------------------------
      Entre la FAQ et le formulaire : les dernières questions viennent d'être
      levées, on montre alors qu'un appel prend deux minutes — juste avant de
      proposer l'alternative écrite. ---------------------------------- -->
@@ -342,7 +346,7 @@ ${infographie ? `
   </div>
 </section>` : ''}
 
-<!-- 10. FORMULAIRE -------------------------------------------------------- -->
+<!-- 11. FORMULAIRE -------------------------------------------------------- -->
 <section class="section section--tint" id="demande-intervention">
   <div class="container">
     <div class="form-block">
@@ -403,7 +407,7 @@ ${infographie ? `
   </div>
 </section>
 
-<!-- 11. APPEL FINAL ------------------------------------------------------- -->
+<!-- 12. APPEL FINAL ------------------------------------------------------- -->
 <section class="phone-block">
   <div class="container">
     <h2>Un plombier dans ${article} ${dept} ?</h2>
