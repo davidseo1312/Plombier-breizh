@@ -13,7 +13,7 @@ export default landingService({
 
   tag: 'Plomberie — Finistère 29',
   h1: 'Plombier dans le Finistère (29) — <em>fuite d’eau et dépannage</em>',
-  subArguments: ['Déplacement 45 €', 'Prix annoncé avant travaux'],
+  subArguments: ['Déplacement 45 €', 'Prix transparent', 'Prix annoncé avant travaux'],
   sub: 'Fuite d’eau, chauffe-eau en panne, robinetterie ou sanitaires : décrivez votre problème par téléphone pour organiser l’intervention.',
   heroImg: 'recherche-fuite',
   heroAlt: 'Technicien Plombier Breizh recherchant une fuite d’eau au détecteur, dans le Finistère',
@@ -54,7 +54,7 @@ export default landingService({
     ['Vous intervenez dans quels délais ?',
      'Nous sommes joignables 7j/7, 24h/24, soir et week-end compris. Le créneau dépend ensuite de votre commune et du planning : nous vous le disons dès l’appel.'],
     ['Combien coûte une intervention ?',
-     'Les frais de déplacement sont de 45 € TTC. L’intervention démarre à 89 € TTC. Le technicien constate d’abord la panne, puis vous annonce le prix définitif avant de commencer. Un devis écrit vous est remis au-delà de 150 € TTC. Aucune intervention n’est engagée sans votre accord.'],
+     'Les frais de déplacement sont de 45 € TTC. Le prix de l’intervention est établi sur place : le technicien constate d’abord la panne, puis vous annonce le montant définitif avant de commencer. Un devis écrit vous est remis au-delà de 150 € TTC. Aucune intervention n’est engagée sans votre accord.'],
     ['Comment trouvez-vous une fuite qu’on ne voit pas ?',
      'Au détecteur acoustique, et à la caméra quand l’accès est difficile. L’objectif est de localiser la fuite avant d’ouvrir quoi que ce soit.'],
     ['Mon chauffe-eau ne chauffe plus, faut-il le remplacer ?',

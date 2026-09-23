@@ -13,13 +13,15 @@
 export const DEPLACEMENT = '45 €';
 export const SUR_DEVIS = 'Devis sur place';
 
-/* Plancher annoncé pour toute intervention, une fois le déplacement facturé.
+/* Aucun plancher n'est annoncé pour l'intervention : le prix est établi sur
+   place. Ce que la page promet à la place, ce sont les trois engagements
+   listés plus bas — prix annoncé avant les travaux, devis écrit au-delà de
+   150 € TTC, rien d'engagé sans accord. C'est ça, la transparence : pas un
+   chiffre d'appel, mais la certitude de connaître le montant avant que le
+   travail commence.
 
-   ⚠ « À partir de » suppose qu'une intervention est RÉELLEMENT facturée à ce
-   montant. Si le ticket plancher remonte, corrigez ici : afficher un prix
-   d'appel qu'aucun client ne paie est une pratique commerciale trompeuse
-   (art. L.121-2 du Code de la consommation). */
-export const INTERVENTION = 'à partir de 89 €';
+   Pour afficher des montants, remplissez les fourchettes ci-dessus : elles
+   remplacent alors cette ligne générique. */
 
 /* --------------------------------------------------------------------------
    FOURCHETTES PAR INTERVENTION — À COMPLÉTER
@@ -66,7 +68,7 @@ const avecFourchettes = (fourchettes, libelleGenerique, detailGenerique) => {
   const connues = fourchettes.filter(([, prix]) => prix && String(prix).trim());
   return connues.length
     ? [FRAIS, ...connues]
-    : [FRAIS, [libelleGenerique, INTERVENTION, detailGenerique]];
+    : [FRAIS, [libelleGenerique, SUR_DEVIS, detailGenerique]];
 };
 
 export const TARIFS_PLOMBERIE = avecFourchettes(FOURCHETTES_PLOMBERIE,
@@ -99,7 +101,7 @@ export const ENGAGEMENTS_TARIFS = [
 export const NOTE_TARIFS = 'Tous les montants sont indiqués TTC.';
 
 /** Bloc tarifs. `lignes` : une des listes ci-dessus. */
-export const tarifsSection = (lignes, { titre = 'Nos tarifs', eyebrow = 'Tarifs', tint = true } = {}) => `
+export const tarifsSection = (lignes, { titre = 'Nos tarifs', eyebrow = 'Prix transparent', tint = true } = {}) => `
 <section class="section${tint ? ' section--tint' : ''}" id="tarifs">
   <div class="container">
     <div class="section__head">
